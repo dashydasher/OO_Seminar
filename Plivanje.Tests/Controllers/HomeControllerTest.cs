@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Plivanje;
 using Plivanje.Controllers;
 
-namespace Plivanje.Tests.Controllers
+namespace PlivanjeTests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
