@@ -8,6 +8,8 @@ namespace Plivanje
 {
     public class CoachSeason : BaseEntity
     {
-        
+        public Club Club { get; set; }
+        public Coach Coach { get; set; }
+        public Season Season { get; set; }
     }
 }

@@ -8,5 +8,8 @@ namespace Plivanje
 {
     public class LicenceSwimmer : BaseEntity
     {
+        public Swimmer Swimmer { get; set; }
+        public Season Season { get; set; }
+        public Licence Licence { get; set; }
     }
 }

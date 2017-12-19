@@ -10,5 +10,7 @@ namespace Plivanje
     {
         public int Score { get; set; }
         public TimeSpan RaceTime { get; set; }
+        public Swimmer Swimmer { get; set; }
+        public Race Race { get; set; }
     }
 }

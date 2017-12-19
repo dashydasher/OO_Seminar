@@ -11,5 +11,11 @@ namespace Plivanje
         public DateTime TimeStart { get; set; }
         public DateTime TimeEnd { get; set; }
         public string Gender { get; set; }
+        public Pool Pool { get; set; }
+        public Competition Competition { get; set; }
+        public Length Length { get; set; }
+        public Style Style { get; set; }
+        public Category Category { get; set; }
+        public Referee Refereee { get; set; }
     }
 }

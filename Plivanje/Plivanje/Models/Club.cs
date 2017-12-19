@@ -10,5 +10,6 @@ namespace Plivanje
     {
         public string Name { get; set; }
         public string Address { get; set; }
+        public Place Place { get; set; }
     }
 }

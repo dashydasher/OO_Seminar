@@ -9,6 +9,7 @@ namespace Plivanje
     public class ClubCompetition : BaseEntity
     {
         public int CountSwimmers { get; set; }
-
+        public Club Club { get; set; }
+        public Competition Competition { get; set; }
     }
 }
