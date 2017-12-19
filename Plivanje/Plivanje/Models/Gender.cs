@@ -1,13 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using System.ComponentModel;
 
-namespace Plivanje.Models
+namespace Plivanje
 {
     public enum Gender
     {
-        Male,
-        Female
+        Muški,
+        Ženski
     }
 }

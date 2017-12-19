@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
+using System.Web.Services;
+using System.Web.Services.Protocols;
+using System.ComponentModel;
 
-namespace Plivanje.Models
+namespace Plivanje
 {
-    public class Person
+    public abstract class Person : BaseEntity
     {
-        public int idPerson;
-        public String firstName;
-        public String lastName;
-        public DateTime dateOfBirth;
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime DateOfBirth { get; set; }
     }
 }

@@ -6,8 +6,8 @@ using System.ComponentModel;
 
 namespace Plivanje
 {
-    public class Swimmer : Person
+    public abstract class BaseEntity
     {
-        public Gender Gender { get; set; }
+        public int Id { get; protected set; }
     }
 }

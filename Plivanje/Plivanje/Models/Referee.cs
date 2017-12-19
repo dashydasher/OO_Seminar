@@ -6,8 +6,7 @@ using System.ComponentModel;
 
 namespace Plivanje
 {
-    public class Swimmer : Person
+    public class Referee : RegisteredPerson
     {
-        public Gender Gender { get; set; }
     }
 }

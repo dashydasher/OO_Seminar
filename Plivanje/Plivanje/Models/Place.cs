@@ -5,10 +5,9 @@ using System.Web;
 
 namespace Plivanje.Models
 {
-    public class City
+    public class Place : BaseEntity
     {
-        public int idCity;
-        public String nameCity;
-        public List<SportsHall> sportsHalls;
+        public string Name { get; set; }
+        public int PostalCode { get; set; }
     }
 }
