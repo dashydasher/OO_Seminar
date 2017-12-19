@@ -8,11 +8,14 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Plivanje.Hall">
-    <Position X="3" Y="2.5" Width="1.5" />
+    <Position X="3.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAEAAAAAAAAA=</HashCode>
       <FileName>Models\Hall.cs</FileName>
     </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Place" />
+    </ShowAsAssociation>
   </Class>
   <Class Name="Plivanje.Competition">
     <Position X="5" Y="2.5" Width="1.5" />
@@ -24,7 +27,7 @@
   <Class Name="Plivanje.Race">
     <Position X="6.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAACAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <HashCode>AAAAIAAEAAAAAACAAAAAAABAAACACAAABAQAAAAACAA=</HashCode>
       <FileName>Models\Race.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -45,7 +48,7 @@
   <Class Name="Plivanje.SwimmerRace">
     <Position X="12" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <HashCode>QAAAAAAAAAAAAAgAAAAAAAAAABAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Models\SwimmerRace.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -94,7 +97,7 @@
   <Class Name="Plivanje.SwimmerSeason">
     <Position X="9.5" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAQAAAAgAAAAAAAAAABAAAAAAAAAAAACACAA=</HashCode>
       <FileName>Models\SwimmerSeason.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -136,21 +139,21 @@
   <Class Name="Plivanje.LicenceCoach">
     <Position X="4.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAgAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>Models\LicenceCoach.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Plivanje.LicenceSwimmer">
     <Position X="6.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAABAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>Models\LicenceSwimmer.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Plivanje.LicenceReferee">
     <Position X="9.25" Y="8" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAACAAAACAA=</HashCode>
       <FileName>Models\LicenceReferee.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -164,7 +167,7 @@
   <Class Name="Plivanje.Pool">
     <Position X="8.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAIAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Pool.cs</FileName>
     </TypeIdentifier>
   </Class>
