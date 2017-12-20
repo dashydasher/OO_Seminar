@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Plivanje
+namespace Plivanje.Models
 {
     public class ClubCompetition : BaseEntity
     {
-        public int CountSwimmers { get; set; }
-        public Club Club { get; set; }
-        public Competition Competition { get; set; }
+        public virtual int CountSwimmers { get; set; }
+        public virtual Club Club { get; set; }
+        public virtual Competition Competition { get; set; }
     }
 }

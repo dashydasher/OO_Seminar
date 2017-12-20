@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Plivanje
+namespace Plivanje.Models
 {
     public class LicenceCoach : BaseEntity
     {
-        public Coach Coach { get; set; }
-        public Season Season { get; set; }
-        public Licence Licence { get; set; }
+        public virtual Coach Coach { get; set; }
+        public virtual Season Season { get; set; }
+        public virtual Licence Licence { get; set; }
     }
 }

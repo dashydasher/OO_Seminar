@@ -1,14 +1,14 @@
 ﻿using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Plivanje
+namespace Plivanje.Models
 {
     public class Season : BaseEntity
     {
-        public DateTime TimeStart { get; set; }
-        public DateTime TimeEnd { get; set; }
+        public virtual DateTime TimeStart { get; set; }
+        public virtual DateTime TimeEnd { get; set; }
     }
 }

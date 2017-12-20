@@ -1,21 +1,21 @@
 ﻿using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Plivanje
+namespace Plivanje.Models
 {
     public class Race : BaseEntity
     {
-        public DateTime TimeStart { get; set; }
-        public DateTime TimeEnd { get; set; }
-        public string Gender { get; set; }
-        public Pool Pool { get; set; }
-        public Competition Competition { get; set; }
-        public Length Length { get; set; }
-        public Style Style { get; set; }
-        public Category Category { get; set; }
-        public Referee Refereee { get; set; }
+        public virtual DateTime TimeStart { get; set; }
+        public virtual DateTime TimeEnd { get; set; }
+        public virtual string Gender { get; set; }
+        public virtual Pool Pool { get; set; }
+        public virtual Competition Competition { get; set; }
+        public virtual Length Length { get; set; }
+        public virtual Style Style { get; set; }
+        public virtual Category Category { get; set; }
+        public virtual Referee Refereee { get; set; }
     }
 }

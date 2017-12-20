@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Plivanje
+namespace Plivanje.Models
 {
     public class Club : BaseEntity
     {
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public Place Place { get; set; }
+        public virtual string Name { get; set; }
+        public virtual string Address { get; set; }
+        public virtual Place Place { get; set; }
     }
 }

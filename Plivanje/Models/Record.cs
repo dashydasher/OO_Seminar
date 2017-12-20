@@ -1,22 +1,22 @@
 ﻿using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Plivanje
+namespace Plivanje.Models
 {
     public class Record : BaseEntity
     {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public DateTime DateOfBirth { get; set; }
-        public Gender Gender { get; set; }
-        public string Category { get; set; }
-        public string Style { get; set; }
-        public int Length { get; set; }
-        public string Place { get; set; }
-        public DateTime Date { get; set; }
-        public TimeSpan RaceTime { get; set; }
+        public virtual string FirstName { get; set; }
+        public virtual string LastName { get; set; }
+        public virtual DateTime DateOfBirth { get; set; }
+        public virtual Gender Gender { get; set; }
+        public virtual string Category { get; set; }
+        public virtual string Style { get; set; }
+        public virtual int Length { get; set; }
+        public virtual string Place { get; set; }
+        public virtual DateTime Date { get; set; }
+        public virtual TimeSpan RaceTime { get; set; }
     }
 }

@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Plivanje
+namespace Plivanje.Models
 {
     public class Length : BaseEntity
     {
-        public int Len { get; set; }
+        public virtual int Len { get; set; }
     }
 }

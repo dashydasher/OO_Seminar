@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Plivanje.BaseEntity">
+  <Class Name="Plivanje.Models.BaseEntity">
     <Position X="5.25" Y="1" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\BaseEntity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.Hall">
+  <Class Name="Plivanje.Models.Hall">
     <Position X="3.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAEAAAAAAAAA=</HashCode>
@@ -17,168 +17,168 @@
       <Property Name="Place" />
     </ShowAsAssociation>
   </Class>
-  <Class Name="Plivanje.Competition">
+  <Class Name="Plivanje.Models.Competition">
     <Position X="5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAAAAAAAAAAQAAAAAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>Models\Competition.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.Race">
+  <Class Name="Plivanje.Models.Race">
     <Position X="6.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAEAAAAAACAAAAAAABAAACACAAABAQAAAAACAA=</HashCode>
       <FileName>Models\Race.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.Style">
+  <Class Name="Plivanje.Models.Style">
     <Position X="8.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Style.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.Length">
+  <Class Name="Plivanje.Models.Length">
     <Position X="10.25" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Length.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.SwimmerRace">
+  <Class Name="Plivanje.Models.SwimmerRace">
     <Position X="12" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>QAAAAAAAAAAAAAgAAAAAAAAAABAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Models\SwimmerRace.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.Category">
+  <Class Name="Plivanje.Models.Category">
     <Position X="13.75" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAoAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Category.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.Person">
+  <Class Name="Plivanje.Models.Person">
     <Position X="15.5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAg=</HashCode>
       <FileName>Models\Person.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.RegisteredPerson">
+  <Class Name="Plivanje.Models.RegisteredPerson">
     <Position X="11.5" Y="4.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>Models\RegisteredPerson.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.Coach">
-    <Position X="10.25" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Coach.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Plivanje.Referee">
-    <Position X="12.5" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Models\Referee.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Plivanje.Swimmer">
+  <Class Name="Plivanje.Models.Swimmer">
     <Position X="14.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Swimmer.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.SwimmerSeason">
+  <Class Name="Plivanje.Models.SwimmerSeason">
     <Position X="9.5" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAgAAAAAAAAAABAAAAAAAAAAAACACAA=</HashCode>
       <FileName>Models\SwimmerSeason.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.Club">
+  <Class Name="Plivanje.Models.Club">
     <Position X="4" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAEAAAAAAAAA=</HashCode>
       <FileName>Models\Club.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.ClubCompetition">
+  <Class Name="Plivanje.Models.ClubCompetition">
     <Position X="2.25" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAAACAAAA=</HashCode>
       <FileName>Models\ClubCompetition.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.CoachSeason">
+  <Class Name="Plivanje.Models.CoachSeason">
     <Position X="6.75" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAgAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>Models\CoachSeason.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.Season">
+  <Class Name="Plivanje.Models.Season">
     <Position X="0.5" Y="5.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>Models\Season.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.Licence">
+  <Class Name="Plivanje.Models.Licence">
     <Position X="2" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Licence.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.LicenceCoach">
+  <Class Name="Plivanje.Models.LicenceCoach">
     <Position X="4.5" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAgAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>Models\LicenceCoach.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.LicenceSwimmer">
+  <Class Name="Plivanje.Models.LicenceSwimmer">
     <Position X="6.75" Y="7.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAABAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>Models\LicenceSwimmer.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.LicenceReferee">
+  <Class Name="Plivanje.Models.LicenceReferee">
     <Position X="9.25" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAACAAAACAA=</HashCode>
       <FileName>Models\LicenceReferee.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.Record">
+  <Class Name="Plivanje.Models.Record">
     <Position X="12.25" Y="8.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAACAAAAAAABAAAAQAAABBEEAAAAACAg=</HashCode>
       <FileName>Models\Record.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.Pool">
+  <Class Name="Plivanje.Models.Pool">
     <Position X="8.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAIAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Pool.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Plivanje.Place">
+  <Class Name="Plivanje.Models.Place">
     <Position X="1" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAIAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Place.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Enum Name="Plivanje.Gender">
+  <Class Name="Plivanje.Models.Referee">
+    <Position X="12.75" Y="6.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Referee.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Plivanje.Models.Coach">
+    <Position X="10.75" Y="7" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Coach.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Plivanje.Models.Gender">
     <Position X="14.5" Y="6.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAQAAAAAA=</HashCode>

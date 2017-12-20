@@ -1,13 +1,13 @@
 ﻿using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Plivanje
+namespace Plivanje.Models
 {
     public abstract class BaseEntity
     {
-        public int Id { get; protected set; }
+        public virtual int Id { get; protected set; }
     }
 }

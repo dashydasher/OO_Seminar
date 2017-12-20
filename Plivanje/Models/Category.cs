@@ -1,15 +1,15 @@
 ﻿using System;
-using System.Web;
-using System.Web.Services;
-using System.Web.Services.Protocols;
-using System.ComponentModel;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace Plivanje
+namespace Plivanje.Models
 {
     public class Category : BaseEntity
     {
-        public string Name { get; set; }
-        public int AgeFrom { get; set; }
-        public int AgeTo { get; set; }
+        public virtual string Name { get; set; }
+        public virtual int AgeFrom { get; set; }
+        public virtual int AgeTo { get; set; }
     }
 }
