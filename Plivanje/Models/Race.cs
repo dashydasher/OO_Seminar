@@ -10,7 +10,7 @@ namespace Plivanje.Models
     {
         public virtual DateTime TimeStart { get; set; }
         public virtual DateTime TimeEnd { get; set; }
-        public virtual string Gender { get; set; }
+        public virtual Gender Gender { get; set; }
         public virtual Pool Pool { get; set; }
         public virtual Competition Competition { get; set; }
         public virtual Length Length { get; set; }
