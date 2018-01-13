@@ -62,6 +62,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FluentNHibernateClass.cs" />
+    <Compile Include="Mappings\CategoryMap.cs" />
+    <Compile Include="Mappings\ClubCompetitionMap.cs" />
+    <Compile Include="Mappings\ClubMap.cs" />
+    <Compile Include="Mappings\CoachMap.cs" />
+    <Compile Include="Mappings\CoachSeasonMap.cs" />
+    <Compile Include="Mappings\CompetitionMap.cs" />
+    <Compile Include="Mappings\LengthMap.cs" />
+    <Compile Include="Mappings\LicenceCoachMap.cs" />
+    <Compile Include="Mappings\LicenceMap.cs" />
+    <Compile Include="Mappings\LicenceRefereeMap.cs" />
+    <Compile Include="Mappings\LicenceSwimmerMap.cs" />
+    <Compile Include="Mappings\PoolMap.cs" />
+    <Compile Include="Mappings\RaceMap.cs" />
+    <Compile Include="Mappings\RecordMap.cs" />
+    <Compile Include="Mappings\RefereeMap.cs" />
+    <Compile Include="Mappings\SeasonMap.cs" />
+    <Compile Include="Mappings\StyleMap.cs" />
+    <Compile Include="Mappings\SwimmerMap.cs" />
+    <Compile Include="Mappings\SwimmerRaceMap.cs" />
+    <Compile Include="Mappings\SwimmerSeasonMap.cs" />
     <Compile Include="Models\Coach.cs" />
     <Compile Include="Mappings\HallMap.cs" />
     <Compile Include="Mappings\PlaceMap.cs" />
@@ -96,7 +116,9 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="cstrings.config" />
+    <None Include="cstrings.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="Models\ClassDiagram0.cd" />
     <None Include="packages.config" />
   </ItemGroup>
