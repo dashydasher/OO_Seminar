@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26228.9
+VisualStudioVersion = 15.0.27130.2020
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plivanje", "Plivanje\Plivanje.csproj", "{C2F24488-5897-4791-8167-EF76F73713F7}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{7A395698-E7E8-4D67-9EDC-F2AC074D2E1E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlivanjeDesktop", "PlivanjeDesktop\PlivanjeDesktop.csproj", "{9263FFF4-CE4D-474A-A6AD-18A045192C00}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlivanjeMobile", "PlivanjeMobile\PlivanjeMobile.csproj", "{3AC9302C-EFAE-4141-A7C7-7373C38A6600}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,12 @@ Global
 		{9263FFF4-CE4D-474A-A6AD-18A045192C00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9263FFF4-CE4D-474A-A6AD-18A045192C00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9263FFF4-CE4D-474A-A6AD-18A045192C00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AC9302C-EFAE-4141-A7C7-7373C38A6600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AC9302C-EFAE-4141-A7C7-7373C38A6600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AC9302C-EFAE-4141-A7C7-7373C38A6600}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3AC9302C-EFAE-4141-A7C7-7373C38A6600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AC9302C-EFAE-4141-A7C7-7373C38A6600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AC9302C-EFAE-4141-A7C7-7373C38A6600}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
