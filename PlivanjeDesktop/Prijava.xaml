@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="NATJECANJA"/>
+                <MenuItem Header="NATJECANJA" Name="Competition"/>
                 <MenuItem Header="KLUBOVI"/>
                 <MenuItem Header="PLIVAČI">
                     <MenuItem Header="Veterani"/>

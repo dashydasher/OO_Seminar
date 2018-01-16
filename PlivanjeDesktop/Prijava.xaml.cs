@@ -1,4 +1,9 @@
-﻿using System;
+﻿using NHibernate;
+using NHibernate.Linq;
+using Plivanje;
+using Plivanje.Models;
+using Plivanje.Processors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,8 +29,8 @@ namespace PlivanjeDesktop
         {
             InitializeComponent();
             Register.Click += new RoutedEventHandler(Register_Click);
+            
         }
-        
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
@@ -33,6 +38,8 @@ namespace PlivanjeDesktop
             Registracija reg = new Registracija();
             reg.Show();
             this.Close();
+
+
         }
     }
 }
