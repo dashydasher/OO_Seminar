@@ -13,9 +13,9 @@ namespace Plivanje.Mappings
         public CoachSeasonMap()
         {
             Id(x => x.Id);
-            References(x => x.Club);
-            References(x => x.Coach);
-            References(x => x.Season);
+            References(x => x.Club).Column("idClub");
+            References(x => x.Coach).Column("idCoach");
+            References(x => x.Season).Column("idSeason");
             Table("CoachSeason");
         }
     }

@@ -13,10 +13,10 @@ namespace Plivanje.Mappings
         public SwimmerSeasonMap()
         {
             Id(x => x.Id);
-            References(x => x.Category);
-            References(x => x.Club);
-            References(x => x.Swimmer);
-            References(x => x.Season);
+            References(x => x.Category).Column("idCategory");
+            References(x => x.Club).Column("idClub");
+            References(x => x.Swimmer).Column("idSwimmer");
+            References(x => x.Season).Column("idSeason");
             Map(x => x.Score);
             Table("SwimmerSeason");
         }

@@ -8,7 +8,7 @@ namespace Plivanje.Models
 {
     public enum Gender
     {
-        Muški,
-        Ženski
+        M,
+        Ž
     }
 }

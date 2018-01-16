@@ -1,0 +1,68 @@
+﻿@model WebApp.Models.SwimmerViewModel
+@using (Html.BeginForm("Create", "Swimmer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+                
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <table class="table table-borderless" style="border-top: none">
+                            <tr>
+                                <td align="right" class="col-xs-2" style="border-top: none"><b>Ime:</b></td>
+                                <td align="left" class="col-xs-2" style="border-top: none">
+                                    @Html.HiddenFor(model => model.Id)
+                                    @Html.EditorFor(model => model.firstName, new { htmlAttributes = new { @class = "form-control" } })
+                                </td>
+                                <td align="right" class="col-xs-2" style="border-top: none"><b>Prezime:</b></td>
+                                <td align="left" class="col-xs-2" style="border-top: none">
+                                    @Html.EditorFor(model => model.lastName, new { htmlAttributes = new { @class = "form-control" } })
+                                </td>
+                                <td align="left" class="col-xs-4" style="border-top: none"></td>
+                            </tr>
+
+                            <tr>
+                                <td align="right" class="col-xs-2" style="border-top: none"><b>Datum rođenja:</b></td>
+                                <td align="left" class="col-xs-2" style="border-top: none">
+                                    @Html.EditorFor(model => model.dateOfBirth, new { htmlAttributes = new { @class = "form-control" } })
+                                </td>
+
+                                <td align="right" class="col-xs-2" style="border-top: none"><b>Spol:</b></td>
+                                <td align="left" class="col-xs-2" style="border-top: none">
+                                    M @Html.RadioButtonFor(m => m.spol, "M") Ž @Html.RadioButtonFor(m => m.spol, "Ž")
+                                </td>
+                                <td align="right" class="col-xs-4" style="border-top: none"></td>
+
+                            </tr>
+                            <tr>
+                                <td align="right" class="col-xs-2" style="border-top: none"><b>Datum rođenja:</b></td>
+                                <td align="left" class="col-xs-2" style="border-top: none">
+                                    <input type="checkbox"
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td style="border-top:none" />
+                            </tr>
+                        </table>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <div class="col-xs-12" align="right">
+                                    <input type="submit" value="Dodaj" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <br />
+
+    
+}
+ 
+<div>
+    @Html.ActionLink("Povratak na popis", "Index")
+</div>

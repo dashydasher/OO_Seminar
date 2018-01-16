@@ -1,0 +1,58 @@
+﻿
+@model IEnumerable<PlivanjeWebApp.Models.ClubViewModel>
+@{
+    ViewBag.Title = "ListOnlyView";
+}
+
+<h2>Popis svih klubova</h2>
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Ime kluba
+            </th>
+
+            <th>
+                Adresa
+            </th>
+            <th>
+                Mjesto
+            </th>
+            <th>
+                Trener
+            </th>
+
+
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Place)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.coach.LastName) @Html.DisplayFor(modelItem=>item.coach.FirstName)
+            </td>
+           
+        </tr>
+
+    }
+
+
+
+
+</table>
+
+
+

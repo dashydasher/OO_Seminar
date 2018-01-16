@@ -12,6 +12,8 @@ namespace Plivanje
 {
     public class FluentNHibernateClass
     {
+
+        private static ISessionFactory _sessionFactory;
         public static ISessionFactory CreateSessionFactory()
         {
             string connString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
@@ -52,6 +54,22 @@ namespace Plivanje
                 }
             }
             //Console.WriteLine(ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString);
+        }
+
+        public ISession OpenSession()
+        {
+            try
+            {
+                if (_sessionFactory == null)
+                    _sessionFactory = CreateSessionFactory();
+
+                ISession session = _sessionFactory.OpenSession();
+                return session;
+            }
+            catch (Exception e)
+            {
+                throw e.InnerException;
+            }
         }
     }
 }

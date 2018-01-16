@@ -1,0 +1,106 @@
+﻿@model PlivanjeWebApp.Models.ClubViewModel
+<h2>Moj klub:</h2>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <table class="table table-borderless" style="border-top: none">
+                        <tr>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Id kluba:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.Id
+                            </td>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Ime kluba:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.Name
+                            </td>
+                            <td align="left" class="col-xs-4" style="border-top: none"></td>
+                        </tr>
+
+                        <tr>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Adresa:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.Address
+                            </td>
+
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Mjesto:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.Place
+                            </td>
+                            <td align="right" class="col-xs-4" style="border-top: none"></td>
+
+                        </tr>
+
+
+                        <tr>
+                            <td style="border-top:none" />
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<br />
+<h3>Igrači:</h3>
+@Html.ActionLink("Dodaj novog plivača u svoj klub", "Create", "Swimmer", new object { }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Dodaj postojećeg plivača u svoj klub", "AddSwimmerToClub", "MyClub", new object { }, new { @class = "btn btn-primary" })
+<hr />
+
+@if (Model.swimmers != null)
+{
+    foreach (var item in Model.swimmers)
+    {
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        Ime plivača
+                    </th>
+
+                    <th>
+                        Prezime plivača
+                    </th>
+                    <th>
+                        Spol
+                    </th>
+                    <th>
+                        Datum rođenja
+                    </th>
+
+
+            </thead>
+
+
+            <tr>
+
+                <td>
+                    @item.FirstName
+                </td>
+                <td>
+                    @item.LastName
+                </td>
+
+                <td>
+                    @item.Gender
+                </td>
+                <td>
+                    @item.DateOfBirth
+                </td>
+
+            </tr>
+
+
+
+        </table>
+    }
+}
+
+<div>
+    @Html.ActionLink("Povratak na popis", "Index")
+</div>
+

@@ -1,0 +1,79 @@
+﻿@model IEnumerable<PlivanjeWebApp.Models.HallViewModel>
+@{
+    ViewBag.Title = "Dvorane i bazeni";
+}
+
+<h2>Popis dvorana i pripadajućih bazena</h2>
+
+<a asp-action="Create" class="btn btn-primary">Dodaj novu dvoranu</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+
+                Id dvorane
+
+            </th>
+
+            <th>
+
+                Ime dvorane
+
+            </th>
+            <th>
+
+                Grad
+
+            </th>
+            <th>
+
+                Adresa
+
+            </th>
+            <th>
+                Broj bazena (25 m)
+            </th>
+            <th>
+                Broj bazena (50 m)
+            </th>
+</thead>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Place)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <th>
+            @Html.DisplayFor(modelItem => item.count25)
+        </th>
+        <th>
+            @Html.DisplayFor(modelItem => item.count50)
+        </th>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id })  |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+
+    }
+
+
+
+
+</table>
+
+
+    
+ 
