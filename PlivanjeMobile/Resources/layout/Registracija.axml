@@ -19,7 +19,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText1" />
+        android:id="@+id/txtsavefirstname" />
     <TextView
         android:text="Prezime"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -29,7 +29,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText2" />
+        android:id="@+id/txtsavelastname" />
     <TextView
         android:text="Email"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -40,7 +40,7 @@
         android:inputType="textEmailAddress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText3" />
+        android:id="@+id/txtsaveemail" />
     <TextView
         android:text="Lozinka"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -51,7 +51,7 @@
         android:inputType="textPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText4" />
+        android:id="@+id/txtsavepassword" />
     <TextView
         android:text="ID licence"
         android:textAppearance="?android:attr/textAppearanceMedium"
@@ -62,10 +62,10 @@
         android:inputType="number"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/editText5" />
+        android:id="@+id/txtsavelicence" />
     <Button
         android:text="Registracija"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/button1" />
+        android:id="@+id/btnsavecreate" />
 </LinearLayout>

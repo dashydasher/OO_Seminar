@@ -45,25 +45,13 @@ namespace PlivanjeMobile
 		{
 			
 			// aapt resource value: 0x7f040005
-			public const int button1 = 2130968581;
+			public const int btnloglogin = 2130968581;
 			
 			// aapt resource value: 0x7f040006
-			public const int button2 = 2130968582;
+			public const int btnlogreg = 2130968582;
 			
-			// aapt resource value: 0x7f040002
-			public const int editText1 = 2130968578;
-			
-			// aapt resource value: 0x7f040004
-			public const int editText2 = 2130968580;
-			
-			// aapt resource value: 0x7f040008
-			public const int editText3 = 2130968584;
-			
-			// aapt resource value: 0x7f04000a
-			public const int editText4 = 2130968586;
-			
-			// aapt resource value: 0x7f04000c
-			public const int editText5 = 2130968588;
+			// aapt resource value: 0x7f04000f
+			public const int btnsavecreate = 2130968591;
 			
 			// aapt resource value: 0x7f040000
 			public const int textView1 = 2130968576;
@@ -74,14 +62,35 @@ namespace PlivanjeMobile
 			// aapt resource value: 0x7f040003
 			public const int textView3 = 2130968579;
 			
-			// aapt resource value: 0x7f040007
-			public const int textView4 = 2130968583;
-			
 			// aapt resource value: 0x7f040009
-			public const int textView5 = 2130968585;
+			public const int textView4 = 2130968585;
 			
 			// aapt resource value: 0x7f04000b
-			public const int textView6 = 2130968587;
+			public const int textView5 = 2130968587;
+			
+			// aapt resource value: 0x7f04000d
+			public const int textView6 = 2130968589;
+			
+			// aapt resource value: 0x7f040004
+			public const int txtlogpassword = 2130968580;
+			
+			// aapt resource value: 0x7f040002
+			public const int txtlogusername = 2130968578;
+			
+			// aapt resource value: 0x7f04000a
+			public const int txtsaveemail = 2130968586;
+			
+			// aapt resource value: 0x7f040007
+			public const int txtsavefirstname = 2130968583;
+			
+			// aapt resource value: 0x7f040008
+			public const int txtsavelastname = 2130968584;
+			
+			// aapt resource value: 0x7f04000e
+			public const int txtsavelicence = 2130968590;
+			
+			// aapt resource value: 0x7f04000c
+			public const int txtsavepassword = 2130968588;
 			
 			static Id()
 			{
