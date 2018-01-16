@@ -19,7 +19,7 @@ namespace PlivanjeDesktop
     /// </summary>
     public partial class Plivači : Window
     {
-        public Plivači()
+        public Plivači(string _value)
         {
             InitializeComponent();
         }

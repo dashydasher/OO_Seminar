@@ -6,34 +6,34 @@
         xmlns:local="clr-namespace:PlivanjeDesktop"
         mc:Ignorable="d"
         
-        Title="Prijava" Height="350" Width="525">
+        Title="Prijava" Height="350" Width="525" >
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="100"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Grid.ColumnSpan="2" Margin="0,0,420.4,-0.2">
+        <StackPanel Grid.Column="0">
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="NATJECANJA" Name="Competition"/>
-                <MenuItem Header="KLUBOVI"/>
-                <MenuItem Header="PLIVAČI">
-                    <MenuItem Header="Veterani"/>
-                    <MenuItem Header="Seniori"/>
-                    <MenuItem Header="Mlađi seniori"/>
-                    <MenuItem Header="Juniori"/>
-                    <MenuItem Header="Mlađi juniori"/>
-                    <MenuItem Header="Kadeti"/>
-                    <MenuItem Header="Mlađi kadeti"/>
-                    <MenuItem Header="Početnici"/>
+                <MenuItem Header="NATJECANJA" Name="Competition" Click="Competition_Click"/>
+                <MenuItem Header="KLUBOVI"  Name="Clubs" Click="Clubs_Click"/>
+                <MenuItem Header="PLIVAČI" Name="Swimmers" MouseEnter="MenuItem_MouseEnter" MouseLeave="MenuItem_MouseLeave">
+                    <MenuItem Header="Veterani" Click="Swimmers_Click"/>
+                    <MenuItem Header="Seniori" Click="Swimmers_Click"/>
+                    <MenuItem Header="Mlađi seniori" Click="Swimmers_Click"/>
+                    <MenuItem Header="Juniori" Click="Swimmers_Click"/>
+                    <MenuItem Header="Mlađi juniori" Click="Swimmers_Click"/>
+                    <MenuItem Header="Kadeti" Click="Swimmers_Click"/>
+                    <MenuItem Header="Mlađi kadeti" Click="Swimmers_Click"/>
+                    <MenuItem Header="Početnici" Click="Swimmers_Click"/>
                 </MenuItem>
-                <MenuItem Header="REKORDI">
-                    <MenuItem Header="Muškarci"/>
-                    <MenuItem Header="Žene"/>
+                <MenuItem Header="REKORDI" Name="Records"  MouseEnter="MenuItem_MouseEnter" MouseLeave="MenuItem_MouseLeave">
+                    <MenuItem Header="Muškarci" Click="Records_Click"/>
+                    <MenuItem Header="Žene" Click="Records_Click"/>
                 </MenuItem>
             </Menu>
 
         </StackPanel>
-        <StackPanel Grid.Column="1" Margin="1,0,0.4,-0.2">
+        <StackPanel Grid.Column="1" Margin="0,0,0.4,-0.2">
 
             <TextBlock Height="23" HorizontalAlignment="Center" Margin="0,10,0,0" x:Name="LoginHeading" Text="Prijava" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
 

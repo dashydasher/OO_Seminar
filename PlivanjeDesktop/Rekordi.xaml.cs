@@ -19,7 +19,7 @@ namespace PlivanjeDesktop
     /// </summary>
     public partial class Rekordi : Window
     {
-        public Rekordi()
+        public Rekordi(string _value)
         {
             InitializeComponent();
         }
