@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlivanjeMobile", "PlivanjeM
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlivanjeWebApp", "PlivanjeWebApp\PlivanjeWebApp.csproj", "{4F679282-B3EB-4EA9-930E-2276F830C6B7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAPI", "WebAPI\WebAPI.csproj", "{07638121-64B7-4363-8FA4-2C58B8700F27}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{4F679282-B3EB-4EA9-930E-2276F830C6B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4F679282-B3EB-4EA9-930E-2276F830C6B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4F679282-B3EB-4EA9-930E-2276F830C6B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{07638121-64B7-4363-8FA4-2C58B8700F27}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07638121-64B7-4363-8FA4-2C58B8700F27}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07638121-64B7-4363-8FA4-2C58B8700F27}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07638121-64B7-4363-8FA4-2C58B8700F27}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
