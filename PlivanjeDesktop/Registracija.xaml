@@ -13,11 +13,25 @@
                 <ColumnDefinition />
             </Grid.ColumnDefinitions>
             <StackPanel Grid.Column="0">
-                <Button Height="20">Test</Button>
-                <Button Height="20">Test2</Button>
-                <Button Height="20">Test2</Button>
-                <Button Height="20">Test2</Button>
-            </StackPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="NATJECANJA"/>
+                <MenuItem Header="KLUBOVI"/>
+                <MenuItem Header="PLIVAČI">
+                    <MenuItem Header="Veterani"/>
+                    <MenuItem Header="Seniori"/>
+                    <MenuItem Header="Mlađi seniori"/>
+                    <MenuItem Header="Juniori"/>
+                    <MenuItem Header="Mlađi juniori"/>
+                    <MenuItem Header="Kadeti"/>
+                    <MenuItem Header="Mlađi kadeti"/>
+                    <MenuItem Header="Početnici"/>
+                </MenuItem>
+                <MenuItem Header="REKORDI">
+                    <MenuItem Header="Muškarci"/>
+                    <MenuItem Header="Žene"/>
+                </MenuItem>
+            </Menu>
+        </StackPanel>
             <StackPanel Grid.Column="1" Margin="0,0,0.4,-0.2">
 
                 <TextBlock Height="23" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="RegisterHeading" Text="Registracija" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
@@ -39,8 +53,6 @@
                 <TextBlock Height="50" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="textBlockHeading" VerticalAlignment="Top" FontSize="10" FontStyle="Italic" Padding="5"><InlineUIContainer>
 
             
-
-                <TextBlock RenderTransformOrigin="0.5,0.5"><Hyperlink Click="buttonRegister_Click" FontSize="10" FontStyle="Normal"><Run Text="Registriraj se"/></Hyperlink></TextBlock>
 
             
 

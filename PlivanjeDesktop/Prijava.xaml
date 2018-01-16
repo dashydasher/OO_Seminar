@@ -13,17 +13,18 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
-
             <Menu DockPanel.Dock="Top">
                 <MenuItem Header="NATJECANJA"/>
                 <MenuItem Header="KLUBOVI"/>
                 <MenuItem Header="PLIVAČI">
+                    <MenuItem Header="Veterani"/>
                     <MenuItem Header="Seniori"/>
-                    <MenuItem Header="Seniorke"/>
+                    <MenuItem Header="Mlađi seniori"/>
                     <MenuItem Header="Juniori"/>
-                    <MenuItem Header="Juniorke"/>
+                    <MenuItem Header="Mlađi juniori"/>
+                    <MenuItem Header="Kadeti"/>
+                    <MenuItem Header="Mlađi kadeti"/>
                     <MenuItem Header="Početnici"/>
-                    <MenuItem Header="Početnice"/>
                 </MenuItem>
                 <MenuItem Header="REKORDI">
                     <MenuItem Header="Muškarci"/>
