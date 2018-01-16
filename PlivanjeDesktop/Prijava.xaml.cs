@@ -23,6 +23,16 @@ namespace PlivanjeDesktop
         public Prijava()
         {
             InitializeComponent();
+            Register.Click += new RoutedEventHandler(Register_Click);
+        }
+        
+
+        private void Register_Click(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            Registracija reg = new Registracija();
+            reg.Show();
+            this.Close();
         }
     }
 }

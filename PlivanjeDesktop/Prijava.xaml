@@ -47,7 +47,7 @@
 
             
 
-                <TextBlock RenderTransformOrigin="0.5,0.5"><Hyperlink Click="buttonRegister_Click" FontSize="10" FontStyle="Normal"><Run Text="Registriraj se"/></Hyperlink></TextBlock>
+                <TextBlock RenderTransformOrigin="0.5,0.5"><Hyperlink Name="Register" Click="Register_Click"  FontSize="10" FontStyle="Normal"><Run Text="Registriraj se"/></Hyperlink></TextBlock>
 
             
 
