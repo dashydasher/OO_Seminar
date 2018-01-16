@@ -1,9 +1,4 @@
-﻿using NHibernate;
-using NHibernate.Linq;
-using Plivanje;
-using Plivanje.Models;
-using Plivanje.Processors;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,6 +12,9 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Plivanje.Processors;
+using Plivanje.Models;
+
 
 namespace PlivanjeDesktop
 {
@@ -29,17 +27,19 @@ namespace PlivanjeDesktop
         {
             InitializeComponent();
             Register.Click += new RoutedEventHandler(Register_Click);
-            
         }
+        
 
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             e.Handled = true;
-            Registracija reg = new Registracija();
-            reg.Show();
-            this.Close();
-
-
+            //Registracija reg = new Registracija();
+            //reg.Show();
+            //this.Close();
+            List<Club> list = new List<Club>();      
+            var cp = new ClubProcessor();
+            list = cp.getClubs();
+            MessageBox.Show(list.ElementAt(0).Name);
         }
     }
 }

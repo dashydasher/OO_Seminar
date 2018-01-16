@@ -5,8 +5,129 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlivanjeDesktop"
         mc:Ignorable="d"
-        Title="Rekordi" Height="300" Width="300">
-    <Grid>
-        
+        Title="Rekordi" Height="350" Width="734.072" WindowState="Maximized" >
+    <Grid Margin="10,25,-225.4,-29.6">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="80"/>
+            <ColumnDefinition/>
+            
+        </Grid.ColumnDefinitions>
+
+        <StackPanel Grid.Column="0">
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="NATJECANJA" Name="Competition"/>
+                <MenuItem Header="KLUBOVI"/>
+                <MenuItem Header="PLIVAČI">
+                    <MenuItem Header="Veterani"/>
+                    <MenuItem Header="Seniori"/>
+                    <MenuItem Header="Mlađi seniori"/>
+                    <MenuItem Header="Juniori"/>
+                    <MenuItem Header="Mlađi juniori"/>
+                    <MenuItem Header="Kadeti"/>
+                    <MenuItem Header="Mlađi kadeti"/>
+                    <MenuItem Header="Početnici"/>
+                </MenuItem>
+                <MenuItem Header="REKORDI">
+                    <MenuItem Header="Muškarci"/>
+                    <MenuItem Header="Žene"/>
+                </MenuItem>
+            </Menu>
+
+        </StackPanel>
+
+        <FlowDocumentReader Margin="0,-10,215.6,18.4" Grid.Column="1">
+            <FlowDocument>
+
+                <Table CellSpacing="1">
+
+                    <Table.Columns>
+                        <TableColumn/>
+                        <TableColumn/>
+                        <TableColumn/>
+                        <TableColumn/>
+                        <TableColumn/>
+                        <TableColumn/>
+                        <TableColumn/>
+                        <TableColumn/>
+                        <TableColumn/>
+                        <TableColumn/>
+                    </Table.Columns>
+
+                    <TableRowGroup>
+
+                        <!-- Title row for the table. -->
+                        <TableRow Background="SkyBlue">
+                            
+                            <TableCell ColumnSpan="5">
+                                <Paragraph FontSize="14pt" FontWeight="Bold">Rekordi</Paragraph>
+                            </TableCell>
+                        </TableRow>
+
+                        <!-- Header row for the table. -->
+                        <TableRow Background="CadetBlue">
+                            <TableCell>
+                                <Paragraph FontSize="8pt" FontWeight="Bold">Ime</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph FontSize="8pt" FontWeight="Bold">Prezime</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph FontSize="8pt" FontWeight="Bold">Datum rođenja</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph FontSize="8pt" FontWeight="Bold">Spol</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph FontSize="8pt" FontWeight="Bold">Kategorija</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph FontSize="8pt" FontWeight="Bold">Stil</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph FontSize="8pt" FontWeight="Bold">Duljina</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph FontSize="8pt" FontWeight="Bold">Mjesto</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph FontSize="8pt" FontWeight="Bold">Datum</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph FontSize="8pt" FontWeight="Bold">Rezultat</Paragraph>
+                            </TableCell>
+                        </TableRow>
+
+                        <!-- Sub-title row for the inner planets. -->
+                        <TableRow>
+                            <TableCell ColumnSpan="5">
+                                <Paragraph FontSize="14pt" FontWeight="Bold">The Inner Planets</Paragraph>
+                            </TableCell>
+                        </TableRow>
+
+                        <!-- Four data rows for the inner planets. -->
+                        <TableRow>
+
+                            
+                            <TableCell>
+                                <Paragraph>57,910,000 km</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>4,880 km</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>3.30e23 kg</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow Background="lightgray">
+                    
+                        </TableRow>
+
+                    </TableRowGroup>
+                </Table>
+            </FlowDocument>
+        </FlowDocumentReader>
+
+
+
     </Grid>
 </Window>
