@@ -1,0 +1,63 @@
+﻿<Window x:Class="PlivanjeDesktop.Prijava"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlivanjeDesktop"
+        mc:Ignorable="d"
+        
+        Title="Prijava" Height="350" Width="525">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Column="0">
+
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="NATJECANJA"/>
+                <MenuItem Header="KLUBOVI"/>
+                <MenuItem Header="PLIVAČI">
+                    <MenuItem Header="Seniori"/>
+                    <MenuItem Header="Seniorke"/>
+                    <MenuItem Header="Juniori"/>
+                    <MenuItem Header="Juniorke"/>
+                    <MenuItem Header="Početnici"/>
+                    <MenuItem Header="Početnice"/>
+                </MenuItem>
+                <MenuItem Header="REKORDI">
+                    <MenuItem Header="Muškarci"/>
+                    <MenuItem Header="Žene"/>
+                </MenuItem>
+            </Menu>
+
+        </StackPanel>
+        <StackPanel Grid.Column="1" Margin="0,0,0.4,-0.2">
+
+            <TextBlock Height="23" HorizontalAlignment="Center" Margin="0,10,0,0" x:Name="LoginHeading" Text="Prijava" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+
+            <TextBlock Height="23" HorizontalAlignment="Center" Margin="0,20,0,0" x:Name="email" Text="Email" VerticalAlignment="Top" FontSize="13" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+            <TextBox Height="23" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxEmail" VerticalAlignment="Top" Width="247" />
+            <TextBlock Height="23" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="password" Text="Lozinka" VerticalAlignment="Top" FontSize="13" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+            <TextBox Height="23" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="247" />
+            <Button Height="20" HorizontalAlignment="Center" Margin="0,15,0,0" x:Name="prijaviSe" Content="Prijavi se" RenderTransformOrigin="6.226,0.65"/>
+
+
+            <TextBlock Height="50" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="textBlockHeading" VerticalAlignment="Top" FontSize="10" FontStyle="Italic" Padding="5"><InlineUIContainer>
+
+            
+
+                <TextBlock RenderTransformOrigin="0.5,0.5"><Hyperlink Click="buttonRegister_Click" FontSize="10" FontStyle="Normal"><Run Text="Registriraj se"/></Hyperlink></TextBlock>
+
+            
+
+            </InlineUIContainer></TextBlock>
+
+
+
+
+        </StackPanel>
+
+
+    </Grid>
+</Window>
