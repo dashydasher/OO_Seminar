@@ -32,9 +32,6 @@ namespace PlivanjeDesktop
         }
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            List<Category> list = new List<Category>();
-            var cp = new CategoryProcessor();
-            list = cp.getCategories();
             //ObjectQuery<Category> categories = dataEntities.Products;
 
             //var query =
