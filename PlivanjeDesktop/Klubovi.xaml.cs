@@ -15,6 +15,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using Remotion.Linq.Collections;
 using PlivanjeDesktop.ViewModels;
+using System.ComponentModel;
 
 namespace PlivanjeDesktop
 {
@@ -24,13 +25,23 @@ namespace PlivanjeDesktop
     public partial class Klubovi : Window
     {
         private ObservableCollection<Club> clubs = new ObservableCollection<Club>();
+        int id = 0;
 
         public Klubovi()
         {
             InitializeComponent();
 
             var clubViewModel = new ClubViewModel();
-            clubViewModel.LoadClubs();
+            clubViewModel.LoadClubs(id);
+            this.DataContext = clubViewModel;
+        }
+        public Klubovi(int idd, string role)
+        {
+            InitializeComponent();
+
+            id = idd;
+            var clubViewModel = new ClubViewModel();
+            clubViewModel.LoadClubs(id);
             this.DataContext = clubViewModel;
         }
 
@@ -80,5 +91,12 @@ namespace PlivanjeDesktop
             this.Close();
         }
 
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        { 
+            var grid = sender as Button;
+        }
+        
     }
+
 }

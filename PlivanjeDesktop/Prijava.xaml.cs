@@ -124,8 +124,8 @@ namespace PlivanjeDesktop
                     if (password.Equals(trener.Password.Trim()))
                     {
                         e.Handled = true;
-                        Natjecanja n = new Natjecanja();
-                        n.Show();
+                        Klubovi k = new Klubovi(trener.Id, "trener");
+                        k.Show();
                         this.Close();
                         return;
                     }

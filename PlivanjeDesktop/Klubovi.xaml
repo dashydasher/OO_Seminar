@@ -32,15 +32,26 @@
             </Menu>
 
         </StackPanel>
-        <StackPanel Grid.Column="1" Margin="0,0,0.4,-0.2">
+        <StackPanel Grid.Column="1" Margin="0,0,0.4,-0.2" >
+            <!--<TextBlock Width="300" Margin="10" Text="{Binding Path=Name,Source=coachesClub}" ></TextBlock>-->
+
             <ListView HorizontalAlignment="Center" Height="500" Margin="0,10,0,0" FontSize="20" 
-              VerticalAlignment="Top" Width="700" ItemsSource="{Binding clubs}">
+              VerticalAlignment="Top" Width="810" ItemsSource="{Binding clubs}" >
                 <ListView.View>
                     <GridView x:Name="GridView1">
                         <GridViewColumn DisplayMemberBinding= "{Binding Path=Name}" 
-                                Header="Ime kluba" Width="300"/>
+                                Header="Ime kluba" Width="230"/>
                         <GridViewColumn DisplayMemberBinding= "{Binding Path=Address}" 
-                                Header="Adresa kluba" Width="300"/>
+                                Header="Adresa kluba" Width="230"/>
+                        <GridViewColumn DisplayMemberBinding= "{Binding Path=Place}" 
+                                Header="Mjesto" Width="230"/>
+                        <GridViewColumn Header="" Width="110">
+                            <GridViewColumn.CellTemplate >
+                                <DataTemplate >
+                                    <Button FontSize="12" Content="Popis plivača" Click="Button_Click"></Button>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
