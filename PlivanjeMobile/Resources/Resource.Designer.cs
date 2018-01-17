@@ -26,6 +26,35 @@ namespace PlivanjeMobile
 		
 		public static void UpdateIdValues()
 		{
+			global::Xamarin.Auth._MobileServices.Resource.Animation.slide_in_right = global::PlivanjeMobile.Resource.Animation.slide_in_right;
+			global::Xamarin.Auth._MobileServices.Resource.Animation.slide_out_left = global::PlivanjeMobile.Resource.Animation.slide_out_left;
+			global::Xamarin.Auth._MobileServices.Resource.Drawable.ic_arrow_back = global::PlivanjeMobile.Resource.Drawable.ic_arrow_back;
+			global::Xamarin.Auth._MobileServices.Resource.Id.webview = global::PlivanjeMobile.Resource.Id.webview;
+			global::Xamarin.Auth._MobileServices.Resource.Layout.activity_webview = global::PlivanjeMobile.Resource.Layout.activity_webview;
+			global::Xamarin.Auth._MobileServices.Resource.String.ApplicationName = global::PlivanjeMobile.Resource.String.ApplicationName;
+			global::Xamarin.Auth._MobileServices.Resource.String.Hello = global::PlivanjeMobile.Resource.String.Hello;
+			global::Xamarin.Auth._MobileServices.Resource.String.title_activity_webview = global::PlivanjeMobile.Resource.String.title_activity_webview;
+			global::PCLCrypto.Resource.String.ApplicationName = global::PlivanjeMobile.Resource.String.ApplicationName;
+			global::PCLCrypto.Resource.String.Hello = global::PlivanjeMobile.Resource.String.Hello;
+		}
+		
+		public partial class Animation
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int slide_in_right = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int slide_out_left = 2130968577;
+			
+			static Animation()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Animation()
+			{
+			}
 		}
 		
 		public partial class Attribute
@@ -41,56 +70,75 @@ namespace PlivanjeMobile
 			}
 		}
 		
+		public partial class Drawable
+		{
+			
+			// aapt resource value: 0x7f020000
+			public const int ic_arrow_back = 2130837504;
+			
+			static Drawable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Drawable()
+			{
+			}
+		}
+		
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f040005
-			public const int btnloglogin = 2130968581;
+			// aapt resource value: 0x7f060006
+			public const int btnloglogin = 2131099654;
 			
-			// aapt resource value: 0x7f040006
-			public const int btnlogreg = 2130968582;
+			// aapt resource value: 0x7f060007
+			public const int btnlogreg = 2131099655;
 			
-			// aapt resource value: 0x7f04000f
-			public const int btnsavecreate = 2130968591;
+			// aapt resource value: 0x7f060010
+			public const int btnsavecreate = 2131099664;
 			
-			// aapt resource value: 0x7f040000
-			public const int textView1 = 2130968576;
+			// aapt resource value: 0x7f060001
+			public const int textView1 = 2131099649;
 			
-			// aapt resource value: 0x7f040001
-			public const int textView2 = 2130968577;
+			// aapt resource value: 0x7f060002
+			public const int textView2 = 2131099650;
 			
-			// aapt resource value: 0x7f040003
-			public const int textView3 = 2130968579;
+			// aapt resource value: 0x7f060004
+			public const int textView3 = 2131099652;
 			
-			// aapt resource value: 0x7f040009
-			public const int textView4 = 2130968585;
+			// aapt resource value: 0x7f06000a
+			public const int textView4 = 2131099658;
 			
-			// aapt resource value: 0x7f04000b
-			public const int textView5 = 2130968587;
+			// aapt resource value: 0x7f06000c
+			public const int textView5 = 2131099660;
 			
-			// aapt resource value: 0x7f04000d
-			public const int textView6 = 2130968589;
+			// aapt resource value: 0x7f06000e
+			public const int textView6 = 2131099662;
 			
-			// aapt resource value: 0x7f040004
-			public const int txtlogpassword = 2130968580;
+			// aapt resource value: 0x7f060005
+			public const int txtlogpassword = 2131099653;
 			
-			// aapt resource value: 0x7f040002
-			public const int txtlogusername = 2130968578;
+			// aapt resource value: 0x7f060003
+			public const int txtlogusername = 2131099651;
 			
-			// aapt resource value: 0x7f04000a
-			public const int txtsaveemail = 2130968586;
+			// aapt resource value: 0x7f06000b
+			public const int txtsaveemail = 2131099659;
 			
-			// aapt resource value: 0x7f040007
-			public const int txtsavefirstname = 2130968583;
+			// aapt resource value: 0x7f060008
+			public const int txtsavefirstname = 2131099656;
 			
-			// aapt resource value: 0x7f040008
-			public const int txtsavelastname = 2130968584;
+			// aapt resource value: 0x7f060009
+			public const int txtsavelastname = 2131099657;
 			
-			// aapt resource value: 0x7f04000e
-			public const int txtsavelicence = 2130968590;
+			// aapt resource value: 0x7f06000f
+			public const int txtsavelicence = 2131099663;
 			
-			// aapt resource value: 0x7f04000c
-			public const int txtsavepassword = 2130968588;
+			// aapt resource value: 0x7f06000d
+			public const int txtsavepassword = 2131099661;
+			
+			// aapt resource value: 0x7f060000
+			public const int webview = 2131099648;
 			
 			static Id()
 			{
@@ -105,11 +153,17 @@ namespace PlivanjeMobile
 		public partial class Layout
 		{
 			
-			// aapt resource value: 0x7f020000
-			public const int Main = 2130837504;
+			// aapt resource value: 0x7f030000
+			public const int activity_webview = 2130903040;
 			
-			// aapt resource value: 0x7f020001
-			public const int Registracija = 2130837505;
+			// aapt resource value: 0x7f030001
+			public const int OneText = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int Prijava = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Registracija = 2130903043;
 			
 			static Layout()
 			{
@@ -124,8 +178,17 @@ namespace PlivanjeMobile
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f030000
-			public const int app_name = 2130903040;
+			// aapt resource value: 0x7f050001
+			public const int ApplicationName = 2131034113;
+			
+			// aapt resource value: 0x7f050000
+			public const int Hello = 2131034112;
+			
+			// aapt resource value: 0x7f050003
+			public const int app_name = 2131034115;
+			
+			// aapt resource value: 0x7f050002
+			public const int title_activity_webview = 2131034114;
 			
 			static String()
 			{
