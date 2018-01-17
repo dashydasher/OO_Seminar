@@ -11,12 +11,12 @@ using PlivanjeMobileApp.Adapters;
 
 namespace PlivanjeMobileApp.Activities
 {
-    [Activity(Label = "KluboviActivity")]
+    [Activity(Label = "Klubovi")]
     public class KluboviActivity : Activity
     {
         private MobileServiceClient client;
-        private IMobileServiceTable<Club> clubTable;
-        private OneStringAdapter adapter;
+        private IMobileServiceTable<ClubView> clubTable;
+        private ClubViewAdapter adapter;
         const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
 
         protected override async void OnCreate(Bundle savedInstanceState)
@@ -24,16 +24,16 @@ namespace PlivanjeMobileApp.Activities
             base.OnCreate(savedInstanceState);
 
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.Klubovi);
+            SetContentView(Resource.Layout.ListViewLayout);
 
             CurrentPlatform.Init();
             
             client = new MobileServiceClient(applicationURL);
 
-            clubTable = client.GetTable<Club>();
+            clubTable = client.GetTable<ClubView>();
 
-            adapter = new OneStringAdapter(this, Resource.Layout.MediumTextLayout);
-            var listViewPlace = FindViewById<ListView>(Resource.Id.Klubovi);
+            adapter = new ClubViewAdapter(this, Resource.Layout.KluboviLayout);
+            var listViewPlace = FindViewById<ListView>(Resource.Id.listViewLayout);
             listViewPlace.Adapter = adapter;
 
             try
@@ -42,8 +42,8 @@ namespace PlivanjeMobileApp.Activities
 
                 adapter.Clear();
 
-                foreach (Club current in list)
-                    adapter.Add(current.Name);
+                foreach (ClubView current in list)
+                    adapter.Add(current);
 
             }
             catch (Exception e)

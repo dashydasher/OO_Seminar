@@ -91,9 +91,13 @@
     <Compile Include="Activities\KluboviActivity.cs" />
     <Compile Include="Activities\PlivaciActivity.cs" />
     <Compile Include="Activities\RekordiActivity.cs" />
+    <Compile Include="Adapters\ClubAdapter.cs" />
+    <Compile Include="Adapters\ClubViewAdapter.cs" />
     <Compile Include="Adapters\OneStringAdapter.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Models\Club.cs" />
+    <Compile Include="Models\ClubView.cs" />
+    <Compile Include="Models\Place.cs" />
     <Compile Include="Models\Swimmer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -117,7 +121,7 @@
     <AndroidResource Include="Resources\layout\Rekordi.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\Klubovi.axml">
+    <AndroidResource Include="Resources\layout\KluboviLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -134,6 +138,9 @@
     <Folder Include="Resources\mipmap-xhdpi\" />
     <Folder Include="Resources\mipmap-xxhdpi\" />
     <Folder Include="Resources\mipmap-xxxhdpi\" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\dimens.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
