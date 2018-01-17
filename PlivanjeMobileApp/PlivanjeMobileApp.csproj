@@ -88,9 +88,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Adapters\PlaceAdapter.cs" />
+    <Compile Include="Activities\KluboviActivity.cs" />
+    <Compile Include="Activities\PlivaciActivity.cs" />
+    <Compile Include="Activities\RekordiActivity.cs" />
+    <Compile Include="Adapters\OneStringAdapter.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Models\Place.cs" />
+    <Compile Include="Models\Club.cs" />
+    <Compile Include="Models\Swimmer.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -107,6 +111,15 @@
     <AndroidResource Include="Resources\layout\ListViewLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\Plivaci.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Rekordi.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Klubovi.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml">
@@ -115,7 +128,6 @@
     <AndroidResource Include="Resources\values\Strings.xml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Activities\" />
     <Folder Include="Resources\drawable\" />
     <Folder Include="Resources\mipmap-hdpi\" />
     <Folder Include="Resources\mipmap-mdpi\" />

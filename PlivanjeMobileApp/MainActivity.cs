@@ -1,55 +1,41 @@
 ﻿using System;
-using Android.OS;
 using Android.App;
-using Android.Views;
+using Android.Content;
 using Android.Widget;
-using System.Net.Http;
-using System.Threading.Tasks;
-using Microsoft.WindowsAzure.MobileServices;
-using PlivanjeMobileApp.Models;
-using PlivanjeMobileApp.Adapters;
+using Android.OS;
+using Android.Views;
+using PlivanjeMobileApp.Activities;
 
 namespace PlivanjeMobileApp
 {
     [Activity(Label = "PlivanjeMobileApp", MainLauncher = true)]
     public class MainActivity : Activity
     {
-        private MobileServiceClient client;
-        private IMobileServiceTable<Place> placeTable;
-        private PlaceAdapter adapter;
-        const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
-
-        protected override async void OnCreate(Bundle savedInstanceState)
+        protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
             // Set our view from the "main" layout resource
-            SetContentView(Resource.Layout.ListViewLayout);
+            SetContentView(Resource.Layout.Main);
 
-            CurrentPlatform.Init();
+            Button natjecanjaButton = FindViewById<Button>(Resource.Id.mainnatjecanjabut);
+            Button kluboviButton = FindViewById<Button>(Resource.Id.mainklubovibut);
+            Button plivaciButton = FindViewById<Button>(Resource.Id.mainplivacibut);
+            Button rekordiButton = FindViewById<Button>(Resource.Id.mainrekordibut);
 
-            client = new MobileServiceClient(applicationURL);
+            kluboviButton.Click += delegate {
+                StartActivity(typeof(KluboviActivity));
+            };
 
-            placeTable = client.GetTable<Place>();
+            plivaciButton.Click += delegate {
+                StartActivity(typeof(PlivaciActivity));
+            };
 
-            adapter = new PlaceAdapter(this, Resource.Layout.MediumTextLayout);
-            var listViewPlace = FindViewById<ListView>(Resource.Id.listViewLayout);
-            listViewPlace.Adapter = adapter;
-
-            try
-            {
-                var list = await placeTable.ToListAsync();
-
-                adapter.Clear();
-
-                foreach (Place current in list)
-                    adapter.Add(current);
-
-            } catch(Exception e)
-            {
-            }
+            rekordiButton.Click += delegate {
+                StartActivity(typeof(RekordiActivity));
+            };
         }
-        
+
 
         [Java.Interop.Export()]
         public async void AddItem(View view)

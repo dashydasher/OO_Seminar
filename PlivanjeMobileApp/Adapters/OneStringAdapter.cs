@@ -13,13 +13,13 @@ using PlivanjeMobileApp.Models;
 
 namespace PlivanjeMobileApp.Adapters
 {
-    class PlaceAdapter : BaseAdapter<Place>
+    class OneStringAdapter : BaseAdapter<String>
     {
         Activity activity;
         int layoutResourceId;
-        List<Place> items = new List<Place>();
+        List<String> items = new List<String>();
 
-        public PlaceAdapter(Activity activity, int layoutResourceId)
+        public OneStringAdapter(Activity activity, int layoutResourceId)
         {
             this.activity = activity;
             this.layoutResourceId = layoutResourceId;
@@ -44,12 +44,12 @@ namespace PlivanjeMobileApp.Adapters
                 textView = row.FindViewById<TextView>(Resource.Id.mediumTextLayout);
             }
 
-            textView.Text = currentItem.Text.Trim() + " (" + currentItem.PostalCode + ")";
+            textView.Text = currentItem;
 
             return row;
         }
 
-        public void Add(Place item)
+        public void Add(String item)
         {
             items.Add(item);
             NotifyDataSetChanged();
@@ -82,7 +82,7 @@ namespace PlivanjeMobileApp.Adapters
             }
         }
 
-        public override Place this[int position]
+        public override String this[int position]
         {
             get
             {
