@@ -45,9 +45,9 @@ namespace PlivanjeWebApp.Controllers
                 model.Add(pom);
                 
             }
-            if (Session["role"] != null)
+            if (HttpContext.Session["role"] != null)
             {
-                if ((int)Session["role"] == 1) {
+                if ((int)HttpContext.Session["role"] == 1) {
                     return View(model);
                 }
 
@@ -80,8 +80,8 @@ namespace PlivanjeWebApp.Controllers
 
             List<Swimmer> swimmers = new List<Swimmer>();
 
-            int i = cp.getMyClubId((int)Session["UserId"]);
-            Session["clubId"] = i;
+            int i = cp.getMyClubId((int)HttpContext.Session["UserId"]);
+            HttpContext.Session["clubId"] = i;
             c = cp.getClub(i);
             club.Id = c.Id;
             club.Name = c.Name;
@@ -141,7 +141,7 @@ namespace PlivanjeWebApp.Controllers
             var cp = new ClubProcessor();
             var season = new SeasonProcessor();
             Club c = new Club();
-            c = cp.getClub((int)Session["clubId"]);
+            c = cp.getClub((int)HttpContext.Session["clubId"]);
             Season s = new Season();
             s = season.getNowSeason(2);
             Category cat = new Category();
@@ -207,6 +207,23 @@ namespace PlivanjeWebApp.Controllers
             }
         }
 
+        public ActionResult DeleteSwimmerFromClub(int id)
+        {
+            SwimmerSeason swSeason = new SwimmerSeason();
+            SwimmerProcessor sp = new SwimmerProcessor();
+            swSeason = sp.getSwimmerSeason(id);
+            try
+            {
+                sp.deleteSwimmerFromClub(swSeason);
+                ClubController c = new ClubController();
+                return RedirectToAction("MyClub");
+            }
+            catch (Exception e)
+            {
+                ClubController c = new ClubController();
+                return RedirectToAction("MyClub");
+            }
+        }
         // GET: Club/Delete/5
         public ActionResult Delete(int id)
         {

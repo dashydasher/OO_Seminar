@@ -14,5 +14,6 @@ namespace PlivanjeWebApp.Models
         public DateTime TimeEnd { get; set; }
         public string HallName { get; set; }
         public int HallId { get; set; }
+        public List<RaceViewModel> races { get; set; }
     }
 }

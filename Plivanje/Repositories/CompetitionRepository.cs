@@ -12,6 +12,7 @@ namespace Plivanje.Repositories
     {
         void UpdateCompetition(Competition c);
         List<Competition> GetListOfCompetitions();
+        Competition GetCompetition(int competitionId);
 
 
 
@@ -40,6 +41,21 @@ namespace Plivanje.Repositories
                 using (var transaction = session.BeginTransaction())
                 {
                     result = (List <Competition>)session.QueryOver<Competition>().List<Competition>().OrderByDescending(x => x.TimeStart);
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public Competition GetCompetition(int competitionId)
+        {
+            var result = new Competition();
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<Competition>().Where(x=>x.Id==competitionId).JoinQueryOver(s=>s.Hall).SingleOrDefault();
                     transaction.Commit();
                 }
             }

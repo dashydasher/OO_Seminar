@@ -13,7 +13,7 @@ namespace Plivanje.Mappings
         public LengthMap()
         {
             Id(x => x.Id);
-            Map(x => x.Len);
+            Map(x => x.Len).Column("Length");
             Table("Length");
         }
     }

@@ -1,0 +1,84 @@
+﻿@model PlivanjeWebApp.Models.CompetitionViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Uredi podatke o utrci</h2>
+
+
+@using (Html.BeginForm("Edit", "Competition", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <div class="col-md-12">
+                        <table class="table table-borderless" style="border-top: none">
+                            <tr>
+                                <td align="right" class="col-xs-2" style="border-top: none"><b>Naziv:</b></td>
+                                <td align="left" class="col-xs-2" style="border-top: none">
+                                    @Html.HiddenFor(model=>model.Id)
+                                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                </td>
+                                <td align="right" class="col-xs-2" style="border-top: none"><b>Dvorana:</b></td>
+                                <td align="left" class="col-xs-2" style="border-top: none">
+                                    @Html.DropDownListFor(model => model.HallId, new SelectList(ViewBag.halls, "Id", "Name"))
+                                </td>
+                                <td align="left" class="col-xs-4" style="border-top: none"></td>
+                            </tr>
+
+                            <tr>
+                                <td align="right" class="col-xs-2" style="border-top: none"><b>Početak:</b></td>
+                                <td align="left" class="col-xs-2" style="border-top: none">
+                                    @Html.EditorFor(model => model.TimeStart, new { htmlAttributes = new { @class = "form-control" } })
+                                </td>
+
+                                <td align="right" class="col-xs-2" style="border-top: none"><b>Završetak:</b></td>
+                                <td align="left" class="col-xs-2" style="border-top: none">
+                                    @Html.EditorFor(model => model.TimeEnd, new { htmlAttributes = new { @class = "form-control" } })
+                                </td>
+                                <td align="right" class="col-xs-4" style="border-top: none"></td>
+
+                            </tr>
+                 
+
+                            <tr>
+                                <td style="border-top:none" />
+                            </tr>
+                        </table>
+                        <div class="form-group">
+                            <div class="form-group">
+                                <div class="col-xs-12" align="right">
+                                    <input type="submit" value="Spremi" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr />
+    <br />
+
+
+}
+@section scripts{
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/lib/jquery-ui/jquery-ui.js"></script>
+
+    <script>
+        $( function() {
+            $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val('');
+        });
+        $(function () {
+            $("#datepicker2").datepicker({ dateFormat: 'dd-mm-yy' }).val('');
+        });
+    </script>
+}
+
+
+
+

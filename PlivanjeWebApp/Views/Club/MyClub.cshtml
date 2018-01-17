@@ -107,12 +107,18 @@ else
         <td style="width: 1%;white-space: nowrap;">
             <button class="btn btn-success btn-sm">
                 <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                @Html.ActionLink("Licenciraj", "Edit","Swimmer", new { id = item.Id },null)
+                @Html.ActionLink("Licenciraj", "Edit", "Swimmer", new { id = item.Id }, null)
             </button>
         </td>
 }
-
+            <td style="width: 1%;white-space: nowrap;">
+                <button class="btn btn-success btn-sm">
+                    <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                    @Html.ActionLink("Makni iz kluba", "DeleteSwimmerFromClub", "Club", new { id = item.Id }, null)
+                </button>
+            </td>
         </tr>
+       
 
 
                 }

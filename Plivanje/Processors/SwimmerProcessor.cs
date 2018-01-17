@@ -71,5 +71,14 @@ namespace Plivanje.Processors
         {
             return _swimmerRepository.GetSwimmerCategory(swimmer);
         }
+        public SwimmerSeason getSwimmerSeason(int swimmerId)
+        {
+            return _swimmerRepository.getSwimmerSeason(swimmerId);
+        }
+
+        public void deleteSwimmerFromClub(SwimmerSeason swimSeason)
+        {
+            _swimmerRepository.deleteSwimmerFromClub(swimSeason);
+        }
     }
 }

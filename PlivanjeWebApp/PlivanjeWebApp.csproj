@@ -223,6 +223,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PoolViewModel.cs" />
+    <Compile Include="Models\RaceViewModel.cs" />
     <Compile Include="Models\RecordsViewModel.cs" />
     <Compile Include="Models\RecordViewModel.cs" />
     <Compile Include="Models\SwimmerViewModel.cs" />
@@ -304,6 +305,8 @@
     <Content Include="Views\Competition\Create.cshtml" />
     <Content Include="Views\Club\AddSwimmerToClub.cshtml" />
     <Content Include="Views\Swimmer\Edit.cshtml" />
+    <Content Include="Views\Competition\Details.cshtml" />
+    <Content Include="Views\Competition\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

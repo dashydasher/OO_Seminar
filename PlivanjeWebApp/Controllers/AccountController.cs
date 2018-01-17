@@ -81,9 +81,10 @@ namespace PlivanjeWebApp.Controllers
             if (roleId != 0)
             {
                 RegisteredPerson p = userProcesor.GetUserByUsernameAndPassword(model.Email, model.Password,roleId);
-                Session["UserName"] = p.FirstName + " " + p.LastName;
-                Session["role"] = roleId;
-                Session["UserId"] = p.Id;
+                HttpContext.Session["UserName"] = p.FirstName + " " + p.LastName;
+                HttpContext.Session["role"] = roleId;
+                HttpContext.Session["UserId"] = p.Id;
+
                 return RedirectToLocal(returnUrl);
             }
             else

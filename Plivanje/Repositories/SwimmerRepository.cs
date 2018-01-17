@@ -21,6 +21,10 @@ namespace Plivanje.Repositories
         bool IsSwimmerFree(int swimmerId);
         void UpdateSwimmerSeason(SwimmerSeason swimmerSeason);
         Category GetSwimmerCategory(Swimmer swimmer);
+        SwimmerSeason getSwimmerSeason(int swimmerId);
+        void deleteSwimmerFromClub(SwimmerSeason swimSeason);
+
+
 
     }
 
@@ -249,6 +253,40 @@ namespace Plivanje.Repositories
 
             }
             return result;
+        }
+
+        public SwimmerSeason getSwimmerSeason(int swimmerId)
+        {
+            SwimmerSeason result = new SwimmerSeason();
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+                    result = session.Query<SwimmerSeason>().Where(x => x.Swimmer.Id==swimmerId).ToList().FirstOrDefault();
+
+                    transaction.Commit();
+                }
+
+            }
+            return result;
+        }
+
+        public void deleteSwimmerFromClub(SwimmerSeason swimSeason)
+        {
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+                    session.Delete(swimSeason);
+
+                    transaction.Commit();
+                }
+
+            }
         }
     }
     }

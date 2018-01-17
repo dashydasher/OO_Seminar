@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using PlivanjeWebApp.Models;
 using Plivanje.Processors;
 using Plivanje.Models;
+using PlivanjeWebApp.Controllers;
 
 namespace WebApp.Controllers
 {
@@ -59,7 +60,7 @@ namespace WebApp.Controllers
                 }
 
 
-            if (Session["UserName"] != null)
+            if (HttpContext.Session["UserName"] != null)
             {
                 return View(Swimmers);
             }
@@ -171,6 +172,8 @@ namespace WebApp.Controllers
         {
             return View();
         }
+
+      
 
         // POST: Swimmet/Delete/5
         [HttpPost]
