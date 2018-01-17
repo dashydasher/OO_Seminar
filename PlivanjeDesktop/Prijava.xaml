@@ -41,7 +41,7 @@
             <TextBox Height="23" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxEmail" VerticalAlignment="Top" Width="247" />
             <TextBlock Height="23" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="password" Text="Lozinka" VerticalAlignment="Top" FontSize="13" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
             <TextBox Height="23" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="247" />
-            <Button Height="20" HorizontalAlignment="Center" Margin="0,15,0,0" x:Name="prijaviSe" Content="Prijavi se" RenderTransformOrigin="6.226,0.65"/>
+            <Button Height="20" HorizontalAlignment="Center" Margin="0,15,0,0" x:Name="PrijaviSe" Content="Prijavi se" RenderTransformOrigin="6.226,0.65" Click="PrijaviSe_Click"/>
 
 
             <TextBlock Height="50" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="textBlockHeading" VerticalAlignment="Top" FontSize="10" FontStyle="Italic" Padding="5"><InlineUIContainer>

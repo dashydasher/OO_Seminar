@@ -98,5 +98,62 @@ namespace PlivanjeDesktop
             r.Show();
             this.Close();
         }
+
+        private void PrijaviSe_Click(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(textBoxEmail.Text)) {
+                MessageBox.Show("Potrebno je unijeti e-mail.");
+                return;
+            }
+            if (String.IsNullOrEmpty(textBoxPassword.Text))
+            {
+                MessageBox.Show("Potrebno je unijeti lozinku.");
+                return;
+            }
+            string email = textBoxEmail.Text.Trim();
+            string password = textBoxPassword.Text.Trim();
+            var cp = new CoachProcessor();
+            List<Coach> treneri = cp.getCoaches();
+            var rf = new RefereeProcessor();
+            List<Referee> suci = rf.getReferees();
+
+            
+            foreach (var trener in treneri)
+            {
+                if (email.Equals(trener.EMail.Trim()))
+                    if (password.Equals(trener.Password.Trim()))
+                    {
+                        e.Handled = true;
+                        Natjecanja n = new Natjecanja();
+                        n.Show();
+                        this.Close();
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pogrešna lozinka");
+                        break;
+                    }
+            }
+            foreach (var sudac in suci)
+            {
+                if (email.Equals(sudac.EMail))
+                    if (password.Equals(sudac.Password))
+                    {
+                        e.Handled = true;
+                        Natjecanja n = new Natjecanja();
+                        n.Show();
+                        this.Close();
+                        return;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Pogrešna lozinka");
+                        break;
+                    }
+            }
+            MessageBox.Show("Pogrešna e-mail adresa");
+
+        }
     }
 }
