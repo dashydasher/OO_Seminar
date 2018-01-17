@@ -1,0 +1,65 @@
+﻿@model IEnumerable<PlivanjeWebApp.Models.SwimmerViewModel>
+@{
+    ViewBag.Title = "Registriraj postojećeg plivača u svoj klub";
+}
+<h2>@ViewBag.Title</h2>
+<hr />
+<br />
+
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Id plivača
+                </th>
+                <th>
+                    Ime
+                </th>
+                <th>
+                    Prezime
+                </th>
+                <th>
+                    Datum rođenja
+                </th>
+                <th>
+                    Spol
+                </th>
+                
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+           
+                @foreach (var item in Model)
+                {
+            <tr>
+                <td>
+
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.firstName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lastName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.dateOfBirth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.gender)
+                </td>
+               
+                <td style="width: 1%;white-space: nowrap;">
+                    <button class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                        @Html.ActionLink("Dodaj plivača u svoj klub", "AddSwimmerToClubPost", new { id = item.Id })
+                    </button>
+                </td>
+            </tr>
+                }
+            
+        </tbody>
+    </table>
+
