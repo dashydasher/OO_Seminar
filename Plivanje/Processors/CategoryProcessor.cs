@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Plivanje.Processors
 {
-    class CategoryProcessor
+    public class CategoryProcessor
     {
         private ICategoryRepository _categoryRepository;
 

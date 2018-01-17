@@ -12,7 +12,7 @@ namespace Plivanje.Repositories
         List<Category> getCategories();
     }
 
-    class CategoryRepository : ICategoryRepository
+    public class CategoryRepository : ICategoryRepository
     {
         public List<Category> getCategories()
         {
