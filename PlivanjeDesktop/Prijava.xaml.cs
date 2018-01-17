@@ -1,5 +1,4 @@
-﻿using NHibernate;
-using NHibernate.Linq;
+﻿
 using Plivanje;
 using Plivanje.Models;
 using Plivanje.Processors;
