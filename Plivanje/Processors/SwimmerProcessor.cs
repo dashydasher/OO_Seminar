@@ -58,5 +58,18 @@ namespace Plivanje.Processors
         {
             return _swimmerRepository.GetListOfSwimmers(club);
         }
+        public bool IsSwimmerFree(int swimmerId)
+        {
+            return _swimmerRepository.IsSwimmerFree(swimmerId);
+        }
+        public void UpdateSwimmerSeason(SwimmerSeason swimmerSeason)
+        {
+            _swimmerRepository.UpdateSwimmerSeason(swimmerSeason);
+        }
+
+        public Category GetSwimmerCategory(Swimmer swimmer)
+        {
+            return _swimmerRepository.GetSwimmerCategory(swimmer);
+        }
     }
 }

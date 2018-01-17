@@ -112,7 +112,7 @@ namespace WebApp.Controllers
             {
                 SwimmerProcessor.UpdateSwimmerLicence(s);
             }
-                return RedirectToAction("Index");
+                return RedirectToAction("AddSwimmerToClub","Club");
             }
             catch
             {
@@ -123,18 +123,42 @@ namespace WebApp.Controllers
         // GET: Swimmet/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            SwimmerViewModel model = new SwimmerViewModel();
+            Swimmer s = new Swimmer();
+            SwimmerProcessor sp = new SwimmerProcessor();
+            s = sp.getSwimmer(id);
+            model.Id = s.Id;
+            model.firstName = s.FirstName;
+            model.lastName = s.LastName;
+            model.dateOfBirth = s.DateOfBirth.Date;
+            model.gender = s.Gender;
+            
+            model.licenceValid = sp.getSwimmerLicence(s.Id);
+
+            return View(model);
         }
 
         // POST: Swimmet/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(SwimmerViewModel swimmer)
         {
+
+            var SwimmerProcessor = new SwimmerProcessor();
+            Swimmer s = new Swimmer();
+            s = SwimmerProcessor.getSwimmer(swimmer.Id);
+            
+
+          
+
             try
             {
-                // TODO: Add update logic here
 
-                return RedirectToAction("Index");
+                SwimmerProcessor.UpdateSwimer(s);
+                if (swimmer.licenceValid == true) //želimo novog licencirat
+                {
+                    SwimmerProcessor.UpdateSwimmerLicence(s);
+                }
+                return RedirectToAction("MyClub", "Club");
             }
             catch
             {

@@ -17,7 +17,9 @@ namespace Plivanje.Repositories
         List<Swimmer> SwimmersInClub(int clubId);
         void UpdateSwimmerLicence(Swimmer swimmer);
         List<Swimmer> GetListOfSwimmers(string club);
-
+        bool IsSwimmerFree(int swimmerId);
+        void UpdateSwimmerSeason(SwimmerSeason swimmerSeason);
+        Category GetSwimmerCategory(Swimmer swimmer);
 
     }
 
@@ -53,6 +55,7 @@ namespace Plivanje.Repositories
                 }
             }
         }
+     
 
         public List<Swimmer> GetListOfSwimmers()
         {
@@ -80,7 +83,7 @@ namespace Plivanje.Repositories
                 using (var transaction = session.BeginTransaction())
                 {
 
-                    result = (List<Swimmer>)session.QueryOver<SwimmerSeason>().Where(x=>x.Club.Name==club).List<Swimmer>();
+                    result = (List<Swimmer>)session.QueryOver<SwimmerSeason>().Where(x=>x.Club.Name==club).JoinQueryOver(x=>x.Swimmer).List<Swimmer>();
 
                     transaction.Commit();
                 }
@@ -144,7 +147,7 @@ namespace Plivanje.Repositories
                 using (var transaction = session.BeginTransaction())
                 {
 
-                    result = (List<Swimmer>)session.QueryOver<SwimmerSeason>().Where(x=>x.Club.Id==clubId).Select(c=>c.Swimmer).List<Swimmer>();
+                    result = (List<Swimmer>)session.QueryOver<SwimmerSeason>().Where(x=>x.Club.Id==clubId).JoinQueryOver<Swimmer>(x=>x.Swimmer).Select(s=>s.Swimmer).List<Swimmer>();
 
                     transaction.Commit();
                 }
@@ -184,9 +187,72 @@ namespace Plivanje.Repositories
                 }
             }
         }
+
+        public void UpdateSwimmerSeason(SwimmerSeason swimmerSeason)
+        {
+           
+            var clas = new FluentNHibernateClass();
+
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.SaveOrUpdate(swimmerSeason);
+                    
+                    transaction.Commit();
+                }
+            }
+           
+        }
+
+        public bool IsSwimmerFree(int swimmerId)
+        {
+            bool free = false;
+            Swimmer result = null;
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+                    result = session.Query<SwimmerSeason>().Where(x => x.Swimmer.Id == swimmerId && (x.Season.TimeEnd.Date > DateTime.Now.Date)).Select(x=>x.Swimmer).SingleOrDefault<Swimmer>();
+                    if (result != null)
+                    {
+                        free= false;
+
+                    }
+                    else
+                    {
+                        free= true;
+                    }
+                    transaction.Commit();
+                }
+                
+            }
+            return free;
+
+        }
+        public Category GetSwimmerCategory(Swimmer swimmer)
+        {
+            Category result = new Category();
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+                    result = session.Query<Category>().Where(x => x.AgeFrom <( DateTime.Now.Year - swimmer.DateOfBirth.Year) && (x.AgeTo > (DateTime.Now.Year - swimmer.DateOfBirth.Year))).ToList().FirstOrDefault();
+                    
+                    transaction.Commit();
+                }
+
+            }
+            return result;
+        }
+    }
     }
 
-    }
+    
 
 
 

@@ -16,5 +16,7 @@ namespace PlivanjeWebApp.Models
         public LicenceSwimmer licence { get; set; }
         public string spol { get; set; }
         public bool licenceValid { get; set; }
+        public string firstAndLast { get; set; }
+        public int IdCategory { get; set; }
     }
 }

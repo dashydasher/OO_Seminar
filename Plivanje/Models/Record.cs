@@ -17,6 +17,6 @@ namespace Plivanje.Models
         public virtual int Length { get; set; }
         public virtual string Place { get; set; }
         public virtual DateTime Date { get; set; }
-        public virtual TimeSpan RaceTime { get; set; }
+        public virtual DateTime RaceTime { get; set; }
     }
 }

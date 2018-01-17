@@ -49,6 +49,7 @@ namespace Plivanje.Repositories
 
         public Club getMyClub(int id)
         {
+            var misto = new Place();
             var result = new Club();
             var klasa = new FluentNHibernateClass();
 
@@ -56,7 +57,10 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    result = (Club)session.QueryOver<CoachSeason>().Where(x => x.Coach.Id == id);
+                    result = (Club)session.QueryOver<CoachSeason>().Where(x => x.Coach.Id == id).Select(x=>x.Club).SingleOrDefault<Club>();
+                    misto = session.QueryOver<Place>().Where(x => x.Id == result.Place.Id).List().FirstOrDefault();
+                    result.Place = misto;
+
                     transaction.Commit();
                 }
             }

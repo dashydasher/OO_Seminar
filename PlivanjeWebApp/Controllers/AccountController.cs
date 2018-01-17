@@ -90,7 +90,7 @@ namespace PlivanjeWebApp.Controllers
             {
                 TempData["Error"] = "Unijeli ste pogrešan email/password. Molimo pokušajte ponovno.";
             }
-            
+            ViewBag.returnUrl = this.Request.RawUrl;
             return View(model);
             
         }

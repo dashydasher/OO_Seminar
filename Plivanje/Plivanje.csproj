@@ -110,16 +110,21 @@
     <Compile Include="Models\SwimmerRace.cs" />
     <Compile Include="Models\SwimmerSeason.cs" />
     <Compile Include="Processors\ClubProcessor.cs" />
+    <Compile Include="Processors\CoachProcessor.cs" />
+    <Compile Include="Processors\CompetitionProcessor.cs" />
     <Compile Include="Processors\HallProcessor.cs" />
     <Compile Include="Processors\RecordsProcessor.cs" />
+    <Compile Include="Processors\SeasonProcessor.cs" />
     <Compile Include="Processors\SwimmerProcessor.cs" />
     <Compile Include="Processors\UserProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Models\Referee.cs" />
     <Compile Include="Repositories\ClubRepository.cs" />
     <Compile Include="Repositories\CoachRepository.cs" />
+    <Compile Include="Repositories\CompetitionRepository.cs" />
     <Compile Include="Repositories\HallRepository.cs" />
     <Compile Include="Repositories\RecordsRepository.cs" />
+    <Compile Include="Repositories\SeasonRepository.cs" />
     <Compile Include="Repositories\SwimmerRepository.cs" />
     <Compile Include="Repositories\UserRepositorycs.cs" />
   </ItemGroup>

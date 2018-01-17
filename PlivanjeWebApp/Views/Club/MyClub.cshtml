@@ -46,58 +46,78 @@
 </div>
 <hr />
 <br />
-<h3>Igrači:</h3>
+<h3>Plivači:</h3>
 @Html.ActionLink("Dodaj novog plivača u svoj klub", "Create", "Swimmer", new object { }, new { @class = "btn btn-primary" })
-@Html.ActionLink("Dodaj postojećeg plivača u svoj klub", "AddSwimmerToClub", "MyClub", new object { }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Dodaj postojećeg plivača u svoj klub", "AddSwimmerToClub", "Club", new object { }, new { @class = "btn btn-primary" })
 <hr />
 
 @if (Model.swimmers != null)
 {
-    foreach (var item in Model.swimmers)
-    {
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>
-                        Ime plivača
-                    </th>
-
-                    <th>
-                        Prezime plivača
-                    </th>
-                    <th>
-                        Spol
-                    </th>
-                    <th>
-                        Datum rođenja
-                    </th>
-
-
-            </thead>
-
-
+    <table class="table table-striped">
+        <thead>
             <tr>
+                <th>
+                    Ime plivača
+                </th>
 
-                <td>
-                    @item.FirstName
-                </td>
-                <td>
-                    @item.LastName
-                </td>
+                <th>
+                    Prezime plivača
+                </th>
+                <th>
+                    Spol
+                </th>
+                <th>
+                    Datum rođenja
+                </th>
+                <th>
+                    Licenca
+                </th>
+</thead>
+                @foreach (var item in Model.swimmers)
+                {
 
-                <td>
-                    @item.Gender
-                </td>
-                <td>
-                    @item.DateOfBirth
-                </td>
-
-            </tr>
 
 
 
-        </table>
-    }
+
+        <tr>
+
+            <td>
+                @item.firstName
+            </td>
+            <td>
+                @item.lastName
+            </td>
+
+            <td>
+                @item.gender
+            </td>
+            <td>
+                @item.dateOfBirth.Date.Date
+            </td>
+            @if (item.licenceValid == true)
+    {
+
+        <td>
+            važeća
+        </td>
+}
+else
+{
+        <td style="width: 1%;white-space: nowrap;">
+            <button class="btn btn-success btn-sm">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                @Html.ActionLink("Licenciraj", "Edit","Swimmer", new { id = item.Id },null)
+            </button>
+        </td>
+}
+
+        </tr>
+
+
+                }
+    </table>
+
 }
 
 <div>

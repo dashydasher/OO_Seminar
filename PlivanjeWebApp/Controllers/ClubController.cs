@@ -1,4 +1,5 @@
-﻿using Plivanje.Models;
+﻿using Plivanje;
+using Plivanje.Models;
 using Plivanje.Processors;
 using PlivanjeWebApp.Models;
 using System;
@@ -73,14 +74,14 @@ namespace PlivanjeWebApp.Controllers
             Club c = new Club();
             ClubViewModel club = new ClubViewModel();
             CoachSeason season = new CoachSeason();
-            List<Swimmer> swimmers = new List<Swimmer>();
+            List<SwimmerViewModel> swimmInClub = new List<SwimmerViewModel>();
             var sp = new SwimmerProcessor();
             var cp = new ClubProcessor();
 
-
+            List<Swimmer> swimmers = new List<Swimmer>();
 
             int i = cp.getMyClubId((int)Session["UserId"]);
-            
+            Session["clubId"] = i;
             c = cp.getClub(i);
             club.Id = c.Id;
             club.Name = c.Name;
@@ -89,17 +90,85 @@ namespace PlivanjeWebApp.Controllers
             swimmers = sp.SwimmersInClub(club.Id);
             foreach(var s in swimmers)
             {
-                Swimmer pom = new Swimmer();
-                pom.FirstName = s.FirstName;
-                pom.LastName = s.LastName;
-                pom.Gender = s.Gender;
-                pom.DateOfBirth = s.DateOfBirth;
-                club.swimmers.Add(pom);
-            }
+                Swimmer plivac = sp.getSwimmer(s.Id);
+                SwimmerViewModel pom = new SwimmerViewModel();
+                pom.Id = plivac.Id;
+                pom.firstName = plivac.FirstName;
+                pom.lastName = plivac.LastName;
+                pom.gender = plivac.Gender;
+                pom.dateOfBirth = plivac.DateOfBirth;
 
+                pom.licenceValid = sp.getSwimmerLicence(plivac.Id);
+
+                swimmInClub.Add(pom);
+                
+
+
+            }
+            club.swimmers = swimmInClub;
             return View(club);
         }
+        public ActionResult AddSwimmerToClub()
+        {
+            List<SwimmerViewModel> model = new List<SwimmerViewModel>();
+            List<Swimmer> pom = new List<Swimmer>(); // u pom idu svi plivači koji trenutno nisu u tom ili u nekom drugom klubu
 
+            SwimmerProcessor sp = new SwimmerProcessor();
+            pom = sp.GetListOfSwimmers();
+            foreach (var p in pom)
+            {
+                if (sp.IsSwimmerFree(p.Id))
+                {
+                    SwimmerViewModel s = new SwimmerViewModel();
+                    s.Id = p.Id;
+                    s.lastName = p.LastName;
+                    s.firstName = p.FirstName;
+                    s.dateOfBirth = p.DateOfBirth;
+                    s.gender = p.Gender;
+                    model.Add(s);
+                }
+            }
+            
+
+
+            return View(model);
+        }
+        
+        public ActionResult AddSwimmerToClubPost(int id)
+        {
+            SwimmerSeason swimmerSeason = new SwimmerSeason();
+            var sp = new SwimmerProcessor();
+            var cp = new ClubProcessor();
+            var season = new SeasonProcessor();
+            Club c = new Club();
+            c = cp.getClub((int)Session["clubId"]);
+            Season s = new Season();
+            s = season.getNowSeason(2);
+            Category cat = new Category();
+            Swimmer swim = new Swimmer();
+            swim = sp.getSwimmer(id);
+            cat = sp.GetSwimmerCategory(swim);
+
+            swimmerSeason.Season = s;
+            swimmerSeason.Swimmer = swim;
+            swimmerSeason.Club = c;
+            swimmerSeason.Category = cat;
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    sp.UpdateSwimmerSeason(swimmerSeason);
+                    return RedirectToAction("MyClub");
+                }
+            }
+            catch (Exception e)
+            {
+
+                return View();
+            }
+
+            return View();
+        }
         // POST: Club/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)

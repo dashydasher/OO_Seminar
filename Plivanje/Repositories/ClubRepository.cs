@@ -63,11 +63,14 @@ namespace Plivanje.Repositories
         {
             var result = new Club();
             var klasa = new FluentNHibernateClass();
+            var misto = new Place();
             using (var session = klasa.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
                     result = session.QueryOver<Club>().Where(x => x.Id == id).List().FirstOrDefault();
+                    misto = session.QueryOver<Place>().Where(x => x.Id == result.Place.Id).List().FirstOrDefault();
+                    result.Place = misto;
                     transaction.Commit();
                 }
             }

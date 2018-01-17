@@ -45,6 +45,10 @@ namespace Plivanje.Processors
         {
             _hallRepository.UpdateHall(h);
         }
+        public List<Hall> getHallsInPlace(int placeId)
+        {
+            return _hallRepository.getHallsInPlace(placeId);
+        }
     }
 }
 

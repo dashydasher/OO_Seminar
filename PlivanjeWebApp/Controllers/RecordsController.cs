@@ -36,7 +36,7 @@ namespace WebApp.Controllers
                 pom.LastName = r.LastName;
                 pom.Length = r.Length;
                 pom.Place = r.Place;
-                pom.RaceTime = (TimeSpan)r.RaceTime;
+                pom.RaceTime=r.RaceTime;
                 pom.Style = r.Style;
                m.Add(pom);
                 
@@ -57,7 +57,7 @@ namespace WebApp.Controllers
                 pom.LastName = r.LastName;
                 pom.Length = r.Length;
                 pom.Place = r.Place;
-                pom.RaceTime = (TimeSpan)r.RaceTime;
+                pom.RaceTime =r.RaceTime;
                 pom.Style = r.Style;
                z.Add(pom);
 

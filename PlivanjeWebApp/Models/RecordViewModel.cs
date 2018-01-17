@@ -18,6 +18,6 @@ namespace PlivanjeWebApp.Models
         public int Length { get; set; }
         public string Place { get; set; }
         public  DateTime Date { get; set; }
-        public TimeSpan RaceTime { get; set; }
+        public DateTime RaceTime { get; set; }
     }
 }

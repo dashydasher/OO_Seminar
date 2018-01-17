@@ -207,6 +207,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ClubController.cs" />
+    <Compile Include="Controllers\CompetitionController.cs" />
     <Compile Include="Controllers\HallController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -217,6 +218,7 @@
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\ClubViewModel.cs" />
+    <Compile Include="Models\CompetitionViewModel.cs" />
     <Compile Include="Models\HallViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -298,6 +300,10 @@
     <Content Include="Views\Club\ListOnlyView.cshtml" />
     <Content Include="Views\Club\Index.cshtml" />
     <Content Include="Views\Club\MyClub.cshtml" />
+    <Content Include="Views\Competition\Index.cshtml" />
+    <Content Include="Views\Competition\Create.cshtml" />
+    <Content Include="Views\Club\AddSwimmerToClub.cshtml" />
+    <Content Include="Views\Swimmer\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

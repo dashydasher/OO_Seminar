@@ -13,6 +13,6 @@ namespace PlivanjeWebApp.Models
         public string Address { get; set; }
         public string Place { get; set; }
         public Person coach { get; set; }
-        public List<Swimmer> swimmers { get; set; }
+        public List<SwimmerViewModel> swimmers { get; set; }
     }
 }

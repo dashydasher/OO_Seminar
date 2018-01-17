@@ -11,6 +11,7 @@ namespace Plivanje.Models
         public virtual string Name { get; set; }
         public virtual DateTime TimeStart { get; set; }
         public virtual DateTime TimeEnd { get; set; }
+        public virtual Hall Hall { get; set; }
 
     }
 }
