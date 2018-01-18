@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Plivanje.Models;
+using PlivanjeDesktop.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,23 @@ namespace PlivanjeDesktop
     /// </summary>
     public partial class Plivači : Window
     {
+
+        public List<Swimmer> swimmers = new List<Swimmer>();
+
         public Plivači(string _value)
         {
             InitializeComponent();
+            SwimmerViewModel svm = new SwimmerViewModel();
+            svm.LoadSwimmers();
+            this.DataContext = svm;
         }
+
+        public Plivači(List<Swimmer> plivači)
+        {
+            InitializeComponent();
+            swimmers.AddRange(plivači);
+        }
+        
+
     }
 }

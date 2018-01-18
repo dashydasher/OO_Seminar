@@ -7,36 +7,27 @@
         mc:Ignorable="d"
         Title="Klubovi" Height="1000"  Width="1000" WindowState="Maximized" Style="{StaticResource HeaderStyle}">
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="150"/>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0" Orientation="Vertical">
-           
-        </StackPanel>
-        <StackPanel Grid.Column="1" Margin="0,0,0.4,-0.2" >
-            <!--<TextBlock Width="300" Margin="10" Text="{Binding Path=Name,Source=coachesClub}" ></TextBlock>-->
-
-            <ListView HorizontalAlignment="Center" Height="500" Margin="0,10,0,0" FontSize="20" 
-              VerticalAlignment="Top" Width="810" ItemsSource="{Binding clubs}" >
-                <ListView.View>
-                    <GridView x:Name="GridView1">
-                        <GridViewColumn DisplayMemberBinding= "{Binding Path=Name}" 
+         
+        <ListView HorizontalAlignment="Center" Name="listView" Height="500" Margin="0,10,0,0" FontSize="20" 
+              VerticalAlignment="Top" Width="810" ItemsSource="{Binding clubs}">
+            <ListView.View>
+                <GridView x:Name="GridView1">
+                    <GridViewColumn DisplayMemberBinding= "{Binding Path=Name}" 
                                 Header="Ime kluba" Width="230"/>
-                        <GridViewColumn DisplayMemberBinding= "{Binding Path=Address}" 
+                    <GridViewColumn DisplayMemberBinding= "{Binding Path=Address}" 
                                 Header="Adresa kluba" Width="230"/>
-                        <GridViewColumn DisplayMemberBinding= "{Binding Path=Place.Name}" 
+                    <GridViewColumn DisplayMemberBinding= "{Binding Path=Place.Name}" 
                                 Header="Mjesto" Width="230"/>
-                        <GridViewColumn Header="" Width="110">
-                            <GridViewColumn.CellTemplate >
-                                <DataTemplate >
-                                    <Button FontSize="12" Content="Popis plivača" Click="Button_Click"></Button>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>
-                    </GridView>
-                </ListView.View>
-            </ListView>
-        </StackPanel>
+                    <GridViewColumn Header="" Width="110" >
+                        <GridViewColumn.CellTemplate >
+                            <DataTemplate >
+                                <!--<TextBlock MouseDown="TextBlock_MouseDown" TextWrapping="Wrap" Text="Popis plivača"/>-->
+                                <Button FontSize="12" Content="Popis plivača" Click="Button_Click"></Button>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

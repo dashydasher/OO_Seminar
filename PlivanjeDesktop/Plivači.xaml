@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlivanjeDesktop"
         mc:Ignorable="d"
-        Title="Plivači" Height="300" Width="300" Style="{StaticResource HeaderStyle}">
+        Title="Plivači" Height="592.6" Width="855.6" Style="{StaticResource HeaderStyle}">
     <Grid>
-        
+        <ListView HorizontalAlignment="Center" Name="listView" Height="500" Margin="0,10,0,0" FontSize="20" 
+              VerticalAlignment="Top" Width="810" ItemsSource="{Binding swimmers}">
+            <ListView.View>
+                <GridView x:Name="GridView1">
+                    <GridViewColumn DisplayMemberBinding= "{Binding Path=FirstName}" 
+                                Header="Ime" Width="220"/>
+                    <GridViewColumn DisplayMemberBinding= "{Binding Path=LastName}" 
+                                Header="Prezime" Width="220"/>
+                    <GridViewColumn DisplayMemberBinding= "{Binding Path=Gender}" 
+                                Header="Spol" Width="100"/>
+                    
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>
