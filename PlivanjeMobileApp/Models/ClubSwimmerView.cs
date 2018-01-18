@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace PlivanjeMobileApp.Models
 {
-    class Swimmer
+    class ClubSwimmerView
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
@@ -16,5 +16,11 @@ namespace PlivanjeMobileApp.Models
 
         [JsonProperty(PropertyName = "gender")]
         public string Gender { get; set; }
+
+        [JsonProperty(PropertyName = "dateOfBirth")]
+        public DateTime DateOfBirth { get; set; }
+
+        [JsonProperty(PropertyName = "idClub")]
+        public string IdClub { get; set; }
     }
 }

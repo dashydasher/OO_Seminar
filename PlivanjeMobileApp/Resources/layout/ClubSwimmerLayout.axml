@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".10"
+        android:id="@+id/spol" />
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".70"
+        android:id="@+id/naziv" />
+    <TextView
+      android:textAppearance="?android:attr/textAppearanceMedium"
+      android:layout_width="0dp"
+      android:layout_height="wrap_content"
+      android:layout_weight=".20"
+      android:id="@+id/godina" />
+</LinearLayout>

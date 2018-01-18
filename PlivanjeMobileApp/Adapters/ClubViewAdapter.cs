@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using PlivanjeMobileApp.Activities;
 using PlivanjeMobileApp.Models;
 
 namespace PlivanjeMobileApp.Adapters
@@ -50,7 +51,31 @@ namespace PlivanjeMobileApp.Adapters
             largeText1.Text = currentItem.Name;
             mediumText1.Text = currentItem.Place;
 
+            largeText1.Touch += delegate (object sender, View.TouchEventArgs e)
+            {
+                SendClubData(sender, e, currentItem);
+            };
+
+            mediumText1.Touch += delegate (object sender, View.TouchEventArgs e)
+            {
+                SendClubData(sender, e, currentItem);
+            };
+
             return row;
+        }
+
+        private void SendClubData(object sender, View.TouchEventArgs e, ClubView club)
+        {
+            //System.Diagnostics.Debug.WriteLine("Touched " + e.Event.Action);
+            if (e.Event.Action == MotionEventActions.Down)
+            {
+                var activity2 = new Intent(activity, typeof(ClubDetailsActivity));
+                activity2.PutExtra("id", club.Id);
+                activity2.PutExtra("name", club.Name);
+                activity2.PutExtra("place", club.Place);
+                activity2.PutExtra("postalcode", club.PostalCode);
+                activity.StartActivity(activity2);
+            }
         }
 
         public void Add(ClubView item)

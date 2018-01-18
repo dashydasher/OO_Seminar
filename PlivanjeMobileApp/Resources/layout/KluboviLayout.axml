@@ -2,16 +2,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-  <TextView
-      android:textAppearance="?android:attr/textAppearanceMedium"
-      android:layout_width="wrap_content"
-      android:layout_height="23dp"
-      android:id="@+id/largeText1" />
-  <TextView
-      android:id="@+id/mediumText1"
-      android:layout_width="wrap_content"
-      android:layout_height="18dp"
-      android:textAppearance="?android:attr/textAppearanceSmall"
-      android:layout_marginLeft="5dp"/>
+    android:layout_height="match_parent"
+    android:id="@+id/linearlayout1">
+    <TextView
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="wrap_content"
+        android:layout_height="23dp"
+        android:id="@+id/largeText1" />
+    <TextView
+        android:id="@+id/mediumText1"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:layout_marginLeft="5dp" />
 </LinearLayout>
