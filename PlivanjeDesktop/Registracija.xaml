@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlivanjeDesktop"
         mc:Ignorable="d"
-        Title="Registracija" Height="350" Width="525">
+        Title="Registracija" Height="350" Width="525" Style="{StaticResource HeaderStyle}">
 
     <Grid>
         <Grid.ColumnDefinitions>
@@ -13,24 +13,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0">
-            <Menu Margin="0,0,20,0">
-                <MenuItem Header="NATJECANJA"/>
-                <MenuItem Header="KLUBOVI"/>
-                <MenuItem Header="PLIVAČI">
-                    <MenuItem Header="Veterani"/>
-                    <MenuItem Header="Seniori"/>
-                    <MenuItem Header="Mlađi seniori"/>
-                    <MenuItem Header="Juniori"/>
-                    <MenuItem Header="Mlađi juniori"/>
-                    <MenuItem Header="Kadeti"/>
-                    <MenuItem Header="Mlađi kadeti"/>
-                    <MenuItem Header="Početnici"/>
-                </MenuItem>
-                <MenuItem Header="REKORDI">
-                    <MenuItem Header="Muškarci"/>
-                    <MenuItem Header="Žene"/>
-                </MenuItem>
-            </Menu>
+            
         </StackPanel>
         <StackPanel Margin="80,0,0.4,-0.2" Grid.ColumnSpan="2">
 

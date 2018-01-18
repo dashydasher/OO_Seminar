@@ -5,32 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlivanjeDesktop"
         mc:Ignorable="d"
-        Title="Klubovi" Height="1000"  Width="1000" WindowState="Maximized">
+        Title="Klubovi" Height="1000"  Width="1000" WindowState="Maximized" Style="{StaticResource HeaderStyle}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="150"/>
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
         <StackPanel Grid.Column="0" Orientation="Vertical">
-            <Menu DockPanel.Dock="Top" FontSize="20px">
-                <MenuItem Header="NATJECANJA" Name="Competition" Click="Competition_Click"/>
-                <MenuItem Header="KLUBOVI"  Name="Clubs" Click="Clubs_Click"/>
-                <MenuItem Header="PLIVAČI" Name="Swimmers" MouseEnter="MenuItem_MouseEnter" MouseLeave="MenuItem_MouseLeave">
-                    <MenuItem Header="Veterani" Click="Swimmers_Click"/>
-                    <MenuItem Header="Seniori" Click="Swimmers_Click"/>
-                    <MenuItem Header="Mlađi seniori" Click="Swimmers_Click"/>
-                    <MenuItem Header="Juniori" Click="Swimmers_Click"/>
-                    <MenuItem Header="Mlađi juniori" Click="Swimmers_Click"/>
-                    <MenuItem Header="Kadeti" Click="Swimmers_Click"/>
-                    <MenuItem Header="Mlađi kadeti" Click="Swimmers_Click"/>
-                    <MenuItem Header="Početnici" Click="Swimmers_Click"/>
-                </MenuItem>
-                <MenuItem Header="REKORDI" Name="Records"  MouseEnter="MenuItem_MouseEnter" MouseLeave="MenuItem_MouseLeave">
-                    <MenuItem Header="Muškarci" Click="Records_Click"/>
-                    <MenuItem Header="Žene" Click="Records_Click"/>
-                </MenuItem>
-            </Menu>
-
+           
         </StackPanel>
         <StackPanel Grid.Column="1" Margin="0,0,0.4,-0.2" >
             <!--<TextBlock Width="300" Margin="10" Text="{Binding Path=Name,Source=coachesClub}" ></TextBlock>-->
