@@ -25,7 +25,7 @@
                                 Header="Ime kluba" Width="230"/>
                         <GridViewColumn DisplayMemberBinding= "{Binding Path=Address}" 
                                 Header="Adresa kluba" Width="230"/>
-                        <GridViewColumn DisplayMemberBinding= "{Binding Path=Place}" 
+                        <GridViewColumn DisplayMemberBinding= "{Binding Path=Place.Name}" 
                                 Header="Mjesto" Width="230"/>
                         <GridViewColumn Header="" Width="110">
                             <GridViewColumn.CellTemplate >
