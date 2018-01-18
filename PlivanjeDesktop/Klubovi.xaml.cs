@@ -1,21 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Plivanje.Models;
-using Plivanje.Processors;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
 using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
-using Remotion.Linq.Collections;
 using PlivanjeDesktop.ViewModels;
-using System.ComponentModel;
 
 namespace PlivanjeDesktop
 {
@@ -24,7 +12,7 @@ namespace PlivanjeDesktop
     /// </summary>
     public partial class Klubovi : Window
     {
-        private ObservableCollection<Club> clubs = new ObservableCollection<Club>();
+        private List<Club> clubs = new List<Club>();
         int id = 0;
 
         public Klubovi()
