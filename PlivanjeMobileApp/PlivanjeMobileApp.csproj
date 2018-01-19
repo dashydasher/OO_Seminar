@@ -90,15 +90,20 @@
   <ItemGroup>
     <Compile Include="Activities\ClubDetailsActivity.cs" />
     <Compile Include="Activities\KluboviActivity.cs" />
+    <Compile Include="Activities\PlivacActivity.cs" />
     <Compile Include="Activities\PlivaciActivity.cs" />
+    <Compile Include="Activities\PlivaciPoKategorijiActivity.cs" />
     <Compile Include="Activities\RekordiActivity.cs" />
     <Compile Include="Adapters\ClubSwimmersAdapter.cs" />
     <Compile Include="Adapters\ClubViewAdapter.cs" />
     <Compile Include="Adapters\OneStringAdapter.cs" />
+    <Compile Include="Adapters\SwimmerAdapter.cs" />
     <Compile Include="MainActivity.cs" />
-    <Compile Include="Models\ClubView.cs" />
+    <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ClubSwimmerView.cs" />
+    <Compile Include="Models\ClubView.cs" />
     <Compile Include="Models\Season.cs" />
+    <Compile Include="Models\SwimmersView.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -128,6 +133,15 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\ClubSwimmerLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\PregledPlivaca.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\Plivac.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\SezonaPlivaca.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

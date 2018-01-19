@@ -1,9 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
 using Newtonsoft.Json;
 
 namespace PlivanjeMobileApp.Models
 {
-    class ClubSwimmerView
+    class SwimmersView
     {
         [JsonProperty(PropertyName = "id")]
         public string Id { get; set; }
@@ -28,5 +38,20 @@ namespace PlivanjeMobileApp.Models
 
         [JsonProperty(PropertyName = "idCategory")]
         public string IdCategory { get; set; }
+
+        [JsonProperty(PropertyName = "score")]
+        public int Score { get; set; }
+
+        [JsonProperty(PropertyName = "timeStart")]
+        public DateTime TimeStart { get; set; }
+
+        [JsonProperty(PropertyName = "timeEnd")]
+        public DateTime TimeEnd { get; set; }
+
+        [JsonProperty(PropertyName = "club")]
+        public string Club { get; set; }
+
+        [JsonProperty(PropertyName = "category")]
+        public string Category { get; set; }
     }
 }

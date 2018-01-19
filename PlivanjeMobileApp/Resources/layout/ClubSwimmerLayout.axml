@@ -15,9 +15,9 @@
         android:layout_weight=".70"
         android:id="@+id/naziv" />
     <TextView
-      android:textAppearance="?android:attr/textAppearanceMedium"
-      android:layout_width="0dp"
-      android:layout_height="wrap_content"
-      android:layout_weight=".20"
-      android:id="@+id/godina" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight=".20"
+        android:id="@+id/godina" />
 </LinearLayout>

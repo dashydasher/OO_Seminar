@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using PlivanjeMobileApp.Activities;
 using PlivanjeMobileApp.Models;
 
 namespace PlivanjeMobileApp.Adapters
@@ -45,8 +46,8 @@ namespace PlivanjeMobileApp.Adapters
             }
             else
             {
-                spol = row.FindViewById<TextView>(Resource.Id.largeText1);
-                ime = row.FindViewById<TextView>(Resource.Id.mediumText1);
+                spol = row.FindViewById<TextView>(Resource.Id.spol);
+                ime = row.FindViewById<TextView>(Resource.Id.naziv);
                 godina = row.FindViewById<TextView>(Resource.Id.godina);
             }
 
@@ -54,7 +55,33 @@ namespace PlivanjeMobileApp.Adapters
             ime.Text = currentItem.FirstName.Trim() + " " + currentItem.LastName;
             godina.Text = currentItem.DateOfBirth.ToString("yyyy");
 
+            spol.Touch += delegate (object sender, View.TouchEventArgs e)
+            {
+                SendPlivacData(sender, e, currentItem);
+            };
+            ime.Touch += delegate (object sender, View.TouchEventArgs e)
+            {
+                SendPlivacData(sender, e, currentItem);
+            };
+            godina.Touch += delegate (object sender, View.TouchEventArgs e)
+            {
+                SendPlivacData(sender, e, currentItem);
+            };
+
             return row;
+        }
+
+        private void SendPlivacData(object sender, View.TouchEventArgs e, ClubSwimmerView currentItem)
+        {
+            if (e.Event.Action == MotionEventActions.Down)
+            {
+                var activity2 = new Intent(activity, typeof(PlivacActivity));
+                activity2.PutExtra("id", currentItem.Id);
+                activity2.PutExtra("label", currentItem.FirstName.Trim() + " " + currentItem.LastName.Trim());
+                activity2.PutExtra("gender", currentItem.Gender);
+                activity2.PutExtra("dateOfBirth", currentItem.DateOfBirth.ToString("dd.MM.yyyy"));
+                activity.StartActivity(activity2);
+            }
         }
 
         public void Add(ClubSwimmerView item)

@@ -15,44 +15,37 @@ using PlivanjeMobileApp.Models;
 
 namespace PlivanjeMobileApp.Activities
 {
-    [Activity(Label = "Klub - Plivači")]
-    public class ClubDetailsActivity : Activity
+    [Activity(Label = "Plivači")]
+    public class PlivaciPoKategorijiActivity : Activity
     {
         private MobileServiceClient client;
         private IMobileServiceTable<ClubSwimmerView> swimmersTable;
         private IMobileServiceTable<Season> seasonsTable;
+        const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
         private ClubSwimmersAdapter adapter;
         private ArrayAdapter<string> adapter2;
-        const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
         private List<KeyValuePair<string, string>> seasonToDisplay;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
 
-            SetContentView(Resource.Layout.ClubDetailsLayout);
-            string id = Intent.GetStringExtra("id") ?? "Data not available";
-            string name = Intent.GetStringExtra("name") ?? "Data not available";
-            string place = Intent.GetStringExtra("place") ?? "Data not available";
-            string postalcode = Intent.GetStringExtra("postalcode") ?? "Data not available";
-
-            var textView = FindViewById<TextView>(Resource.Id.nazivKluba);
-            textView.Text = name;
-            var textView2 = FindViewById<TextView>(Resource.Id.mjesto);
-            textView2.Text = postalcode + "   " + place;
-
-            var newName = name.Replace("Plivački ", "P").Replace("klub", "K").Trim();
-            this.Title = newName;
-
-            CurrentPlatform.Init();
+            // Create your application here
 
             client = new MobileServiceClient(applicationURL);
+
+            SetContentView(Resource.Layout.PregledPlivaca);
+
+            string catId = Intent.GetStringExtra("kategorija") ?? "Data not available";
+            string label = Intent.GetStringExtra("label") ?? "Data not available";
+            this.Title = label;
 
             swimmersTable = client.GetTable<ClubSwimmerView>();
 
             adapter = new ClubSwimmersAdapter(this, Resource.Layout.ClubSwimmerLayout);
             var listViewClubSwimmers = FindViewById<ListView>(Resource.Id.plivaci);
             listViewClubSwimmers.Adapter = adapter;
+
 
             seasonsTable = client.GetTable<Season>();
 
@@ -66,11 +59,12 @@ namespace PlivanjeMobileApp.Activities
                 seasonNames.Add(current.TimeStart.ToString("yyyy") + "-" + current.TimeEnd.ToString("yyyy"));
             }
 
+
             Spinner spinner = FindViewById<Spinner>(Resource.Id.spinner);
 
             spinner.ItemSelected += delegate (object sender, AdapterView.ItemSelectedEventArgs e)
             {
-                FillAdapterWithData(adapter, swimmersTable, id, seasonToDisplay[e.Position].Value);
+                FillAdapterWithData(adapter, swimmersTable, catId, seasonToDisplay[e.Position].Value);
             };
 
             adapter2 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, seasonNames);
@@ -78,26 +72,25 @@ namespace PlivanjeMobileApp.Activities
             spinner.Adapter = adapter2;
         }
 
-        private async void FillAdapterWithData(ClubSwimmersAdapter adapter, IMobileServiceTable<ClubSwimmerView> swimmersTable, string clubId, string seasonId = null)
+        private async void FillAdapterWithData(ClubSwimmersAdapter adapter, IMobileServiceTable<ClubSwimmerView> swimmersTable, string catId, string seasonId)
         {
             List<ClubSwimmerView> list;
             if (seasonId != null)
             {
                 list = await swimmersTable
-                    .Where(e => e.IdClub == clubId)
+                    .Where(e => e.IdCategory == catId)
                     .Where(e => e.IdSeason == seasonId)
                     .ToListAsync();
             }
             else
             {
                 list = await swimmersTable
-                    .Where(e => e.IdClub == clubId)
+                    .Where(e => e.IdCategory == catId)
                     .ToListAsync();
             }
             adapter.Clear();
             foreach (ClubSwimmerView current in list)
                 adapter.Add(current);
         }
-        
     }
 }
