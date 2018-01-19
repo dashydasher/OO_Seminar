@@ -31,16 +31,12 @@ namespace PlivanjeWebApp.Controllers
                 pom.Name = c.Name;
 
                 pom.Place = cp.getPlace(c.Place.Id).Name;
-                pom2 = cp.getSeasonCoach(pom.Id);
-                if (pom2 != null)
-                {
-                    season = cp.getSeason(pom2.Season.Id);
-                    if (season != null && season.TimeEnd > DateTime.Now)
-                    {
-                        coach = cp.getCoach(pom2.Coach.Id);
-                        pom.coach = coach;
-                    }
-                }
+                coach = cp.getCoachOfClub(pom.Id);
+                if(coach!=null)
+                pom.coach = cp.getCoach(coach.Id);
+
+               
+            
                 //pom.swimmers = cp.getSwimmers(c.Id);
                 model.Add(pom);
                 

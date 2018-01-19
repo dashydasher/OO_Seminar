@@ -28,7 +28,8 @@ namespace PlivanjeDesktop
         {
             InitializeComponent();
             SwimmerViewModel svm = new SwimmerViewModel();
-            svm.LoadSwimmers();
+            var categoryName = _value.Trim().ToLower();
+            svm.LoadSwimmers(categoryName);
             this.DataContext = svm;
         }
 

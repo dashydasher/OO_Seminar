@@ -16,18 +16,21 @@ namespace Plivanje.Repositories
         Place getPlace(int id);
         void UpdateHall(Hall h);
         List<Hall> getHallsInPlace(int placeId);
+        List<Pool> getPools(int idHall);
+        Hall getHallCompetition(int idCompetition);
+        Pool GetPool(int idPool);
     }
 
     public class HallRepository : IHallRepository
     {
-       
+
         public List<Hall> getHalls()
         {
             var result = new List<Hall>();
-            
+
             var klasa = new FluentNHibernateClass();
 
-           
+
             using (var session = klasa.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
@@ -67,6 +70,36 @@ namespace Plivanje.Repositories
             }
             return result;
         }
+
+        public Pool GetPool(int PoolId)
+        {
+            var result = new Pool();
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<Pool>().Where(x => x.Id ==PoolId).List().FirstOrDefault();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public Hall getHallCompetition(int idCompetition)
+        {
+            var result = new Hall();
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (Hall)session.QueryOver<Competition>().Where(x => x.Id==idCompetition).Select(x=>x.Hall).SingleOrDefault<Hall>();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
         public List<Pool> getPools(int id,int len)
         {
             List<Pool> result = new List<Pool>();
@@ -77,6 +110,22 @@ namespace Plivanje.Repositories
                 {
                     result = (List<Pool>)session.QueryOver<Pool>().Where(x => x.Hall.Id == id && x.Length==len).List<Pool>();
                     
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public List<Pool> getPools(int idHall)
+        {
+            List<Pool> result = new List<Pool>();
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (List<Pool>)session.QueryOver<Pool>().Where(x=>x.Hall.Id==idHall).List<Pool>();
+
                     transaction.Commit();
                 }
             }

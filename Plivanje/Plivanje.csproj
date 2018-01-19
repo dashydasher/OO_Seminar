@@ -123,6 +123,7 @@
     <Compile Include="Processors\RecordsProcessor.cs" />
     <Compile Include="Processors\RefereeProcessor.cs" />
     <Compile Include="Processors\SeasonProcessor.cs" />
+    <Compile Include="Processors\StyleProcessor.cs" />
     <Compile Include="Processors\SwimmerProcessor.cs" />
     <Compile Include="Processors\UserProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="Repositories\RecordsRepository.cs" />
     <Compile Include="Repositories\RefereeRepository.cs" />
     <Compile Include="Repositories\SeasonRepository.cs" />
+    <Compile Include="Repositories\StyleRepository.cs" />
     <Compile Include="Repositories\SwimmerRepository.cs" />
     <Compile Include="Repositories\UserRepositorycs.cs" />
   </ItemGroup>

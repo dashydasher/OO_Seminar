@@ -16,10 +16,12 @@ namespace Plivanje.Repositories
         Place getPlace(int id);
         bool validSeason(int seasonId);
         Coach getCoach(int coachId);
-        CoachSeason getSeasonCoach(int id);
         Season getSeason(int id);
         CoachSeason getSeasonCoachClub(int coachId);
         int getMyClubId(int CoachId);
+        Coach getCoachOfClub(int ClubId);
+        Season ValidSeason();
+        CoachSeason getSeasonCoach(int idClub, int SeasonId);
 
 
     }
@@ -76,8 +78,24 @@ namespace Plivanje.Repositories
             }
             return result;
         }
-        
 
+        public Coach getCoachOfClub(int ClubId)
+        {
+            Club club = null;
+            Season season = null;
+            Coach result = new Coach();
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (Coach)session.QueryOver<CoachSeason>().JoinAlias(x => x.Club, () => club).JoinAlias(x => x.Season, () => season).Where(() => season.TimeEnd > DateTime.Now && club.Id == ClubId).Select(x => x.Coach).SingleOrDefault<Coach>();
+
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
 
         public List<Swimmer> getSwimmers(int id)
         {
@@ -94,7 +112,7 @@ namespace Plivanje.Repositories
             return result;
         }
 
-        public CoachSeason getSeasonCoach(int id)
+        public CoachSeason getSeasonCoach(int idClub,int SeasonId)
         {
             CoachSeason result = new CoachSeason();
             var klasa = new FluentNHibernateClass();
@@ -102,7 +120,7 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                   result = (CoachSeason)session.QueryOver<CoachSeason>().Where(x => x.Club.Id == id).List().FirstOrDefault();
+                   result = (CoachSeason)session.QueryOver<CoachSeason>().Where(x => x.Club.Id ==idClub && x.Season.Id==SeasonId).List().FirstOrDefault();
   
                     transaction.Commit();
                 }
@@ -128,6 +146,23 @@ namespace Plivanje.Repositories
 
             return result;
 
+        }
+        public Season ValidSeason()
+        {
+            
+            Season season = null;
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    season = (Season)session.QueryOver<Season>().Where(x =>x.TimeEnd>DateTime.Now).SingleOrDefault();
+                    
+                    transaction.Commit();
+                }
+            }
+
+            return season;
         }
         public int getMyClubId(int CoachId)
         {

@@ -21,6 +21,7 @@ namespace Plivanje.Repositories
         bool IsSwimmerFree(int swimmerId);
         void UpdateSwimmerSeason(SwimmerSeason swimmerSeason);
         Category GetSwimmerCategory(Swimmer swimmer);
+        List<Swimmer> GetSwimmersByCategory(Category category);
 
     }
 
@@ -75,17 +76,17 @@ namespace Plivanje.Repositories
             return result;
         }
 
-        public List<Swimmer> GetListOfSwimmers(string club)
+        public List<Swimmer> GetListOfSwimmers(string clubName)
         {
-            List<Swimmer> result = null;
-            var clas = new FluentNHibernateClass();
-            using (var session = clas.OpenSession())
+            var result = new List<Swimmer>();
+            var klasa = new FluentNHibernateClass();
+            Season season = null;
+            Club club = null;
+            using (var session = klasa.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-
-                    result = (List<Swimmer>)session.QueryOver<SwimmerSeason>().Where(x=>x.Club.Name==club).JoinQueryOver(x=>x.Swimmer).List<Swimmer>();
-
+                    result = (List<Swimmer>)session.QueryOver<SwimmerSeason>().JoinAlias(x=>x.Club, () => club).JoinAlias(x=>x.Season,()=>season).Where(() => season.TimeEnd > DateTime.Now && club.Name==clubName).Select(x=>x.Swimmer).List<Swimmer>();
                     transaction.Commit();
                 }
             }
@@ -114,7 +115,7 @@ namespace Plivanje.Repositories
 
         public bool getSwimmerLicence(int idSwimmer)
         {
-            LicenceSwimmer r = null;
+            List<LicenceSwimmer> r = null;
             var clas = new FluentNHibernateClass();
             var result = false;
             using (var session = clas.OpenSession())
@@ -122,12 +123,15 @@ namespace Plivanje.Repositories
                 using (var transaction = session.BeginTransaction())
                 {
 
-                    r = session.QueryOver<LicenceSwimmer>().Where(x=>x.Swimmer.Id==idSwimmer).SingleOrDefault();
+                    r = (List<LicenceSwimmer>)session.QueryOver<LicenceSwimmer>().JoinQueryOver(x=>x.Swimmer).Where(x=>x.Id==idSwimmer).List<LicenceSwimmer>();
                     if (r != null)
                     {
-                        if (r.Season.TimeEnd > DateTime.Now)
+                        foreach(var sezona in r)
                         {
-                            result = true;
+                            if (sezona.Season.TimeEnd > DateTime.Now)
+                            {
+                                result = true;
+                            }
                         }
                     }
                     transaction.Commit();
@@ -141,14 +145,16 @@ namespace Plivanje.Repositories
 
         public List<Swimmer> SwimmersInClub(int clubId)
         {
-            List<Swimmer> result=new List<Swimmer>();
+            Club club = null;
+            Season season = null;
+            var result=new List<Swimmer>();
             var clas = new FluentNHibernateClass();
             using (var session = clas.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
 
-                    result = (List<Swimmer>)session.QueryOver<SwimmerSeason>().Where(x=>x.Club.Id==clubId).JoinQueryOver<Swimmer>(x=>x.Swimmer).Select(s=>s.Swimmer).List<Swimmer>();
+                    result = (List<Swimmer>)session.QueryOver<SwimmerSeason>().JoinAlias(x => x.Club, () => club).JoinAlias(x => x.Season, () => season).Where(() => season.TimeEnd > DateTime.Now && club.Id==clubId).Select(x => x.Swimmer).List<Swimmer>();
 
                     transaction.Commit();
                 }
@@ -247,6 +253,23 @@ namespace Plivanje.Repositories
                     transaction.Commit();
                 }
 
+            }
+            return result;
+        }
+
+        public List<Swimmer> GetSwimmersByCategory(Category category)
+        {
+            List<Swimmer> result = null;
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+                    result = (List<Swimmer>)session.Query<Swimmer>().Where(x => category.AgeFrom <= (DateTime.Now.Year - x.DateOfBirth.Year) && (DateTime.Now.Year - x.DateOfBirth.Year) <= category.AgeTo).ToList<Swimmer>();
+
+                    transaction.Commit();
+                }
             }
             return result;
         }

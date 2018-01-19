@@ -27,5 +27,14 @@ namespace Plivanje.Processors
         {
             return Repository.getCategories();
         }
+        public Category getCategory(int idCat)
+        {
+            return _categoryRepository.getCategory(idCat);
+        }
+
+        public Category getCategoryByName(string categoryName)
+        {
+            return Repository.getCategoryByName(categoryName);
+        }
     }
 }

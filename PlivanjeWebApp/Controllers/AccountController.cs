@@ -81,9 +81,18 @@ namespace PlivanjeWebApp.Controllers
             if (roleId != 0)
             {
                 RegisteredPerson p = userProcesor.GetUserByUsernameAndPassword(model.Email, model.Password,roleId);
+<<<<<<< Updated upstream
                 Session["UserName"] = p.FirstName + " " + p.LastName;
                 Session["role"] = roleId;
                 Session["UserId"] = p.Id;
+=======
+                CoachProcessor cp = new CoachProcessor();
+                HttpContext.Session["UserName"] = p.FirstName + " " + p.LastName;
+                HttpContext.Session["role"] = roleId;
+                HttpContext.Session["UserId"] = p.Id;
+                HttpContext.Session["clubId"] = cp.getMyClub(p.Id).Id;
+
+>>>>>>> Stashed changes
                 return RedirectToLocal(returnUrl);
             }
             else

@@ -1,4 +1,5 @@
 ﻿@model PlivanjeWebApp.Models.ClubViewModel
+
 <h2>Moj klub:</h2>
 <div class="row">
     <div class="col-sm-12">
@@ -72,32 +73,54 @@
                 <th>
                     Licenca
                 </th>
-</thead>
-                @foreach (var item in Model.swimmers)
+        </thead>
+        @foreach (var item in Model.swimmers)
+        {
+
+
+
+
+
+            <tr>
+
+                <td>
+                    @item.firstName
+                </td>
+                <td>
+                    @item.lastName
+                </td>
+
+                <td>
+                    @item.gender
+                </td>
+                <td>
+                    @item.dateOfBirth.Date.Date
+                </td>
+                @if (item.licenceValid == true)
                 {
 
+                    <td>
+                        važeća
+                    </td>
+                }
+                else
+                {
+                    <td style="width: 1%;white-space: nowrap;">
+                        <button class="btn btn-success btn-sm">
+                            <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                            @Html.ActionLink("Licenciraj", "Edit", "Swimmer", new { id = item.Id }, null)
+                        </button>
+                    </td>
+                }
+                <td style="width: 1%;white-space: nowrap;">
+                    <button class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                        @Html.ActionLink("Makni iz kluba", "DeleteSwimmerFromClub", "Club", new { id = item.Id }, null)
+                    </button>
+                </td>
+            </tr>
 
-
-
-
-        <tr>
-
-            <td>
-                @item.firstName
-            </td>
-            <td>
-                @item.lastName
-            </td>
-
-            <td>
-                @item.gender
-            </td>
-            <td>
-                @item.dateOfBirth.Date.Date
-            </td>
-            @if (item.licenceValid == true)
-    {
-
+<<<<<<< Updated upstream
         <td>
             važeća
         </td>
@@ -113,9 +136,11 @@ else
 }
 
         </tr>
+=======
+>>>>>>> Stashed changes
 
 
-                }
+        }
     </table>
 
 }
