@@ -1,4 +1,5 @@
-﻿using Plivanje.Models;
+﻿using NHibernate.Linq;
+using Plivanje.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,7 @@ namespace Plivanje.Repositories
     {
         List<Category> getCategories();
         Category getCategory(int idCat);
+        Category getCategoryByName(string categoryName);
     }
 
     public class CategoryRepository : ICategoryRepository
@@ -41,6 +43,21 @@ namespace Plivanje.Repositories
                 {
                     result = session.QueryOver<Category>().Where(x=>x.Id==idCat).SingleOrDefault();
 
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public Category getCategoryByName(string categoryName)
+        {
+            var result = new Category();
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (Category)session.Query<Category>().Where(x => x.Name.Trim() == categoryName).SingleOrDefault();
                     transaction.Commit();
                 }
             }

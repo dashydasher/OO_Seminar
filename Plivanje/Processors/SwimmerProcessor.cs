@@ -71,5 +71,10 @@ namespace Plivanje.Processors
         {
             return _swimmerRepository.GetSwimmerCategory(swimmer);
         }
+
+        public List<Swimmer> getSwimmersByCategory(Category category)
+        {
+            return _swimmerRepository.GetSwimmersByCategory(category);
+        } 
     }
 }

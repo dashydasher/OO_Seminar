@@ -21,6 +21,7 @@ namespace Plivanje.Repositories
         bool IsSwimmerFree(int swimmerId);
         void UpdateSwimmerSeason(SwimmerSeason swimmerSeason);
         Category GetSwimmerCategory(Swimmer swimmer);
+        List<Swimmer> GetSwimmersByCategory(Category category);
 
     }
 
@@ -252,6 +253,23 @@ namespace Plivanje.Repositories
                     transaction.Commit();
                 }
 
+            }
+            return result;
+        }
+
+        public List<Swimmer> GetSwimmersByCategory(Category category)
+        {
+            List<Swimmer> result = null;
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+                    result = (List<Swimmer>)session.Query<Swimmer>().Where(x => category.AgeFrom <= (DateTime.Now.Year - x.DateOfBirth.Year) && (DateTime.Now.Year - x.DateOfBirth.Year) <= category.AgeTo).ToList<Swimmer>();
+
+                    transaction.Commit();
+                }
             }
             return result;
         }
