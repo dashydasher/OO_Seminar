@@ -53,5 +53,11 @@ namespace PlivanjeMobileApp.Models
 
         [JsonProperty(PropertyName = "category")]
         public string Category { get; set; }
+
+        [JsonProperty(PropertyName = "place")]
+        public string Place { get; set; }
+
+        [JsonProperty(PropertyName = "postalCode")]
+        public string PostalCode { get; set; }
     }
 }

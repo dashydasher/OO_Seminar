@@ -9,6 +9,7 @@ using Android.OS;
 using Android.Runtime;
 using Android.Views;
 using Android.Widget;
+using PlivanjeMobileApp.Activities;
 using PlivanjeMobileApp.Models;
 
 namespace PlivanjeMobileApp.Adapters
@@ -56,7 +57,25 @@ namespace PlivanjeMobileApp.Adapters
             textArea3.Text = currentItem.Club;
             textArea4.Text = currentItem.Score + " bodova";
 
+            textArea1.Touch += delegate (object sender, View.TouchEventArgs e) { SendClubData(sender, e, currentItem); };
+            textArea2.Touch += delegate (object sender, View.TouchEventArgs e) { SendClubData(sender, e, currentItem); };
+            textArea3.Touch += delegate (object sender, View.TouchEventArgs e) { SendClubData(sender, e, currentItem); };
+            textArea4.Touch += delegate (object sender, View.TouchEventArgs e) { SendClubData(sender, e, currentItem); };
+
             return row;
+        }
+
+        private void SendClubData(object sender, View.TouchEventArgs e, SwimmersView currentItem)
+        {
+            if (e.Event.Action == MotionEventActions.Down)
+            {
+                var activity2 = new Intent(activity, typeof(ClubDetailsActivity));
+                activity2.PutExtra("id", currentItem.IdClub);
+                activity2.PutExtra("name", currentItem.Club);
+                activity2.PutExtra("place", currentItem.Place);
+                activity2.PutExtra("postalcode", currentItem.PostalCode);
+                activity.StartActivity(activity2);
+            }
         }
 
         public void Add(SwimmersView item)
