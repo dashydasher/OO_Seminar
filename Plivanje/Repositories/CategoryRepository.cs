@@ -10,6 +10,7 @@ namespace Plivanje.Repositories
     public interface ICategoryRepository
     {
         List<Category> getCategories();
+        Category getCategory(int idCat);
     }
 
     public class CategoryRepository : ICategoryRepository
@@ -23,6 +24,22 @@ namespace Plivanje.Repositories
                 using (var transaction = session.BeginTransaction())
                 {
                     result = (List<Category>)session.QueryOver<Category>().OrderBy(x => x.Id).Asc.List();
+
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public Category getCategory(int idCat)
+        {
+            Category result = new Category();
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<Category>().Where(x=>x.Id==idCat).SingleOrDefault();
 
                     transaction.Commit();
                 }

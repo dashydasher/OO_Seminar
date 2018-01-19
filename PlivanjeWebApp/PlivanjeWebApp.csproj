@@ -304,6 +304,13 @@
     <Content Include="Views\Competition\Create.cshtml" />
     <Content Include="Views\Club\AddSwimmerToClub.cshtml" />
     <Content Include="Views\Swimmer\Edit.cshtml" />
+<<<<<<< Updated upstream
+=======
+    <Content Include="Views\Competition\Details.cshtml" />
+    <Content Include="Views\Competition\Edit.cshtml" />
+    <Content Include="Views\Competition\CreateRace.cshtml" />
+    <Content Include="Views\Competition\AddSwimmersToRace.cshtml" />
+>>>>>>> Stashed changes
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

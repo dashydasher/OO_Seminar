@@ -57,9 +57,9 @@ namespace Plivanje.Processors
         {
             return _ClubRepository.getCoach(coachId);
         }
-        public CoachSeason getSeasonCoach(int idClub)
+        public CoachSeason getSeasonCoach(int idClub,int idSeason)
         {
-            return _ClubRepository.getSeasonCoach(idClub);
+            return _ClubRepository.getSeasonCoach(idClub,idSeason);
         }
 
         public Season getSeason(int id)
@@ -73,6 +73,14 @@ namespace Plivanje.Processors
         public int getMyClubId(int CoachId)
         {
             return _ClubRepository.getMyClubId(CoachId);
+        }
+        public Coach getCoachOfClub(int ClubId)
+        {
+            return _ClubRepository.getCoachOfClub(ClubId);
+        }
+        public Season ValidSeason()
+        {
+            return _ClubRepository.ValidSeason();
         }
 
     }
