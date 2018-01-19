@@ -38,7 +38,7 @@
                     <TableRowGroup>
 
                         <!-- Title row for the table. -->
-                        <TableRow >
+                        <TableRow Background="SkyBlue">
                             
                             <TableCell ColumnSpan="5">
                                 <Paragraph FontSize="14pt" FontWeight="Bold">Rekordi</Paragraph>
@@ -46,7 +46,7 @@
                         </TableRow>
 
                         <!-- Header row for the table. -->
-                        <TableRow >
+                        <TableRow Background="CadetBlue">
                             <TableCell>
                                 <Paragraph FontSize="8pt" FontWeight="Bold">Ime</Paragraph>
                             </TableCell>
@@ -55,6 +55,9 @@
                             </TableCell>
                             <TableCell>
                                 <Paragraph FontSize="8pt" FontWeight="Bold">Datum rođenja</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph FontSize="8pt" FontWeight="Bold">Spol</Paragraph>
                             </TableCell>
                             <TableCell>
                                 <Paragraph FontSize="8pt" FontWeight="Bold">Kategorija</Paragraph>
@@ -76,6 +79,30 @@
                             </TableCell>
                         </TableRow>
 
+                        <!-- Sub-title row for the inner planets. -->
+                        <TableRow>
+                            <TableCell ColumnSpan="5">
+                                <Paragraph FontSize="14pt" FontWeight="Bold">The Inner Planets</Paragraph>
+                            </TableCell>
+                        </TableRow>
+
+                        <!-- Four data rows for the inner planets. -->
+                        <TableRow>
+
+                            
+                            <TableCell>
+                                <Paragraph>57,910,000 km</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>4,880 km</Paragraph>
+                            </TableCell>
+                            <TableCell>
+                                <Paragraph>3.30e23 kg</Paragraph>
+                            </TableCell>
+                        </TableRow>
+                        <TableRow Background="lightgray">
+                    
+                        </TableRow>
 
                     </TableRowGroup>
                 </Table>
