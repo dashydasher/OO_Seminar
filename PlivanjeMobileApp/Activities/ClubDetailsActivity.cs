@@ -20,8 +20,11 @@ namespace PlivanjeMobileApp.Activities
     {
         private MobileServiceClient client;
         private IMobileServiceTable<ClubSwimmerView> swimmersTable;
+        private IMobileServiceTable<Season> seasonsTable;
         private ClubSwimmersAdapter adapter;
+        private ArrayAdapter<string> adapter2;
         const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
+        private List<KeyValuePair<string, string>> seasonToDisplay;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -36,7 +39,7 @@ namespace PlivanjeMobileApp.Activities
             var textView = FindViewById<TextView>(Resource.Id.nazivKluba);
             textView.Text = name;
             var textView2 = FindViewById<TextView>(Resource.Id.mjesto);
-            textView2.Text = postalcode + "  " + place;
+            textView2.Text = postalcode + "   " + place;
 
             CurrentPlatform.Init();
 
@@ -48,19 +51,52 @@ namespace PlivanjeMobileApp.Activities
             var listViewClubSwimmers = FindViewById<ListView>(Resource.Id.plivaci);
             listViewClubSwimmers.Adapter = adapter;
 
-            try
+            seasonsTable = client.GetTable<Season>();
+
+            var seasons = await seasonsTable.OrderByDescending(e => e.TimeStart).ToListAsync();
+
+            List<string> seasonNames = new List<string>();
+            seasonToDisplay = new List<KeyValuePair<string, string>>();
+            foreach (Season current in seasons)
             {
-                var list = await swimmersTable.Where(e => e.IdClub == id).ToListAsync();
-
-                adapter.Clear();
-
-                foreach (ClubSwimmerView current in list)
-                    adapter.Add(current);
-
+                seasonToDisplay.Add(new KeyValuePair<string, string>(current.TimeStart.ToString("yyyy") + "-" + current.TimeEnd.ToString("yyyy"), current.Id.ToString()));
+                seasonNames.Add(current.TimeStart.ToString("yyyy") + "-" + current.TimeEnd.ToString("yyyy"));
             }
-            catch (Exception e)
+
+            Spinner spinner = FindViewById<Spinner>(Resource.Id.spinner);
+
+            spinner.ItemSelected += delegate (object sender, AdapterView.ItemSelectedEventArgs e)
             {
-            }
+                FillAdapterWithData(adapter, swimmersTable, id, seasonToDisplay[e.Position].Value);
+            };
+
+            adapter2 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, seasonNames);
+            adapter2.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            spinner.Adapter = adapter2;
+
+            FillAdapterWithData(adapter, swimmersTable, id);
         }
+
+        private async void FillAdapterWithData(ClubSwimmersAdapter adapter, IMobileServiceTable<ClubSwimmerView> swimmersTable, string clubId, string seasonId = null)
+        {
+            List<ClubSwimmerView> list;
+            if (seasonId != null)
+            {
+                list = await swimmersTable
+                    .Where(e => e.IdClub == clubId)
+                    .Where(e => e.IdSeason == seasonId)
+                    .ToListAsync();
+            }
+            else
+            {
+                list = await swimmersTable
+                    .Where(e => e.IdClub == clubId)
+                    .ToListAsync();
+            }
+            adapter.Clear();
+            foreach (ClubSwimmerView current in list)
+                adapter.Add(current);
+        }
+        
     }
 }

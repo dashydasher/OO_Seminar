@@ -22,5 +22,8 @@ namespace PlivanjeMobileApp.Models
 
         [JsonProperty(PropertyName = "idClub")]
         public string IdClub { get; set; }
+
+        [JsonProperty(PropertyName = "idSeason")]
+        public string IdSeason { get; set; }
     }
 }
