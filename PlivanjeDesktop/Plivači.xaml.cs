@@ -33,6 +33,7 @@ namespace PlivanjeDesktop
             this.DataContext = svm;
         }
 
+        //treba riješiti sa SwimmerViewModel
         public Plivači(List<Swimmer> plivači)
         {
             InitializeComponent();
