@@ -2,11 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_height="match_parent">
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
         <TextView
             android:text="Test"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -22,10 +21,9 @@
             android:layout_weight=".50"
             android:id="@+id/textArea2" />
     </LinearLayout>
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent" >
+        android:layout_height="match_parent">
         <TextView
             android:text="Test"
             android:textAppearance="?android:attr/textAppearanceMedium"
@@ -41,5 +39,4 @@
             android:layout_weight=".50"
             android:id="@+id/textArea4" />
     </LinearLayout>
-  
 </LinearLayout>

@@ -180,11 +180,11 @@ namespace PlivanjeMobileApp
 			// aapt resource value: 0x7f070011
 			public const int podaci = 2131165201;
 			
-			// aapt resource value: 0x7f07001b
-			public const int rekordimbut = 2131165211;
+			// aapt resource value: 0x7f070022
+			public const int rekordimbut = 2131165218;
 			
-			// aapt resource value: 0x7f07001c
-			public const int rekordizbut = 2131165212;
+			// aapt resource value: 0x7f070023
+			public const int rekordizbut = 2131165219;
 			
 			// aapt resource value: 0x7f070012
 			public const int sezone = 2131165202;
@@ -201,11 +201,20 @@ namespace PlivanjeMobileApp
 			// aapt resource value: 0x7f07001e
 			public const int textArea2 = 2131165214;
 			
+			// aapt resource value: 0x7f07001b
+			public const int textArea3 = 2131165211;
+			
+			// aapt resource value: 0x7f07001c
+			public const int textArea4 = 2131165212;
+			
 			// aapt resource value: 0x7f07001f
-			public const int textArea3 = 2131165215;
+			public const int textArea5 = 2131165215;
 			
 			// aapt resource value: 0x7f070020
-			public const int textArea4 = 2131165216;
+			public const int textArea6 = 2131165216;
+			
+			// aapt resource value: 0x7f070021
+			public const int textArea7 = 2131165217;
 			
 			// aapt resource value: 0x7f070000
 			public const int webview = 2131165184;
@@ -254,10 +263,13 @@ namespace PlivanjeMobileApp
 			public const int PregledPlivaca = 2130903049;
 			
 			// aapt resource value: 0x7f03000a
-			public const int Rekordi = 2130903050;
+			public const int PrikazRekordiLayout = 2130903050;
 			
 			// aapt resource value: 0x7f03000b
-			public const int SezonaPlivaca = 2130903051;
+			public const int Rekordi = 2130903051;
+			
+			// aapt resource value: 0x7f03000c
+			public const int SezonaPlivaca = 2130903052;
 			
 			static Layout()
 			{
