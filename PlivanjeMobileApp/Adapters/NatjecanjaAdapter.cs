@@ -34,10 +34,6 @@ namespace PlivanjeMobileApp.Adapters
             TextView textArea1;
             TextView textArea2;
             TextView textArea3;
-            TextView textArea4;
-            TextView textArea5;
-            TextView textArea6;
-            TextView textArea7;
 
             if (row == null)
             {
@@ -58,7 +54,27 @@ namespace PlivanjeMobileApp.Adapters
             textArea2.Text = currentItem.TimeStart.ToString("dd/MM/yyyy");
             textArea3.Text = currentItem.PlaceName.Trim();
 
+            textArea1.Touch += delegate (object sender, View.TouchEventArgs e) { SendCompetitionData(sender, e, currentItem); };
+            textArea2.Touch += delegate (object sender, View.TouchEventArgs e) { SendCompetitionData(sender, e, currentItem); };
+            textArea3.Touch += delegate (object sender, View.TouchEventArgs e) { SendCompetitionData(sender, e, currentItem); };
+
             return row;
+        }
+
+        private void SendCompetitionData(object sender, View.TouchEventArgs e, CompetitionView currentItem)
+        {
+            if (e.Event.Action == MotionEventActions.Down)
+            {
+                var activity2 = new Intent(activity, typeof(NatjecanjeDetaljiActivity));
+                activity2.PutExtra("id", currentItem.Id);
+                activity2.PutExtra("name", currentItem.Name.Trim());
+                activity2.PutExtra("timeStart", currentItem.TimeStart.ToString("dddd dd.MM.yyyy"));
+                activity2.PutExtra("timeEnd", currentItem.TimeEnd.ToString("dddd dd.MM.yyyy"));
+                activity2.PutExtra("address", currentItem.Address.Trim());
+                activity2.PutExtra("hallName", currentItem.HallName.Trim());
+                activity2.PutExtra("placeName", currentItem.PlaceName.Trim());
+                activity.StartActivity(activity2);
+            }
         }
 
         public void Add(CompetitionView item)

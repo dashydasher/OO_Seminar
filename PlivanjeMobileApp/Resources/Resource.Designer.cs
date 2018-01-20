@@ -120,6 +120,9 @@ namespace PlivanjeMobileApp
 			// aapt resource value: 0x7f070008
 			public const int linearlayout1 = 2131165192;
 			
+			// aapt resource value: 0x7f070015
+			public const int listView1 = 2131165205;
+			
 			// aapt resource value: 0x7f07000c
 			public const int listViewLayout = 2131165196;
 			
@@ -153,44 +156,44 @@ namespace PlivanjeMobileApp
 			// aapt resource value: 0x7f070004
 			public const int plivaci = 2131165188;
 			
-			// aapt resource value: 0x7f07001a
-			public const int plivacijunbut = 2131165210;
-			
-			// aapt resource value: 0x7f07001c
-			public const int plivacikadbut = 2131165212;
-			
 			// aapt resource value: 0x7f07001b
-			public const int plivacimjunbut = 2131165211;
+			public const int plivacijunbut = 2131165211;
 			
 			// aapt resource value: 0x7f07001d
-			public const int plivacimkadbut = 2131165213;
+			public const int plivacikadbut = 2131165213;
 			
-			// aapt resource value: 0x7f070019
-			public const int plivacimsenbut = 2131165209;
+			// aapt resource value: 0x7f07001c
+			public const int plivacimjunbut = 2131165212;
 			
 			// aapt resource value: 0x7f07001e
-			public const int plivacipocbut = 2131165214;
+			public const int plivacimkadbut = 2131165214;
+			
+			// aapt resource value: 0x7f07001a
+			public const int plivacimsenbut = 2131165210;
+			
+			// aapt resource value: 0x7f07001f
+			public const int plivacipocbut = 2131165215;
+			
+			// aapt resource value: 0x7f070019
+			public const int plivacisenbut = 2131165209;
 			
 			// aapt resource value: 0x7f070018
-			public const int plivacisenbut = 2131165208;
+			public const int plivacivetbut = 2131165208;
 			
-			// aapt resource value: 0x7f070017
-			public const int plivacivetbut = 2131165207;
-			
-			// aapt resource value: 0x7f070015
-			public const int podaci = 2131165205;
+			// aapt resource value: 0x7f070016
+			public const int podaci = 2131165206;
 			
 			// aapt resource value: 0x7f07000b
 			public const int progressBar1 = 2131165195;
 			
-			// aapt resource value: 0x7f070023
-			public const int rekordimbut = 2131165219;
-			
 			// aapt resource value: 0x7f070024
-			public const int rekordizbut = 2131165220;
+			public const int rekordimbut = 2131165220;
 			
-			// aapt resource value: 0x7f070016
-			public const int sezone = 2131165206;
+			// aapt resource value: 0x7f070025
+			public const int rekordizbut = 2131165221;
+			
+			// aapt resource value: 0x7f070017
+			public const int sezone = 2131165207;
 			
 			// aapt resource value: 0x7f070003
 			public const int spinner = 2131165187;
@@ -207,17 +210,17 @@ namespace PlivanjeMobileApp
 			// aapt resource value: 0x7f070014
 			public const int textArea3 = 2131165204;
 			
-			// aapt resource value: 0x7f07001f
-			public const int textArea4 = 2131165215;
-			
 			// aapt resource value: 0x7f070020
-			public const int textArea5 = 2131165216;
+			public const int textArea4 = 2131165216;
 			
 			// aapt resource value: 0x7f070021
-			public const int textArea6 = 2131165217;
+			public const int textArea5 = 2131165217;
 			
 			// aapt resource value: 0x7f070022
-			public const int textArea7 = 2131165218;
+			public const int textArea6 = 2131165218;
+			
+			// aapt resource value: 0x7f070023
+			public const int textArea7 = 2131165219;
 			
 			// aapt resource value: 0x7f070000
 			public const int webview = 2131165184;
@@ -260,22 +263,34 @@ namespace PlivanjeMobileApp
 			public const int NatjecanjaLayout = 2130903047;
 			
 			// aapt resource value: 0x7f030008
-			public const int Plivac = 2130903048;
+			public const int NatjecanjeDetaljiLayout = 2130903048;
 			
 			// aapt resource value: 0x7f030009
-			public const int Plivaci = 2130903049;
+			public const int Plivac = 2130903049;
 			
 			// aapt resource value: 0x7f03000a
-			public const int PregledPlivaca = 2130903050;
+			public const int Plivaci = 2130903050;
 			
 			// aapt resource value: 0x7f03000b
-			public const int PrikazRekordiLayout = 2130903051;
+			public const int PlivaciUtrkaOsnovnoLayout = 2130903051;
 			
 			// aapt resource value: 0x7f03000c
-			public const int Rekordi = 2130903052;
+			public const int PregledPlivaca = 2130903052;
 			
 			// aapt resource value: 0x7f03000d
-			public const int SezonaPlivaca = 2130903053;
+			public const int PrikazRekordiLayout = 2130903053;
+			
+			// aapt resource value: 0x7f03000e
+			public const int Rekordi = 2130903054;
+			
+			// aapt resource value: 0x7f03000f
+			public const int SezonaPlivaca = 2130903055;
+			
+			// aapt resource value: 0x7f030010
+			public const int UtrkaDetaljiLayout = 2130903056;
+			
+			// aapt resource value: 0x7f030011
+			public const int UtrkaOsnovnoLayout = 2130903057;
 			
 			static Layout()
 			{
