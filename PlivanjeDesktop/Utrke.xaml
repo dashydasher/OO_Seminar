@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlivanjeDesktop"
         mc:Ignorable="d"
-        Title="Utrke" Height="300" Width="300">
+        Title="Utrke" WindowState="Maximized" Height="300" Width="300">
     <Grid>
         
     </Grid>

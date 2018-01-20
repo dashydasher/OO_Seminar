@@ -5,32 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlivanjeDesktop"
         mc:Ignorable="d"
-        Title="Registracija" Height="350" Width="525" Style="{StaticResource HeaderStyle}">
+        Title="Registracija" WindowState="Maximized" Height="684.8" Width="912.2" Style="{StaticResource HeaderStyle}">
 
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"/>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
-            
-        </StackPanel>
-        <StackPanel Margin="80,0,0.4,-0.2" Grid.ColumnSpan="2">
+        
+        <StackPanel >
 
-            <TextBlock Height="23" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="RegisterHeading" Text="Registracija" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+            <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="RegisterHeading" Text="Registracija" VerticalAlignment="Top" FontSize="40" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
 
-            <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,10,0,0" x:Name="name" Text="Ime" VerticalAlignment="Top" FontSize="12" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
-            <TextBox Height="20" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxName" VerticalAlignment="Top" Width="247" />
-            <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="surname" Text="Prezime" VerticalAlignment="Top" FontSize="12" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
-            <TextBox Height="20" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxSurname" VerticalAlignment="Top" Width="247" />
-            <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="email" Text="Email" VerticalAlignment="Top" FontSize="12" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
-            <TextBox Height="20" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxEmail" VerticalAlignment="Top" Width="247" />
-            <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="password" Text="Lozinka" VerticalAlignment="Top" FontSize="12" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
-            <TextBox Height="20" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="247" />
-            <TextBlock Height="20" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="idLicence" Text="ID licence" VerticalAlignment="Top" FontSize="12" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
-            <TextBox Height="20" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxIdLicence" VerticalAlignment="Top" Width="247" />
+            <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" x:Name="name" Text="Ime" VerticalAlignment="Top" FontSize="25" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+            <TextBox Height="30" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxName" VerticalAlignment="Top" FontSize="20" Width="450" />
+            <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="surname" Text="Prezime" VerticalAlignment="Top" FontSize="25" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+            <TextBox Height="30" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxSurname" VerticalAlignment="Top" FontSize="20" Width="450" />
+            <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="email" Text="Email" VerticalAlignment="Top" FontSize="25" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+            <TextBox Height="30" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxEmail" VerticalAlignment="Top" FontSize="20" Width="450" />
+            <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="password" Text="Lozinka" VerticalAlignment="Top" FontSize="25" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+            <TextBox Height="30" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxPassword" VerticalAlignment="Top" FontSize="20" Width="450" />
+            <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="idLicence" Text="ID licence" VerticalAlignment="Top" FontSize="25" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+            <TextBox Height="30" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxIdLicence" VerticalAlignment="Top" FontSize="20" Width="450" />
 
-            <Button Height="20" HorizontalAlignment="Center" Margin="0,15,0,0" x:Name="register" Content="Registriraj se" RenderTransformOrigin="6.226,0.65" Click="register_Click"/>
+            <Button Height="45" HorizontalAlignment="Center" Margin="0,15,0,0" x:Name="register" FontSize="25" Content="Registriraj se" RenderTransformOrigin="6.226,0.65" Click="register_Click"/>
 
 
             <TextBlock Height="50" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="textBlockHeading" VerticalAlignment="Top" FontSize="10" FontStyle="Italic" Padding="5"><InlineUIContainer>

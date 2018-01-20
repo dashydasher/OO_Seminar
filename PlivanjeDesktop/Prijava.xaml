@@ -6,31 +6,26 @@
         xmlns:local="clr-namespace:PlivanjeDesktop"
         mc:Ignorable="d"
         
-        Title="Prijava" Height="350" Width="525" Style="{StaticResource HeaderStyle}" >
+        Title="Prijava" WindowState="Maximized" Height="695.805" Width="979.661" Style="{StaticResource HeaderStyle}" >
     <Grid>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition />
-        </Grid.ColumnDefinitions>
-        <StackPanel Grid.Column="0">
-  
-        </StackPanel>
-        <StackPanel Grid.Column="1" Margin="0,0,0.4,-0.2">
 
-            <TextBlock Height="23" HorizontalAlignment="Center" Margin="0,10,0,0" x:Name="LoginHeading" Text="Prijava" VerticalAlignment="Top" FontSize="17" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
 
-            <TextBlock Height="23" HorizontalAlignment="Center" Margin="0,20,0,0" x:Name="email" Text="Email" VerticalAlignment="Top" FontSize="13" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
-            <TextBox Height="23" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxEmail" VerticalAlignment="Top" Width="247" />
-            <TextBlock Height="23" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="password" Text="Lozinka" VerticalAlignment="Top" FontSize="13" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
-            <TextBox Height="23" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxPassword" VerticalAlignment="Top" Width="247" />
-            <Button Height="20" HorizontalAlignment="Center" Margin="0,15,0,0" x:Name="PrijaviSe" Content="Prijavi se" RenderTransformOrigin="6.226,0.65" Click="PrijaviSe_Click"/>
+        <StackPanel Margin="0,0,0.4,-0.2">
+
+            <TextBlock HorizontalAlignment="Center" x:Name="LoginHeading" Text="Prijava" VerticalAlignment="Top" FontSize="40" FontStretch="ExtraCondensed" />
+
+            <TextBlock  HorizontalAlignment="Center" Margin="0,15,0,0" x:Name="email" Text="Email" VerticalAlignment="Top" FontSize="32" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+            <TextBox Height="35" HorizontalAlignment="Center" Margin="0,0,0,0" FontSize="25" Name="textBoxEmail" VerticalAlignment="Top" Width="450" />
+            <TextBlock  HorizontalAlignment="Center" Margin="0,15,0,0" x:Name="password" Text="Lozinka" VerticalAlignment="Top" FontSize="32" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+            <TextBox Height="35" HorizontalAlignment="Center" Margin="0,0,0,0" FontSize="25" Name="textBoxPassword" VerticalAlignment="Top" Width="450" />
+            <Button Height="40" HorizontalAlignment="Center" Margin="0,15,0,0" x:Name="PrijaviSe" FontSize="25" Content="Prijavi se" RenderTransformOrigin="6.226,0.65" Click="PrijaviSe_Click"/>
 
 
             <TextBlock Height="50" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="textBlockHeading" VerticalAlignment="Top" FontSize="10" FontStyle="Italic" Padding="5"><InlineUIContainer>
 
             
 
-                <TextBlock RenderTransformOrigin="0.5,0.5"><Hyperlink Name="Register" Click="Register_Click"  FontSize="10" FontStyle="Normal"><Run Text="Registriraj se"/></Hyperlink></TextBlock>
+                <TextBlock RenderTransformOrigin="0.5,0.5"><Hyperlink Name="Register" Click="Register_Click"  FontSize="25" FontStyle="Normal"><Run Text="Registriraj se"/></Hyperlink></TextBlock>
 
             
 

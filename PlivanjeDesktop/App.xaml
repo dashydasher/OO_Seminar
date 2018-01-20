@@ -19,7 +19,7 @@
 
                             <!-- Header -->
                             <Border Grid.Row="0" >
-                                <Menu DockPanel.Dock="Top">
+                                <Menu DockPanel.Dock="Top" FontSize="15">
                                     <MenuItem Header="NATJECANJA" Name="Competition" Click="Competition_Click"/>
                                     <MenuItem Header="KLUBOVI"  Name="Clubs" Click="Clubs_Click"/>
                                     <MenuItem Header="PLIVAČI" Name="Swimmers" MouseEnter="MenuItem_MouseEnter" MouseLeave="MenuItem_MouseLeave">

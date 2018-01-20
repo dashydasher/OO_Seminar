@@ -15,7 +15,7 @@ namespace PlivanjeDesktop.ViewModels
         public List<Swimmer> LoadSwimmersByClub(int clubId)
         {
 
-            var cp = new ClubProcessor();
+            var cp = new SwimmerProcessor();
             //var list = cp.getSwimmers(clubId);
             //foreach (var swimmer in list) {
             //    swimmers.Add(new SwimmerView
@@ -28,7 +28,7 @@ namespace PlivanjeDesktop.ViewModels
             //        currentCategory = swimmer.
             //    });
             //}
-            swimmers = cp.getSwimmers(clubId);
+            swimmers = cp.SwimmersInClub(clubId);
             return swimmers;
         }
 

@@ -39,7 +39,6 @@ namespace PlivanjeDesktop
             InitializeComponent();
             svm.LoadSwimmersByClub(club.Name);
             this.DataContext = svm;
-            this.UpdateLayout();
         }
         
 
