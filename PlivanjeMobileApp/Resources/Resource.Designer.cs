@@ -120,8 +120,8 @@ namespace PlivanjeMobileApp
 			// aapt resource value: 0x7f070008
 			public const int linearlayout1 = 2131165192;
 			
-			// aapt resource value: 0x7f070015
-			public const int listView1 = 2131165205;
+			// aapt resource value: 0x7f070016
+			public const int listView1 = 2131165206;
 			
 			// aapt resource value: 0x7f07000c
 			public const int listViewLayout = 2131165196;
@@ -156,32 +156,32 @@ namespace PlivanjeMobileApp
 			// aapt resource value: 0x7f070004
 			public const int plivaci = 2131165188;
 			
-			// aapt resource value: 0x7f07001b
-			public const int plivacijunbut = 2131165211;
-			
-			// aapt resource value: 0x7f07001d
-			public const int plivacikadbut = 2131165213;
-			
 			// aapt resource value: 0x7f07001c
-			public const int plivacimjunbut = 2131165212;
+			public const int plivacijunbut = 2131165212;
 			
 			// aapt resource value: 0x7f07001e
-			public const int plivacimkadbut = 2131165214;
+			public const int plivacikadbut = 2131165214;
 			
-			// aapt resource value: 0x7f07001a
-			public const int plivacimsenbut = 2131165210;
+			// aapt resource value: 0x7f07001d
+			public const int plivacimjunbut = 2131165213;
 			
 			// aapt resource value: 0x7f07001f
-			public const int plivacipocbut = 2131165215;
+			public const int plivacimkadbut = 2131165215;
+			
+			// aapt resource value: 0x7f07001b
+			public const int plivacimsenbut = 2131165211;
+			
+			// aapt resource value: 0x7f070020
+			public const int plivacipocbut = 2131165216;
+			
+			// aapt resource value: 0x7f07001a
+			public const int plivacisenbut = 2131165210;
 			
 			// aapt resource value: 0x7f070019
-			public const int plivacisenbut = 2131165209;
+			public const int plivacivetbut = 2131165209;
 			
-			// aapt resource value: 0x7f070018
-			public const int plivacivetbut = 2131165208;
-			
-			// aapt resource value: 0x7f070016
-			public const int podaci = 2131165206;
+			// aapt resource value: 0x7f070017
+			public const int podaci = 2131165207;
 			
 			// aapt resource value: 0x7f07000b
 			public const int progressBar1 = 2131165195;
@@ -192,8 +192,8 @@ namespace PlivanjeMobileApp
 			// aapt resource value: 0x7f070025
 			public const int rekordizbut = 2131165221;
 			
-			// aapt resource value: 0x7f070017
-			public const int sezone = 2131165207;
+			// aapt resource value: 0x7f070018
+			public const int sezone = 2131165208;
 			
 			// aapt resource value: 0x7f070003
 			public const int spinner = 2131165187;
@@ -210,8 +210,8 @@ namespace PlivanjeMobileApp
 			// aapt resource value: 0x7f070014
 			public const int textArea3 = 2131165204;
 			
-			// aapt resource value: 0x7f070020
-			public const int textArea4 = 2131165216;
+			// aapt resource value: 0x7f070015
+			public const int textArea4 = 2131165205;
 			
 			// aapt resource value: 0x7f070021
 			public const int textArea5 = 2131165217;

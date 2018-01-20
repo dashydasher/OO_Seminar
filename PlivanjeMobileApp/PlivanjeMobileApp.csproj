@@ -162,9 +162,6 @@
     <AndroidResource Include="Resources\layout\NatjecanjaLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
-    <AndroidResource Include="Resources\layout\NatjecanjeDetaljiLayout.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\UtrkaOsnovnoLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -172,6 +169,9 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\PlivaciUtrkaOsnovnoLayout.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\NatjecanjeDetaljiLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

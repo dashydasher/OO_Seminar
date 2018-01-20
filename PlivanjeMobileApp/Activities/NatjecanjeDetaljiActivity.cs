@@ -39,10 +39,15 @@ namespace PlivanjeMobileApp.Activities
             string placeName = Intent.GetStringExtra("placeName") ?? "Data not available";
             this.Title = name;
 
+            TextView textArea1 = FindViewById<TextView>(Resource.Id.textArea1);
+            TextView textArea2 = FindViewById<TextView>(Resource.Id.textArea2);
+            TextView textArea3 = FindViewById<TextView>(Resource.Id.textArea3);
+            TextView textArea4 = FindViewById<TextView>(Resource.Id.textArea4);
 
-            /*
-             * u NatjecanjeDetaljiLayout kreiraj Text polja i popuni ih s ovim podacima gore
-            */
+            textArea1.Text = "Od: " + timeStart;
+            textArea2.Text = "Do: " + timeEnd;
+            textArea3.Text = "Dvorana: " + hallName;
+            textArea4.Text = address + ", " + placeName;
 
 
             racesTable = client.GetTable<RaceView>();

@@ -6,55 +6,55 @@
     android:minWidth="25px"
     android:minHeight="25px">
     <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent">
-      <TextView
-        android:text="Stil"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight=".50"
-        android:id="@+id/textArea3" />
-      <TextView
-        android:text="Duljina"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight=".50"
-        android:id="@+id/textArea4" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="Stil"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:id="@+id/textArea3" />
+        <TextView
+            android:text="Duljina"
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:id="@+id/textArea4" />
     </LinearLayout>
     <TextView
-    android:text="Ime, prezime"
+        android:text="Ime, prezime"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textArea1" />
     <TextView
-    android:text="Datum rođenja, kategorija"
+        android:text="Datum rođenja, kategorija"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textArea2" />
     <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent">
-      <TextView
-        android:text="Datum"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight=".50"
-        android:id="@+id/textArea5" />
-      <TextView
-        android:text="Mjesto"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight=".50"
-        android:id="@+id/textArea6" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="Datum"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:id="@+id/textArea5" />
+        <TextView
+            android:text="Mjesto"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50"
+            android:id="@+id/textArea6" />
     </LinearLayout>
     <TextView
-    android:text="Vrijeme"
+        android:text="Vrijeme"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
