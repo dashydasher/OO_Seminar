@@ -7,7 +7,7 @@ namespace PlivanjeDesktop.ViewModels
     class ClubViewModel
     {
         public List<Club> clubs { get; set; }
-        public Club coachesClub { get; set; }
+        public List<Club> coachesClub { get; set; }
 
 
         public void LoadClubs()
@@ -16,8 +16,6 @@ namespace PlivanjeDesktop.ViewModels
             List<Club> list = new List<Club>();
             var cp = new ClubProcessor();
             list = cp.getClubs();
-            //foreach (var club in list)
-            //    clubs.Add(club);
             foreach (var club in list)
                 clubs.Add(new Club
                 {
@@ -27,47 +25,30 @@ namespace PlivanjeDesktop.ViewModels
                 });
         }
 
-        public void LoadClubs(int coachId)
+        public void LoadCoachesClub(int coachId)
         {
-            clubs = new List<Club>();
-            List<Club> list = new List<Club>();
             var cp = new ClubProcessor();
-            list = cp.getClubs();
-            //foreach (var club in list)
-            //    clubs.Add(club);
-            foreach (var club in list)
-                clubs.Add(new Club
-                {
-                    Name = club.Name,
-                    Address = club.Address,
-                    Place = cp.getPlace(club.Id)
-                });
+            var season = cp.ValidSeason();
+            
             if (coachId!=0)
             {
                 var cr = new Plivanje.Repositories.ClubRepository();
-                var coachesClubId = cr.getMyClubId(coachId);
-                foreach (var club in list)
+                var coachesClubId = cr.getMyClubId(coachId, season.Id);
+                coachesClub = new List<Club>();
+                foreach (var club in clubs)
                 {
                     if (club.Id.Equals(coachesClubId))
                     {
-                        coachesClub = club;
+                        coachesClub.Add(new Club
+                        {
+                            Name = club.Name,
+                            Address = club.Address,
+                            Place = cp.getPlace(club.Id)
+                        });
                         break;
                     }
                 }
             }
         }
-        //public Club getClub(int coachId)
-        //{
-        //    var cr = new Plivanje.Repositories.ClubRepository();
-        //    var coachesClubId = cr.getMyClubId(coachId);
-            
-        //    var cp = new ClubProcessor();
-        //    List<Club> list = cp.getClubs();
-        //    Club coachesClub = new Club();
-        //    foreach (var club in clubs)
-        //        if (club.Id.Equals(coachesClubId))
-        //            coachesClub = club;
-        //    return coachesClub;
-        //}
     }
 }

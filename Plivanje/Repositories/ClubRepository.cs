@@ -18,7 +18,7 @@ namespace Plivanje.Repositories
         Coach getCoach(int coachId);
         Season getSeason(int id);
         CoachSeason getSeasonCoachClub(int coachId);
-        int getMyClubId(int CoachId);
+        int getMyClubId(int CoachId, int seasonId);
         Coach getCoachOfClub(int ClubId);
         Season ValidSeason();
         CoachSeason getSeasonCoach(int idClub, int SeasonId);
@@ -164,7 +164,7 @@ namespace Plivanje.Repositories
 
             return season;
         }
-        public int getMyClubId(int CoachId)
+        public int getMyClubId(int CoachId, int seasonId)
         {
             int result;
             var klasa = new FluentNHibernateClass();
@@ -172,7 +172,7 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    result = session.QueryOver<CoachSeason>().Where(x => x.Coach.Id == CoachId).Select(c => c.Club.Id).SingleOrDefault<int>();
+                    result = session.QueryOver<CoachSeason>().Where(x => x.Coach.Id == CoachId && x.Season.Id == seasonId).Select(c => c.Club.Id).SingleOrDefault<int>();
 
                     transaction.Commit();
                 }
