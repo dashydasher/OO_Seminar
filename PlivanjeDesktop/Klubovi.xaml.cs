@@ -37,8 +37,8 @@ namespace PlivanjeDesktop
             var clubViewModel = new ClubViewModel();
             clubViewModel.LoadClubs();
             clubViewModel.LoadCoachesClub(id);
-            trenerKlub.Visibility = Visibility.Visible;
             this.DataContext = clubViewModel;
+            trenerKlub.Visibility = Visibility.Visible;
         }
         
 

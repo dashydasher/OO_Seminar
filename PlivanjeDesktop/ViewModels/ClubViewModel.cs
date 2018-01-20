@@ -27,7 +27,9 @@ namespace PlivanjeDesktop.ViewModels
 
         public void LoadCoachesClub(int coachId)
         {
+            List<Club> list = new List<Club>();
             var cp = new ClubProcessor();
+            list = cp.getClubs();
             var season = cp.ValidSeason();
             
             if (coachId!=0)
@@ -35,7 +37,7 @@ namespace PlivanjeDesktop.ViewModels
                 var cr = new Plivanje.Repositories.ClubRepository();
                 var coachesClubId = cr.getMyClubId(coachId, season.Id);
                 coachesClub = new List<Club>();
-                foreach (var club in clubs)
+                foreach (var club in list)
                 {
                     if (club.Id.Equals(coachesClubId))
                     {
