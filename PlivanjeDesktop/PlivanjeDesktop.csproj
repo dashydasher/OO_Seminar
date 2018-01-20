@@ -78,8 +78,13 @@
       <DependentUpon>Rekordi.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ClubViewModel.cs" />
+    <Compile Include="ViewModels\CompetitionViewModel.cs" />
+    <Compile Include="ViewModels\RaceViewModel.cs" />
     <Compile Include="ViewModels\RecordViewModel.cs" />
     <Compile Include="ViewModels\SwimmerViewModel.cs" />
+    <Compile Include="Utrke.xaml.cs">
+      <DependentUpon>Utrke.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -131,6 +136,10 @@
     <Page Include="Rekordi.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Utrke.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

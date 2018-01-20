@@ -17,28 +17,19 @@ using System.Windows.Shapes;
 namespace PlivanjeDesktop
 {
     /// <summary>
-    /// Interaction logic for Rekordi.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class Rekordi : Window
+    public partial class Utrke : Window
     {
+    
 
-        public List<Record> records = new List<Record>();
-        RecordViewModel rvm = new RecordViewModel();
-
-        public Rekordi(string _value)
+        public List<Race> races = new List<Race>();
+        RaceViewModel rvm = new RaceViewModel();
+        public Utrke(Competition competition)
         {
             InitializeComponent();
-
-            
-            var gender = _value.Trim().ToLower();
-            rvm.LoadRecordsByGender(gender);
+            rvm.LoadRacesByCompetition(competition.Name);
             this.DataContext = rvm;
-        }
-
-        public Rekordi(List<Record> rekordi)
-        {
-            InitializeComponent();
-            records.AddRange(rekordi);
         }
 
     }

@@ -6,7 +6,34 @@
         xmlns:local="clr-namespace:PlivanjeDesktop"
         mc:Ignorable="d"
         Title="Natjecanja" Height="300" Width="300" Style="{StaticResource HeaderStyle}">
+    <Window.Resources>
+        <Style x:Key="datagridC">
+
+        </Style>
+    </Window.Resources>
+
+
     <Grid>
-        
+
+        <GroupBox Header="Natjecanja">
+            <DataGrid Name="datagridC" ItemsSource="{Binding competitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Naziv" Binding="{Binding Path=Name}" />
+                    <DataGridTextColumn Header="Početak" Binding="{Binding Path=TimeStart}" />
+                    <DataGridTextColumn Header="Mjesto" Binding="{Binding Path=Hall.Place.Name}" />
+
+                    <DataGridTemplateColumn Header="">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="Button_Click">Popis utrka</Button>
+                            </DataTemplate>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
     </Grid>
 </Window>
