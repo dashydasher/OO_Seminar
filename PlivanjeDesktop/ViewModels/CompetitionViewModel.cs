@@ -19,7 +19,7 @@ namespace PlivanjeDesktop.ViewModels
             competitions = new List<Competition>();
             List<Competition> list = new List<Competition>();
             var cp = new CompetitionProcessor();
-            list = cp.GetListOfCompetitions();
+            list = cp.GetCompetitions();
  
             foreach (var competition in list)
                 competitions.Add(new Competition
