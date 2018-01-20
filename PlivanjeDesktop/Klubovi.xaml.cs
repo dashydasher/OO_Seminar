@@ -4,6 +4,9 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using PlivanjeDesktop.ViewModels;
+using System.Windows.Data;
+using System.Data;
+using System.Windows.Media;
 
 namespace PlivanjeDesktop
 {
@@ -13,7 +16,7 @@ namespace PlivanjeDesktop
     public partial class Klubovi : Window
     {
         private List<Club> clubs = new List<Club>();
-        int id = 0;
+        
         ClubViewModel clubViewModel;
 
         public Klubovi()
@@ -21,43 +24,50 @@ namespace PlivanjeDesktop
             InitializeComponent();
 
             clubViewModel = new ClubViewModel();
-            clubViewModel.LoadClubs(id);
+            clubViewModel.LoadClubs();
             this.DataContext = clubViewModel;
+
+            //var buttonTemplate = new FrameworkElementFactory(typeof(Button));
+            //buttonTemplate.Name = "plivačiButton";
+            //buttonTemplate.Text = "Popis plivača";
             
+            //buttonTemplate.AddHandler(
+            //    Button.ClickEvent,
+            //    new RoutedEventHandler((o, e) => MessageBox.Show("hi"))
+            //);
+            //datagrid.Columns.Add(new DataGridTextColumn { Header = "Ime kluba", Binding = new Binding("Name") });
+            //datagrid.Columns.Add(new DataGridTextColumn { Header = "Adresa kluba", Binding = new Binding("Address") });
+            //datagrid.Columns.Add(new DataGridTextColumn { Header = "Mjesto", Binding = new Binding("Place.Name") });
+            //datagrid.Columns.Add(new DataGridHyperlinkColumn { Header = "", Binding = new Binding("Place") });
+            //datagrid.Columns.Add(new DataGridTemplateColumn { CellTemplate = new DataTemplate() { VisualTree= buttonTemplate } } );
+            
+
+
         }
-        public Klubovi(int idd, string role)
+        public Klubovi(int id, string role)
         {
             InitializeComponent();
-
-            id = idd;
+            
             var clubViewModel = new ClubViewModel();
             clubViewModel.LoadClubs(id);
             this.DataContext = clubViewModel;
         }
-
-        //private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
-        //{
-        //    var lv = sender as TextBlock;
-        //    var curItem = ((ListBoxItem)listView.ContainerFromElement((TextBlock)sender));
-        //    listView.SelectedItem = (ListBoxItem)curItem;
-        //    MessageBox.Show($"Selected index = {listView.SelectedIndex}");
-        //}
+        
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var grid = sender as Button;
-            var gv = grid.Parent as GridView;
-            
-            var curItem = ((ListBoxItem)listView.ContainerFromElement((Button)sender));
-            listView.SelectedItem = (ListBoxItem)curItem;
-
-            var selectedClub = clubViewModel.clubs.GetRange(listView.SelectedIndex, 1)[0];
-            var svm = new SwimmerViewModel();
-            var plivači = svm.LoadSwimmersByClub(selectedClub.Id);
-            Plivači pl = new Plivači(plivači);
-            pl.Show();
-            this.Close();
+            var button = sender as Button;
+            var clubId = datagrid.SelectedIndex;
+            if (clubId >= 0)
+            {
+                var selectedClub = clubViewModel.clubs.GetRange(clubId, 1)[0];
+                Plivači pl = new Plivači(selectedClub);
+                pl.Show();
+                this.Close();
+            }
         }
+
+        
 
 
 

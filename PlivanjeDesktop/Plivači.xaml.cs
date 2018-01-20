@@ -23,21 +23,22 @@ namespace PlivanjeDesktop
     {
 
         public List<Swimmer> swimmers = new List<Swimmer>();
+        SwimmerViewModel svm = new SwimmerViewModel();
 
         public Plivači(string _value)
         {
             InitializeComponent();
-            SwimmerViewModel svm = new SwimmerViewModel();
             var categoryName = _value.Trim().ToLower();
             svm.LoadSwimmers(categoryName);
             this.DataContext = svm;
         }
 
-        //treba riješiti sa SwimmerViewModel
-        public Plivači(List<Swimmer> plivači)
+        
+        public Plivači(Club club)
         {
             InitializeComponent();
-            swimmers.AddRange(plivači);
+            svm.LoadSwimmersByClub(club.Name);
+            this.DataContext = svm;
         }
         
 

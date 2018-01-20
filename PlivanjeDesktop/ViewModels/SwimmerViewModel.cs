@@ -32,6 +32,14 @@ namespace PlivanjeDesktop.ViewModels
             return swimmers;
         }
 
+        public void LoadSwimmersByClub(string clubName)
+        {
+
+            var cp = new SwimmerProcessor();
+
+            swimmers = cp.GetListOfSwimmers(clubName);
+        }
+
         public void LoadSwimmers()
         {
             var sp = new SwimmerProcessor();

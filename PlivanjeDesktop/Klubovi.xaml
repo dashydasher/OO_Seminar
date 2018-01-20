@@ -6,28 +6,32 @@
         xmlns:local="clr-namespace:PlivanjeDesktop"
         mc:Ignorable="d"
         Title="Klubovi" Height="1000"  Width="1000" WindowState="Maximized" Style="{StaticResource HeaderStyle}">
+    <Window.Resources>
+        <Style x:Key="datagrid">
+            
+        </Style>
+    </Window.Resources>
     <Grid>
-         
-        <ListView HorizontalAlignment="Center" Name="listView" Height="500" Margin="0,10,0,0" FontSize="20" 
-              VerticalAlignment="Top" Width="810" ItemsSource="{Binding clubs}">
-            <ListView.View>
-                <GridView x:Name="GridView1">
-                    <GridViewColumn DisplayMemberBinding= "{Binding Path=Name}" 
-                                Header="Ime kluba" Width="230"/>
-                    <GridViewColumn DisplayMemberBinding= "{Binding Path=Address}" 
-                                Header="Adresa kluba" Width="230"/>
-                    <GridViewColumn DisplayMemberBinding= "{Binding Path=Place.Name}" 
-                                Header="Mjesto" Width="230"/>
-                    <GridViewColumn Header="" Width="110" >
-                        <GridViewColumn.CellTemplate >
-                            <DataTemplate >
-                                <!--<TextBlock MouseDown="TextBlock_MouseDown" TextWrapping="Wrap" Text="Popis plivača"/>-->
-                                <Button FontSize="12" Content="Popis plivača" Click="Button_Click"></Button>
+
+        <GroupBox Header="Klubovi">
+            <DataGrid Name="datagrid" ItemsSource="{Binding clubs}" RowStyle="{StaticResource datagrid}" AutoGenerateColumns="False" >
+                <DataGrid.Columns>
+
+                    <DataGridTextColumn Header="Ime kluba" Binding="{Binding Path=Name}" />
+                    <DataGridTextColumn Header="Adresa kluba" Binding="{Binding Path=Address}" />
+                    <DataGridTextColumn Header="Mjesto" Binding="{Binding Path=Place.Name}" />
+
+                    <DataGridTemplateColumn Header="">
+                        <DataGridTemplateColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Click="Button_Click">Popis plivača</Button>
                             </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+                        </DataGridTemplateColumn.CellTemplate>
+                    </DataGridTemplateColumn>
+                    
+                </DataGrid.Columns>
+            </DataGrid>
+        </GroupBox>
+
     </Grid>
 </Window>
