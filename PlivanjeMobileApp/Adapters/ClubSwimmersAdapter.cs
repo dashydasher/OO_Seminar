@@ -55,18 +55,9 @@ namespace PlivanjeMobileApp.Adapters
             ime.Text = currentItem.FirstName.Trim() + " " + currentItem.LastName;
             godina.Text = currentItem.DateOfBirth.ToString("yyyy");
 
-            spol.Touch += delegate (object sender, View.TouchEventArgs e)
-            {
-                SendPlivacData(sender, e, currentItem);
-            };
-            ime.Touch += delegate (object sender, View.TouchEventArgs e)
-            {
-                SendPlivacData(sender, e, currentItem);
-            };
-            godina.Touch += delegate (object sender, View.TouchEventArgs e)
-            {
-                SendPlivacData(sender, e, currentItem);
-            };
+            spol.Touch += delegate (object sender, View.TouchEventArgs e) { SendPlivacData(sender, e, currentItem); };
+            ime.Touch += delegate (object sender, View.TouchEventArgs e) { SendPlivacData(sender, e, currentItem); };
+            godina.Touch += delegate (object sender, View.TouchEventArgs e) { SendPlivacData(sender, e, currentItem); };
 
             return row;
         }

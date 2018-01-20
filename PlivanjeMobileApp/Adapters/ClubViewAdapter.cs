@@ -51,15 +51,8 @@ namespace PlivanjeMobileApp.Adapters
             largeText1.Text = currentItem.Name;
             mediumText1.Text = currentItem.Place;
 
-            largeText1.Touch += delegate (object sender, View.TouchEventArgs e)
-            {
-                SendClubData(sender, e, currentItem);
-            };
-
-            mediumText1.Touch += delegate (object sender, View.TouchEventArgs e)
-            {
-                SendClubData(sender, e, currentItem);
-            };
+            largeText1.Touch += delegate (object sender, View.TouchEventArgs e)  { SendClubData(sender, e, currentItem); };
+            mediumText1.Touch += delegate (object sender, View.TouchEventArgs e) {  SendClubData(sender, e, currentItem); };
 
             return row;
         }

@@ -14,6 +14,7 @@ namespace PlivanjeMobileApp.Activities
     [Activity(Label = "Klubovi")]
     public class KluboviActivity : Activity
     {
+        ProgressBar progressBar;
         private MobileServiceClient client;
         private IMobileServiceTable<ClubView> clubTable;
         private ClubViewAdapter adapter;
@@ -23,11 +24,12 @@ namespace PlivanjeMobileApp.Activities
         {
             base.OnCreate(savedInstanceState);
 
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.ListViewLayout);
 
+            progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar1);
+
             CurrentPlatform.Init();
-            
+
             client = new MobileServiceClient(applicationURL);
 
             clubTable = client.GetTable<ClubView>();
@@ -36,24 +38,18 @@ namespace PlivanjeMobileApp.Activities
             var listViewPlace = FindViewById<ListView>(Resource.Id.listViewLayout);
             listViewPlace.Adapter = adapter;
 
-            try
-            {
-                var list = await clubTable.ToListAsync();
+            var list = await clubTable.ToListAsync();
 
-                adapter.Clear();
+            adapter.Clear();
+            foreach (ClubView current in list)
+                adapter.Add(current);
 
-                foreach (ClubView current in list)
-                    adapter.Add(current);
-
-            }
-            catch (Exception e)
-            {
-            }
+            progressBar.Visibility = ViewStates.Gone;
         }
 
 
         [Java.Interop.Export()]
-        public async void AddItem(View view)
+        public void AddItem(View view)
         {
             return;
         }

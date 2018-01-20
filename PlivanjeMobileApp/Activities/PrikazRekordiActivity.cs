@@ -18,6 +18,7 @@ namespace PlivanjeMobileApp.Activities
     [Activity(Label = "PrikazRekordiActivity")]
     public class PrikazRekordiActivity : Activity
     {
+        ProgressBar progressBar;
         private MobileServiceClient client;
         const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
         private IMobileServiceTable<Record> recordTable;
@@ -30,6 +31,8 @@ namespace PlivanjeMobileApp.Activities
             client = new MobileServiceClient(applicationURL);
 
             SetContentView(Resource.Layout.ListViewLayout);
+
+            progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar1);
 
             string gender = Intent.GetStringExtra("gender") ?? "Data not available";
 
@@ -60,6 +63,8 @@ namespace PlivanjeMobileApp.Activities
             adapter.Clear();
             foreach (Record current in records)
                 adapter.Add(current);
+
+            progressBar.Visibility = ViewStates.Gone;
         }
     }
 }

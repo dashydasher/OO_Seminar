@@ -38,7 +38,7 @@ namespace PlivanjeMobileApp
 
 
         [Java.Interop.Export()]
-        public async void AddItem(View view)
+        public void AddItem(View view)
         {
             return;
         }
