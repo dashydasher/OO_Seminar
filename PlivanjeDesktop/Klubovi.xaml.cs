@@ -7,6 +7,7 @@ using PlivanjeDesktop.ViewModels;
 using System.Windows.Data;
 using System.Data;
 using System.Windows.Media;
+using System;
 
 namespace PlivanjeDesktop
 {
@@ -26,22 +27,7 @@ namespace PlivanjeDesktop
             clubViewModel = new ClubViewModel();
             clubViewModel.LoadClubs();
             this.DataContext = clubViewModel;
-
-            //var buttonTemplate = new FrameworkElementFactory(typeof(Button));
-            //buttonTemplate.Name = "plivačiButton";
-            //buttonTemplate.Text = "Popis plivača";
             
-            //buttonTemplate.AddHandler(
-            //    Button.ClickEvent,
-            //    new RoutedEventHandler((o, e) => MessageBox.Show("hi"))
-            //);
-            //datagrid.Columns.Add(new DataGridTextColumn { Header = "Ime kluba", Binding = new Binding("Name") });
-            //datagrid.Columns.Add(new DataGridTextColumn { Header = "Adresa kluba", Binding = new Binding("Address") });
-            //datagrid.Columns.Add(new DataGridTextColumn { Header = "Mjesto", Binding = new Binding("Place.Name") });
-            //datagrid.Columns.Add(new DataGridHyperlinkColumn { Header = "", Binding = new Binding("Place") });
-            //datagrid.Columns.Add(new DataGridTemplateColumn { CellTemplate = new DataTemplate() { VisualTree= buttonTemplate } } );
-            
-
 
         }
         public Klubovi(int id, string role)
@@ -60,10 +46,14 @@ namespace PlivanjeDesktop
             var clubId = datagrid.SelectedIndex;
             if (clubId >= 0)
             {
-                var selectedClub = clubViewModel.clubs.GetRange(clubId, 1)[0];
-                Plivači pl = new Plivači(selectedClub);
-                pl.Show();
-                this.Close();
+                try
+                {
+                    var selectedClub = clubViewModel.clubs.GetRange(clubId, 1)[0];
+                    Plivači pl = new Plivači(selectedClub);
+                    pl.Show();
+                    this.Close();
+                }
+                catch (Exception exc) { }
             }
         }
 

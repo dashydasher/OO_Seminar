@@ -5,9 +5,23 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlivanjeDesktop"
         mc:Ignorable="d"
-        Title="Plivači" Height="592.6" Width="855.6" Style="{StaticResource HeaderStyle}">
+        Title="Plivači" WindowState="Maximized" Height="592.6" Width="855.6" Style="{StaticResource HeaderStyle}">
     <Grid>
-        <ListView HorizontalAlignment="Center" Name="listView" Height="500" Margin="0,10,0,0" FontSize="20" 
+        <StackPanel Width="1000">
+            <GroupBox Header="Plivači" FontSize="20">
+                <DataGrid Name="datagridSwimmer" CanUserAddRows="false"
+                          FontSize="20" ItemsSource="{Binding swimmers}" AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding Path=FirstName}" />
+                        <DataGridTextColumn Header="Prezime" Width="250" Binding="{Binding Path=LastName}" />
+                        <DataGridTextColumn Header="Spol" Width="200" Binding="{Binding Path=Gender}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </StackPanel>
+
+        <!--<ListView HorizontalAlignment="Center" Name="listView" Height="500" Margin="0,10,0,0" FontSize="20" 
               VerticalAlignment="Top" Width="810" ItemsSource="{Binding swimmers}">
             <ListView.View>
                 <GridView x:Name="GridView1">
@@ -20,6 +34,6 @@
                     
                 </GridView>
             </ListView.View>
-        </ListView>
+        </ListView>-->
     </Grid>
 </Window>

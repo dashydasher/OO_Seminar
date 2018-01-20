@@ -12,14 +12,14 @@
         </Style>
     </Window.Resources>
     <Grid>
-
-        <GroupBox Header="Klubovi">
-            <DataGrid Name="datagrid" ItemsSource="{Binding clubs}" RowStyle="{StaticResource datagrid}" AutoGenerateColumns="False" >
+        <StackPanel Width="1000">
+            <GroupBox Header="Klubovi" FontSize="20">
+                <DataGrid Name="datagrid" CanUserAddRows="false" FontSize="20" ItemsSource="{Binding clubs}" RowStyle="{StaticResource datagrid}" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="Ime kluba" Binding="{Binding Path=Name}" />
-                    <DataGridTextColumn Header="Adresa kluba" Binding="{Binding Path=Address}" />
-                    <DataGridTextColumn Header="Mjesto" Binding="{Binding Path=Place.Name}" />
+                    <DataGridTextColumn Header="Ime kluba" Width="*" Binding="{Binding Path=Name}" />
+                    <DataGridTextColumn Header="Adresa kluba" Width="250" Binding="{Binding Path=Address}" />
+                    <DataGridTextColumn Header="Mjesto" Width="200" Binding="{Binding Path=Place.Name}" />
 
                     <DataGridTemplateColumn Header="">
                         <DataGridTemplateColumn.CellTemplate>
@@ -32,6 +32,6 @@
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
-
+        </StackPanel>
     </Grid>
 </Window>
