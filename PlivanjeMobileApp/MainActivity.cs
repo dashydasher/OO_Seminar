@@ -23,6 +23,10 @@ namespace PlivanjeMobileApp
             Button plivaciButton = FindViewById<Button>(Resource.Id.mainplivacibut);
             Button rekordiButton = FindViewById<Button>(Resource.Id.mainrekordibut);
 
+            natjecanjaButton.Click += delegate {
+                StartActivity(typeof(NatjecanjaActivity));
+            };
+
             kluboviButton.Click += delegate {
                 StartActivity(typeof(KluboviActivity));
             };

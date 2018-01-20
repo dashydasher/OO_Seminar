@@ -1,0 +1,106 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+using Android.App;
+using Android.Content;
+using Android.OS;
+using Android.Runtime;
+using Android.Views;
+using Android.Widget;
+using PlivanjeMobileApp.Activities;
+using PlivanjeMobileApp.Models;
+
+namespace PlivanjeMobileApp.Adapters
+{
+    class NatjecanjaAdapter : BaseAdapter<CompetitionView>
+    {
+
+        Activity activity;
+        int layoutResourceId;
+        List<CompetitionView> items = new List<CompetitionView>();
+
+        public NatjecanjaAdapter(Activity activity, int layoutResourceId)
+        {
+            this.activity = activity;
+            this.layoutResourceId = layoutResourceId;
+        }
+
+        public override View GetView(int position, View convertView, ViewGroup parent)
+        {
+            var row = convertView;
+            var currentItem = this[position];
+            TextView textArea1;
+            TextView textArea2;
+            TextView textArea3;
+            TextView textArea4;
+            TextView textArea5;
+            TextView textArea6;
+            TextView textArea7;
+
+            if (row == null)
+            {
+                var inflater = activity.LayoutInflater;
+                row = inflater.Inflate(layoutResourceId, parent, false);
+                textArea1 = row.FindViewById<TextView>(Resource.Id.textArea1);
+                textArea2 = row.FindViewById<TextView>(Resource.Id.textArea2);
+                textArea3 = row.FindViewById<TextView>(Resource.Id.textArea3);
+            }
+            else
+            {
+                textArea1 = row.FindViewById<TextView>(Resource.Id.textArea1);
+                textArea2 = row.FindViewById<TextView>(Resource.Id.textArea2);
+                textArea3 = row.FindViewById<TextView>(Resource.Id.textArea3);
+            }
+
+            textArea1.Text = currentItem.Name.Trim();
+            textArea2.Text = currentItem.TimeStart.ToString("dd/MM/yyyy");
+            textArea3.Text = currentItem.PlaceName.Trim();
+
+            return row;
+        }
+
+        public void Add(CompetitionView item)
+        {
+            items.Add(item);
+            NotifyDataSetChanged();
+        }
+
+        public void Clear()
+        {
+            items.Clear();
+            NotifyDataSetChanged();
+        }
+
+        #region implemented abstract members of BaseAdapter
+
+        public override Java.Lang.Object GetItem(int position)
+        {
+            return position;
+        }
+
+        public override long GetItemId(int position)
+        {
+            return position;
+        }
+
+        public override int Count
+        {
+            get
+            {
+                return items.Count;
+            }
+        }
+
+        public override CompetitionView this[int position]
+        {
+            get
+            {
+                return items[position];
+            }
+        }
+
+        #endregion
+    }
+}
