@@ -18,7 +18,7 @@
                             </Grid.RowDefinitions>
 
                             <!-- Header -->
-                            <Border Grid.Row="0" Background="Red">
+                            <Border Grid.Row="0" >
                                 <Menu DockPanel.Dock="Top">
                                     <MenuItem Header="NATJECANJA" Name="Competition" Click="Competition_Click"/>
                                     <MenuItem Header="KLUBOVI"  Name="Clubs" Click="Clubs_Click"/>
@@ -45,10 +45,6 @@
                             <!-- Body -->
                             <ContentPresenter Grid.Row="1"/>
 
-                            <!-- Footer -->
-                            <Border Grid.Row="2" Background="Red">
-                                <TextBlock Text="Footer"/>
-                            </Border>
                         </Grid>
                     </ControlTemplate>
                 </Setter.Value>

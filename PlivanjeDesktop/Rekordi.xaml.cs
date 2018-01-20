@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Plivanje.Models;
+using PlivanjeDesktop.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +21,25 @@ namespace PlivanjeDesktop
     /// </summary>
     public partial class Rekordi : Window
     {
+
+        public List<Record> records = new List<Record>();
+
         public Rekordi(string _value)
         {
             InitializeComponent();
+
+            RecordViewModel rvm = new RecordViewModel();
+            var gender = _value.Trim().ToLower();
+            rvm.LoadRecords(gender);
+            this.DataContext = rvm;
         }
+
+        public Rekordi(List<Record> rekordi)
+        {
+            InitializeComponent();
+            records.AddRange(rekordi);
+        }
+
+
     }
 }
