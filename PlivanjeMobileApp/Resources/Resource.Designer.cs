@@ -114,6 +114,9 @@ namespace PlivanjeMobileApp
 		public partial class Id
 		{
 			
+			// aapt resource value: 0x7f09001a
+			public const int autocomplete_plivac = 2131296282;
+			
 			// aapt resource value: 0x7f090007
 			public const int godina = 2131296263;
 			
@@ -147,20 +150,20 @@ namespace PlivanjeMobileApp
 			// aapt resource value: 0x7f090012
 			public const int mediumTextLayout = 2131296274;
 			
-			// aapt resource value: 0x7f09002a
-			public const int menu_klubovi = 2131296298;
-			
-			// aapt resource value: 0x7f090029
-			public const int menu_natjecanja = 2131296297;
-			
-			// aapt resource value: 0x7f09002b
-			public const int menu_plivaci = 2131296299;
+			// aapt resource value: 0x7f09002d
+			public const int menu_klubovi = 2131296301;
 			
 			// aapt resource value: 0x7f09002c
-			public const int menu_rekordi = 2131296300;
+			public const int menu_natjecanja = 2131296300;
 			
-			// aapt resource value: 0x7f090028
-			public const int menu_search = 2131296296;
+			// aapt resource value: 0x7f09002e
+			public const int menu_plivaci = 2131296302;
+			
+			// aapt resource value: 0x7f09002f
+			public const int menu_rekordi = 2131296303;
+			
+			// aapt resource value: 0x7f09002b
+			public const int menu_search = 2131296299;
 			
 			// aapt resource value: 0x7f090002
 			public const int mjesto = 2131296258;
@@ -174,29 +177,29 @@ namespace PlivanjeMobileApp
 			// aapt resource value: 0x7f090004
 			public const int plivaci = 2131296260;
 			
-			// aapt resource value: 0x7f09001d
-			public const int plivacijunbut = 2131296285;
-			
 			// aapt resource value: 0x7f09001f
-			public const int plivacikadbut = 2131296287;
-			
-			// aapt resource value: 0x7f09001e
-			public const int plivacimjunbut = 2131296286;
-			
-			// aapt resource value: 0x7f090020
-			public const int plivacimkadbut = 2131296288;
-			
-			// aapt resource value: 0x7f09001c
-			public const int plivacimsenbut = 2131296284;
+			public const int plivacijunbut = 2131296287;
 			
 			// aapt resource value: 0x7f090021
-			public const int plivacipocbut = 2131296289;
+			public const int plivacikadbut = 2131296289;
 			
-			// aapt resource value: 0x7f09001b
-			public const int plivacisenbut = 2131296283;
+			// aapt resource value: 0x7f090020
+			public const int plivacimjunbut = 2131296288;
 			
-			// aapt resource value: 0x7f09001a
-			public const int plivacivetbut = 2131296282;
+			// aapt resource value: 0x7f090022
+			public const int plivacimkadbut = 2131296290;
+			
+			// aapt resource value: 0x7f09001e
+			public const int plivacimsenbut = 2131296286;
+			
+			// aapt resource value: 0x7f090023
+			public const int plivacipocbut = 2131296291;
+			
+			// aapt resource value: 0x7f09001d
+			public const int plivacisenbut = 2131296285;
+			
+			// aapt resource value: 0x7f09001c
+			public const int plivacivetbut = 2131296284;
 			
 			// aapt resource value: 0x7f090018
 			public const int podaci = 2131296280;
@@ -204,11 +207,14 @@ namespace PlivanjeMobileApp
 			// aapt resource value: 0x7f09000b
 			public const int progressBar1 = 2131296267;
 			
-			// aapt resource value: 0x7f090025
-			public const int rekordimbut = 2131296293;
+			// aapt resource value: 0x7f090027
+			public const int rekordimbut = 2131296295;
 			
-			// aapt resource value: 0x7f090026
-			public const int rekordizbut = 2131296294;
+			// aapt resource value: 0x7f090028
+			public const int rekordizbut = 2131296296;
+			
+			// aapt resource value: 0x7f09001b
+			public const int searchbut = 2131296283;
 			
 			// aapt resource value: 0x7f090019
 			public const int sezone = 2131296281;
@@ -231,17 +237,20 @@ namespace PlivanjeMobileApp
 			// aapt resource value: 0x7f090016
 			public const int textArea4 = 2131296278;
 			
-			// aapt resource value: 0x7f090022
-			public const int textArea5 = 2131296290;
-			
-			// aapt resource value: 0x7f090023
-			public const int textArea6 = 2131296291;
-			
 			// aapt resource value: 0x7f090024
-			public const int textArea7 = 2131296292;
+			public const int textArea5 = 2131296292;
 			
-			// aapt resource value: 0x7f090027
-			public const int toolbar = 2131296295;
+			// aapt resource value: 0x7f090025
+			public const int textArea6 = 2131296293;
+			
+			// aapt resource value: 0x7f090026
+			public const int textArea7 = 2131296294;
+			
+			// aapt resource value: 0x7f090029
+			public const int textView1 = 2131296297;
+			
+			// aapt resource value: 0x7f09002a
+			public const int toolbar = 2131296298;
 			
 			// aapt resource value: 0x7f09000d
 			public const int toolbarIncluded = 2131296269;
@@ -308,16 +317,22 @@ namespace PlivanjeMobileApp
 			public const int Rekordi = 2130903054;
 			
 			// aapt resource value: 0x7f03000f
-			public const int SezonaPlivaca = 2130903055;
+			public const int searchListItem = 2130903055;
 			
 			// aapt resource value: 0x7f030010
-			public const int toolbar = 2130903056;
+			public const int SearchResultsLayout = 2130903056;
 			
 			// aapt resource value: 0x7f030011
-			public const int UtrkaDetaljiLayout = 2130903057;
+			public const int SezonaPlivaca = 2130903057;
 			
 			// aapt resource value: 0x7f030012
-			public const int UtrkaOsnovnoLayout = 2130903058;
+			public const int toolbar = 2130903058;
+			
+			// aapt resource value: 0x7f030013
+			public const int UtrkaDetaljiLayout = 2130903059;
+			
+			// aapt resource value: 0x7f030014
+			public const int UtrkaOsnovnoLayout = 2130903060;
 			
 			static Layout()
 			{

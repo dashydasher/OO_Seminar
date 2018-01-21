@@ -97,6 +97,7 @@
     <Compile Include="Activities\PlivaciPoKategorijiActivity.cs" />
     <Compile Include="Activities\PrikazRekordiActivity.cs" />
     <Compile Include="Activities\RekordiActivity.cs" />
+    <Compile Include="Activities\SearchActivity.cs" />
     <Compile Include="Activities\UtrkaDetaljiActivity.cs" />
     <Compile Include="Adapters\ClubSwimmersAdapter.cs" />
     <Compile Include="Adapters\ClubViewAdapter.cs" />
@@ -177,6 +178,12 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <AndroidResource Include="Resources\layout\toolbar.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\searchListItem.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+    <AndroidResource Include="Resources\layout\SearchResultsLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>

@@ -20,6 +20,7 @@ namespace PlivanjeMobileApp.Activities
         private MobileServiceClient client;
         const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
         private IMobileServiceTable<Category> categoriesTable;
+        private IMobileServiceTable<SwimmersView> swimmersTable;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -39,6 +40,28 @@ namespace PlivanjeMobileApp.Activities
             {
                 categories.Add(cat.Name.Trim(), cat.Id.Trim());
             }
+
+            swimmersTable = client.GetTable<SwimmersView>();
+
+            var swimmers = await swimmersTable
+                .Where(e => e.TimeStart.Year == DateTime.Today.Year)
+                .ToListAsync();
+
+            List<string> swimmerNames = new List<string>();
+            foreach (SwimmersView current in swimmers)
+                swimmerNames.Add(current.FirstName.Trim() + " " + current.LastName.Trim());
+
+            AutoCompleteTextView textView = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_plivac);
+            var adapter = new ArrayAdapter<String>(this, Resource.Layout.searchListItem, swimmerNames);
+
+            textView.Adapter = adapter;
+            Button searchButton = FindViewById<Button>(Resource.Id.searchbut);
+
+            var searchactivity = new Intent(this, typeof(SearchActivity));
+            searchButton.Click += delegate {
+                searchactivity.PutExtra("pretrazujem", textView.Text);
+                StartActivity(searchactivity);
+            };
 
             Button plivaciVeterani = FindViewById<Button>(Resource.Id.plivacivetbut);
             Button plivaciSeniori = FindViewById<Button>(Resource.Id.plivacisenbut);
