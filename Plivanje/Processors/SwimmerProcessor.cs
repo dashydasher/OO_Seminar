@@ -85,5 +85,10 @@ namespace Plivanje.Processors
         {
             _swimmerRepository.deleteSwimmerFromClub(swSeason);
         }
+
+        public Club getMyClub(int swimmerId, int seasonId)
+        {
+            return _swimmerRepository.GetMyClub(swimmerId, seasonId);
+        }
     }
 }
