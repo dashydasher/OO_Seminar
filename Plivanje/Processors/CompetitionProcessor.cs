@@ -33,9 +33,22 @@ namespace Plivanje.Processors
             return Repository.GetListOfCompetitions();
         }
 
+
         public List<Competition> GetCompetitions()
         {
             return Repository.GetCompetitions();
+
+
+        }
+       
+
+        public Competition GetCompetition(int idCompetition)
+        {
+            return Repository.getCompetition(idCompetition);
+        }
+        public List<Race> getRacesInCompetition(int idCompetition)
+        {
+            return Repository.getRacesInCompetition(idCompetition);
         }
     }
 }

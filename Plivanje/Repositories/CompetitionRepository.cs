@@ -12,7 +12,11 @@ namespace Plivanje.Repositories
     {
         void UpdateCompetition(Competition c);
         List<Competition> GetListOfCompetitions();
+
         List<Competition> GetCompetitions();
+
+        Competition getCompetition(int idCompetition);
+        List<Race> getRacesInCompetition(int idCompetition);
 
 
 
@@ -40,8 +44,43 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    result = (List <Competition>)session.QueryOver<Competition>().List<Competition>().OrderByDescending(x => x.TimeStart);
+                    result = (List<Competition>)session.QueryOver<Competition>().List<Competition>();
                     transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public Competition getCompetition(int idCompetition)
+        {
+            var result = new Competition();
+            var clas = new FluentNHibernateClass();
+            var dvorana = new Hall();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<Competition>().Where(x => x.Id == idCompetition).SingleOrDefault();
+                    dvorana = result.Hall;
+                    dvorana.Name = result.Name;
+                    result.Hall = dvorana;
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public List<Race> getRacesInCompetition(int idCompetition)
+        {
+            var result = new List<Race>();
+            var klasa = new FluentNHibernateClass();
+
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (List<Race>)session.QueryOver<Race>().Where(x => x.Competition.Id == idCompetition).List<Race>();
+
                 }
             }
             return result;
@@ -55,7 +94,7 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    result = (List<Competition>)session.QueryOver<Competition>().OrderBy(x => x.TimeStart).Desc.List<Competition>();
+                    result = (List<Competition>)session.QueryOver<Competition>().List<Competition>();
                     transaction.Commit();
                 }
             }
@@ -63,3 +102,4 @@ namespace Plivanje.Repositories
         }
     }
 }
+

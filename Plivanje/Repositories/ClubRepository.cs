@@ -166,13 +166,19 @@ namespace Plivanje.Repositories
         }
         public int getMyClubId(int CoachId, int seasonId)
         {
+            Coach coach = null;
+            Season season = null;
             int result;
             var klasa = new FluentNHibernateClass();
             using (var session = klasa.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
+
                     result = session.QueryOver<CoachSeason>().Where(x => x.Coach.Id == CoachId && x.Season.Id == seasonId).Select(c => c.Club.Id).SingleOrDefault<int>();
+
+                    result = (int)session.QueryOver<CoachSeason>().JoinAlias(x => x.Coach, () => coach).JoinAlias(x => x.Season, () => season).Where(() => season.TimeEnd > DateTime.Now && coach.Id == CoachId).Select(x => x.Club.Id).SingleOrDefault<int>();
+
 
                     transaction.Commit();
                 }
