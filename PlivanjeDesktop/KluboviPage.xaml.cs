@@ -58,10 +58,9 @@ namespace PlivanjeDesktop
                 {
                     var selectedClub = clubViewModel.clubs.GetRange(clubId, 1)[0];
                     PlivačiPage pl = new PlivačiPage(selectedClub);
-                   
-                   // Početna.Main.Content = pl;   ----> treba se pristupiti Frame-u "Main" u Početna Windowu, nezz kak
-                    
-                    
+                    NavigationService navService = NavigationService.GetNavigationService(this);
+                    navService.Navigate(pl);
+
                 }
                 catch (Exception exc) { }
             }

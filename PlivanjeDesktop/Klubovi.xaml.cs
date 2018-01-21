@@ -51,9 +51,10 @@ namespace PlivanjeDesktop
                 try
                 {
                     var selectedClub = clubViewModel.clubs.GetRange(clubId, 1)[0];
-                    Plivači pl = new Plivači(selectedClub);
-                    pl.Show();
-                    this.Close();
+                    //Plivači pl = new Plivači(selectedClub);
+                    //pl.Show();
+                    //this.Close();
+                    MessageBox.Show("Sad je to u tom prozoru...");
                 }
                 catch (Exception exc) { }
             }
