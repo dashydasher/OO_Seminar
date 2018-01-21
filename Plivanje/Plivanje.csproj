@@ -120,6 +120,7 @@
     <Compile Include="Processors\CoachProcessor.cs" />
     <Compile Include="Processors\CompetitionProcessor.cs" />
     <Compile Include="Processors\HallProcessor.cs" />
+    <Compile Include="Processors\RaceProcessor.cs" />
     <Compile Include="Processors\RecordsProcessor.cs" />
     <Compile Include="Processors\RefereeProcessor.cs" />
     <Compile Include="Processors\SeasonProcessor.cs" />
@@ -133,6 +134,7 @@
     <Compile Include="Repositories\CoachRepository.cs" />
     <Compile Include="Repositories\CompetitionRepository.cs" />
     <Compile Include="Repositories\HallRepository.cs" />
+    <Compile Include="Repositories\RaceRepository.cs" />
     <Compile Include="Repositories\RecordsRepository.cs" />
     <Compile Include="Repositories\RefereeRepository.cs" />
     <Compile Include="Repositories\SeasonRepository.cs" />

@@ -44,5 +44,13 @@ namespace Plivanje.Processors
         {
             _RaceRepository.DeleteRace(raceId);
         }
+       public Length GetLength(int id)
+        {
+            return _RaceRepository.GetLength(id);
+        }
+       public List<Length> GetLenghts()
+        {
+            return _RaceRepository.GetLenghts();
+        }
     }
 }

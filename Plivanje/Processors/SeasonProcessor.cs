@@ -22,9 +22,9 @@ namespace Plivanje.Processors
         {
             _SeasonRepository = new SeasonRepository();
         }
-        public Season getNowSeason(int id)
+        public Season getNowSeason()
         {
-            return _SeasonRepository.getNowSeason(id);
+            return _SeasonRepository.getNowSeason();
         }
 
     }

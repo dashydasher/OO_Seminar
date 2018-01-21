@@ -75,6 +75,15 @@ namespace Plivanje.Processors
         public List<Swimmer> getSwimmersByCategory(Category category)
         {
             return _swimmerRepository.GetSwimmersByCategory(category);
-        } 
+        }
+
+        public SwimmerSeason GetSwimmerSeason(int swimmerId)
+        {
+            return _swimmerRepository.GetSwimmerSeason(swimmerId);
+        }
+        public void deleteSwimmerFromClub(SwimmerSeason swSeason)
+        {
+            _swimmerRepository.deleteSwimmerFromClub(swSeason);
+        }
     }
 }

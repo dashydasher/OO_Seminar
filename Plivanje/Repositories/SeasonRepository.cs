@@ -10,12 +10,12 @@ namespace Plivanje.Repositories
     public interface ISeasonRepository
         {
 
-             Season getNowSeason(int id);
+             Season getNowSeason();
         }
 
     public class SeasonRepository : ISeasonRepository
     {
-        public Season getNowSeason(int id)
+        public Season getNowSeason()
         {
             var result = new Season();
             var klasa = new FluentNHibernateClass();
@@ -24,7 +24,7 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    result = session.QueryOver<Season>().Where(x => x.Id == id).List().FirstOrDefault();
+                    result = session.QueryOver<Season>().Where(x => x.TimeEnd > DateTime.Now).List().FirstOrDefault();
                   
                     transaction.Commit();
                 }

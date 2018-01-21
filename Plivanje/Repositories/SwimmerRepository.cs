@@ -1,5 +1,6 @@
 ﻿using NHibernate.Linq;
 using Plivanje.Models;
+using Plivanje.Processors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,8 @@ namespace Plivanje.Repositories
         void UpdateSwimmerSeason(SwimmerSeason swimmerSeason);
         Category GetSwimmerCategory(Swimmer swimmer);
         List<Swimmer> GetSwimmersByCategory(Category category);
+        SwimmerSeason GetSwimmerSeason(int swimmerId);
+        void deleteSwimmerFromClub(SwimmerSeason swSeason);
 
     }
 
@@ -164,12 +167,12 @@ namespace Plivanje.Repositories
 
         public void UpdateSwimmerLicence(Swimmer swimmer)
         {
+            SeasonProcessor sp = new SeasonProcessor();
             Licence l = new Licence();
             l.IssueDate = DateTime.Now;
             l.Number = swimmer.DateOfBirth.Day + 10000;
-            Season s = new Season();
-            s.TimeStart = DateTime.Parse("01.01.2018.");
-            s.TimeEnd = s.TimeStart.AddYears(1);
+            Season s = sp.getNowSeason();
+            
             LicenceSwimmer licence = new LicenceSwimmer();
             licence.Season = s;
             licence.Swimmer = swimmer;
@@ -248,7 +251,7 @@ namespace Plivanje.Repositories
                 using (var transaction = session.BeginTransaction())
                 {
 
-                    result = session.Query<Category>().Where(x => x.AgeFrom <( DateTime.Now.Year - swimmer.DateOfBirth.Year) && (x.AgeTo > (DateTime.Now.Year - swimmer.DateOfBirth.Year))).ToList().FirstOrDefault();
+                    result = session.Query<Category>().Where(x => x.AgeFrom <=( DateTime.Now.Year - swimmer.DateOfBirth.Year) && (x.AgeTo >= (DateTime.Now.Year - swimmer.DateOfBirth.Year))).ToList().FirstOrDefault();
                     
                     transaction.Commit();
                 }
@@ -272,6 +275,41 @@ namespace Plivanje.Repositories
                 }
             }
             return result;
+        }
+
+        public SwimmerSeason GetSwimmerSeason(int swimmerId)
+        {
+            SwimmerSeason result = null;
+            Swimmer swimmer = null;
+            Season season = null;
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+                    result = session.QueryOver<SwimmerSeason>().JoinAlias(x => x.Swimmer, () => swimmer).JoinAlias(x => x.Season, () => season).Where(() => season.TimeEnd > DateTime.Now && swimmer.Id == swimmerId).SingleOrDefault();
+
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public void deleteSwimmerFromClub(SwimmerSeason swSeason)
+        {
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+                    session.Delete(swSeason);
+
+                    transaction.Commit();
+                }
+            }
+            
         }
     }
     }
