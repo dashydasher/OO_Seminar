@@ -12,25 +12,23 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PlivanjeDesktop
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for UtrkePage.xaml
     /// </summary>
-    public partial class Utrke : Window
+    public partial class UtrkePage : Page
     {
-    
-
         public List<Race> races = new List<Race>();
         RaceViewModel rvm = new RaceViewModel();
-        public Utrke(Competition competition)
+        public UtrkePage(Competition competition)
         {
             InitializeComponent();
             rvm.LoadRacesByCompetition(competition.Name);
             this.DataContext = rvm;
         }
-
     }
 }

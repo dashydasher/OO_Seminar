@@ -12,22 +12,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PlivanjeDesktop
 {
     /// <summary>
-    /// Interaction logic for Natjecanja.xaml
+    /// Interaction logic for NatjecanjaPage.xaml
     /// </summary>
-    /// 
-
-    public partial class Natjecanja : Window
+    public partial class NatjecanjaPage : Page
     {
         private List<Competition> competitions = new List<Competition>();
 
         CompetitionViewModel competitionViewModel;
 
-        public Natjecanja()
+        public NatjecanjaPage()
         {
             InitializeComponent();
 
@@ -36,7 +35,7 @@ namespace PlivanjeDesktop
             this.DataContext = competitionViewModel;
 
         }
-   
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -44,9 +43,9 @@ namespace PlivanjeDesktop
             if (competitionId >= 0)
             {
                 var selectedCompetition = competitionViewModel.competitions.GetRange(competitionId, 1)[0];
-                Utrke pl = new Utrke(selectedCompetition);
-                pl.Show();
-                this.Close();
+                UtrkePage up = new UtrkePage(selectedCompetition);
+                // Početna.Main.Content = pl;   ----> treba se pristupiti Frame-u "Main" u Početna Windowu, nezz kak
+
             }
         }
     }

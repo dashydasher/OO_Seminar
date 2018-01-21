@@ -1,6 +1,4 @@
-﻿
-using Plivanje;
-using Plivanje.Models;
+﻿using Plivanje.Models;
 using Plivanje.Processors;
 using System;
 using System.Collections.Generic;
@@ -20,43 +18,29 @@ using System.Windows.Shapes;
 namespace PlivanjeDesktop
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for PrijavaPage.xaml
     /// </summary>
-    public partial class Prijava : Window
+    public partial class PrijavaPage : Page
     {
-        public Prijava()
+        public PrijavaPage()
         {
             InitializeComponent();
             Register.Click += new RoutedEventHandler(Register_Click);
 
         }
-        private void Window_Loaded(object sender, RoutedEventArgs e)
-        {
-            //ObjectQuery<Category> categories = dataEntities.Products;
-
-            //var query =
-            //from product in products
-            //where product.Color == "Red"
-            //orderby product.ListPrice
-            //select new { product.Name, product.Color, CategoryName = product.ProductCategory.Name, product.ListPrice };
-
-            //dataGrid1.ItemsSource = query.ToList();
-        }
-
+  
         private void Register_Click(object sender, RoutedEventArgs e)
         {
             e.Handled = true;
-            Registracija r = new Registracija();
-            r.Show();
-          
-
-
+            RegistracijaPage r = new RegistracijaPage();
+            // Početna.Main.Content = r;   ----> treba se pristupiti Frame-u "Main" u Početna Windowu, nezz kak
 
         }
 
         private void PrijaviSe_Click(object sender, RoutedEventArgs e)
         {
-            if (String.IsNullOrEmpty(textBoxEmail.Text)) {
+            if (String.IsNullOrEmpty(textBoxEmail.Text))
+            {
                 MessageBox.Show("Potrebno je unijeti e-mail.");
                 return;
             }
@@ -72,16 +56,16 @@ namespace PlivanjeDesktop
             var rf = new RefereeProcessor();
             List<Referee> suci = rf.getReferees();
 
-            
+
             foreach (var trener in treneri)
             {
                 if (email.Equals(trener.EMail.Trim()))
                     if (password.Equals(trener.Password.Trim()))
                     {
                         e.Handled = true;
-                        Klubovi k = new Klubovi(trener.Id, "trener");
-                        k.Show();
-                        this.Close();
+                        KluboviPage k = new KluboviPage(trener.Id, "trener");
+                        // Početna.Main.Content = k;   ----> treba se pristupiti Frame-u "Main" u Početna Windowu, nezz kak
+
                         return;
                     }
                     else
@@ -96,9 +80,9 @@ namespace PlivanjeDesktop
                     if (password.Equals(sudac.Password))
                     {
                         e.Handled = true;
-                        Natjecanja n = new Natjecanja();
-                        n.Show();
-                        this.Close();
+                        NatjecanjaPage n = new NatjecanjaPage();
+                        // Početna.Main.Content = pl;   ----> treba se pristupiti Frame-u "Main" u Početna Windowu, nezz kak
+
                         return;
                     }
                     else

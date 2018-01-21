@@ -12,35 +12,33 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PlivanjeDesktop
 {
     /// <summary>
-    /// Interaction logic for Plivači.xaml
+    /// Interaction logic for RekordiPage.xaml
     /// </summary>
-    public partial class Plivači : Window
+    public partial class RekordiPage : Page
     {
+        public List<Record> records = new List<Record>();
+        RecordViewModel rvm = new RecordViewModel();
 
-        public List<Swimmer> swimmers = new List<Swimmer>();
-        SwimmerViewModel svm = new SwimmerViewModel();
-
-        public Plivači(string _value)
+        public RekordiPage(string _value)
         {
             InitializeComponent();
-            var categoryName = _value.Trim().ToLower();
-            svm.LoadSwimmers(categoryName);
-            this.DataContext = svm;
+
+
+            var gender = _value.Trim().ToLower();
+            rvm.LoadRecordsByGender(gender);
+            this.DataContext = rvm;
         }
 
-        
-        public Plivači(Club club)
+        public RekordiPage(List<Record> rekordi)
         {
             InitializeComponent();
-            svm.LoadSwimmersByClub(club.Name);
-            this.DataContext = svm;
+            records.AddRange(rekordi);
         }
-        
-
     }
 }

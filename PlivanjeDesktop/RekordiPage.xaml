@@ -1,11 +1,13 @@
-﻿<Window x:Class="PlivanjeDesktop.Rekordi"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:PlivanjeDesktop"
-        mc:Ignorable="d"
-        Title="Rekordi" WindowState="Maximized" Height="350" Width="734.072" Style="{StaticResource HeaderStyle}">
+﻿<Page x:Class="PlivanjeDesktop.RekordiPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PlivanjeDesktop"
+      mc:Ignorable="d" 
+      d:DesignHeight="300" d:DesignWidth="300"
+      Title="RekordiPage" >
+
     <Grid Margin="10,25,-225.4,-29.6">
 
         <ListView HorizontalAlignment="Center" Name="listView" Height="1000" Margin="0,10,0,0" FontSize="20" 
@@ -37,4 +39,4 @@
 
 
     </Grid>
-</Window>
+</Page>

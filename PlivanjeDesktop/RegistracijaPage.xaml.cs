@@ -10,16 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace PlivanjeDesktop
 {
     /// <summary>
-    /// Interaction logic for Window1.xaml
+    /// Interaction logic for RegistracijaPage.xaml
     /// </summary>
-    public partial class Registracija : Window
+    public partial class RegistracijaPage : Page
     {
-        public Registracija()
+        public RegistracijaPage()
         {
             InitializeComponent();
         }
