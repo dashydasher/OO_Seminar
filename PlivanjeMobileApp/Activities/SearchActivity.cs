@@ -10,6 +10,7 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Microsoft.WindowsAzure.MobileServices;
+using PlivanjeMobileApp.Adapters;
 using PlivanjeMobileApp.Models;
 
 namespace PlivanjeMobileApp.Activities
@@ -20,6 +21,7 @@ namespace PlivanjeMobileApp.Activities
         private MobileServiceClient client;
         const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
         private IMobileServiceTable<SwimmersView> swimmersTable;
+        private ClubSwimmersAdapter adapter;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
@@ -36,10 +38,15 @@ namespace PlivanjeMobileApp.Activities
 
             swimmersTable = client.GetTable<SwimmersView>();
 
+            adapter = new ClubSwimmersAdapter(this, Resource.Layout.ClubSwimmerLayout);
+            var listViewClubSwimmers = FindViewById<ListView>(Resource.Id.plivaci);
+            listViewClubSwimmers.Adapter = adapter;
+
             var swimmers = await swimmersTable
                 .Where(e => e.TimeStart.Year == DateTime.Today.Year)
                 .ToListAsync();
 
+            adapter.Clear();
             string rezultati = "";
             foreach (SwimmersView current in swimmers)
             {
@@ -50,6 +57,7 @@ namespace PlivanjeMobileApp.Activities
                     )
                 {
                     rezultati += current.LastName.Trim() + " " + current.FirstName.Trim() + "\n";
+                    adapter.Add(current);
                 }
             }
 

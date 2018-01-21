@@ -14,12 +14,12 @@ using PlivanjeMobileApp.Models;
 
 namespace PlivanjeMobileApp.Adapters
 {
-    class ClubSwimmersAdapter : BaseAdapter<ClubSwimmerView>
+    class ClubSwimmersAdapter : BaseAdapter<SwimmersView>
     {
 
         Activity activity;
         int layoutResourceId;
-        List<ClubSwimmerView> items = new List<ClubSwimmerView>();
+        List<SwimmersView> items = new List<SwimmersView>();
 
         public ClubSwimmersAdapter(Activity activity, int layoutResourceId)
         {
@@ -62,7 +62,7 @@ namespace PlivanjeMobileApp.Adapters
             return row;
         }
 
-        private void SendPlivacData(object sender, View.TouchEventArgs e, ClubSwimmerView currentItem)
+        private void SendPlivacData(object sender, View.TouchEventArgs e, SwimmersView currentItem)
         {
             if (e.Event.Action == MotionEventActions.Up)
             {
@@ -75,7 +75,7 @@ namespace PlivanjeMobileApp.Adapters
             }
         }
 
-        public void Add(ClubSwimmerView item)
+        public void Add(SwimmersView item)
         {
             items.Add(item);
             NotifyDataSetChanged();
@@ -107,7 +107,7 @@ namespace PlivanjeMobileApp.Adapters
             }
         }
 
-        public override ClubSwimmerView this[int position]
+        public override SwimmersView this[int position]
         {
             get
             {

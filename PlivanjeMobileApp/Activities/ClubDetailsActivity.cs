@@ -19,7 +19,7 @@ namespace PlivanjeMobileApp.Activities
     public class ClubDetailsActivity : Activity
     {
         private MobileServiceClient client;
-        private IMobileServiceTable<ClubSwimmerView> swimmersTable;
+        private IMobileServiceTable<SwimmersView> swimmersTable;
         private IMobileServiceTable<Season> seasonsTable;
         private ClubSwimmersAdapter adapter;
         private ArrayAdapter<string> adapter2;
@@ -52,7 +52,7 @@ namespace PlivanjeMobileApp.Activities
 
             client = new MobileServiceClient(applicationURL);
 
-            swimmersTable = client.GetTable<ClubSwimmerView>();
+            swimmersTable = client.GetTable<SwimmersView>();
 
             adapter = new ClubSwimmersAdapter(this, Resource.Layout.ClubSwimmerLayout);
             var listViewClubSwimmers = FindViewById<ListView>(Resource.Id.plivaci);
@@ -82,9 +82,9 @@ namespace PlivanjeMobileApp.Activities
             spinner.Adapter = adapter2;
         }
 
-        private async void FillAdapterWithData(ClubSwimmersAdapter adapter, IMobileServiceTable<ClubSwimmerView> swimmersTable, string clubId, string seasonId = null)
+        private async void FillAdapterWithData(ClubSwimmersAdapter adapter, IMobileServiceTable<SwimmersView> swimmersTable, string clubId, string seasonId = null)
         {
-            List<ClubSwimmerView> list;
+            List<SwimmersView> list;
             if (seasonId != null)
             {
                 list = await swimmersTable
@@ -99,7 +99,7 @@ namespace PlivanjeMobileApp.Activities
                     .ToListAsync();
             }
             adapter.Clear();
-            foreach (ClubSwimmerView current in list)
+            foreach (SwimmersView current in list)
                 adapter.Add(current);
         }
 
