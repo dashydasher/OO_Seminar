@@ -28,6 +28,9 @@ namespace PlivanjeMobileApp.Activities
 
             SetContentView(Resource.Layout.Plivaci);
 
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);
+            SetActionBar(toolbar);
+
             client = new MobileServiceClient(applicationURL);
 
             categoriesTable = client.GetTable<Category>();
@@ -115,6 +118,35 @@ namespace PlivanjeMobileApp.Activities
                 StartActivity(activity);
             };
 
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.top_menus, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.TitleFormatted.ToString())
+            {
+                case "Natjecanja":
+                    StartActivity(typeof(NatjecanjaActivity));
+                    break;
+                case "Klubovi":
+                    StartActivity(typeof(KluboviActivity));
+                    break;
+                case "Plivači":
+                    StartActivity(typeof(PlivaciActivity));
+                    break;
+                case "Rekordi":
+                    StartActivity(typeof(RekordiActivity));
+                    break;
+                case "Početna":
+                    StartActivity(typeof(MainActivity));
+                    break;
+            }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

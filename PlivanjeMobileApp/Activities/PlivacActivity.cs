@@ -31,7 +31,8 @@ namespace PlivanjeMobileApp.Activities
 
             SetContentView(Resource.Layout.Plivac);
 
-            // Create your application here
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);
+            SetActionBar(toolbar);
 
             string idPlivaca = Intent.GetStringExtra("id") ?? "Data not available";
             string gender = Intent.GetStringExtra("gender") ?? "Data not available";
@@ -53,6 +54,35 @@ namespace PlivanjeMobileApp.Activities
             adapter.Clear();
             foreach (SwimmersView current in list)
                 adapter.Add(current);
+        }
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.top_menus, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.TitleFormatted.ToString())
+            {
+                case "Natjecanja":
+                    StartActivity(typeof(NatjecanjaActivity));
+                    break;
+                case "Klubovi":
+                    StartActivity(typeof(KluboviActivity));
+                    break;
+                case "Plivači":
+                    StartActivity(typeof(PlivaciActivity));
+                    break;
+                case "Rekordi":
+                    StartActivity(typeof(RekordiActivity));
+                    break;
+                case "Početna":
+                    StartActivity(typeof(MainActivity));
+                    break;
+            }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

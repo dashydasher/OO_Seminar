@@ -60,7 +60,7 @@ namespace PlivanjeMobileApp.Adapters
         private void SendClubData(object sender, View.TouchEventArgs e, ClubView club)
         {
             //System.Diagnostics.Debug.WriteLine("Touched " + e.Event.Action);
-            if (e.Event.Action == MotionEventActions.Down)
+            if (e.Event.Action == MotionEventActions.Up)
             {
                 var activity2 = new Intent(activity, typeof(ClubDetailsActivity));
                 activity2.PutExtra("id", club.Id);

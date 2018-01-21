@@ -29,6 +29,9 @@ namespace PlivanjeMobileApp.Activities
 
             SetContentView(Resource.Layout.SearchResultsLayout);
 
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);
+            SetActionBar(toolbar);
+
             string pretrazujem = Intent.GetStringExtra("pretrazujem") ?? "Data not available";
 
             swimmersTable = client.GetTable<SwimmersView>();
@@ -52,8 +55,35 @@ namespace PlivanjeMobileApp.Activities
 
             TextView textView1 = FindViewById<TextView>(Resource.Id.textView1);
             textView1.Text = "Rezultati za \"" + pretrazujem + "\":";
+        }
 
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.top_menus, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
 
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            switch (item.TitleFormatted.ToString())
+            {
+                case "Natjecanja":
+                    StartActivity(typeof(NatjecanjaActivity));
+                    break;
+                case "Klubovi":
+                    StartActivity(typeof(KluboviActivity));
+                    break;
+                case "Plivači":
+                    StartActivity(typeof(PlivaciActivity));
+                    break;
+                case "Rekordi":
+                    StartActivity(typeof(RekordiActivity));
+                    break;
+                case "Početna":
+                    StartActivity(typeof(MainActivity));
+                    break;
+            }
+            return base.OnOptionsItemSelected(item);
         }
     }
 }

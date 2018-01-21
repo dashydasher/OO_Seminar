@@ -65,8 +65,8 @@ namespace PlivanjeMobileApp
                 case "Rekordi":
                     StartActivity(typeof(RekordiActivity));
                     break;
-                case "Search":
-                    Toast.MakeText(this, "Action selected: " + item.TitleFormatted, ToastLength.Short).Show();
+                case "Početna":
+                    StartActivity(typeof(MainActivity));
                     break;
             }
             return base.OnOptionsItemSelected(item);

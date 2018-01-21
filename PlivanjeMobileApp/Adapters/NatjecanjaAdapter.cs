@@ -63,7 +63,7 @@ namespace PlivanjeMobileApp.Adapters
 
         private void SendCompetitionData(object sender, View.TouchEventArgs e, CompetitionView currentItem)
         {
-            if (e.Event.Action == MotionEventActions.Down)
+            if (e.Event.Action == MotionEventActions.Up)
             {
                 var activity2 = new Intent(activity, typeof(NatjecanjeDetaljiActivity));
                 activity2.PutExtra("id", currentItem.Id);

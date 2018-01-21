@@ -64,7 +64,7 @@ namespace PlivanjeMobileApp.Adapters
 
         private void SendPlivacData(object sender, View.TouchEventArgs e, ClubSwimmerView currentItem)
         {
-            if (e.Event.Action == MotionEventActions.Down)
+            if (e.Event.Action == MotionEventActions.Up)
             {
                 var activity2 = new Intent(activity, typeof(PlivacActivity));
                 activity2.PutExtra("id", currentItem.Id);

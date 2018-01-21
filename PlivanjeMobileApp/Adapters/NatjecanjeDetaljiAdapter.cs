@@ -72,7 +72,7 @@ namespace PlivanjeMobileApp.Adapters
 
         private void SendRaceData(object sender, View.TouchEventArgs e, RaceView currentItem)
         {
-            if (e.Event.Action == MotionEventActions.Down)
+            if (e.Event.Action == MotionEventActions.Up)
             {
                 var activity2 = new Intent(activity, typeof(UtrkaDetaljiActivity));
                 activity2.PutExtra("id", currentItem.Id);
