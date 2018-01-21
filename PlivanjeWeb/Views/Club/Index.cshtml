@@ -1,0 +1,65 @@
+﻿
+@model IEnumerable<PlivanjeWeb.Models.ClubViewModel>
+@{
+    ViewBag.Title = "Klubovi";
+}
+
+<h2>Popis svih klubova</h2>
+
+
+@Html.ActionLink("Moj klub","MyClub")
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Ime kluba
+            </th>
+
+            <th>
+                Adresa
+            </th>
+            <th>
+                Mjesto
+            </th>
+            <th>
+                Trener
+            </th>
+
+
+    </thead>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Place)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.coach.LastName)  @Html.DisplayFor(modelItem => item.coach.FirstName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id = item.Id })  |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+        </td>
+    </tr>
+
+    }
+
+
+
+
+</table>
+
+
+
+
+

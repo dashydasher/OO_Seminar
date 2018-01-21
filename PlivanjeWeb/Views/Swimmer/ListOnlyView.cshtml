@@ -1,0 +1,91 @@
+﻿@model IEnumerable<PlivanjeWeb.Models.SwimmerViewModel>
+@{
+    ViewBag.Title = "ListOnlyView";
+}
+
+<h2>Popis svih plivača</h2>
+<hr />
+<form asp-controller="Swimmer" asp-action="Index" method="get">
+    <div class="form-actions">
+        <p>
+            Klub: @Html.DropDownList("klub", "Svi")
+            
+            <input type="submit" value="Pretrazi" class="btn btn-default" /> |
+            @Html.ActionLink("Natrag na punu listu","Index", new { @class = "btn btn-primary" })
+        </p>
+    </div>
+</form>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+
+                Ime
+
+            </th>
+
+            <th>
+
+                Prezime
+
+            </th>
+            <th>
+
+                Spol
+
+            </th>
+            <th>
+
+                Datum rođenja
+            </th>
+            <th>
+
+                Licenca
+
+            </th>
+
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.firstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.lastName)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateOfBirth.Date)
+            </td>
+            @if (item.licenceValid==true)
+            {
+
+                <td>
+                    važeća
+                </td>
+            }
+            else
+            {
+                <td>
+                    nevažeća
+                </td>
+            }
+            
+        </tr>
+
+    }
+
+
+
+
+</table>
+
+
+

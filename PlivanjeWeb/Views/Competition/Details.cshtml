@@ -1,0 +1,157 @@
+﻿@model PlivanjeWeb.Models.CompetitionViewModel
+@{
+    ViewBag.Title = "Details";
+    var gr = TempData["Error"];
+    var msgErr = "";
+    if (gr != null)
+    {
+        msgErr = gr.ToString();
+    }
+}
+
+@if (!string.IsNullOrWhiteSpace(msgErr))
+{
+    <div class="alert alert-danger alert alert-dismissible" role="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        @msgErr
+    </div>
+}
+<h2>Detalji o natjecanju</h2>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <table class="table table-borderless" style="border-top: none">
+                        <tr>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Ime natjecanja:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.Name
+                            </td>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Dvorana:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.HallName
+                            </td>
+                            <td align="left" class="col-xs-4" style="border-top: none"></td>
+                        </tr>
+
+                        <tr>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Početak:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.TimeStart.ToShortDateString()
+                            </td>
+
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Završetak:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.TimeEnd.ToShortDateString()
+
+                            </td>
+                            <td align="right" class="col-xs-4" style="border-top: none"></td>
+
+
+                        </tr>
+                        <tr>
+                            <td style="border-top:none" />
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@Html.ActionLink("Uredi osnovne podatke", "Edit", "Competition", new { id = Model.Id }, new { @class = "btn btn-primary" })
+<hr />
+<br />
+<h3>Urke:</h3>
+@Html.ActionLink("Dodaj novu utrku", "CreateRace", "Competition", new { id = Model.Id }, new { @class = "btn btn-primary" })
+<hr />
+
+@if (Model.races != null)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Vrijeme početka
+                </th>
+
+                <th>
+                    Vrijeme završetka
+                </th>
+                <th>
+                    Kategorija
+                </th>
+                <th>
+                    Duljina
+                </th>
+                <th>
+                    Stil
+                </th>
+                <th>
+                    Muška/Ženska
+                </th>
+                <th>
+                    Sudac
+                </th>
+        </thead>
+        @foreach (var item in Model.races)
+        {
+
+
+
+
+
+            <tr>
+
+                <td>
+                    @item.TimeStart
+                </td>
+                <td>
+                    @item.TimeEnd
+                </td>
+
+                <td>
+                    @item.Category.Name
+                </td>
+                <td>
+                    @item.Length.Len
+                
+                </td>
+                <td>
+                    @item.Style.Name
+                </td>
+                <td>
+                    @item.Gender
+                </td>
+                <td>
+                    @item.Refereee.FirstName @item.Refereee.LastName
+                </td>
+                <td style="width: 1%;white-space: nowrap;">
+                    <button class="btn btn-danger btn-sm">
+                        <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                        @Html.ActionLink("Izbriši utrku", "DeleteRaceFromCompetition", "Competition", new { id = item.Id }, new { onclick = "return confirm('Jeste li sigurni da želite obrisati ovu utrku?');" })
+                    </button>
+                    <button class="btn btn-success btn-sm">
+                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                        @Html.ActionLink("Prijavi plivače", "AddSwimmersToRace", "Competition", new { id = item.Id },null)
+                    </button>
+                </td>
+                <td>
+
+                </td>
+            </tr>
+
+
+
+        }
+    </table>
+
+}
+
+<div>
+    @Html.ActionLink("Povratak na popis", "Index")
+</div>
+
