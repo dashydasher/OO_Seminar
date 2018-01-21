@@ -62,7 +62,7 @@ namespace Plivanje.Repositories
                 {
                     result = session.QueryOver<Competition>().Where(x => x.Id == idCompetition).SingleOrDefault();
                     dvorana = result.Hall;
-                    dvorana.Name = result.Name;
+                    dvorana.Name = result.Hall.Name;
                     result.Hall = dvorana;
                     transaction.Commit();
                 }

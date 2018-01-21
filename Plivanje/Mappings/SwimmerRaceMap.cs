@@ -13,10 +13,10 @@ namespace Plivanje.Mappings
         public SwimmerRaceMap()
         {
             Id(x => x.Id);
-            References(x => x.Swimmer);
-            References(x => x.Race);
+            References(x => x.Swimmer).Column("idSwimmer");
+            References(x => x.Race).Column("idRace");
             Map(x => x.Score);
-            Map(x => x.RaceTime);
+            Map(x => x.RaceTime).CustomType<NHibernate.Type.TimeType>();
             Table("SwimmerRace");
         }
     }

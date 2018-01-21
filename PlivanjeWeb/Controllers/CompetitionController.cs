@@ -22,25 +22,25 @@ namespace PlivanjeWebApp.Controllers
             CompetitionProcessor cp = new CompetitionProcessor();
             pom = cp.GetListOfCompetitions();
 
-            
-                    foreach(var item in pom)
-                    {
+
+            foreach (var item in pom)
+            {
                 Competition comp = cp.GetCompetition(item.Id);
-                        CompetitionViewModel c = new CompetitionViewModel();
-                        c.Id = comp.Id;
-                        c.Name = comp.Name;
-                        c.HallId = comp.Hall.Id;
-                        c.HallName = comp.Hall.Name;
-                        c.TimeEnd = comp.TimeEnd;
-                        c.TimeStart = comp.TimeStart;
-                        competitions.Add(c);
-                    }
+                CompetitionViewModel c = new CompetitionViewModel();
+                c.Id = comp.Id;
+                c.Name = comp.Name;
+                c.HallId = comp.Hall.Id;
+                c.HallName = comp.Hall.Name;
+                c.TimeEnd = comp.TimeEnd;
+                c.TimeStart = comp.TimeStart;
+                competitions.Add(c);
+            }
 
 
 
-     
-                
-            
+
+
+
 
             return View(competitions);
         }
@@ -53,9 +53,9 @@ namespace PlivanjeWebApp.Controllers
             List<RaceViewModel> racesInCOmpetition = new List<RaceViewModel>();
             List<Race> races = new List<Race>();
             CompetitionProcessor cp = new CompetitionProcessor();
-           
+
             racesInCOmpetition = getRaces(id);
-            
+
             try
             {
                 c = cp.GetCompetition(id);
@@ -66,7 +66,7 @@ namespace PlivanjeWebApp.Controllers
                 competition.HallName = c.Hall.Name;
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 return View("Index");
             }
@@ -80,35 +80,35 @@ namespace PlivanjeWebApp.Controllers
             var result = new List<Race>();
             CompetitionProcessor cp = new CompetitionProcessor();
             RaceProcessor rp = new RaceProcessor();
-            
+
             List<RaceViewModel> trke = new List<RaceViewModel>();
 
             result = cp.getRacesInCompetition(id);
-                    if (result != null)
-                    {
-                        foreach (var item in result)
-                        {
-                          Race r = rp.getRace(item.Id);
+            if (result != null)
+            {
+                foreach (var item in result)
+                {
+                    Race r = rp.getRace(item.Id);
                     RaceViewModel race = new RaceViewModel();
                     race.Id = r.Id;
-                            race.Gender = r.Gender;
-                            race.Category = r.Category;
-                            race.Length = r.Length;
-                            race.Pool = r.Pool;
-                            race.Refereee = r.Refereee;
-                            race.Style = r.Style;
-                            race.TimeEnd = r.TimeEnd;
-                            race.TimeStart = r.TimeStart;
-                            race.categoryName = r.Category.Name;
-                            race.lenghtValue = r.Length.Len;
-                            race.nameReferee = r.Refereee.FirstName;
-                            race.surnameReferee = r.Refereee.LastName;
-                            race.sytleName = r.Style.Name;
-                            
-                            
-                            trke.Add(race);
-                        }
-                    }
+                    race.Gender = r.Gender;
+                    race.Category = r.Category;
+                    race.Length = r.Length;
+                    race.Pool = r.Pool;
+                    race.Refereee = r.Refereee;
+                    race.Style = r.Style;
+                    race.TimeEnd = r.TimeEnd;
+                    race.TimeStart = r.TimeStart;
+                    race.categoryName = r.Category.Name;
+                    race.lenghtValue = r.Length.Len;
+                    race.nameReferee = r.Refereee.FirstName;
+                    race.surnameReferee = r.Refereee.LastName;
+                    race.sytleName = r.Style.Name;
+
+
+                    trke.Add(race);
+                }
+            }
 
             return trke;
         }
@@ -142,26 +142,26 @@ namespace PlivanjeWebApp.Controllers
             Hall h = new Hall();
             var Hp = new HallProcessor();
 
-            c.Name= competition.Name;
+            c.Name = competition.Name;
             c.TimeStart = competition.TimeStart;
             c.TimeEnd = competition.TimeEnd;
             c.Hall = Hp.getHall(competition.HallId);
-            
 
-            
+
+
 
             try
             {
 
                 CompetitionProcessor.UpdateCompetition(c);
-               
+
                 return RedirectToAction("Index");
             }
             catch
             {
                 return View();
             }
-            
+
         }
 
         // GET: Competition/Edit/5
@@ -206,12 +206,12 @@ namespace PlivanjeWebApp.Controllers
             {
                 return View("Index");
             }
-            
+
 
             competition.races = racesInCOmpetition;
             return View(competition);
-        
-    }
+
+        }
 
         // POST: Competition/Edit/5
         [HttpPost]
@@ -370,6 +370,7 @@ namespace PlivanjeWebApp.Controllers
             List<Swimmer> swimmers = new List<Swimmer>();
             List<SwimmerViewModel> pom = new List<SwimmerViewModel>(); // licencirani
             swimmers = sp.SwimmersInClub((int)HttpContext.Session["clubId"]);
+            Session["idRace"] = id;
             foreach (var item in swimmers)
             {
                 Swimmer s = sp.getSwimmer(item.Id);
@@ -380,16 +381,48 @@ namespace PlivanjeWebApp.Controllers
                 Swimmer.dateOfBirth = s.DateOfBirth.Date;
                 Swimmer.gender = s.Gender;
                 if (sp.getSwimmerLicence(Swimmer.Id))
-                    pom.Add(Swimmer);
+                    pom.Add(Swimmer); 
 
 
 
             }
             return View(pom);
         }
+        public ActionResult AddSwimmerToRace(int idSwimmer)
+        {
+            RaceProcessor rp = new RaceProcessor();
+            SwimmerProcessor sp = new SwimmerProcessor();
+            CategoryProcessor cp = new CategoryProcessor();
+            Race race = rp.getRace((int)Session["idRace"]);
+            Swimmer swimmer = sp.getSwimmer(idSwimmer);
+            Category cat1 = sp.GetSwimmerCategory(swimmer);
+            Category cat2 = cp.getCategory(race.Category.Id);
+            if (cat1.Id == cat2.Id && !rp.isSwimmerOnRace(swimmer.Id,race.Id))
+            {
+                try
+                {
+                    SwimmerRace swimmerRace = new SwimmerRace(); ;
+                    swimmerRace.Swimmer = swimmer;
+                    swimmerRace.Race = race;
+                    swimmerRace.RaceTime = DateTime.Now;
+                    rp.AddSwimmerToRace(swimmerRace);
+                    return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
+                }
+                catch(Exception ex)
+                {
+                    TempData["ErrorAddSwimmer"] = "Plivača je nemoguće prijaviti na trku jer to nije njegova kategorija";
+                    return RedirectToAction("AddSwimmersToRace", new { id = (int)Session["idRace"] });
+                }
+            }
+            else
+            {
+                TempData["ErrorAddSwimmer"] = "Plivača je nemoguće prijaviti na trku jer to nije njegova kategorija";
+                return RedirectToAction("AddSwimmersToRace", new { id = (int)Session["idRace"] });
+            }
 
 
 
-        
+
+        }
     }
 }

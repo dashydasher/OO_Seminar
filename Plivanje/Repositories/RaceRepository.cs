@@ -17,6 +17,8 @@ namespace Plivanje.Repositories
         List<Race> getRaces(int competitionId);
         Length GetLength(int id);
         List<Length> GetLenghts();
+        void AddSwimmerToRace(SwimmerRace swimmerRace);
+        bool isSwimmerOnRace(int idSwimmer, int idRace);
 
 
 
@@ -33,12 +35,12 @@ namespace Plivanje.Repositories
                 using (var transaction = session.BeginTransaction())
                 {
                     result = session.QueryOver<Race>().Where(x => x.Id == id).List().FirstOrDefault();
-                    if(result != null)
+                    if (result != null)
                     {
                         race = result;
                         race.Gender = result.Gender;
                         race.Category = result.Category;
-                        race.Category.Name= result.Category.Name;
+                        race.Category.Name = result.Category.Name;
                         race.Length = result.Length;
                         race.Length.Len = result.Length.Len;
                         race.Pool = result.Pool;
@@ -51,7 +53,7 @@ namespace Plivanje.Repositories
                         race.Style.Name = result.Style.Name;
                         race.TimeEnd = result.TimeEnd;
                         race.TimeStart = result.TimeEnd;
-                       
+
 
                     }
                     transaction.Commit();
@@ -70,7 +72,7 @@ namespace Plivanje.Repositories
                 using (var transaction = session.BeginTransaction())
                 {
                     result = (List<Race>)session.QueryOver<Race>().List<Race>();
-                    
+
                     transaction.Commit();
                 }
             }
@@ -86,7 +88,7 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    result = (List<Race>)session.QueryOver<Race>().Where(x=>x.Competition.Id==competitionId).List<Race>();
+                    result = (List<Race>)session.QueryOver<Race>().Where(x => x.Competition.Id == competitionId).List<Race>();
                     transaction.Commit();
                 }
             }
@@ -152,6 +154,45 @@ namespace Plivanje.Repositories
                 }
             }
             return result;
+        }
+        public void AddSwimmerToRace(SwimmerRace swimmerRace)
+        {
+
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+
+                    session.SaveOrUpdate(swimmerRace);
+
+                    transaction.Commit();
+                }
+            }
+
+        }
+
+        public bool isSwimmerOnRace(int idSwimmer, int idRace)
+        {
+            var isOn = false;
+            var result = new SwimmerRace();
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+
+                    result = session.QueryOver<SwimmerRace>().Where(x => x.Swimmer.Id == idSwimmer && x.Race.Id == idRace).SingleOrDefault();
+                    if (result != null)
+                    {
+                        isOn = true;
+                    }
+                    transaction.Commit();
+                }
+            }
+            return isOn;
         }
     }
 }

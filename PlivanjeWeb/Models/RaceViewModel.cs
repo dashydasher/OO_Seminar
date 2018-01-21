@@ -18,6 +18,7 @@ namespace PlivanjeWeb.Models
         public Style Style { get; set; }
         public Category Category { get; set; }
         public  Referee Refereee { get; set; }
+        public List<SwimmerViewModel> swimmers { get; set; }
 
         public int lenghtValue { get; set; }
         public string sytleName { get; set; }

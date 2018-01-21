@@ -26,6 +26,7 @@ namespace Plivanje.Repositories
         SwimmerSeason GetSwimmerSeason(int swimmerId);
         void deleteSwimmerFromClub(SwimmerSeason swSeason);
         Club GetMyClub(int swimmerId, int seasonId);
+        
 
     }
 
@@ -329,6 +330,8 @@ namespace Plivanje.Repositories
             }
             return result;
         }
+
+
     }
     }
 

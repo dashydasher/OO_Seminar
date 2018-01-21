@@ -52,5 +52,12 @@ namespace Plivanje.Processors
         {
             return _RaceRepository.GetLenghts();
         }
+        public void AddSwimmerToRace(SwimmerRace swimmerRace)
+        {
+            _RaceRepository.AddSwimmerToRace(swimmerRace);
+        }
+        public bool isSwimmerOnRace(int idSwimmer,int idRace) {
+            return _RaceRepository.isSwimmerOnRace(idSwimmer, idRace);
+        }
     }
 }

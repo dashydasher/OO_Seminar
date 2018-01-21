@@ -51,13 +51,15 @@ namespace Plivanje.Repositories
         {
             var misto = new Place();
             var result = new Club();
+            Coach coach = null;
+            Season season = null;
             var klasa = new FluentNHibernateClass();
 
             using (var session = klasa.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    result = (Club)session.QueryOver<CoachSeason>().Where(x => x.Coach.Id == id).Select(x=>x.Club).SingleOrDefault<Club>();
+                    result = result = (Club)session.QueryOver<CoachSeason>().JoinAlias(x => x.Coach, () => coach).JoinAlias(x => x.Season, () => season).Where(() => season.TimeEnd > DateTime.Now && coach.Id == id).Select(x => x.Club).SingleOrDefault<Club>();
                     misto = session.QueryOver<Place>().Where(x => x.Id == result.Place.Id).List().FirstOrDefault();
                     result.Place = misto;
 

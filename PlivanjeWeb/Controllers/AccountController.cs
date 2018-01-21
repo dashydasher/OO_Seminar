@@ -86,6 +86,13 @@ namespace PlivanjeWebApp.Controllers
                 HttpContext.Session["role"] = roleId;
                 HttpContext.Session["UserId"] = p.Id;
 
+                if (roleId == 1)
+                {
+                    ClubProcessor cp = new ClubProcessor();
+                    int i = cp.getMyClubId((int)HttpContext.Session["UserId"]);
+                    HttpContext.Session["clubId"] = i;
+                }
+
                 return RedirectToLocal(returnUrl);
             }
             else

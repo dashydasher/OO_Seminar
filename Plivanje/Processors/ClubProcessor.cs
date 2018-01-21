@@ -74,6 +74,10 @@ namespace Plivanje.Processors
         {
             return _ClubRepository.getMyClubId(CoachId, seasonId);
         }
+        public int getMyClubId(int CoachId)
+        {
+            return _ClubRepository.getMyClubId(CoachId);
+        }
         public Coach getCoachOfClub(int ClubId)
         {
             return _ClubRepository.getCoachOfClub(ClubId);

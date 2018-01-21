@@ -22,6 +22,7 @@ namespace Plivanje.Repositories
         Coach getCoachOfClub(int ClubId);
         Season ValidSeason();
         CoachSeason getSeasonCoach(int idClub, int SeasonId);
+        int getMyClubId(int CoachId);
 
 
     }
@@ -254,6 +255,26 @@ namespace Plivanje.Repositories
                 }
             }
             return result;
+        }
+
+        public int getMyClubId(int CoachId)
+        {
+            Coach coach = null;
+            Season season = null;
+            int result;
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (int)session.QueryOver<CoachSeason>().JoinAlias(x => x.Coach, () => coach).JoinAlias(x => x.Season, () => season).Where(() => season.TimeEnd > DateTime.Now && coach.Id == CoachId).Select(x => x.Club.Id).SingleOrDefault<int>();
+
+                    transaction.Commit();
+                }
+            }
+
+            return result;
+
         }
     }
 }
