@@ -13,9 +13,9 @@ namespace Plivanje.Mappings
         public LicenceSwimmerMap()
         {
             Id(x => x.Id);
-            References(x => x.Swimmer);
-            References(x => x.Season);
-            References(x => x.Licence);
+            References(x => x.Swimmer).Not.LazyLoad();
+            References(x => x.Season).Not.LazyLoad();
+            References(x => x.Licence).Not.LazyLoad();
             Table("LicenceSwimmer");
         }
     }

@@ -13,12 +13,12 @@ namespace Plivanje.Mappings
         public RaceMap()
         {
             Id(x => x.Id);
-            References(x => x.Pool).Column("idPool");
-            References(x => x.Competition).Column("idCompetition");
-            References(x => x.Length).Column("idLength");
-            References(x => x.Style).Column("idStyle");
-            References(x => x.Category).Column("idCategory");
-            References(x => x.Refereee).Column("idReferee");
+            References(x => x.Pool).Column("idPool").Not.LazyLoad();
+            References(x => x.Competition).Column("idCompetition").Not.LazyLoad();
+            References(x => x.Length).Column("idLength").Not.LazyLoad();
+            References(x => x.Style).Column("idStyle").Not.LazyLoad();
+            References(x => x.Category).Column("idCategory").Not.LazyLoad();
+            References(x => x.Refereee).Column("idReferee").Not.LazyLoad();
             Map(x => x.TimeStart);
             Map(x => x.TimeEnd);
             Map(x => x.Gender);

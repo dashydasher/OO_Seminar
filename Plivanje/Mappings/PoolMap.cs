@@ -13,7 +13,7 @@ namespace Plivanje.Mappings
         public PoolMap()
         {
             Id(x => x.Id);
-            References(x => x.Hall);
+            References(x => x.Hall).Not.LazyLoad();
             Map(x => x.Length);
             Table("Pool");
         }

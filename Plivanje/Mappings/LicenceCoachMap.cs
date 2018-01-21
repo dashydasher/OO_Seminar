@@ -13,9 +13,9 @@ namespace Plivanje.Mappings
         public LicenceCoachMap()
         {
             Id(x => x.Id);
-            References(x => x.Coach);
-            References(x => x.Season);
-            References(x => x.Licence);
+            References(x => x.Coach).Not.LazyLoad();
+            References(x => x.Season).Not.LazyLoad();
+            References(x => x.Licence).Not.LazyLoad();
             Table("LicenceCoach");
         }
     }

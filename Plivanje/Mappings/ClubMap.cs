@@ -13,7 +13,7 @@ namespace Plivanje.Mappings
         public ClubMap()
         {
             Id(x => x.Id);
-            References(x => x.Place);
+            References(x => x.Place).Not.LazyLoad();
             Map(x => x.Name);
             Map(x => x.Address);
             Table("Club");

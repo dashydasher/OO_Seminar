@@ -13,8 +13,8 @@ namespace Plivanje.Mappings
         public SwimmerRaceMap()
         {
             Id(x => x.Id);
-            References(x => x.Swimmer).Column("idSwimmer");
-            References(x => x.Race).Column("idRace");
+            References(x => x.Swimmer).Column("idSwimmer").Not.LazyLoad();
+            References(x => x.Race).Column("idRace").Not.LazyLoad();
             Map(x => x.Score);
             Map(x => x.RaceTime).CustomType<NHibernate.Type.TimeType>();
             Table("SwimmerRace");

@@ -16,7 +16,7 @@ namespace Plivanje.Mappings
             Map(x => x.Name);
             Map(x => x.TimeStart);
             Map(x => x.TimeEnd);
-            References(x => x.Hall).Column("idHall");
+            References(x => x.Hall).Column("idHall").Not.LazyLoad();
             Table("Competition");
         }
     }
