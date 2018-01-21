@@ -18,12 +18,12 @@
     <Grid>
 
         <GroupBox Header="Natjecanja">
-            <DataGrid Name="datagridC" ItemsSource="{Binding competitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" >
+            <DataGrid Name="datagridC" CanUserAddRows="false" FontSize="20"  ItemsSource="{Binding competitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="Naziv" Binding="{Binding Path=Name}" />
-                    <DataGridTextColumn Header="Početak" Binding="{Binding Path=TimeStart}" />
-                    <DataGridTextColumn Header="Mjesto" Binding="{Binding Path=Hall.Place.Name}" />
+                    <DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding Path=Name}" />
+                    <DataGridTextColumn Header="Početak" Width="250" Binding="{Binding Path=TimeStart}" />
+                    <DataGridTextColumn Header="Mjesto" Width="250" Binding="{Binding Path=Hall.Place.Name}" />
 
                     <DataGridTemplateColumn Header="">
                         <DataGridTemplateColumn.CellTemplate>
