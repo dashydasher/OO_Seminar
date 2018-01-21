@@ -81,9 +81,23 @@ namespace PlivanjeMobileApp.Adapters
                 Length.Text = currentItem.Length + "m " + currentItem.Style;
                 Style.Text = currentItem.Time.ToUniversalTime().ToString("dd.MM.yyyy.");
                 RaceTime2.Text = currentItem.RaceTime.ToUniversalTime().TimeOfDay.ToString().Trim();
+
+                Length.Touch += delegate (object sender, View.TouchEventArgs e) { SendCompetitionData(sender, e, currentItem); };
+                Style.Touch += delegate (object sender, View.TouchEventArgs e) { SendCompetitionData(sender, e, currentItem); };
+                RaceTime2.Touch += delegate (object sender, View.TouchEventArgs e) { SendCompetitionData(sender, e, currentItem); };
             }
 
             return row;
+        }
+
+        private void SendCompetitionData(object sender, View.TouchEventArgs e, SwimmerRaceView currentItem)
+        {
+            if (e.Event.Action == MotionEventActions.Up)
+            {
+                var activity2 = new Intent(activity, typeof(NatjecanjeDetaljiActivity));
+                activity2.PutExtra("id", currentItem.IdCompetition);
+                activity.StartActivity(activity2);
+            }
         }
 
         private void SendSwimmerData(object sender, View.TouchEventArgs e, SwimmerRaceView currentItem)

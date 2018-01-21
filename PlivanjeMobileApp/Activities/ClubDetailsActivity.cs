@@ -45,7 +45,7 @@ namespace PlivanjeMobileApp.Activities
             var textView2 = FindViewById<TextView>(Resource.Id.mjesto);
             textView2.Text = postalcode + "   " + place;
 
-            var newName = name.Replace("Plivački ", "P").Replace("klub", "K").Trim();
+            var newName = name.Replace("Plivački", "P").Replace(" klub", "K").Trim();
             this.Title = newName;
 
             CurrentPlatform.Init();

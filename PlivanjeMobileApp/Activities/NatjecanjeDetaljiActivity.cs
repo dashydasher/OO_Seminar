@@ -20,7 +20,15 @@ namespace PlivanjeMobileApp.Activities
     {
         private MobileServiceClient client;
         private IMobileServiceTable<RaceView> racesTable;
+        private IMobileServiceTable<CompetitionView> competitionsTable;
         private NatjecanjeDetaljiAdapter adapter;
+        private string idCompetition;
+        private string name;
+        private string timeStart;
+        private string timeEnd;
+        private string hallName;
+        private string address;
+        private string placeName;
         const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
 
         protected override async void OnCreate(Bundle savedInstanceState)
@@ -33,13 +41,28 @@ namespace PlivanjeMobileApp.Activities
 
             client = new MobileServiceClient(applicationURL);
 
-            string idCompetition = Intent.GetStringExtra("id") ?? "Data not available";
-            string name = Intent.GetStringExtra("name") ?? "Data not available";
-            string timeStart = Intent.GetStringExtra("timeStart") ?? "Data not available";
-            string timeEnd = Intent.GetStringExtra("timeEnd") ?? "Data not available";
-            string address = Intent.GetStringExtra("address") ?? "Data not available";
-            string hallName = Intent.GetStringExtra("hallName") ?? "Data not available";
-            string placeName = Intent.GetStringExtra("placeName") ?? "Data not available";
+            idCompetition = Intent.GetStringExtra("id") ?? "Data not available";
+            name = Intent.GetStringExtra("name") ?? "Data not available";
+            if (name != "Data not available")
+            {
+                timeStart = Intent.GetStringExtra("timeStart") ?? "Data not available";
+                timeEnd = Intent.GetStringExtra("timeEnd") ?? "Data not available";
+                address = Intent.GetStringExtra("address") ?? "Data not available";
+                hallName = Intent.GetStringExtra("hallName") ?? "Data not available";
+                placeName = Intent.GetStringExtra("placeName") ?? "Data not available";
+            }
+            else
+            {
+                competitionsTable = client.GetTable<CompetitionView>();
+                List<CompetitionView> list2 = await competitionsTable.Where(e => e.Id == idCompetition).ToListAsync();
+                CompetitionView competition = list2.First();
+                name = competition.Name;
+                timeStart = competition.TimeStart.ToString("dddd dd.MM.yyyy");
+                timeEnd = competition.TimeEnd.ToString("dddd dd.MM.yyyy");
+                address = competition.Address;
+                hallName = competition.HallName;
+                placeName = competition.PlaceName;
+            }
             this.Title = name;
 
             TextView textArea1 = FindViewById<TextView>(Resource.Id.textArea1);
@@ -49,8 +72,8 @@ namespace PlivanjeMobileApp.Activities
 
             textArea1.Text = "Od: " + timeStart;
             textArea2.Text = "Do: " + timeEnd;
-            textArea3.Text = "Dvorana: " + hallName;
-            textArea4.Text = address + ", " + placeName;
+            textArea3.Text = "Dvorana: " + hallName.Trim();
+            textArea4.Text = address.Trim() + ", " + placeName.Trim();
 
 
             racesTable = client.GetTable<RaceView>();
