@@ -6,19 +6,20 @@ namespace PlivanjeDesktop.ViewModels
 {
     class ClubViewModel
     {
-        public List<Club> clubs { get; set; }
-        public List<Club> coachesClub { get; set; }
+        public List<ClubModel> clubs { get; set; }
+        public List<ClubModel> coachesClub { get; set; }
 
 
         public void LoadClubs()
         {
-            clubs = new List<Club>();
+            clubs = new List<ClubModel>();
             List<Club> list = new List<Club>();
             var cp = new ClubProcessor();
             list = cp.getClubs();
             foreach (var club in list)
-                clubs.Add(new Club
+                clubs.Add(new ClubModel
                 {
+                    Id = club.Id,
                     Name = club.Name,
                     Address = club.Address,
                     Place = cp.getPlace(club.Id)
@@ -36,13 +37,14 @@ namespace PlivanjeDesktop.ViewModels
             {
                 var cr = new Plivanje.Repositories.ClubRepository();
                 var coachesClubId = cr.getMyClubId(coachId, season.Id);
-                coachesClub = new List<Club>();
+                coachesClub = new List<ClubModel>();
                 foreach (var club in list)
                 {
                     if (club.Id.Equals(coachesClubId))
                     {
-                        coachesClub.Add(new Club
+                        coachesClub.Add(new ClubModel
                         {
+                            Id = club.Id,
                             Name = club.Name,
                             Address = club.Address,
                             Place = cp.getPlace(club.Id)
@@ -53,4 +55,13 @@ namespace PlivanjeDesktop.ViewModels
             }
         }
     }
+
+    class ClubModel
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public Place Place { get; set; }
+    }
+
 }

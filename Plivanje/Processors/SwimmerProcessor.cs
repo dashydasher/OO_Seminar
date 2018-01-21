@@ -90,6 +90,9 @@ namespace Plivanje.Processors
         {
             return _swimmerRepository.GetMyClub(swimmerId, seasonId);
         }
-       
+       public List<Swimmer> GetSwimmersInClubSeason(int clubId, int seasonId)
+        {
+            return _swimmerRepository.GetSwimmersInClubSeason(clubId, seasonId);
+        }
     }
 }

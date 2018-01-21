@@ -34,10 +34,10 @@ namespace PlivanjeDesktop
         }
 
 
-        public PlivačiPage(Club club)
+        public PlivačiPage(int clubId)
         {
             InitializeComponent();
-            svm.LoadSwimmersByClub(club.Name);
+            svm.LoadSwimmersByClub(clubId);
             this.DataContext = svm;
         }
 

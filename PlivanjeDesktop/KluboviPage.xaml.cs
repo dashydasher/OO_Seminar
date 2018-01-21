@@ -51,19 +51,15 @@ namespace PlivanjeDesktop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            var clubId = datagrid.SelectedIndex;
-            if (clubId >= 0)
-            {
+            ClubModel selectedClub = (ClubModel)datagrid.SelectedItem;
                 try
                 {
-                    var selectedClub = clubViewModel.clubs.GetRange(clubId, 1)[0];
-                    PlivačiPage pl = new PlivačiPage(selectedClub);
+                    PlivačiPage pl = new PlivačiPage(selectedClub.Id);
                     NavigationService navService = NavigationService.GetNavigationService(this);
                     navService.Navigate(pl);
 
                 }
                 catch (Exception exc) { }
-            }
         }
 
 

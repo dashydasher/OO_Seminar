@@ -10,40 +10,52 @@ namespace PlivanjeDesktop.ViewModels
 {
     class SwimmerViewModel
     {
-        public List<Swimmer> swimmers { get; set; }
+        public List<SwimmerModel> swimmers { get; set; }
+        SwimmerProcessor sp = new SwimmerProcessor();
 
-        public List<Swimmer> LoadSwimmersByClub(int clubId)
+        public void LoadSwimmersByClub(int clubId)
+        {
+            var cp = new ClubProcessor();
+            var season = cp.ValidSeason();
+            var list = sp.GetSwimmersInClubSeason(clubId, season.Id);
+            
+            Load(list);
+        }
+
+        private void Load(List<Swimmer> list)
         {
 
-            var cp = new SwimmerProcessor();
-            //var list = cp.getSwimmers(clubId);
-            //foreach (var swimmer in list) {
-            //    swimmers.Add(new SwimmerView
-            //    {
-            //        FirstName = swimmer.FirstName,
-            //        LastName = swimmer.LastName,
-            //        Id = swimmer.Id,
-            //        DateOfBirth = swimmer.DateOfBirth,
-            //        Gender = swimmer.Gender,
-            //        currentCategory = swimmer.
-            //    });
-            //}
-            swimmers = cp.SwimmersInClub(clubId);
-            return swimmers;
+            var cp = new ClubProcessor();
+            var season = cp.ValidSeason();
+            swimmers = new List<SwimmerModel>();
+            foreach (var swimmer in list)
+            {
+                swimmers.Add(new SwimmerModel
+                {
+                    Id = swimmer.Id,
+                    FirstName = swimmer.FirstName,
+                    LastName = swimmer.LastName,
+                    DateOfBirth = swimmer.DateOfBirth,
+                    Gender = swimmer.Gender,
+                    currentClub = sp.getMyClub(swimmer.Id, season.Id),
+                    currentCategory = sp.GetSwimmerCategory(swimmer)
+                });
+            }
         }
 
         public void LoadSwimmersByClub(string clubName)
         {
 
             var cp = new SwimmerProcessor();
-
-            swimmers = cp.GetListOfSwimmers(clubName);
+            var list = cp.GetListOfSwimmers(clubName);
+            Load(list);
         }
 
         public void LoadSwimmers()
         {
             var sp = new SwimmerProcessor();
-            swimmers = sp.GetListOfSwimmers();
+            var list = sp.GetListOfSwimmers();
+            Load(list);
         }
 
         public void LoadSwimmers(string categoryName)
@@ -51,12 +63,18 @@ namespace PlivanjeDesktop.ViewModels
             var cp = new CategoryProcessor();
             var category = cp.getCategoryByName(categoryName);
             var sp = new SwimmerProcessor();
-            swimmers = sp.getSwimmersByCategory(category);
+            var list = sp.getSwimmersByCategory(category);
+            Load(list);
         }
     }
 
-    class SwimmerView : Swimmer
+    class SwimmerModel
     {
+        public int Id { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime DateOfBirth { get; set; }
+        public Gender Gender { get; set; }
         public Club currentClub { get; set; }
         public Category currentCategory { get; set; }
     }

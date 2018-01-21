@@ -26,7 +26,8 @@ namespace Plivanje.Repositories
         SwimmerSeason GetSwimmerSeason(int swimmerId);
         void deleteSwimmerFromClub(SwimmerSeason swSeason);
         Club GetMyClub(int swimmerId, int seasonId);
-        
+        List<Swimmer> GetSwimmersInClubSeason(int clubId, int seasonId);
+
 
     }
 
@@ -331,7 +332,22 @@ namespace Plivanje.Repositories
             return result;
         }
 
+        public List<Swimmer> GetSwimmersInClubSeason(int clubId, int seasonId)
+        {
+            List<Swimmer> result = new List<Swimmer>();
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
 
+                    result = (List<Swimmer>)session.Query<SwimmerSeason>().Where(x => x.Club.Id == clubId && x.Season.Id == seasonId).Select(x => x.Swimmer).ToList();
+
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
     }
     }
 
