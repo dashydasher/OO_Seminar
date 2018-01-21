@@ -64,8 +64,8 @@ namespace PlivanjeDesktop
                     {
                         e.Handled = true;
                         KluboviPage k = new KluboviPage(trener.Id, "trener");
-                        // Početna.Main.Content = k;   ----> treba se pristupiti Frame-u "Main" u Početna Windowu, nezz kak
-
+                        NavigationService navService = NavigationService.GetNavigationService(this);
+                        navService.Navigate(k);
                         return;
                     }
                     else
@@ -81,7 +81,8 @@ namespace PlivanjeDesktop
                     {
                         e.Handled = true;
                         NatjecanjaPage n = new NatjecanjaPage();
-                        // Početna.Main.Content = pl;   ----> treba se pristupiti Frame-u "Main" u Početna Windowu, nezz kak
+                        NavigationService navService = NavigationService.GetNavigationService(this);
+                        navService.Navigate(n);
 
                         return;
                     }

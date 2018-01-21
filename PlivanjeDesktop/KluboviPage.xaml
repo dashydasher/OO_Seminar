@@ -26,7 +26,7 @@
                         <DataGridTemplateColumn Header="">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button>Popis plivača</Button>
+                                    <Button>Dodaj/ukloni plivače</Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
@@ -34,6 +34,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>
+            <Button Width="100" FontSize="20">Dodaj klub</Button>
             <GroupBox Header="Klubovi" FontSize="20">
                 <DataGrid Name="datagrid" CanUserAddRows="false" FontSize="20" ItemsSource="{Binding clubs}" RowStyle="{StaticResource datagrid}" AutoGenerateColumns="False" >
                     <DataGrid.Columns>

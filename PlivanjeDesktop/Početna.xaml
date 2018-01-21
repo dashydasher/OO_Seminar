@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlivanjeDesktop"
         mc:Ignorable="d"
-        Title="Početna" Height="300" Width="300" WindowState="Maximized">
+        Title="Hrvatski plivački savez" Height="300" Width="300" WindowState="Maximized">
     <Grid>
 
         <Grid>
