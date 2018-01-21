@@ -1,0 +1,132 @@
+﻿
+@model PlivanjeWeb.Models.ClubViewModel
+
+<h2>Detalji:</h2>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <table class="table table-borderless" style="border-top: none">
+                        <tr>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Id kluba:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.Id
+                            </td>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Ime kluba:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.Name
+                            </td>
+                            <td align="left" class="col-xs-4" style="border-top: none"></td>
+                        </tr>
+
+                        <tr>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Adresa:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.Address
+                            </td>
+
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Mjesto:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.Place
+                            </td>
+                            <td align="right" class="col-xs-4" style="border-top: none"></td>
+
+                        </tr>
+
+
+                        <tr>
+                            <td style="border-top:none" />
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<hr />
+<br />
+<h3>Plivači:</h3>
+<hr />
+
+@if (Model.swimmers != null)
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>
+                    Ime plivača
+                </th>
+
+                <th>
+                    Prezime plivača
+                </th>
+                <th>
+                    Spol
+                </th>
+                <th>
+                    Datum rođenja
+                </th>
+                <th>
+                    Kategorija
+                </th>
+                <th>
+                    Licenca
+                </th>
+        </thead>
+        @foreach (var item in Model.swimmers)
+        {
+
+
+
+
+
+            <tr>
+
+                <td>
+                    @item.firstName
+                </td>
+                <td>
+                    @item.lastName
+                </td>
+
+                <td>
+                    @item.gender
+                </td>
+                <td>
+                    @item.dateOfBirth.Date.ToShortDateString()
+                </td>
+                <td>
+                   
+                </td>
+                @if (item.licenceValid == true)
+                {
+
+                    <td>
+                        važeća
+                    </td>
+                }
+                else
+                {
+                <td>
+                    nevažeća
+                </td>
+                }
+            </tr>
+
+
+
+
+        }
+    </table>
+
+}
+
+<div>
+    @Html.ActionLink("Povratak na popis", "Index", new { @class = "btn btn-info" })
+</div>
+
+
+

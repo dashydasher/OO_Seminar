@@ -15,5 +15,7 @@ namespace PlivanjeWeb.Models
         public string HallName { get; set; }
         public int HallId { get; set; }
         public List<RaceViewModel> races { get; set; }
+        public int coachId { get; set; }
+        public bool gotovo{ get; set; }
     }
 }

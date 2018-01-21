@@ -6,8 +6,9 @@
 <h2>Popis svih natjecanja</h2>
 
 <hr />
-
-@Html.ActionLink("Dodaj novo natjecanje","Create", new object { }, new { @class = "btn btn-primary" })
+@if (Session["role"] != null && (int)Session["role"] == 1) {
+    @Html.ActionLink("Dodaj novo natjecanje", "Create", new object { }, new { @class = "btn btn-primary" })
+ }
 <table class="table table-striped">
     <thead>
         <tr>
@@ -26,6 +27,9 @@
             <th>
                 Mjesto održavanja
             </th>
+            <th>
+                Status
+            </th>
 
 
     </thead>
@@ -35,22 +39,32 @@
         <tr>
 
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @item.Name
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.TimeStart)
+                @item.TimeStart.ToShortDateString()
             </td>
 
             <td>
-                @Html.DisplayFor(modelItem => item.TimeEnd)
+                @item.TimeEnd.ToShortDateString()
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.HallName)
+                @item.HallName
             </td>
+            
+                @if (item.gotovo == true)
+                {
+                 <td>Održano</td>
+                }
+                else
+                {
+                    <td>To be...</td>
+                }
+            
            
             <td>
                 
-                @Html.ActionLink("Details", "Details", new { id = item.Id })  
+                @Html.ActionLink("Detalji", "Details", new { id = item.Id }, new { @class = "btn btn-info" })  
                 
             </td>
         </tr>

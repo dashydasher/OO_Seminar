@@ -33,6 +33,14 @@ namespace PlivanjeWebApp.Controllers
                 c.HallName = comp.Hall.Name;
                 c.TimeEnd = comp.TimeEnd;
                 c.TimeStart = comp.TimeStart;
+                if (c.TimeEnd < DateTime.Now)
+                {
+                    c.gotovo = true;
+                }
+                else
+                {
+                    c.gotovo = false;
+                }
                 competitions.Add(c);
             }
 
@@ -53,6 +61,7 @@ namespace PlivanjeWebApp.Controllers
             List<RaceViewModel> racesInCOmpetition = new List<RaceViewModel>();
             List<Race> races = new List<Race>();
             CompetitionProcessor cp = new CompetitionProcessor();
+            Session["idCompetition"] = id;
 
             racesInCOmpetition = getRaces(id);
 
@@ -64,6 +73,14 @@ namespace PlivanjeWebApp.Controllers
                 competition.TimeStart = c.TimeStart;
                 competition.TimeEnd = c.TimeEnd;
                 competition.HallName = c.Hall.Name;
+                if (c.TimeEnd < DateTime.Now)
+                {
+                    competition.gotovo = true;
+                }
+                else
+                {
+                    competition.gotovo = false;
+                }
 
             }
             catch (Exception ex)
@@ -82,12 +99,15 @@ namespace PlivanjeWebApp.Controllers
             RaceProcessor rp = new RaceProcessor();
 
             List<RaceViewModel> trke = new List<RaceViewModel>();
+            List<SwimmerRace> pom = new List<SwimmerRace>();
+           
 
             result = cp.getRacesInCompetition(id);
             if (result != null)
             {
                 foreach (var item in result)
                 {
+                    List<SwimmerViewModel> plivaci = new List<SwimmerViewModel>();
                     Race r = rp.getRace(item.Id);
                     RaceViewModel race = new RaceViewModel();
                     race.Id = r.Id;
@@ -104,15 +124,29 @@ namespace PlivanjeWebApp.Controllers
                     race.nameReferee = r.Refereee.FirstName;
                     race.surnameReferee = r.Refereee.LastName;
                     race.sytleName = r.Style.Name;
+                    pom = rp.SwimmersOnRace(item.Id);
+                    foreach(var p in pom)
+                    {
+                        SwimmerViewModel swimmer = new SwimmerViewModel();
+                        swimmer.Id = p.Id;
+                        swimmer.lastName = p.Swimmer.LastName;
+                        swimmer.firstName = p.Swimmer.FirstName;
+                        swimmer.dateOfBirth = p.Swimmer.DateOfBirth;
+                        swimmer.rezultat = p.RaceTime.TimeOfDay;
+                        plivaci.Add(swimmer);
 
+                    }
 
+                    race.swimmers = plivaci;
                     trke.Add(race);
                 }
             }
 
             return trke;
         }
+
         // GET: Competition/Create
+        
         public ActionResult Create()
         {
             HallProcessor hp = new HallProcessor();
@@ -164,6 +198,7 @@ namespace PlivanjeWebApp.Controllers
 
         }
 
+      
         // GET: Competition/Edit/5
         public ActionResult Edit(int id)
         {
@@ -338,9 +373,10 @@ namespace PlivanjeWebApp.Controllers
             Race r = rp.getRace(id); //spremamo trku
 
 
-            if (r.TimeStart.Date == DateTime.Now.Date)
+            if (r.TimeStart.Date < DateTime.Now.Date)
             {
-                TempData["Error"] = "Nije moguće izbrisati utrku jer se odvija danas";
+                TempData["Error"] = "Nije moguće izbrisati utrku, utrka se odvija danas ili se već odvila";
+                return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
             }
 
             else
@@ -397,7 +433,7 @@ namespace PlivanjeWebApp.Controllers
             Swimmer swimmer = sp.getSwimmer(idSwimmer);
             Category cat1 = sp.GetSwimmerCategory(swimmer);
             Category cat2 = cp.getCategory(race.Category.Id);
-            if (cat1.Id == cat2.Id && !rp.isSwimmerOnRace(swimmer.Id,race.Id))
+            if (cat1.Id == cat2.Id && !rp.isSwimmerOnRace(swimmer.Id,race.Id) && race.Gender==swimmer.Gender)
             {
                 try
                 {

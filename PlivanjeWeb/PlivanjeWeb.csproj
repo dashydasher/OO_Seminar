@@ -292,6 +292,7 @@
     <Content Include="Views\Competition\Index.cshtml" />
     <Content Include="Views\Hall\Index.cshtml" />
     <Content Include="Views\Records\Index.cshtml" />
+    <Content Include="Views\Club\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

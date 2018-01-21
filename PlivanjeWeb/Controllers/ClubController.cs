@@ -56,8 +56,44 @@ namespace PlivanjeWebApp.Controllers
         // GET: Club/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            Club c = new Club();
+            ClubViewModel club = new ClubViewModel();
+            CoachSeason season = new CoachSeason();
+            List<SwimmerViewModel> swimmInClub = new List<SwimmerViewModel>();
+            var sp = new SwimmerProcessor();
+            var cp = new ClubProcessor();
+
+            List<Swimmer> swimmers = new List<Swimmer>();
+
+           
+            c = cp.getClub(id);
+            club.Id = c.Id;
+            club.Name = c.Name;
+            club.Place = cp.getPlace(c.Place.Id).Name;
+            club.Address = c.Address;
+            swimmers = sp.SwimmersInClub(club.Id);
+            foreach (var s in swimmers)
+            {
+                Swimmer plivac = sp.getSwimmer(s.Id);
+                SwimmerViewModel pom = new SwimmerViewModel();
+                pom.Id = plivac.Id;
+                pom.firstName = plivac.FirstName;
+                pom.lastName = plivac.LastName;
+                pom.gender = plivac.Gender;
+                pom.dateOfBirth = plivac.DateOfBirth;
+
+                pom.licenceValid = sp.getSwimmerLicence(plivac.Id);
+
+                swimmInClub.Add(pom);
+
+
+
+            }
+            club.swimmers = swimmInClub;
+            return View(club);
         }
+         
+        
 
         // GET: Club/Create
         public ActionResult Create()

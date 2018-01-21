@@ -23,29 +23,35 @@
             <th>
                 Trener
             </th>
+            
 
 
     </thead>
 
     @foreach (var item in Model)
     {
-        <tr>
+    <tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Address)
-            </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Place)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.coach.LastName) @Html.DisplayFor(modelItem=>item.coach.FirstName)
-            </td>
-           
-        </tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Place)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.coach.LastName) @Html.DisplayFor(modelItem => item.coach.FirstName)
+        </td>
+        <td>
+
+            @Html.ActionLink("Detalji", "Details", new { id = item.Id }, new { @class = "btn btn-info" })
+
+        </td>
+
+    </tr>
 
     }
 

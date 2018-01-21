@@ -1,12 +1,12 @@
 ﻿@model PlivanjeWeb.Models.RecordsViewModel
-    @{
-        ViewBag.Title = "Index";
-    }
+@{
+    ViewBag.Title = "Index";
+}
 
-    <h2>Popis rekorda</h2>
+<h2>Popis rekorda</h2>
 
-    <hr />
-    <br />
+<hr />
+
 <h3>Muški:</h3>
 <table class="table table-hover">
     <thead style="border-bottom:solid; border-bottom-color:darkgray">
@@ -18,7 +18,7 @@
                 Prezime
             </th>
             <th class="col-xs-4" style="border-bottom: none">
-                Datum rođenja
+                Godina rođenja
             </th>
             <th class="col-xs-4" style="border-bottom: none">
                 Kategorija
@@ -40,30 +40,91 @@
     {
         foreach (var item in Model.man)
         {
-    <tr class="table-hover">
-        <td>
-            @Html.DisplayFor(modelItem => item.FirstName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfBirth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Category)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Length)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Place) @Html.DisplayFor(modelItem => item.Date)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.RaceTime)
-        </td>
+            <tr class="table-hover">
+                <td>
+                    @item.FirstName
+                </td>
+                <td>
+                    @item.LastName
+                </td>
+                <td>
+                    @item.DateOfBirth.
+                </td>
+                <td>
+                    @item.Category
+                </td>
+                <td>
+                    @item.Length
+                </td>
+                <td>
+                    @item.Place @item.Date.Date.ToShortDateString()
+                </td>
+                <td>
+                    @item.RaceTime.TimeOfDay
+                </td>
 
-    </tr>
+            </tr>
+        }
+    }
+</table>
+
+<h3>Ženski:</h3>
+<table class="table table-hover">
+    <thead style="border-bottom:solid; border-bottom-color:darkgray">
+        <tr style="border-bottom: none">
+            <th class="col-xs-4" style="border-bottom: none">
+                Ime
+            </th>
+            <th class="col-xs-4" style="border-bottom: none">
+                Prezime
+            </th>
+            <th class="col-xs-4" style="border-bottom: none">
+                Godina rođenja
+            </th>
+            <th class="col-xs-4" style="border-bottom: none">
+                Kategorija
+            </th>
+            <th class="col-xs-4" style="border-bottom: none">
+                Duljina
+            </th>
+            <th class="col-xs-4" style="border-bottom: none">
+                Mjesto i datum
+            </th>
+            <th class="col-xs-4" style="border-bottom: none">
+                Vrijeme
+            </th>
+            <th class="col-xs-1" style="border-bottom: none;text-align: right">
+            </th>
+        </tr>
+    </thead>
+    @if (Model != null)
+    {
+        foreach (var item in Model.women)
+        {
+            <tr class="table-hover">
+                <td>
+                    @item.FirstName
+                </td>
+                <td>
+                    @item.LastName
+                </td>
+                <td>
+                    @item.DateOfBirth.
+                </td>
+                <td>
+                    @item.Category
+                </td>
+                <td>
+                    @item.Length
+                </td>
+                <td>
+                    @item.Place @item.Date.Date.ToShortDateString()
+                </td>
+                <td>
+                    @item.RaceTime.TimeOfDay
+                </td>
+
+            </tr>
         }
     }
 </table>

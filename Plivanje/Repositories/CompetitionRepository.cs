@@ -44,7 +44,7 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    result = (List<Competition>)session.QueryOver<Competition>().List<Competition>();
+                    result = (List<Competition>)session.QueryOver<Competition>().OrderBy(x => x.TimeEnd.Date).Desc.List<Competition>();
                     transaction.Commit();
                 }
             }

@@ -11,7 +11,7 @@
 
 @if (!string.IsNullOrWhiteSpace(msgErr))
 {
-    <div class="alert alert-danger alert alert-dismissible" role="alert">
+    <div class="alert alert-danger alert alert-dismissible" role="alert" id="alert">
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
         @msgErr
     </div>
@@ -62,11 +62,17 @@
         </div>
     </div>
 </div>
-@Html.ActionLink("Uredi osnovne podatke", "Edit", "Competition", new { id = Model.Id }, new { @class = "btn btn-primary" })
+@if (Session["role"] != null && (int)Session["role"] == 1)
+{
+    @Html.ActionLink("Uredi osnovne podatke", "Edit", "Competition", new { id = Model.Id }, new { @class = "btn btn-primary" })
+}
 <hr />
 <br />
-<h3>Urke:</h3>
-@Html.ActionLink("Dodaj novu utrku", "CreateRace", "Competition", new { id = Model.Id }, new { @class = "btn btn-primary" })
+<h3>Utrke:</h3>
+@if (Session["role"] != null && (int)Session["role"] == 1)
+{
+    @Html.ActionLink("Dodaj novu utrku", "CreateRace", "Competition", new { id = Model.Id }, new { @class = "btn btn-primary" })
+}
 <hr />
 
 @if (Model.races != null)
@@ -104,45 +110,120 @@
 
 
 
-            <tr>
+        <tr>
 
-                <td>
-                    @item.TimeStart
-                </td>
-                <td>
-                    @item.TimeEnd
-                </td>
+            <td>
+                @item.TimeStart
+            </td>
+            <td>
+                @item.TimeEnd
+            </td>
 
-                <td>
-                    @item.Category.Name
-                </td>
-                <td>
-                    @item.Length.Len
-                
-                </td>
-                <td>
-                    @item.Style.Name
-                </td>
-                <td>
-                    @item.Gender
-                </td>
-                <td>
-                    @item.Refereee.FirstName @item.Refereee.LastName
-                </td>
-                <td style="width: 1%;white-space: nowrap;">
-                    <button class="btn btn-danger btn-sm">
-                        <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
-                        @Html.ActionLink("Izbriši utrku", "DeleteRaceFromCompetition", "Competition", new { id = item.Id }, new { onclick = "return confirm('Jeste li sigurni da želite obrisati ovu utrku?');" })
-                    </button>
-                    <button class="btn btn-success btn-sm">
-                        <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                        @Html.ActionLink("Prijavi plivače", "AddSwimmersToRace", "Competition", new { id = item.Id },null)
-                    </button>
-                </td>
-                <td>
+            <td>
+                @item.Category.Name
+            </td>
+            <td>
+                @item.Length.Len
+
+            </td>
+            <td>
+                @item.Style.Name
+            </td>
+            <td>
+                @item.Gender
+            </td>
+            <td>
+                @item.Refereee.FirstName @item.Refereee.LastName
+            </td>
+        
+            <td>
+                <button id="@item.Id" class="btn btn-default btn-xs toggler">
+                    <span class="glyphicon glyphicon-chevron-down"></span>
+                </button>
+            </td>
+            @if (Session["role"] != null && (int)Session["role"] == 1)
+    {
+        <td style="width: 1%;white-space: nowrap;">
+            <button class="btn btn-danger btn-sm">
+                <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span>
+                @Html.ActionLink("Izbriši utrku", "DeleteRaceFromCompetition", "Competition", new { id = item.Id }, new { onclick = "return confirm('Jeste li sigurni da želite obrisati ovu utrku?');" })
+            </button>
+            <button class="btn btn-success btn-sm">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+                @Html.ActionLink("Prijavi plivače", "AddSwimmersToRace", "Competition", new { id = item.Id }, null)
+            </button>
+        </td>
+}
+            <td></td>
+        </tr>
+
+            <tr hidden class="toggle-container @item.Id">
+                <td colspan="8">
+                    @if (@item.swimmers.Count>0)
+                    {
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    
+                                        
+                                            <th>
+                                                Id plivača
+                                            </th>
+                                            <th>
+                                                Ime
+                                            </th>
+                                            <th>
+                                                Prezime
+                                            </th>
+                                            <th>
+                                                Datum rođenja
+                                            </th>
+                                            @if (Model.gotovo)
+                                            {
+                                                <td>Rezultat</td>
+                                            }
+                                        
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var plivac in item.swimmers)
+                                {
+                                <tr>
+                                    <td>
+                                        @plivac.Id
+                                    </td>
+                                    <td>
+                                        @plivac.firstName
+                                    </td>
+                                    <td>
+                                        @plivac.lastName
+                                    </td>
+                                    <td>
+                                        @plivac.dateOfBirth.Date.ToShortDateString()
+                                    </td>
+                                    @if (Model.gotovo)
+    {
+                                <td>@plivac.rezultat</td>
+}
+
+                                </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    }
+                    else
+                    {
+                        <p><b>Nema plivača</b></p>
+
+                    }
 
                 </td>
             </tr>
+
+
+
 
 
 
@@ -152,6 +233,28 @@
 }
 
 <div>
-    @Html.ActionLink("Povratak na popis", "Index")
+    @Html.ActionLink("Povratak na popis", "Index", new { @class = "btn btn-primary" })
 </div>
 
+
+
+@section scripts{
+
+    <script>
+        jQuery(".toggler").click(function () {
+            var id = jQuery(this).attr("id");
+            console.log(id);
+            var toggled = $('.' + id);
+            toggled.toggle();
+        });
+    </script>
+    <script>
+        setTimeout(function () {
+            $("#alert").fadeOut().empty();
+        }, 5000);
+    </script>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+}

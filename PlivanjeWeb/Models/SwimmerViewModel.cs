@@ -18,5 +18,6 @@ namespace PlivanjeWeb.Models
         public bool licenceValid { get; set; }
         public string firstAndLast { get; set; }
         public int IdCategory { get; set; }
+        public TimeSpan rezultat{get;set;}
     }
 }

@@ -22,7 +22,7 @@ namespace Plivanje.Mappings
             Map(x => x.Length);
             Map(x => x.Place);
             Map(x => x.Date);
-            Map(x => x.RaceTime);
+            Map(x => x.RaceTime).CustomType<NHibernate.Type.TimeType>();
             Table("Record");
         }
     }

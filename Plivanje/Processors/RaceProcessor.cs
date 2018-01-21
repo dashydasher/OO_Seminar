@@ -59,5 +59,9 @@ namespace Plivanje.Processors
         public bool isSwimmerOnRace(int idSwimmer,int idRace) {
             return _RaceRepository.isSwimmerOnRace(idSwimmer, idRace);
         }
+        public List<SwimmerRace> SwimmersOnRace(int idRace)
+        {
+            return _RaceRepository.SwimmersOnRace(idRace);
+        }
     }
 }

@@ -19,6 +19,7 @@ namespace Plivanje.Repositories
         List<Length> GetLenghts();
         void AddSwimmerToRace(SwimmerRace swimmerRace);
         bool isSwimmerOnRace(int idSwimmer, int idRace);
+        List<SwimmerRace> SwimmersOnRace(int idRace);
 
 
 
@@ -193,6 +194,23 @@ namespace Plivanje.Repositories
                 }
             }
             return isOn;
+        }
+        public List<SwimmerRace> SwimmersOnRace(int idRace)
+        {
+            var result = new List<SwimmerRace>();
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+
+                    result = (List<SwimmerRace>)session.QueryOver<SwimmerRace>().Where(x => x.Race.Id == idRace).List<SwimmerRace>();
+
+                    transaction.Commit();
+                }
+            }
+            return result;
         }
     }
 }
