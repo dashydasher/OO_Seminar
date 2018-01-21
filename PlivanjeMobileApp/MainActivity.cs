@@ -21,26 +21,9 @@ namespace PlivanjeMobileApp
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);
             SetActionBar(toolbar);
 
-            Button natjecanjaButton = FindViewById<Button>(Resource.Id.mainnatjecanjabut);
-            Button kluboviButton = FindViewById<Button>(Resource.Id.mainklubovibut);
-            Button plivaciButton = FindViewById<Button>(Resource.Id.mainplivacibut);
-            Button rekordiButton = FindViewById<Button>(Resource.Id.mainrekordibut);
+            TextView mainText = FindViewById<TextView>(Resource.Id.mainText);
 
-            natjecanjaButton.Click += delegate {
-                StartActivity(typeof(NatjecanjaActivity));
-            };
-
-            kluboviButton.Click += delegate {
-                StartActivity(typeof(KluboviActivity));
-            };
-
-            plivaciButton.Click += delegate {
-                StartActivity(typeof(PlivaciActivity));
-            };
-
-            rekordiButton.Click += delegate {
-                StartActivity(typeof(RekordiActivity));
-            };
+            mainText.Text = "Dobrodošli u mobilnu aplikaciju sustava za natjecateljsko plivanje.";
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

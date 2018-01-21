@@ -9,26 +9,14 @@
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/toolbarIncluded">
-        <Button
-            android:text="Natjecanja"
+        android:layout_below="@+id/toolbarIncluded"
+        android:minWidth="25px"
+        android:minHeight="25px">
+        <TextView
+            android:text="Dobrodošli"
+            android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mainnatjecanjabut" />
-        <Button
-            android:text="Klubovi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/mainklubovibut" />
-        <Button
-            android:text="Plivači"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/mainplivacibut" />
-        <Button
-            android:text="Rekordi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/mainrekordibut" />
+            android:id="@+id/mainText" />
     </LinearLayout>
 </RelativeLayout>

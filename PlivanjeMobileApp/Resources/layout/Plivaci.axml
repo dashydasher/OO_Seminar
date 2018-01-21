@@ -16,50 +16,108 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp" />
         <Button
-            android:text="Search"
+            android:text="Pretraži"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/searchbut"
             android:layout_marginBottom="15dp" />
-        <Button
-            android:text="Veterani"
+        <LinearLayout
+            android:orientation="vertical"
+            android:minWidth="25px"
+            android:minHeight="25px"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:text="Veterani"
+                    android:id="@+id/plivacivetbut"
+                    android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/plivacivetbut" />
-        <Button
-            android:text="Seniori"
+            android:layout_weight=".50" />
+                <Button
+                    android:text="Seniori"
+                    android:id="@+id/plivacisenbut"
+                    android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:text="Mlađi seniori"
+                    android:id="@+id/plivacimsenbut"
+                    android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/plivacisenbut" />
-        <Button
-            android:text="Mlađi seniori"
+            android:layout_weight=".50" />
+                <Button
+                    android:text="Juniori"
+                    android:id="@+id/plivacijunbut"
+                    android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:text="Mlađi juniori"
+                    android:id="@+id/plivacimjunbut"
+                    android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/plivacimsenbut" />
-        <Button
-            android:text="Juniori"
+            android:layout_weight=".50" />
+                <Button
+                    android:text="Kadeti"
+                    android:id="@+id/plivacikadbut"
+                    android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".50" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="vertical"
             android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:orientation="horizontal"
+                android:minWidth="25px"
+                android:minHeight="25px"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <Button
+                    android:text="Mlađi kadeti"
+                    android:id="@+id/plivacimkadbut"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/plivacijunbut" />
-        <Button
-            android:text="Mlađi juniori"
-            android:layout_width="match_parent"
+            android:layout_weight=".50" />
+                <Button
+                    android:text="Početnici"
+                    android:id="@+id/plivacipocbut"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:id="@+id/plivacimjunbut" />
-        <Button
-            android:text="Kadeti"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/plivacikadbut" />
-        <Button
-            android:text="Mlađi kadeti"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/plivacimkadbut" />
-        <Button
-            android:text="Početnici"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/plivacipocbut" />
+            android:layout_weight=".50"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

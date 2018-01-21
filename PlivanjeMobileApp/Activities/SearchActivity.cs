@@ -47,22 +47,20 @@ namespace PlivanjeMobileApp.Activities
                 .ToListAsync();
 
             adapter.Clear();
-            string rezultati = "";
             foreach (SwimmersView current in swimmers)
             {
                 if (
-                    Regex.IsMatch((current.LastName.Trim() + " " + current.FirstName.Trim()).ToLower(), ".*" + pretrazujem.ToLower() + ".*")
+                    Regex.IsMatch((current.LastName.Trim().ToLower() + " " + current.FirstName.Trim()).ToLower(), ".*" + pretrazujem.Trim().ToLower() + ".*")
                     ||
-                    Regex.IsMatch((current.FirstName.Trim() + " " + current.LastName.Trim()).ToLower(), ".*" + pretrazujem.ToLower() + ".*")
+                    Regex.IsMatch((current.FirstName.Trim().ToLower() + " " + current.LastName.Trim()).ToLower(), ".*" + pretrazujem.Trim().ToLower() + ".*")
                     )
                 {
-                    rezultati += current.LastName.Trim() + " " + current.FirstName.Trim() + "\n";
                     adapter.Add(current);
                 }
             }
 
             TextView textView1 = FindViewById<TextView>(Resource.Id.textView1);
-            textView1.Text = "Rezultati za \"" + pretrazujem + "\":";
+            textView1.Text = "Rezultati za \"" + pretrazujem.Trim() + "\":";
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
