@@ -21,8 +21,17 @@ namespace PlivanjeMobileApp.Models
         [JsonProperty(PropertyName = "score")]
         public string Score { get; set; }
 
+        [JsonProperty(PropertyName = "length")]
+        public string Length { get; set; }
+
+        [JsonProperty(PropertyName = "style")]
+        public string Style { get; set; }
+
         [JsonProperty(PropertyName = "raceTime")]
         public DateTime RaceTime { get; set; }
+
+        [JsonProperty(PropertyName = "time")]
+        public DateTime Time { get; set; }
 
         [JsonProperty(PropertyName = "firstName")]
         public string FirstName { get; set; }
@@ -41,5 +50,8 @@ namespace PlivanjeMobileApp.Models
 
         [JsonProperty(PropertyName = "idSwimmer")]
         public string IdSwimmer { get; set; }
+
+        [JsonProperty(PropertyName = "idCompetition")]
+        public string IdCompetition { get; set; }
     }
 }

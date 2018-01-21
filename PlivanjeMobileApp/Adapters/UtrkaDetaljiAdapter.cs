@@ -19,11 +19,13 @@ namespace PlivanjeMobileApp.Adapters
         Activity activity;
         int layoutResourceId;
         List<SwimmerRaceView> items = new List<SwimmerRaceView>();
+        bool isUtrkaLayout;
 
-        public UtrkaDetaljiAdapter(Activity activity, int layoutResourceId)
+        public UtrkaDetaljiAdapter(Activity activity, int layoutResourceId, bool isUtrkaLayout)
         {
             this.activity = activity;
             this.layoutResourceId = layoutResourceId;
+            this.isUtrkaLayout = isUtrkaLayout;
         }
 
         public override View GetView(int position, View convertView, ViewGroup parent)
@@ -33,6 +35,9 @@ namespace PlivanjeMobileApp.Adapters
             TextView RaceTime;
             TextView Swimmer;
             TextView Score;
+            TextView Length;
+            TextView Style;
+            TextView RaceTime2;
 
             if (row == null)
             {
@@ -41,20 +46,42 @@ namespace PlivanjeMobileApp.Adapters
                 RaceTime = row.FindViewById<TextView>(Resource.Id.textArea1);
                 Swimmer = row.FindViewById<TextView>(Resource.Id.textArea2);
                 Score = row.FindViewById<TextView>(Resource.Id.textArea3);
+                Length = row.FindViewById<TextView>(Resource.Id.textArea4);
+                Style = row.FindViewById<TextView>(Resource.Id.textArea5);
+                RaceTime2 = row.FindViewById<TextView>(Resource.Id.textArea6);
             }
             else
             {
                 RaceTime = row.FindViewById<TextView>(Resource.Id.textArea1);
                 Swimmer = row.FindViewById<TextView>(Resource.Id.textArea2);
                 Score = row.FindViewById<TextView>(Resource.Id.textArea3);
+                Length = row.FindViewById<TextView>(Resource.Id.textArea4);
+                Style = row.FindViewById<TextView>(Resource.Id.textArea5);
+                RaceTime2 = row.FindViewById<TextView>(Resource.Id.textArea6);
             }
-            RaceTime.Text = currentItem.RaceTime.ToUniversalTime().TimeOfDay.ToString().Trim();
-            Swimmer.Text = currentItem.FirstName.Trim() + " " + currentItem.LastName.Trim();
-            Score.Text = "bod: " + currentItem.Score;
 
-            RaceTime.Touch += delegate (object sender, View.TouchEventArgs e) { SendSwimmerData(sender, e, currentItem); };
-            Swimmer.Touch += delegate (object sender, View.TouchEventArgs e) { SendSwimmerData(sender, e, currentItem); };
-            Score.Touch += delegate (object sender, View.TouchEventArgs e) { SendSwimmerData(sender, e, currentItem); };
+            if (isUtrkaLayout)
+            {
+                RaceTime.Text = currentItem.RaceTime.ToUniversalTime().TimeOfDay.ToString().Trim();
+                Swimmer.Text = currentItem.FirstName.Trim() + " " + currentItem.LastName.Trim();
+                Score.Text = "bod: " + currentItem.Score;
+                Length.Visibility = ViewStates.Gone;
+                Style.Visibility = ViewStates.Gone;
+                RaceTime2.Visibility = ViewStates.Gone;
+
+                RaceTime.Touch += delegate (object sender, View.TouchEventArgs e) { SendSwimmerData(sender, e, currentItem); };
+                Swimmer.Touch += delegate (object sender, View.TouchEventArgs e) { SendSwimmerData(sender, e, currentItem); };
+                Score.Touch += delegate (object sender, View.TouchEventArgs e) { SendSwimmerData(sender, e, currentItem); };
+            }
+            else
+            {
+                RaceTime.Visibility = ViewStates.Gone;
+                Swimmer.Visibility = ViewStates.Gone;
+                Score.Visibility = ViewStates.Gone;
+                Length.Text = currentItem.Length + "m " + currentItem.Style;
+                Style.Text = currentItem.Time.ToUniversalTime().ToString("dd.MM.yyyy.");
+                RaceTime2.Text = currentItem.RaceTime.ToUniversalTime().TimeOfDay.ToString().Trim();
+            }
 
             return row;
         }

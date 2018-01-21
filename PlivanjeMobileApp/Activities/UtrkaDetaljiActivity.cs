@@ -60,7 +60,7 @@ namespace PlivanjeMobileApp.Activities
                 .OrderByDescending(e => e.Score)
                 .ToListAsync();
 
-            adapter = new UtrkaDetaljiAdapter(this, Resource.Layout.PlivaciUtrkaOsnovnoLayout);
+            adapter = new UtrkaDetaljiAdapter(this, Resource.Layout.PlivaciUtrkaOsnovnoLayout, isUtrkaLayout:true);
             var listView = FindViewById<ListView>(Resource.Id.listView1);
             listView.Adapter = adapter;
 

@@ -20,7 +20,9 @@ namespace PlivanjeMobileApp.Activities
     {
         private MobileServiceClient client;
         private IMobileServiceTable<SwimmersView> swimmersTable;
+        private IMobileServiceTable<SwimmerRaceView> swimmerRacesTable;
         private SwimmerAdapter adapter;
+        private UtrkaDetaljiAdapter adapter2;
         const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
 
         protected override async void OnCreate(Bundle savedInstanceState)
@@ -30,6 +32,9 @@ namespace PlivanjeMobileApp.Activities
             client = new MobileServiceClient(applicationURL);
 
             SetContentView(Resource.Layout.Plivac);
+
+            var sezonebutton = FindViewById<Button>(Resource.Id.sezonebutton);
+            var utrkebutton = FindViewById<Button>(Resource.Id.utrkebutton);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);
             SetActionBar(toolbar);
@@ -44,16 +49,42 @@ namespace PlivanjeMobileApp.Activities
             spol.Text = "Datum rođenja: " + dateOfBirth.Trim();
 
             swimmersTable = client.GetTable<SwimmersView>();
+            swimmerRacesTable = client.GetTable<SwimmerRaceView>();
 
             List<SwimmersView> list = await swimmersTable.Where(e => e.Id == idPlivaca).ToListAsync();
+            List<SwimmerRaceView> list2 = await swimmerRacesTable.Where(e => e.IdSwimmer == idPlivaca).ToListAsync();
 
             adapter = new SwimmerAdapter(this, Resource.Layout.SezonaPlivaca);
-            var listViewClubSwimmers = FindViewById<ListView>(Resource.Id.sezone);
-            listViewClubSwimmers.Adapter = adapter;
+            var listView = FindViewById<ListView>(Resource.Id.sezone);
+            listView.Adapter = adapter;
+
+            adapter2 = new UtrkaDetaljiAdapter(this, Resource.Layout.PlivaciUtrkaOsnovnoLayout, isUtrkaLayout:false);
 
             adapter.Clear();
             foreach (SwimmersView current in list)
                 adapter.Add(current);
+
+            TextView rezultati = FindViewById<TextView>(Resource.Id.rezultati);
+            sezonebutton.Click += delegate {
+                rezultati.Text = "Rezultati po sezonama";
+
+                adapter2.Clear();
+                listView.Adapter = adapter;
+                adapter.Clear();
+
+                foreach (SwimmersView current in list)
+                    adapter.Add(current);
+            };
+            utrkebutton.Click += delegate {
+                rezultati.Text = "Rezultati po utrkama";
+
+                adapter.Clear();
+                listView.Adapter = adapter2;
+                adapter2.Clear();
+
+                foreach (SwimmerRaceView current in list2)
+                    adapter2.Add(current);
+            };
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -64,21 +95,21 @@ namespace PlivanjeMobileApp.Activities
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            switch (item.TitleFormatted.ToString())
+            switch (item.ItemId)
             {
-                case "Natjecanja":
+                case Resource.Id.menu_natjecanja:
                     StartActivity(typeof(NatjecanjaActivity));
                     break;
-                case "Klubovi":
+                case Resource.Id.menu_klubovi:
                     StartActivity(typeof(KluboviActivity));
                     break;
-                case "Plivači":
+                case Resource.Id.menu_plivaci:
                     StartActivity(typeof(PlivaciActivity));
                     break;
-                case "Rekordi":
+                case Resource.Id.menu_rekordi:
                     StartActivity(typeof(RekordiActivity));
                     break;
-                case "Početna":
+                case Resource.Id.menu_index:
                     StartActivity(typeof(MainActivity));
                     break;
             }
