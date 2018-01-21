@@ -18,6 +18,7 @@
                         <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding Path=FirstName}" />
                         <DataGridTextColumn Header="Prezime" Width="250" Binding="{Binding Path=LastName}" />
                         <DataGridTextColumn Header="Spol" Width="200" Binding="{Binding Path=Gender}" />
+                        <DataGridTextColumn Header="Datum rođenja" Width="200" Binding="{Binding Path=DateOfBirth, StringFormat=\{0:dd.MM.yy\}}" />
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>
