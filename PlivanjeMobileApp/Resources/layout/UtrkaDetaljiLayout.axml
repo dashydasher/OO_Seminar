@@ -12,6 +12,27 @@
         android:minWidth="25px"
         android:minHeight="25px"
         android:layout_below="@+id/toolbarIncluded">
+      <TextView
+            android:text="Spol kategorija"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:id="@+id/textArea1" />
+      <TextView
+            android:text="Duljina stil"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:id="@+id/textArea2" />
+      <TextView
+            android:text="Sudac"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:id="@+id/textArea3" />
         <ListView
             android:minWidth="25px"
             android:minHeight="25px"

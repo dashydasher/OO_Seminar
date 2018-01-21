@@ -45,9 +45,13 @@ namespace PlivanjeMobileApp.Activities
             this.Title = Weekday + ", " + TimeSpan;
 
 
-            /*
-             * u UtrkaDetaljiLayout kreiraj Text polja i popuni ih s ovim podacima gore
-            */
+            TextView textArea1 = FindViewById<TextView>(Resource.Id.textArea1);
+            TextView textArea2 = FindViewById<TextView>(Resource.Id.textArea2);
+            TextView textArea3 = FindViewById<TextView>(Resource.Id.textArea3);
+
+            textArea1.Text = Gender + " " + Category;
+            textArea2.Text = RaceLength + "m " + Style;
+            textArea3.Text = "Sudi: " + Referee;
 
 
             swimmersTable = client.GetTable<SwimmerRaceView>();
