@@ -59,31 +59,34 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Prijava.xaml.cs">
-      <DependentUpon>Prijava.xaml</DependentUpon>
+    <Compile Include="PrijavaPage.xaml.cs">
+      <DependentUpon>PrijavaPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Registracija.xaml.cs">
+    <Compile Include="RegistracijaPage.xaml.cs">
       <DependentUpon>Registracija.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Klubovi.xaml.cs">
-      <DependentUpon>Klubovi.xaml</DependentUpon>
+    <Compile Include="KluboviPage.xaml.cs">
+      <DependentUpon>KluboviPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Natjecanja.xaml.cs">
-      <DependentUpon>Natjecanja.xaml</DependentUpon>
+    <Compile Include="NatjecanjaPage.xaml.cs">
+      <DependentUpon>NatjecanjaPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Plivači.xaml.cs">
-      <DependentUpon>Plivači.xaml</DependentUpon>
+    <Compile Include="PlivačiPage.xaml.cs">
+      <DependentUpon>PlivačiPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Rekordi.xaml.cs">
-      <DependentUpon>Rekordi.xaml</DependentUpon>
+    <Compile Include="RekordiPage.xaml.cs">
+      <DependentUpon>RekordiPage.xaml</DependentUpon>
+    </Compile>
+	<Compile Include="Početna.xaml.cs">
+      <DependentUpon>Početna.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ClubViewModel.cs" />
     <Compile Include="ViewModels\CompetitionViewModel.cs" />
     <Compile Include="ViewModels\RaceViewModel.cs" />
     <Compile Include="ViewModels\RecordViewModel.cs" />
     <Compile Include="ViewModels\SwimmerViewModel.cs" />
-    <Compile Include="Utrke.xaml.cs">
-      <DependentUpon>Utrke.xaml</DependentUpon>
+    <Compile Include="UtrkePage.xaml.cs">
+      <DependentUpon>UtrkePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -113,33 +116,37 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Prijava.xaml">
+    <Page Include="PrijavaPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Registracija.xaml">
+    <Page Include="RegistracijaPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Klubovi.xaml">
+    <Page Include="KluboviPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Natjecanja.xaml">
+    <Page Include="NatjecanjaPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Plivači.xaml">
+    <Page Include="PlivačiPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Rekordi.xaml">
+    <Page Include="RekordiPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Utrke.xaml">
+    <Page Include="UtrkePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
+    </Page>
+	 <Page Include="Početna.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
