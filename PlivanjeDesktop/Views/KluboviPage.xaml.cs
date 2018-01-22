@@ -53,14 +53,13 @@ namespace PlivanjeDesktop
         {
             var button = sender as Button;
             ClubModel selectedClub = (ClubModel)datagrid.SelectedItem;
-                try
-                {
-                    PlivačiPage pl = new PlivačiPage(selectedClub.Id);
-                    NavigationService navService = NavigationService.GetNavigationService(this);
-                    navService.Navigate(pl);
-
-                }
-                catch (Exception exc) { }
+            try
+            {
+                PlivačiPage pl = new PlivačiPage(selectedClub.Id);
+                NavigationService navService = NavigationService.GetNavigationService(this);
+                navService.Navigate(pl);
+            }
+            catch (Exception exc) { }
         }
 
 

@@ -24,10 +24,12 @@ namespace PlivanjeDesktop
     {
         public List<Race> races = new List<Race>();
         RaceViewModel rvm = new RaceViewModel();
-        public UtrkePage(Competition competition)
+        
+
+        public UtrkePage(int competitionId)
         {
             InitializeComponent();
-            rvm.LoadRacesByCompetition(competition.Name);
+            rvm.LoadRacesByCompetition(competitionId);
             this.DataContext = rvm;
         }
     }

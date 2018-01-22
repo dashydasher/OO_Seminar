@@ -1,4 +1,5 @@
 ﻿using Plivanje.Models;
+using PlivanjeDesktop.Models;
 using PlivanjeDesktop.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -39,14 +40,15 @@ namespace PlivanjeDesktop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
-            var competitionId = datagridC.SelectedIndex;
-            if (competitionId >= 0)
+            CompetitionModel selectedCompetition = (CompetitionModel)datagridC.SelectedItem;
+            try
             {
-                var selectedCompetition = competitionViewModel.competitions.GetRange(competitionId, 1)[0];
-                UtrkePage up = new UtrkePage(selectedCompetition);
-                // Početna.Main.Content = pl;   ----> treba se pristupiti Frame-u "Main" u Početna Windowu, nezz kak
-
+                UtrkePage up = new UtrkePage(selectedCompetition.Id);
+                NavigationService navService = NavigationService.GetNavigationService(this);
+                navService.Navigate(up);
             }
+            catch (Exception exc) { }
         }
+        
     }
 }

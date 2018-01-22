@@ -48,7 +48,7 @@ namespace PlivanjeDesktop.ViewModels
                             Id = club.Id,
                             Name = club.Name,
                             Address = club.Address,
-                            Place = cp.getPlace(club.Id)
+                            Place = club.Place
                         });
                         break;
                     }

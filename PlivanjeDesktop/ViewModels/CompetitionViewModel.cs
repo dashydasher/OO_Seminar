@@ -1,5 +1,6 @@
 ﻿using Plivanje.Models;
 using Plivanje.Processors;
+using PlivanjeDesktop.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,23 +11,24 @@ namespace PlivanjeDesktop.ViewModels
 {
     class CompetitionViewModel
     {
-        public List<Competition> competitions { get; set; }
-        
+        public List<CompetitionModel> competitions { get; set; }
+        CompetitionProcessor cp = new CompetitionProcessor();
 
 
         public void LoadCompetitions()
         {
-            competitions = new List<Competition>();
-            List<Competition> list = new List<Competition>();
-            var cp = new CompetitionProcessor();
-            list = cp.GetCompetitions();
+            competitions = new List<CompetitionModel>();
+            var hp = new HallProcessor();
+            var list = cp.GetCompetitions();
  
             foreach (var competition in list)
-                competitions.Add(new Competition
+                competitions.Add(new CompetitionModel
                 {
+                    Id = competition.Id,
                     Name = competition.Name,
-                    TimeStart = competition.TimeStart
-                    
+                    TimeStart = competition.TimeStart,
+                    TimeEnd = competition.TimeEnd,
+                    MyHall = competition.Hall
                 });
         }
 

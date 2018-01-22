@@ -9,6 +9,23 @@
       Title="UtrkePage" >
 
     <Grid>
-        
+        <StackPanel Width="1500">
+            <GroupBox Header="Utrke" FontSize="20">
+                <DataGrid Name="datagridSwimmer" CanUserAddRows="false"
+                          FontSize="20" ItemsSource="{Binding races}" AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Stil" Width="*" Binding="{Binding Path=Style.Name}" />
+                        <DataGridTextColumn Header="Kategorija" Width="180" Binding="{Binding Path=Category.Name}" />
+                        <DataGridTextColumn Header="Početak" Width="250" Binding="{Binding Path=TimeStart, StringFormat=\{0:dd.MM.yy hh:mm tt\}}" />
+                        <DataGridTextColumn Header="Kraj" Width="250" Binding="{Binding Path=TimeEnd, StringFormat=\{0:dd.MM.yy hh:mm tt\}}" />
+                        <DataGridTextColumn Header="Spol" Width="80" Binding="{Binding Path=Gender}" />
+                        <DataGridTextColumn Header="Bazen" Width="80" Binding="{Binding Path=Pool.Length}" />
+                        <DataGridTextColumn Header="Natjecanje" Width="200" Binding="{Binding Path=Competition.Name}" />
+                        <DataGridTextColumn Header="Duljina" Width="80" Binding="{Binding Path=Length.Len}" />
+                        <DataGridTextColumn Header="Sudac" Width="180" Binding="{Binding Path=Referee.LastName}" />
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </StackPanel>
     </Grid>
 </Page>

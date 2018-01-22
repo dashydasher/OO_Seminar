@@ -16,14 +16,15 @@
 
 
     <Grid>
-
-        <GroupBox Header="Natjecanja">
+        <StackPanel Width="1200">
+        <GroupBox FontSize="20" Header="Natjecanja">
             <DataGrid Name="datagridC" CanUserAddRows="false" FontSize="20"  ItemsSource="{Binding competitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" >
                 <DataGrid.Columns>
 
                     <DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding Path=Name}" />
-                    <DataGridTextColumn Header="Početak" Width="250" Binding="{Binding Path=TimeStart}" />
-                    <DataGridTextColumn Header="Mjesto" Width="250" Binding="{Binding Path=Hall.Place.Name}" />
+                        <DataGridTextColumn Header="Početak" Width="180" Binding="{Binding Path=TimeStart, StringFormat=\{0:dd.MM.yy\}}" />
+                        <DataGridTextColumn Header="Kraj" Width="180" Binding="{Binding Path=TimeEnd, StringFormat=\{0:dd.MM.yy\}}" />
+                        <DataGridTextColumn Header="Dvorana" Width="300" Binding="{Binding Path=MyHall.Name}" />
 
                     <DataGridTemplateColumn Header="">
                         <DataGridTemplateColumn.CellTemplate>
@@ -36,6 +37,6 @@
                 </DataGrid.Columns>
             </DataGrid>
         </GroupBox>
-
+        </StackPanel>
     </Grid>
 </Page>
