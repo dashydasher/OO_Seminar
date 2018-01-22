@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <StackPanel >
+        <StackPanel>
             <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="RegisterHeading" Text="Registracija" VerticalAlignment="Top" FontSize="40" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
             <TextBlock HorizontalAlignment="Center" Margin="0,10,0,0" x:Name="name" Text="Ime" VerticalAlignment="Top" FontSize="25" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
             <TextBox Height="30" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxName" VerticalAlignment="Top" FontSize="20" Width="450" />

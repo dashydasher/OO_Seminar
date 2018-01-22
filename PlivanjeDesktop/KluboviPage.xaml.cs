@@ -1,4 +1,5 @@
 ﻿using Plivanje.Models;
+using PlivanjeDesktop.Models;
 using PlivanjeDesktop.ViewModels;
 using System;
 using System.Collections.Generic;

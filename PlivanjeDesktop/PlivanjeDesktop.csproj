@@ -59,11 +59,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Models\ClubModel.cs" />
+    <Compile Include="Models\SwimmerModel.cs" />
     <Compile Include="PrijavaPage.xaml.cs">
       <DependentUpon>PrijavaPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="RegistracijaPage.xaml.cs">
-      <DependentUpon>Registracija.xaml</DependentUpon>
     </Compile>
     <Compile Include="KluboviPage.xaml.cs">
       <DependentUpon>KluboviPage.xaml</DependentUpon>
@@ -74,10 +73,13 @@
     <Compile Include="PlivačiPage.xaml.cs">
       <DependentUpon>PlivačiPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="RegistracijaPage.xaml.cs">
+      <DependentUpon>RegistracijaPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="RekordiPage.xaml.cs">
       <DependentUpon>RekordiPage.xaml</DependentUpon>
     </Compile>
-	<Compile Include="Početna.xaml.cs">
+    <Compile Include="Početna.xaml.cs">
       <DependentUpon>Početna.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ClubViewModel.cs" />
@@ -120,10 +122,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="RegistracijaPage.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="KluboviPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -136,6 +134,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="RegistracijaPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="RekordiPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -144,7 +146,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-	 <Page Include="Početna.xaml">
+    <Page Include="Početna.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

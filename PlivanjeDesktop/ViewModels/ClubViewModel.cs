@@ -1,6 +1,7 @@
 ﻿using Plivanje.Models;
 using System.Collections.Generic;
 using Plivanje.Processors;
+using PlivanjeDesktop.Models;
 
 namespace PlivanjeDesktop.ViewModels
 {
@@ -56,12 +57,6 @@ namespace PlivanjeDesktop.ViewModels
         }
     }
 
-    class ClubModel
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public Place Place { get; set; }
-    }
+    
 
 }

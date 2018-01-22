@@ -33,7 +33,8 @@ namespace PlivanjeDesktop
         {
             e.Handled = true;
             RegistracijaPage r = new RegistracijaPage();
-            // Početna.Main.Content = r;   ----> treba se pristupiti Frame-u "Main" u Početna Windowu, nezz kak
+            NavigationService navService = NavigationService.GetNavigationService(this);
+            navService.Navigate(r);
 
         }
 
