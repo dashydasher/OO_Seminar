@@ -25,13 +25,12 @@ namespace PlivanjeDesktop
     {
         private List<Club> clubs = new List<Club>();
 
-        ClubViewModel clubViewModel;
+        ClubViewModel clubViewModel = new ClubViewModel();
 
         public KluboviPage()
         {
             InitializeComponent();
-
-            clubViewModel = new ClubViewModel();
+            
             clubViewModel.LoadClubs();
             this.DataContext = clubViewModel;
 
@@ -40,8 +39,7 @@ namespace PlivanjeDesktop
         public KluboviPage(int id, string role)
         {
             InitializeComponent();
-
-            var clubViewModel = new ClubViewModel();
+            
             clubViewModel.LoadClubs();
             clubViewModel.LoadCoachesClub(id);
             this.DataContext = clubViewModel;

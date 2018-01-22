@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Plivanje.Processors
 {
-    class LicenceProcessor
+    public class LicenceProcessor
     {
         private ILicenceRepository _LicenceRepository;
 

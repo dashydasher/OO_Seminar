@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlivanjeDesktop.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,12 +21,15 @@ namespace PlivanjeDesktop
     /// </summary>
     public partial class RegistracijaPage : Page
     {
+
+        RegisterViewModel rvm = new RegisterViewModel();
+
         public RegistracijaPage()
         {
             InitializeComponent();
         }
 
-        private void register_Click(object sender, RoutedEventArgs e)
+        private void Register_Click(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrEmpty(textBoxName.Text))
             {
@@ -42,7 +46,7 @@ namespace PlivanjeDesktop
                 MessageBox.Show("Potrebno je unijeti e-mail.");
                 return;
             }
-            if (String.IsNullOrEmpty(textBoxPassword.Text))
+            if (String.IsNullOrEmpty(textBoxPassword.Password))
             {
                 MessageBox.Show("Potrebno je unijeti lozinku.");
                 return;
@@ -52,14 +56,20 @@ namespace PlivanjeDesktop
                 MessageBox.Show("Potrebno je unijeti ID licence.");
                 return;
             }
-
+            string role = (trenerRadio.IsChecked==true)?"trener":"sudac";
             string firstName = textBoxName.Text.Trim();
             string lastName = textBoxSurname.Text.Trim();
             string email = textBoxEmail.Text.Trim();
-            string password = textBoxPassword.Text.Trim();
-            string IdLicence = textBoxIdLicence.Text.Trim();
+            string password = textBoxPassword.Password.Trim();
+            string idLicence = textBoxIdLicence.Text.Trim();
 
-            //var licenceProcessor = new LicenceProcessor();
+            bool uspjeh = rvm.RegisterPerson(role, firstName, lastName, email, password, idLicence);
+            if (!uspjeh)
+                MessageBox.Show("Licenca je nevažeća");
+            else
+            {
+                //preusmjeravanje na stranicu kao nakon prijave
+            }
         }
     }
 }
