@@ -9,10 +9,14 @@
     <div class="form-actions">
         <p>
             Klub: @Html.DropDownList("klub", "Svi")
-            
-            <input type="submit" value="Pretrazi" class="btn btn-default" /> |
-            @Html.ActionLink("Natrag na punu listu","Index", new { @class = "btn btn-primary" })
+            Kategorija: @Html.DropDownList("kategorija","Sve")
+            <button type="submit" value="Pretraži" class="btn btn-info">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+            @Html.ActionLink("Natrag na punu listu", "Index", new { @class = "btn btn-primary" })
         </p>
+       
+
     </div>
 </form>
 
@@ -44,6 +48,9 @@
                 Licenca
 
             </th>
+            <th>
+
+            </th>
 
     </thead>
 
@@ -62,9 +69,9 @@
                 @Html.DisplayFor(modelItem => item.gender)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.dateOfBirth.Date)
+                @item.dateOfBirth.ToShortDateString()
             </td>
-            @if (item.licenceValid==true)
+            @if (item.licenceValid == true)
             {
 
                 <td>
@@ -77,7 +84,12 @@
                     nevažeća
                 </td>
             }
-            
+                <td>
+
+                    <a href="@Url.Action("Details", "Swimmer",new { @id=item.Id})" class="btn btn-info">Detalji <span class="glyphicon glyphicon-user"></span></a>
+
+                </td>
+
         </tr>
 
     }
@@ -87,5 +99,11 @@
 
 </table>
 
-
+@section scripts{
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.9.3/css/bootstrap-select.min.css">
+    
+}
 

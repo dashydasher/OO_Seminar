@@ -1,0 +1,158 @@
+﻿@model PlivanjeWeb.Models.SwimmerDetailsViewModel
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalji</h2>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <table class="table table-borderless" style="border-top: none">
+                        <tr>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Ime:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.firstName
+                            </td>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Prezime:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.lastName
+                            </td>
+                            <td align="left" class="col-xs-4" style="border-top: none"></td>
+                        </tr>
+
+                        <tr>
+
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Datum rođenja:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.dateOfBirth.ToShortDateString()
+                            </td>
+
+
+
+
+                        </tr>
+                        <tr>
+                            <td style="border-top:none" />
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="col-sm-12 panel-heading clearfix">
+                <span class="col-sm-6"><b>Plivač po sezonama</b></span>
+                <span class="col-sm-6 text-right">
+                </span>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <table class="table table-hover">
+                        <thead style="border-bottom:solid; border-bottom-color:lightsteelblue">
+                            <tr>
+                                <th>
+                                    Sezona
+                                </th>
+                                <th>
+                                    Klub
+                                </th>
+                                <th>
+                                    Kategorija
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model.seasons)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Season.TimeStart.Year. / @item.Season.TimeEnd.Year.
+                                        </td>
+                                        <td>
+                                            @item.Club.Name
+                                        </td>
+                                        <td>
+                                            @item.Category.Name
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="col-sm-12 panel-heading clearfix">
+                <span class="col-sm-6"><b>Plivač po utrkama</b></span>
+                <span class="col-sm-6 text-right">
+                </span>
+            </div>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <table class="table table-hover">
+                        <thead style="border-bottom:solid; border-bottom-color:lightsteelblue">
+                            <tr>
+                                <th>
+                                    Natjecanje
+                                </th>
+                                <th>
+                                    Utrka
+                                </th>
+                                <th>
+                                    Datum
+                                </th>
+                                <th>
+                                    Rezultat
+                                </th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model.races)
+                                {
+                                    <tr>
+                                        <td>
+                                            @item.Race.Competition.Name
+                                        </td>
+                                        <td>
+                                            @item.Race.Length.Len m @item.Race.Style.Name
+                                        </td>
+                                        <td>
+                                            @item.Race.TimeStart.ToShortDateString()
+                                        </td>
+                                        <td>
+                                            @item.RaceTime.TimeOfDay
+
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.ActionLink("Natrag na popis", "Index", "Swimmer", new { @class = "btn btn-primary" })
+
+

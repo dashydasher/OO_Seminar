@@ -19,5 +19,6 @@ namespace PlivanjeWeb.Models
         public string firstAndLast { get; set; }
         public int IdCategory { get; set; }
         public TimeSpan rezultat{get;set;}
+        public string category { get; set; }
     }
 }

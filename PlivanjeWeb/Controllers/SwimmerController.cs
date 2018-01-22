@@ -14,28 +14,47 @@ namespace WebApp.Controllers
     {
        
         // GET: Swimmer
-        public ActionResult Index(string klub)
+        public ActionResult Index(string klub,string kategorija)
         {
-           
+                var categoryProcessor = new CategoryProcessor();
                 var SwimmerProcessor = new SwimmerProcessor();
                 var Cp = new ClubProcessor();
                 var Swimmers = new List<SwimmerViewModel>();
-            List<string> names = new List<string>();
+            List<string> names1 = new List<string>();
+            List<string> names2 = new List<string>();
+
+            var categories = categoryProcessor.getCategories();
+            foreach(var c in categories)
+            {
+                names1.Add(c.Name);
+            }
+            ViewBag.kategorija = new SelectList(names1);
+           
+                
             
                 foreach(var c in Cp.getClubs()) {
-                names.Add(c.Name);
+                names2.Add(c.Name);
                 }
-            ViewBag.klub = new SelectList(names);
+            ViewBag.klub = new SelectList(names2);
 
             try
                
                 {
                 var mySwimmers=new List<Swimmer>();
 
+                if (!String.IsNullOrEmpty(klub) && !String.IsNullOrEmpty(kategorija))
+                {
+                    mySwimmers = SwimmerProcessor.GetSwimmersByCategoryAndClub(klub,kategorija);
+                }
+               else if (!String.IsNullOrEmpty(kategorija))
+                {
+                    mySwimmers = SwimmerProcessor.GetSwimmersByCategory(kategorija);
+                }
 
-                if (!String.IsNullOrEmpty(klub)){
+               else if (!String.IsNullOrEmpty(klub)){
                   mySwimmers = SwimmerProcessor.GetListOfSwimmers(klub);
                 }
+                
                 else {
                   mySwimmers = SwimmerProcessor.GetListOfSwimmers();
                 }
@@ -48,7 +67,7 @@ namespace WebApp.Controllers
                         Swimmer.firstName = item.FirstName;
                         Swimmer.dateOfBirth = item.DateOfBirth.Date;
                         Swimmer.gender = item.Gender;
-
+                    Swimmer.category = SwimmerProcessor.GetSwimmerCategory(item).Name;
                     Swimmer.licenceValid = SwimmerProcessor.getSwimmerLicence(item.Id);
                     
                        
@@ -75,7 +94,18 @@ namespace WebApp.Controllers
         // GET: Swimmer/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            SwimmerProcessor sp = new SwimmerProcessor();
+            Swimmer s=sp.getSwimmer(id);
+            List<SwimmerSeason> tmp = sp.GetSwimmerSeasons(id);
+            List<SwimmerRace> tmp2 = sp.GetSwimmerRaces(id);
+
+            SwimmerDetailsViewModel model = new SwimmerDetailsViewModel();
+            model.dateOfBirth = s.DateOfBirth;
+            model.firstName = s.FirstName;
+            model.lastName = s.LastName;
+            model.seasons = tmp;
+            model.races = tmp2;
+            return View(model);
         }
 
         // GET: Swimmer/Create

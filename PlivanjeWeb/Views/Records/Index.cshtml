@@ -9,31 +9,19 @@
 
 <h3>Muški:</h3>
 <table class="table table-hover">
-    <thead style="border-bottom:solid; border-bottom-color:darkgray">
+    <thead style="border-bottom:inset; border-bottom-color:blue;background-color:lightskyblue">
         <tr style="border-bottom: none">
-            <th class="col-xs-4" style="border-bottom: none">
-                Ime
+            @{
+        string[] nazivi = { "Ime", "Prezime", "Godina rođenja", "Stil", "Kategorija", "Duljina", "Mjesto i datim", "Rezultat" };
+        for (int i = 0; i < nazivi.Length; i++)
+        {
+            <th>
+                @nazivi[i]
             </th>
-            <th class="col-xs-4" style="border-bottom: none">
-                Prezime
-            </th>
-            <th class="col-xs-4" style="border-bottom: none">
-                Godina rođenja
-            </th>
-            <th class="col-xs-4" style="border-bottom: none">
-                Kategorija
-            </th>
-            <th class="col-xs-4" style="border-bottom: none">
-                Duljina
-            </th>
-            <th class="col-xs-4" style="border-bottom: none">
-                Mjesto i datum
-            </th>
-            <th class="col-xs-4" style="border-bottom: none">
-                Vrijeme
-            </th>
-            <th class="col-xs-1" style="border-bottom: none;text-align: right">
-            </th>
+            }
+            }
+            <th></th>
+
         </tr>
     </thead>
     @if (Model != null)
@@ -49,6 +37,9 @@
                 </td>
                 <td>
                     @item.DateOfBirth.
+                </td>
+                <td>
+                    @item.Style
                 </td>
                 <td>
                     @item.Category
@@ -70,31 +61,18 @@
 
 <h3>Ženski:</h3>
 <table class="table table-hover">
-    <thead style="border-bottom:solid; border-bottom-color:darkgray">
+    <thead style="border-bottom:solid; border-bottom-color:darkgreen; background-color:darkseagreen">
         <tr style="border-bottom: none">
-            <th class="col-xs-4" style="border-bottom: none">
-                Ime
+            @{
+        string[] naziviŽ = { "Ime", "Prezime", "Godina rođenja", "Stil", "Kategorija", "Duljina", "Mjesto i datim", "Rezultat" };
+        for (int i = 0; i < nazivi.Length; i++)
+        {
+            <th>
+                @naziviŽ[i]
             </th>
-            <th class="col-xs-4" style="border-bottom: none">
-                Prezime
-            </th>
-            <th class="col-xs-4" style="border-bottom: none">
-                Godina rođenja
-            </th>
-            <th class="col-xs-4" style="border-bottom: none">
-                Kategorija
-            </th>
-            <th class="col-xs-4" style="border-bottom: none">
-                Duljina
-            </th>
-            <th class="col-xs-4" style="border-bottom: none">
-                Mjesto i datum
-            </th>
-            <th class="col-xs-4" style="border-bottom: none">
-                Vrijeme
-            </th>
-            <th class="col-xs-1" style="border-bottom: none;text-align: right">
-            </th>
+}
+            }
+            <th></th>
         </tr>
     </thead>
     @if (Model != null)
@@ -110,6 +88,9 @@
                 </td>
                 <td>
                     @item.DateOfBirth.
+                </td>
+                <td>
+                    @item.Style
                 </td>
                 <td>
                     @item.Category

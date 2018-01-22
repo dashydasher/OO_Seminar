@@ -304,9 +304,15 @@ namespace PlivanjeWebApp.Controllers
 
         public ActionResult CreateRace(int id)
         {
+
             RaceViewModel race = new RaceViewModel();
             CompetitionProcessor comp = new CompetitionProcessor();
             Session["idCompetition"] = comp.GetCompetition(id).Id;
+            if (comp.GetCompetition(id).TimeEnd < DateTime.Now)
+            {
+                TempData["Error"] = "Natjecanje je završeno, utrku više nije moguće dodati";
+                return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
+            }
             CategoryProcessor cp = new CategoryProcessor();
             RefereeProcessor rp = new RefereeProcessor();
             StyleProcessor sp = new StyleProcessor();
@@ -395,12 +401,17 @@ namespace PlivanjeWebApp.Controllers
                     return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
                 }
             }
-            return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
+            
         }
 
         public ActionResult AddSwimmersToRace(int id)
         {
-
+            var comp = new CompetitionProcessor();
+            if (comp.GetCompetition((int)Session["idCompetition"]).TimeEnd < DateTime.Now)
+            {
+                TempData["Error"] = "Trka je završila, plivače više nije moguće prijaviti";
+                return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
+            }
             SwimmerProcessor sp = new SwimmerProcessor();
 
             List<Swimmer> swimmers = new List<Swimmer>();

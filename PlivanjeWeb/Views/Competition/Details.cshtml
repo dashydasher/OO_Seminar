@@ -22,9 +22,9 @@
     <div class="col-sm-12">
         <div class="panel panel-default">
 
-            <div class="panel-body">
+            <div class="panel-body" >
                 <div class="col-md-12">
-                    <table class="table table-borderless" style="border-top: none">
+                    <table class="table table-borderless" style="border-top: none" >
                         <tr>
                             <td align="right" class="col-xs-2" style="border-top: none"><b>Ime natjecanja:</b></td>
                             <td align="left" class="col-xs-2" style="border-top: none">
@@ -62,14 +62,14 @@
         </div>
     </div>
 </div>
-@if (Session["role"] != null && (int)Session["role"] == 1)
+@if (Session["role"] != null && (int)Session["role"] == 1 && Model.gotovo==false)
 {
     @Html.ActionLink("Uredi osnovne podatke", "Edit", "Competition", new { id = Model.Id }, new { @class = "btn btn-primary" })
 }
 <hr />
 <br />
 <h3>Utrke:</h3>
-@if (Session["role"] != null && (int)Session["role"] == 1)
+@if (Session["role"] != null && (int)Session["role"] == 1 && Model.gotovo==false)
 {
     @Html.ActionLink("Dodaj novu utrku", "CreateRace", "Competition", new { id = Model.Id }, new { @class = "btn btn-primary" })
 }
@@ -162,7 +162,7 @@
                     @if (@item.swimmers.Count>0)
                     {
                         <table class="table table-striped">
-                            <thead>
+                            <thead style="border-bottom:inset; border-bottom-color:blue;background-color:lightskyblue">
                                 <tr>
                                     
                                         
@@ -180,7 +180,7 @@
                                             </th>
                                             @if (Model.gotovo)
                                             {
-                                                <td>Rezultat</td>
+                                                <th>Rezultat</th>
                                             }
                                         
                                     <th></th>

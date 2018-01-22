@@ -205,7 +205,7 @@ namespace Plivanje.Repositories
                 {
 
 
-                    result = (List<SwimmerRace>)session.QueryOver<SwimmerRace>().Where(x => x.Race.Id == idRace).List<SwimmerRace>();
+                    result = (List<SwimmerRace>)session.QueryOver<SwimmerRace>().Where(x => x.Race.Id == idRace).OrderBy(x=>x.Score).Asc.List<SwimmerRace>();
 
                     transaction.Commit();
                 }

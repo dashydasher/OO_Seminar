@@ -72,10 +72,7 @@ namespace Plivanje.Processors
             return _swimmerRepository.GetSwimmerCategory(swimmer);
         }
 
-        public List<Swimmer> getSwimmersByCategory(Category category)
-        {
-            return _swimmerRepository.GetSwimmersByCategory(category);
-        }
+      
 
         public SwimmerSeason GetSwimmerSeason(int swimmerId)
         {
@@ -93,6 +90,24 @@ namespace Plivanje.Processors
        public List<Swimmer> GetSwimmersInClubSeason(int clubId, int seasonId)
         {
             return _swimmerRepository.GetSwimmersInClubSeason(clubId, seasonId);
+        }
+
+       public List<Swimmer> GetSwimmersByCategory(string category)
+        {
+            return _swimmerRepository.GetSwimmersByCategory(category);
+        }
+       public List<Swimmer> GetSwimmersByCategoryAndClub(string category, string club)
+        {
+            return _swimmerRepository.GetSwimmersByCategoryAndClub(category, club);
+        }
+
+        public List<SwimmerSeason> GetSwimmerSeasons(int swimmerId)
+        {
+            return _swimmerRepository.GetSwimmerSeasons(swimmerId);
+        }
+        public List<SwimmerRace> GetSwimmerRaces(int swimmerId)
+        {
+            return _swimmerRepository.GetSwimmerRaces(swimmerId);
         }
     }
 }
