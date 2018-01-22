@@ -35,6 +35,6 @@
             </Border>
    
         </Grid>
-        <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden" Source="/PrijavaPage.xaml"  x:FieldModifier="public"/>
+        <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden" Source="/Views/PrijavaPage.xaml"  x:FieldModifier="public"/>
     </Grid>
 </Window>

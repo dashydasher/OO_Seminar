@@ -51,35 +51,35 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
+    <ApplicationDefinition Include="Views\App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="App.xaml.cs">
+    <Compile Include="Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Models\ClubModel.cs" />
     <Compile Include="Models\SwimmerModel.cs" />
-    <Compile Include="PrijavaPage.xaml.cs">
+    <Compile Include="Views\PrijavaPage.xaml.cs">
       <DependentUpon>PrijavaPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="KluboviPage.xaml.cs">
+    <Compile Include="Views\KluboviPage.xaml.cs">
       <DependentUpon>KluboviPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="NatjecanjaPage.xaml.cs">
+    <Compile Include="Views\NatjecanjaPage.xaml.cs">
       <DependentUpon>NatjecanjaPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PlivačiPage.xaml.cs">
+    <Compile Include="Views\PlivačiPage.xaml.cs">
       <DependentUpon>PlivačiPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RegistracijaPage.xaml.cs">
+    <Compile Include="Views\RegistracijaPage.xaml.cs">
       <DependentUpon>RegistracijaPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="RekordiPage.xaml.cs">
+    <Compile Include="Views\RekordiPage.xaml.cs">
       <DependentUpon>RekordiPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Početna.xaml.cs">
+    <Compile Include="Views\Početna.xaml.cs">
       <DependentUpon>Početna.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\ClubViewModel.cs" />
@@ -87,7 +87,7 @@
     <Compile Include="ViewModels\RaceViewModel.cs" />
     <Compile Include="ViewModels\RecordViewModel.cs" />
     <Compile Include="ViewModels\SwimmerViewModel.cs" />
-    <Compile Include="UtrkePage.xaml.cs">
+    <Compile Include="Views\UtrkePage.xaml.cs">
       <DependentUpon>UtrkePage.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -118,35 +118,35 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="PrijavaPage.xaml">
+    <Page Include="Views\PrijavaPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="KluboviPage.xaml">
+    <Page Include="Views\KluboviPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="NatjecanjaPage.xaml">
+    <Page Include="Views\NatjecanjaPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="PlivačiPage.xaml">
+    <Page Include="Views\PlivačiPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="RegistracijaPage.xaml">
+    <Page Include="Views\RegistracijaPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="RekordiPage.xaml">
+    <Page Include="Views\RekordiPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="UtrkePage.xaml">
+    <Page Include="Views\UtrkePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Početna.xaml">
+    <Page Include="Views\Početna.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
