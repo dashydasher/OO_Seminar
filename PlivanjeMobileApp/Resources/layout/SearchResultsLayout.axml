@@ -13,12 +13,11 @@
         android:minHeight="25px"
         android:layout_below="@+id/toolbarIncluded">
         <TextView
-            android:text="Large Text"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/textView1" />
-      <ListView
+        <ListView
             android:minWidth="25px"
             android:minHeight="25px"
             android:layout_width="match_parent"
@@ -26,5 +25,4 @@
             android:id="@+id/plivaci"
             android:padding="6dip" />
     </LinearLayout>
-  
 </RelativeLayout>

@@ -67,12 +67,6 @@ namespace PlivanjeMobileApp.Adapters
             {
                 var activity2 = new Intent(activity, typeof(NatjecanjeDetaljiActivity));
                 activity2.PutExtra("id", currentItem.Id);
-                activity2.PutExtra("name", currentItem.Name.Trim());
-                activity2.PutExtra("timeStart", currentItem.TimeStart.ToString("dddd dd.MM.yyyy"));
-                activity2.PutExtra("timeEnd", currentItem.TimeEnd.ToString("dddd dd.MM.yyyy"));
-                activity2.PutExtra("address", currentItem.Address.Trim());
-                activity2.PutExtra("hallName", currentItem.HallName.Trim());
-                activity2.PutExtra("placeName", currentItem.PlaceName.Trim());
                 activity.StartActivity(activity2);
             }
         }

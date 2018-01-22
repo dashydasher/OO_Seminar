@@ -11,24 +11,18 @@ using Android.Views;
 using Android.Widget;
 using Microsoft.WindowsAzure.MobileServices;
 using PlivanjeMobileApp.Adapters;
+using PlivanjeMobileApp.Helpers;
 using PlivanjeMobileApp.Models;
 
 namespace PlivanjeMobileApp.Activities
 {
-    [Activity(Label = "NatjecanjeDetaljiActivity")]
+    [Activity(Label = "Natjecanje")]
     public class NatjecanjeDetaljiActivity : Activity
     {
         private MobileServiceClient client;
         private IMobileServiceTable<RaceView> racesTable;
         private IMobileServiceTable<CompetitionView> competitionsTable;
         private NatjecanjeDetaljiAdapter adapter;
-        private string idCompetition;
-        private string name;
-        private string timeStart;
-        private string timeEnd;
-        private string hallName;
-        private string address;
-        private string placeName;
         const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
 
         protected override async void OnCreate(Bundle savedInstanceState)
@@ -41,28 +35,17 @@ namespace PlivanjeMobileApp.Activities
 
             client = new MobileServiceClient(applicationURL);
 
-            idCompetition = Intent.GetStringExtra("id") ?? "Data not available";
-            name = Intent.GetStringExtra("name") ?? "Data not available";
-            if (name != "Data not available")
-            {
-                timeStart = Intent.GetStringExtra("timeStart") ?? "Data not available";
-                timeEnd = Intent.GetStringExtra("timeEnd") ?? "Data not available";
-                address = Intent.GetStringExtra("address") ?? "Data not available";
-                hallName = Intent.GetStringExtra("hallName") ?? "Data not available";
-                placeName = Intent.GetStringExtra("placeName") ?? "Data not available";
-            }
-            else
-            {
-                competitionsTable = client.GetTable<CompetitionView>();
-                List<CompetitionView> list2 = await competitionsTable.Where(e => e.Id == idCompetition).ToListAsync();
-                CompetitionView competition = list2.First();
-                name = competition.Name;
-                timeStart = competition.TimeStart.ToString("dddd dd.MM.yyyy");
-                timeEnd = competition.TimeEnd.ToString("dddd dd.MM.yyyy");
-                address = competition.Address;
-                hallName = competition.HallName;
-                placeName = competition.PlaceName;
-            }
+            string idCompetition = Intent.GetStringExtra("id") ?? "Data not available";
+            competitionsTable = client.GetTable<CompetitionView>();
+            List<CompetitionView> natjecanjaList = await competitionsTable.Where(e => e.Id == idCompetition).ToListAsync();
+            CompetitionView competition = natjecanjaList.FirstOrDefault();
+
+            string name = competition.Name.Trim();
+            string timeStart = competition.TimeStart.ToString("dddd dd.MM.yyyy");
+            string timeEnd = competition.TimeEnd.ToString("dddd dd.MM.yyyy");
+            string address = competition.Address.Trim();
+            string hallName = competition.HallName.Trim();
+            string placeName = competition.PlaceName.Trim();
             this.Title = name;
 
             TextView textArea1 = FindViewById<TextView>(Resource.Id.textArea1);
@@ -72,9 +55,8 @@ namespace PlivanjeMobileApp.Activities
 
             textArea1.Text = "Od: " + timeStart;
             textArea2.Text = "Do: " + timeEnd;
-            textArea3.Text = "Dvorana: " + hallName.Trim();
-            textArea4.Text = address.Trim() + ", " + placeName.Trim();
-
+            textArea3.Text = "Dvorana: " + hallName;
+            textArea4.Text = address + ", " + placeName;
 
             racesTable = client.GetTable<RaceView>();
             List<RaceView> list = await racesTable
@@ -99,25 +81,7 @@ namespace PlivanjeMobileApp.Activities
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            switch (item.TitleFormatted.ToString())
-            {
-                case "Natjecanja":
-                    StartActivity(typeof(NatjecanjaActivity));
-                    break;
-                case "Klubovi":
-                    StartActivity(typeof(KluboviActivity));
-                    break;
-                case "Plivači":
-                    StartActivity(typeof(PlivaciActivity));
-                    break;
-                case "Rekordi":
-                    StartActivity(typeof(RekordiActivity));
-                    break;
-                case "Početna":
-                    StartActivity(typeof(MainActivity));
-                    break;
-            }
-            return base.OnOptionsItemSelected(item);
+            return HelperMethods.HandleToolbarClick(this, item.ItemId);
         }
     }
 }

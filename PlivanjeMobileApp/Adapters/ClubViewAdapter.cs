@@ -64,9 +64,9 @@ namespace PlivanjeMobileApp.Adapters
             {
                 var activity2 = new Intent(activity, typeof(ClubDetailsActivity));
                 activity2.PutExtra("id", club.Id);
-                activity2.PutExtra("name", club.Name);
-                activity2.PutExtra("place", club.Place);
-                activity2.PutExtra("postalcode", club.PostalCode);
+                activity2.PutExtra("name", club.Name.Trim());
+                activity2.PutExtra("place", club.Place.Trim());
+                activity2.PutExtra("postalcode", club.PostalCode.Trim());
                 activity.StartActivity(activity2);
             }
         }

@@ -11,6 +11,7 @@ using Android.Views;
 using Android.Widget;
 using Microsoft.WindowsAzure.MobileServices;
 using PlivanjeMobileApp.Adapters;
+using PlivanjeMobileApp.Helpers;
 using PlivanjeMobileApp.Models;
 
 namespace PlivanjeMobileApp.Activities
@@ -71,25 +72,7 @@ namespace PlivanjeMobileApp.Activities
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            switch (item.TitleFormatted.ToString())
-            {
-                case "Natjecanja":
-                    StartActivity(typeof(NatjecanjaActivity));
-                    break;
-                case "Klubovi":
-                    StartActivity(typeof(KluboviActivity));
-                    break;
-                case "Plivači":
-                    StartActivity(typeof(PlivaciActivity));
-                    break;
-                case "Rekordi":
-                    StartActivity(typeof(RekordiActivity));
-                    break;
-                case "Početna":
-                    StartActivity(typeof(MainActivity));
-                    break;
-            }
-            return base.OnOptionsItemSelected(item);
+            return HelperMethods.HandleToolbarClick(this, item.ItemId);
         }
     }
 }

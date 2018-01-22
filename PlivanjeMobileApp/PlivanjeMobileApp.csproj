@@ -107,6 +107,7 @@
     <Compile Include="Adapters\PrikazRekordiAdapter.cs" />
     <Compile Include="Adapters\SwimmerAdapter.cs" />
     <Compile Include="Adapters\UtrkaDetaljiAdapter.cs" />
+    <Compile Include="Helpers\HelperMethods.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\ClubView.cs" />

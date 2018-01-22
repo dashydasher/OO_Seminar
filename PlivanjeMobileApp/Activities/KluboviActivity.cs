@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Microsoft.WindowsAzure.MobileServices;
 using PlivanjeMobileApp.Models;
 using PlivanjeMobileApp.Adapters;
+using PlivanjeMobileApp.Helpers;
 
 namespace PlivanjeMobileApp.Activities
 {
@@ -17,36 +18,31 @@ namespace PlivanjeMobileApp.Activities
         ProgressBar progressBar;
         private MobileServiceClient client;
         private IMobileServiceTable<ClubView> clubTable;
-        private ClubViewAdapter adapter;
+        private ClubViewAdapter kluboviAdapter;
         const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
             SetContentView(Resource.Layout.ListViewLayout);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);
             SetActionBar(toolbar);
 
-            progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar1);
-
-            CurrentPlatform.Init();
-
             client = new MobileServiceClient(applicationURL);
 
-            clubTable = client.GetTable<ClubView>();
-
-            adapter = new ClubViewAdapter(this, Resource.Layout.KluboviLayout);
+            kluboviAdapter = new ClubViewAdapter(this, Resource.Layout.KluboviLayout);
             var listViewPlace = FindViewById<ListView>(Resource.Id.listViewLayout);
-            listViewPlace.Adapter = adapter;
+            listViewPlace.Adapter = kluboviAdapter;
 
+            clubTable = client.GetTable<ClubView>();
             var list = await clubTable.ToListAsync();
 
-            adapter.Clear();
+            kluboviAdapter.Clear();
             foreach (ClubView current in list)
-                adapter.Add(current);
+                kluboviAdapter.Add(current);
 
+            progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar1);
             progressBar.Visibility = ViewStates.Gone;
         }
 
@@ -58,25 +54,7 @@ namespace PlivanjeMobileApp.Activities
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            switch (item.TitleFormatted.ToString())
-            {
-                case "Natjecanja":
-                    StartActivity(typeof(NatjecanjaActivity));
-                    break;
-                case "Klubovi":
-                    StartActivity(typeof(KluboviActivity));
-                    break;
-                case "Plivači":
-                    StartActivity(typeof(PlivaciActivity));
-                    break;
-                case "Rekordi":
-                    StartActivity(typeof(RekordiActivity));
-                    break;
-                case "Početna":
-                    StartActivity(typeof(MainActivity));
-                    break;
-            }
-            return base.OnOptionsItemSelected(item);
+            return HelperMethods.HandleToolbarClick(this, item.ItemId);
         }
 
         [Java.Interop.Export()]

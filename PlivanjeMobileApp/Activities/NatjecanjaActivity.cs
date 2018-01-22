@@ -11,11 +11,12 @@ using Android.Views;
 using Android.Widget;
 using Microsoft.WindowsAzure.MobileServices;
 using PlivanjeMobileApp.Adapters;
+using PlivanjeMobileApp.Helpers;
 using PlivanjeMobileApp.Models;
 
 namespace PlivanjeMobileApp.Activities
 {
-    [Activity(Label = "NatjecanjaActivity")]
+    [Activity(Label = "Natjecanja")]
     public class NatjecanjaActivity : Activity
     {
         ProgressBar progressBar;
@@ -27,26 +28,17 @@ namespace PlivanjeMobileApp.Activities
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
             client = new MobileServiceClient(applicationURL);
-
             SetContentView(Resource.Layout.ListViewLayout);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);
             SetActionBar(toolbar);
-
-            progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar1);
-
-            this.Title = "Natjecanja";
-
-            competitionTable = client.GetTable<CompetitionView>();
 
             adapter = new NatjecanjaAdapter(this, Resource.Layout.NatjecanjaLayout);
             var listCompetition = FindViewById<ListView>(Resource.Id.listViewLayout);
             listCompetition.Adapter = adapter;
 
             competitionTable = client.GetTable<CompetitionView>();
-
             var competitions = await competitionTable
                 .OrderByDescending(e => e.TimeStart)
                 .Take(50)
@@ -56,6 +48,7 @@ namespace PlivanjeMobileApp.Activities
             foreach (CompetitionView current in competitions)
                 adapter.Add(current);
 
+            progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar1);
             progressBar.Visibility = ViewStates.Gone;
         }
 
@@ -67,25 +60,7 @@ namespace PlivanjeMobileApp.Activities
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            switch (item.TitleFormatted.ToString())
-            {
-                case "Natjecanja":
-                    StartActivity(typeof(NatjecanjaActivity));
-                    break;
-                case "Klubovi":
-                    StartActivity(typeof(KluboviActivity));
-                    break;
-                case "Plivači":
-                    StartActivity(typeof(PlivaciActivity));
-                    break;
-                case "Rekordi":
-                    StartActivity(typeof(RekordiActivity));
-                    break;
-                case "Početna":
-                    StartActivity(typeof(MainActivity));
-                    break;
-            }
-            return base.OnOptionsItemSelected(item);
+            return HelperMethods.HandleToolbarClick(this, item.ItemId);
         }
     }
 }
