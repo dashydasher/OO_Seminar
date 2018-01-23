@@ -35,11 +35,15 @@ namespace PlivanjeWebApp.Controllers
                 c.TimeStart = comp.TimeStart;
                 if (c.TimeEnd < DateTime.Now)
                 {
-                    c.gotovo = true;
+                    c.status = "Održano";
+                }
+                else if(c.TimeStart>DateTime.Now)
+                {
+                    c.status = "To be..";
                 }
                 else
                 {
-                    c.gotovo = false;
+                    c.status = "U tijeku..";
                 }
                 competitions.Add(c);
             }
@@ -75,11 +79,15 @@ namespace PlivanjeWebApp.Controllers
                 competition.HallName = c.Hall.Name;
                 if (c.TimeEnd < DateTime.Now)
                 {
-                    competition.gotovo = true;
+                    competition.status = "Održano";
+                }
+                else if (c.TimeStart > DateTime.Now)
+                {
+                    competition.status = "To be..";
                 }
                 else
                 {
-                    competition.gotovo = false;
+                    competition.status = "U tijeku..";
                 }
 
             }

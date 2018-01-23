@@ -195,6 +195,7 @@
     <Compile Include="Controllers\HallController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\RaceController.cs" />
     <Compile Include="Controllers\RecordsController.cs" />
     <Compile Include="Controllers\SwimmerController.cs" />
     <Compile Include="Global.asax.cs">
@@ -207,6 +208,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\PoolViewModel.cs" />
+    <Compile Include="Models\RaceEditViewModel.cs" />
     <Compile Include="Models\RaceViewModel.cs" />
     <Compile Include="Models\RecordsViewModel.cs" />
     <Compile Include="Models\RecordViewModel.cs" />
@@ -218,6 +220,8 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\clean-blog.css" />
+    <Content Include="Content\half-slider.css" />
     <Content Include="Content\images\bazen.jpg" />
     <Content Include="Content\images\natjecanje.jpg" />
     <Content Include="Content\images\plivaci.jpg" />
@@ -295,6 +299,8 @@
     <Content Include="Views\Records\Index.cshtml" />
     <Content Include="Views\Club\Details.cshtml" />
     <Content Include="Views\Swimmer\Details.cshtml" />
+    <Content Include="Views\Race\Index.cshtml" />
+    <Content Include="Views\Race\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

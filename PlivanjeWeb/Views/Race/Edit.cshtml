@@ -1,0 +1,50 @@
+﻿@model PlivanjeWeb.Models.RaceEditViewModel
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Unesi rezultate utrke</h2>
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <h4>Detalji utrke</h4>
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <table class="table table-borderless" style="border-top: none">
+                        <tr>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Ime natjecanja:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                               @Model.Length.Len m @Model.Style.Name
+                            </td>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Dvorana:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.Gender
+                            </td>
+                            <td align="left" class="col-xs-4" style="border-top: none"></td>
+                        </tr>
+
+                        <tr>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Početak:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.Category
+                            </td>
+
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Završetak:</b></td>
+                            <td align="left" class="col-xs-2" style="border-top: none">
+                                @Model.start.TimeOfDay - @Model.finish.TimeOfDay
+
+                            </td>
+                            <td align="right" class="col-xs-4" style="border-top: none"></td>
+
+
+                        </tr>
+                        <tr>
+                            <td style="border-top:none" />
+                        </tr>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿@model IEnumerable<PlivanjeWeb.Models.RaceViewModel>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Utrke na kojima sam zadužen</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                Stil
+            </th>
+
+            <th>
+
+                Duljina
+
+            </th>
+            <th>
+
+                Kategorija
+            </th>
+            <th>
+
+               Muška/Ženska
+
+            </th>
+            <th>
+               Datum održavanja
+            </th>
+            <th>
+                Vrijeme održavanja
+            </th>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @item.sytleName
+        </td>
+        <td>
+            @item.lenghtValue
+        </td>
+        <td>
+            @item.categoryName
+        </td>
+        <td>
+            @item.Gender
+        </td>
+        <td>
+            @item.datum.Date.ToShortDateString()
+        </td>
+        <td>
+            @item.start - @item.finish
+        </td>
+        @if (item.datum < DateTime.Now)
+     {
+        
+        <td style="width: 1%">
+            <a class="btn btn-success btn-sm" href="@Url.Action("Edit", "Race",new { @id=item.Id})">
+                <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Upiši rezultate
+                
+            </a>
+        </td>
+        }
+        else
+        {
+            <td></td>
+        }
+
+
+    </tr>
+
+    }
+
+
+
+
+</table>
+
+

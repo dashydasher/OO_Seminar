@@ -12,10 +12,26 @@ namespace Plivanje.Repositories
         List<Referee> getReferees();
         Referee getReferee(int id);
         void UpdateReferee(Referee r);
+        List<Race> GetMyRaces(int IdReferee);
     }
 
     public class RefereeRepository : IRefereeRepository
     {
+        public List<Race> GetMyRaces(int IdReferee)
+        {
+            var result = new List<Race>();
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (List<Race>)session.QueryOver<Race>().Where(x => x.Refereee.Id==IdReferee).OrderBy(x=>x.TimeStart).Desc.List<Race>();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
         public Referee getReferee(int id)
         {
             var result = new Referee();

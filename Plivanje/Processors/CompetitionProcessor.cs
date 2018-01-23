@@ -36,7 +36,7 @@ namespace Plivanje.Processors
 
         public List<Competition> GetCompetitions()
         {
-            return Repository.GetCompetitions();
+            return _CompetitionRepository.GetCompetitions();
 
 
         }
@@ -44,11 +44,16 @@ namespace Plivanje.Processors
 
         public Competition GetCompetition(int idCompetition)
         {
-            return Repository.getCompetition(idCompetition);
+            return _CompetitionRepository.getCompetition(idCompetition);
         }
         public List<Race> getRacesInCompetition(int idCompetition)
         {
-            return Repository.getRacesInCompetition(idCompetition);
+            return _CompetitionRepository.getRacesInCompetition(idCompetition);
+        }
+
+        public List<Competition> GetFutureCompetitions()
+        {
+            return _CompetitionRepository.GetFutureCompetition();
         }
     }
 }

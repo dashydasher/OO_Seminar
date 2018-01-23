@@ -37,5 +37,9 @@ namespace Plivanje.Processors
         {
             _refereeRepository.UpdateReferee(r);
         }
+        public List<Race> GetMyRaces(int IdReferee)
+        {
+            return _refereeRepository.GetMyRaces(IdReferee);
+        }
     }
 }

@@ -26,6 +26,14 @@
                     <li>@Html.ActionLink("Klubovi", "Index", "Club")</li>
                     <li>@Html.ActionLink("Natjecanja", "Index", "Competition")</li>
                     <li>@Html.ActionLink("Rekordi", "Index", "Records")</li>
+                    @if (Session["role"] != null && (int)Session["role"] == 2)
+    {
+                <li>@Html.ActionLink("Moje utrke", "Index", "Race")</li>
+}
+                    @if (Session["role"] != null && (int)Session["role"] == 1)
+    {
+                <li>@Html.ActionLink("Moj klub", "MyClub", "Club")</li>
+}
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

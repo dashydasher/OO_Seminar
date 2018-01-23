@@ -62,14 +62,14 @@
         </div>
     </div>
 </div>
-@if (Session["role"] != null && (int)Session["role"] == 1 && Model.gotovo==false)
+@if (Session["role"] != null && (int)Session["role"] == 1 && Model.status=="To be..")
 {
     @Html.ActionLink("Uredi osnovne podatke", "Edit", "Competition", new { id = Model.Id }, new { @class = "btn btn-primary" })
 }
 <hr />
 <br />
 <h3>Utrke:</h3>
-@if (Session["role"] != null && (int)Session["role"] == 1 && Model.gotovo==false)
+@if (Session["role"] != null && (int)Session["role"] == 1 && Model.status=="To be..")
 {
     @Html.ActionLink("Dodaj novu utrku", "CreateRace", "Competition", new { id = Model.Id }, new { @class = "btn btn-primary" })
 }
@@ -178,7 +178,7 @@
                                             <th>
                                                 Datum rođenja
                                             </th>
-                                            @if (Model.gotovo)
+                                            @if (Model.status=="Održano")
                                             {
                                                 <th>Rezultat</th>
                                             }
@@ -202,7 +202,7 @@
                                     <td>
                                         @plivac.dateOfBirth.Date.ToShortDateString()
                                     </td>
-                                    @if (Model.gotovo)
+                                    @if (Model.status=="Održano")
     {
                                 <td>@plivac.rezultat</td>
 }
