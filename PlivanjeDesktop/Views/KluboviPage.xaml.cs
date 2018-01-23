@@ -43,6 +43,7 @@ namespace PlivanjeDesktop
             clubViewModel.LoadClubs();
             clubViewModel.LoadCoachesClub(id);
             this.DataContext = clubViewModel;
+            ButtonAddClub.Visibility = Visibility.Visible;
             trenerKlub.Visibility = Visibility.Visible;
         }
 
@@ -60,6 +61,12 @@ namespace PlivanjeDesktop
             catch (Exception exc) { }
         }
 
-
+        private void Dodaj_Plivače(object sender, RoutedEventArgs e)
+        {
+            ClubModel selectedClub = (ClubModel)datagrid1.SelectedItem;
+            PlivačiPage pl = new PlivačiPage(selectedClub.Id, "trener");
+            NavigationService navService = NavigationService.GetNavigationService(this);
+            navService.Navigate(pl);
+        }
     }
 }
