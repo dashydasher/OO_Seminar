@@ -64,7 +64,7 @@ namespace PlivanjeDesktop.ViewModels
             var cp = new CategoryProcessor();
             var category = cp.getCategoryByName(categoryName);
             var sp = new SwimmerProcessor();
-            var list = sp.getSwimmersByCategory(category);
+            var list = sp.GetSwimmersFromCategory(category);
             Load(list);
         }
     }

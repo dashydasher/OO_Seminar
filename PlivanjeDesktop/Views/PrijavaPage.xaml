@@ -9,7 +9,7 @@
       Title="PrijavaPage" >
 
     <Grid>
-        <StackPanel Margin="0,0,0.4,-0.2">
+        <StackPanel Margin="0,0,-216,-153">
 
             <TextBlock HorizontalAlignment="Center" x:Name="LoginHeading" Text="Prijava" VerticalAlignment="Top" FontSize="40" FontStretch="ExtraCondensed" >
                
@@ -17,7 +17,7 @@
             <TextBlock  HorizontalAlignment="Center" Margin="0,15,0,0" x:Name="email" Text="Email" VerticalAlignment="Top" FontSize="32" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
             <TextBox Height="35" HorizontalAlignment="Center" Margin="0,0,0,0" FontSize="25" Name="textBoxEmail" VerticalAlignment="Top" Width="450" />
             <TextBlock  HorizontalAlignment="Center" Margin="0,15,0,0" x:Name="password" Text="Lozinka" VerticalAlignment="Top" FontSize="32" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
-            <TextBox Height="35" HorizontalAlignment="Center" Margin="0,0,0,0" FontSize="25" Name="textBoxPassword" VerticalAlignment="Top" Width="450" />
+            <PasswordBox Height="35" HorizontalAlignment="Center" Margin="0,0,0,0" FontSize="25" Name="textBoxPassword" VerticalAlignment="Top" Width="450" />
             <Button Height="40" HorizontalAlignment="Center" Margin="0,15,0,0" x:Name="PrijaviSe" FontSize="25" Content="Prijavi se" RenderTransformOrigin="6.226,0.65" Click="PrijaviSe_Click"/>
             <TextBlock Height="50" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="textBlockHeading" VerticalAlignment="Top" FontSize="10" FontStyle="Italic" Padding="5"><InlineUIContainer>
                 <TextBlock RenderTransformOrigin="0.5,0.5"><Hyperlink Name="Register" Click="Register_Click"  FontSize="25" FontStyle="Normal"><Run Text="Registriraj se"/></Hyperlink></TextBlock>

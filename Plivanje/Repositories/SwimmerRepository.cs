@@ -30,7 +30,7 @@ namespace Plivanje.Repositories
         List<Swimmer> GetSwimmersByCategoryAndClub(string category,string club);
         List<SwimmerSeason> GetSwimmerSeasons(int swimmerId);
         List<SwimmerRace> GetSwimmerRaces(int swimmerId);
-
+        List<Swimmer> GetSwimmersFromCategory(Category category);
     }
 
     public class SwimmerRepository : ISwimmerRepository
@@ -400,6 +400,23 @@ namespace Plivanje.Repositories
                 {
 
                     result = (List<SwimmerRace>)session.QueryOver<SwimmerRace>().Where(x => x.Swimmer.Id == swimmerId).List<SwimmerRace>();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public List<Swimmer> GetSwimmersFromCategory(Category category)
+        {
+            List<Swimmer> result = null;
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+                    result = (List<Swimmer>)session.Query<Swimmer>().Where(x => category.AgeFrom <= (DateTime.Now.Year - x.DateOfBirth.Year) && (DateTime.Now.Year - x.DateOfBirth.Year) <= category.AgeTo).ToList<Swimmer>();
+
                     transaction.Commit();
                 }
             }

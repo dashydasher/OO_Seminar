@@ -45,13 +45,13 @@ namespace PlivanjeDesktop
                 MessageBox.Show("Potrebno je unijeti e-mail.");
                 return;
             }
-            if (String.IsNullOrEmpty(textBoxPassword.Text))
+            if (String.IsNullOrEmpty(textBoxPassword.Password))
             {
                 MessageBox.Show("Potrebno je unijeti lozinku.");
                 return;
             }
             string email = textBoxEmail.Text.Trim();
-            string password = textBoxPassword.Text.Trim();
+            string password = textBoxPassword.Password.Trim();
             var cp = new CoachProcessor();
             List<Coach> treneri = cp.getCoaches();
             var rf = new RefereeProcessor();

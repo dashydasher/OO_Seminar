@@ -109,5 +109,10 @@ namespace Plivanje.Processors
         {
             return _swimmerRepository.GetSwimmerRaces(swimmerId);
         }
+
+        public List<Swimmer> GetSwimmersFromCategory(Category category)
+        {
+            return _swimmerRepository.GetSwimmersFromCategory(category);
+        }
     }
 }
