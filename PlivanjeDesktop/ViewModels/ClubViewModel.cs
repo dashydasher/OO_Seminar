@@ -25,6 +25,8 @@ namespace PlivanjeDesktop.ViewModels
                     Address = club.Address,
                     Place = cp.getPlace(club.Id)
                 });
+            if (UserModel.role.Equals("trener"))
+                LoadCoachesClub(UserModel.Id);
         }
 
         public void LoadCoachesClub(int coachId)

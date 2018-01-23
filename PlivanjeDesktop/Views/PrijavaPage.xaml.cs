@@ -1,5 +1,7 @@
 ﻿using Plivanje.Models;
 using Plivanje.Processors;
+using PlivanjeDesktop.Models;
+using PlivanjeDesktop.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -52,49 +54,31 @@ namespace PlivanjeDesktop
             }
             string email = textBoxEmail.Text.Trim();
             string password = textBoxPassword.Password.Trim();
-            var cp = new CoachProcessor();
-            List<Coach> treneri = cp.getCoaches();
-            var rf = new RefereeProcessor();
-            List<Referee> suci = rf.getReferees();
 
-
-            foreach (var trener in treneri)
+            var uvm = new UserViewModel();
+            var userExists = uvm.CheckUser(email, password);
+            if (!userExists)
             {
-                if (email.Equals(trener.EMail.Trim()))
-                    if (password.Equals(trener.Password.Trim()))
-                    {
-                        e.Handled = true;
-                        KluboviPage k = new KluboviPage(trener.Id, "trener");
-                        NavigationService navService = NavigationService.GetNavigationService(this);
-                        navService.Navigate(k);
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Pogrešna lozinka");
-                        break;
-                    }
+                MessageBox.Show("Pogrešna e-mail adresa ili lozinka.");
+                return;
             }
-            foreach (var sudac in suci)
+
+            if (UserModel.role.Equals("trener"))
             {
-                if (email.Equals(sudac.EMail))
-                    if (password.Equals(sudac.Password))
-                    {
-                        e.Handled = true;
-                        NatjecanjaPage n = new NatjecanjaPage();
-                        NavigationService navService = NavigationService.GetNavigationService(this);
-                        navService.Navigate(n);
-
-                        return;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Pogrešna lozinka");
-                        break;
-                    }
+                e.Handled = true;
+                KluboviPage k = new KluboviPage();
+                NavigationService navService = NavigationService.GetNavigationService(this);
+                navService.Navigate(k);
+                return;
             }
-            MessageBox.Show("Pogrešna e-mail adresa");
-
+            else if (UserModel.role.Equals("sudac"))
+            {
+                e.Handled = true;
+                NatjecanjaPage n = new NatjecanjaPage();
+                NavigationService navService = NavigationService.GetNavigationService(this);
+                navService.Navigate(n);
+                return;
+            }
         }
     }
 }

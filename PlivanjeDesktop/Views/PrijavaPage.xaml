@@ -9,7 +9,7 @@
       Title="PrijavaPage" >
 
     <Grid>
-        <StackPanel Margin="0,0,-216,-153">
+        <StackPanel Margin="0,0,0,0">
 
             <TextBlock HorizontalAlignment="Center" x:Name="LoginHeading" Text="Prijava" VerticalAlignment="Top" FontSize="40" FontStretch="ExtraCondensed" >
                

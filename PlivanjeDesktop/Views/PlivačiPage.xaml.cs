@@ -1,4 +1,5 @@
 ﻿using Plivanje.Models;
+using PlivanjeDesktop.Models;
 using PlivanjeDesktop.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -24,7 +25,6 @@ namespace PlivanjeDesktop
     {
         public List<Swimmer> swimmers = new List<Swimmer>();
         SwimmerViewModel svm = new SwimmerViewModel();
-        private string v;
 
         public PlivačiPage(string _value)
         {
@@ -40,16 +40,12 @@ namespace PlivanjeDesktop
             InitializeComponent();
             svm.LoadSwimmersByClub(clubId);
             this.DataContext = svm;
-        }
-
-        public PlivačiPage(int clubId, string role)
-        {
-            if (role.Equals("trener"))
+            
+            if (UserModel.role.Equals("trener"))
             {
-                InitializeComponent();
-                svm.LoadCoachesSwimmersByClub(clubId);
-                svm.LoadSwimmersWithoutClub();
                 trenerPanel.Visibility = Visibility.Visible;
+                datagridSwimmer.ColumnFromDisplayIndex(4).Visibility = Visibility.Hidden;
+                datagridSwimmer.ColumnFromDisplayIndex(6).Visibility = Visibility.Visible;
             }
         }
 

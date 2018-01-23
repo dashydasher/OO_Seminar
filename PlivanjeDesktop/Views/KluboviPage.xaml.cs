@@ -33,18 +33,12 @@ namespace PlivanjeDesktop
             
             clubViewModel.LoadClubs();
             this.DataContext = clubViewModel;
+            if (UserModel.role.Equals("trener"))
+            {
+                trenerKlub.Visibility = Visibility.Visible;
+            }
 
 
-        }
-        public KluboviPage(int id, string role)
-        {
-            InitializeComponent();
-            
-            clubViewModel.LoadClubs();
-            clubViewModel.LoadCoachesClub(id);
-            this.DataContext = clubViewModel;
-            ButtonAddClub.Visibility = Visibility.Visible;
-            trenerKlub.Visibility = Visibility.Visible;
         }
 
 
@@ -64,7 +58,7 @@ namespace PlivanjeDesktop
         private void Dodaj_Plivače(object sender, RoutedEventArgs e)
         {
             ClubModel selectedClub = (ClubModel)datagrid1.SelectedItem;
-            PlivačiPage pl = new PlivačiPage(selectedClub.Id, "trener");
+            PlivačiPage pl = new PlivačiPage(selectedClub.Id);
             NavigationService navService = NavigationService.GetNavigationService(this);
             navService.Navigate(pl);
         }

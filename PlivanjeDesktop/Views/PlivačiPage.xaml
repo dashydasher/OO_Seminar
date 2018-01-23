@@ -9,8 +9,8 @@
       Title="PlivačiPage" >
 
     <Grid>
-
-        <StackPanel Visibility="Hidden" Name="trenerPanel" Width="1200">
+        <StackPanel Width="1200">
+        <StackPanel Visibility="Hidden" Name="trenerPanel">
             <GroupBox Header="Plivači mog kluba" FontSize="20">
                 <DataGrid Name="datagridClubSwimmers" CanUserAddRows="false" 
                           FontSize="20" ItemsSource="{Binding swimmersCoach}" AutoGenerateColumns="False" >
@@ -33,9 +33,9 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>
-        </StackPanel>
 
-        <StackPanel Width="1200">
+            </StackPanel>
+
             <GroupBox Header="Plivači" FontSize="20">
                 <DataGrid Name="datagridSwimmer" CanUserAddRows="false"
                           FontSize="20" ItemsSource="{Binding swimmers}" AutoGenerateColumns="False" >
@@ -47,10 +47,16 @@
                         <DataGridTextColumn Header="Datum rođenja" Width="180" Binding="{Binding Path=DateOfBirth, StringFormat=\{0:dd.MM.yy\}}" />
                         <DataGridTextColumn Header="Klub" Width="230" Binding="{Binding Path=currentClub.Name}" />
                         <DataGridTextColumn Header="Kategorija" Width="200" Binding="{Binding Path=currentCategory.Name}" />
+                        <DataGridTemplateColumn Visibility="Hidden" Header="">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="Button_Click">Dodaj u klub</Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>
         </StackPanel>
-
     </Grid>
 </Page>

@@ -57,7 +57,9 @@
     </ApplicationDefinition>
     <Compile Include="Models\CompetitionModel.cs" />
     <Compile Include="Models\RaceModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
+    <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>

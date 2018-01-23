@@ -34,7 +34,7 @@
                     </DataGrid.Columns>
                 </DataGrid>
             </GroupBox>
-            <Button Visibility="Hidden" Name="ButtonAddClub" Width="100" FontSize="20">Dodaj klub</Button>
+            
             <GroupBox Header="Klubovi" FontSize="20">
                 <DataGrid Name="datagrid" CanUserAddRows="false" FontSize="20" ItemsSource="{Binding clubs}" RowStyle="{StaticResource datagrid}" AutoGenerateColumns="False" >
                     <DataGrid.Columns>
