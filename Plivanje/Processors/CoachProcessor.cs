@@ -29,6 +29,11 @@ namespace Plivanje.Processors
             return _CoachRepository.getMyClub(coachId);
         }
 
+        public List<Competition> getMyCompetitions(int coachId)
+        {
+            return _CoachRepository.getMyCompetitions(coachId);
+        }
+
         public List<Coach> getCoaches()
         {
             return _CoachRepository.getCoachs();
