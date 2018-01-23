@@ -48,8 +48,8 @@
 <hr />
 <br />
 <h3>Plivači:</h3>
-@Html.ActionLink("Dodaj novog plivača u svoj klub", "Create", "Swimmer", new object { }, new { @class = "btn btn-primary" })
-@Html.ActionLink("Dodaj postojećeg plivača u svoj klub", "AddSwimmerToClub", "Club", new object { }, new { @class = "btn btn-primary" })
+<a href="@Url.Action("Create", "Swimmer")" class="btn btn-primary">  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Dodaj novog plivača</a>
+<a class="brn btn-primary" href="@Url.Action("AddSwimmerToClub", "Club")"> <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Dodaj postojećeg plivača</a>
 <hr />
 
 @if (Model.swimmers != null)
@@ -119,7 +119,7 @@
                     </td>
                 }
                 <td style="width: 1%;white-space: nowrap;">
-                    <a class="btn btn-danger btn-sm" href=" @Url.Action("DeleteSwimmerFromClub", "Club", new { id = item.Id }, null)">
+                    <a class="btn btn-danger btn-sm" href=" @Url.Action("DeleteSwimmerFromClub", "Club", new { id = item.Id }, null)" onclick="return confirm('Jeste li sigurni da želite obrisati ovog plivača iz kluba?');" >
                         <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Makni iz kluba
                       
                     </a>

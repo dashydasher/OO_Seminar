@@ -75,6 +75,9 @@
                 <th>
                     Licenca
                 </th>
+                <th>
+
+                </th>
         </thead>
         @foreach (var item in Model.swimmers)
         {
@@ -83,38 +86,43 @@
 
 
 
-            <tr>
+        <tr>
 
-                <td>
-                    @item.firstName
-                </td>
-                <td>
-                    @item.lastName
-                </td>
+            <td>
+                @item.firstName
+            </td>
+            <td>
+                @item.lastName
+            </td>
 
-                <td>
-                    @item.gender
-                </td>
-                <td>
-                    @item.dateOfBirth.Date.ToShortDateString()
-                </td>
-                <td>
-                   @item.category
-                </td>
-                @if (item.licenceValid == true)
-                {
+            <td>
+                @item.gender
+            </td>
+            <td>
+                @item.dateOfBirth.Date.ToShortDateString()
+            </td>
+            <td>
+                @item.category
+            </td>
+            @if (item.licenceValid == true)
+    {
 
-                    <td>
-                        važeća
-                    </td>
-                }
-                else
-                {
-                <td>
-                    nevažeća
-                </td>
-                }
-            </tr>
+        <td>
+            važeća
+        </td>
+}
+else
+{
+        <td>
+            nevažeća
+        </td>
+}
+            <td>
+
+                <a href="@Url.Action("Details", "Swimmer",new { @id=item.Id})" class="btn btn-info">Detalji <span class="glyphicon glyphicon-expand"></span></a>
+
+            </td>
+        </tr>
 
 
 

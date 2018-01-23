@@ -302,6 +302,7 @@
     <Content Include="Views\Swimmer\Details.cshtml" />
     <Content Include="Views\Race\Index.cshtml" />
     <Content Include="Views\Race\Edit.cshtml" />
+    <Content Include="Views\Competition\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

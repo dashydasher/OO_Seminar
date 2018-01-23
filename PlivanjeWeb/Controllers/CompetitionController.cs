@@ -188,9 +188,21 @@ namespace PlivanjeWebApp.Controllers
             c.TimeStart = competition.TimeStart;
             c.TimeEnd = competition.TimeEnd;
             c.Hall = Hp.getHall(competition.HallId);
-
-
-
+            if (string.IsNullOrEmpty(c.Name))
+            {
+                TempData["Error"] = "Morate navesti ime natjecanja";
+                return RedirectToAction("Create");
+            }
+            if (c.TimeStart<=DateTime.Now.Date)
+            {
+                TempData["Error"] = "Datum početka natjecanja ne može biti u prošlosti";
+                return RedirectToAction("Create");
+            }
+            else if (c.TimeEnd < c.TimeStart)
+            {
+                TempData["Error"] = "Datum završetka natjecanja mora biti poslije datuma početka";
+                return RedirectToAction("Create");
+            }
 
             try
             {
@@ -272,7 +284,16 @@ namespace PlivanjeWebApp.Controllers
             c.TimeEnd = competition.TimeEnd;
             c.Hall = Hp.getHall(competition.HallId);
 
-
+            if (c.TimeStart <= DateTime.Now.Date)
+            {
+                TempData["Error"] = "Datum početka natjecanja ne može biti u prošlosti";
+                return RedirectToAction("Edit");
+            }
+            else if (c.TimeEnd < c.TimeStart)
+            {
+                TempData["Error"] = "Datum završetka natjecanja mora biti poslije datuma početka";
+                return RedirectToAction("Edit");
+            }
 
 
             try
@@ -280,11 +301,12 @@ namespace PlivanjeWebApp.Controllers
 
                 CompetitionProcessor.UpdateCompetition(c);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
             }
             catch
             {
-                return View();
+                TempData["Error"] = "Nešto je pošlo po zlu :(";
+                return RedirectToAction("Edit");
             }
         }
 
@@ -300,7 +322,6 @@ namespace PlivanjeWebApp.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
 
                 return RedirectToAction("Index");
             }
@@ -315,8 +336,9 @@ namespace PlivanjeWebApp.Controllers
 
             RaceViewModel race = new RaceViewModel();
             CompetitionProcessor comp = new CompetitionProcessor();
-            Session["idCompetition"] = comp.GetCompetition(id).Id;
-            if (comp.GetCompetition(id).TimeEnd < DateTime.Now)
+            Session["idCompetition"] = id;
+            Competition competition = comp.GetCompetition(id);
+            if (competition.TimeEnd < DateTime.Now)
             {
                 TempData["Error"] = "Natjecanje je završeno, utrku više nije moguće dodati";
                 return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
@@ -326,13 +348,13 @@ namespace PlivanjeWebApp.Controllers
             StyleProcessor sp = new StyleProcessor();
             HallProcessor hp = new HallProcessor();
             RaceProcessor racep = new RaceProcessor();
-
+            
             List<Category> categories = cp.getCategories();
             List<Referee> referees = rp.getReferees();
             List<Style> styles = sp.getStyles();
             List<Length> len = racep.GetLenghts();
-            List<Pool> pools = hp.getPools(hp.getHallCompetition(id).Id);
-
+            List<Pool> pools = hp.getPools(competition.Hall.Id);
+         
             ViewBag.pools = pools;
             ViewBag.len = len;
             ViewBag.categories = categories;
@@ -364,16 +386,35 @@ namespace PlivanjeWebApp.Controllers
             DateTime end = new DateTime(race.TimeStart.Year, race.TimeStart.Month, race.TimeStart.Day, race.finish.TimeOfDay.Hours, race.finish.TimeOfDay.Minutes, race.finish.TimeOfDay.Seconds);
             r.TimeStart = start;
             r.TimeEnd = end;
+            if(start.Date<r.Competition.TimeStart)
+            {
+                
+                    TempData["Error"] = "Utrka mora biti u vremenu kada je natjecanje";
+                    return RedirectToAction("CreateRace", new { id = (int)Session["idCompetition"] });
+                
+            }
+            else if(r.Competition.TimeEnd<start.Date){
+                TempData["Error"] = "Utrka mora biti u vremenu kada je natjecanje";
+                return RedirectToAction("CreateRace", new { id = (int)Session["idCompetition"] });
 
+            }
+            else if (start > end)
+            {
+
+                TempData["Error"] = "Početak utrke mora biti prije završetka utrke.";
+                return RedirectToAction("CreateRace", new { id = (int)Session["idCompetition"] });
+            }
 
             try
             {
                 racep.UpdateRace(r);
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
             }
             catch
             {
-                return View();
+
+                return RedirectToAction("CreateRace", new { id = (int)Session["idCompetition"] });
+
             }
 
 
@@ -384,7 +425,7 @@ namespace PlivanjeWebApp.Controllers
         {
             RaceProcessor rp = new RaceProcessor();
 
-            Race r = rp.getRace(id); //spremamo trku
+            Race r = rp.getRace(id); 
 
 
             if (r.TimeStart.Date < DateTime.Now.Date)
@@ -400,8 +441,7 @@ namespace PlivanjeWebApp.Controllers
                 {
 
                     rp.deleteRace(id);
-
-                    return RedirectToAction("Index");
+                    return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
                 }
                 catch
                 {

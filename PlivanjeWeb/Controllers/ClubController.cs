@@ -122,8 +122,7 @@ namespace PlivanjeWebApp.Controllers
 
             List<Swimmer> swimmers = new List<Swimmer>();
 
-            //int i = cp.getMyClubId((int)HttpContext.Session["UserId"]);
-            //HttpContext.Session["clubId"] = i;
+         
             c = cp.getClub((int)HttpContext.Session["clubId"]);
             club.Id = c.Id;
             club.Name = c.Name;

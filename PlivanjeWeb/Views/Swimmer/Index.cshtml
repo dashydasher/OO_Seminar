@@ -9,13 +9,17 @@
     <div class="form-actions">
         <p>
             Klub: @Html.DropDownList("klub", "Svi")
-
-            <input type="submit" value="Pretrazi" class="btn btn-default" /> |
+            Kategorija: @Html.DropDownList("kategorija", "Sve")
+            <button type="submit" value="Pretraži" class="btn btn-info">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
             @Html.ActionLink("Natrag na punu listu", "Index", new { @class = "btn btn-primary" })
         </p>
+
+
     </div>
 </form>
-<a asp-action="Create" class="btn btn-primary">Dodaj novog plivača</a>
+<a asp-action="Create" class="btn btn-primary">Dodaj novog plivača <span class="glyphicon glyphicon-plus-sign"></span></a>
 <table class="table table-striped">
     <thead>
         <tr>
@@ -39,10 +43,13 @@
 
                 Datum rođenja
             </th>
-          
+
             <th>
 
                 Licenca
+
+            </th>
+            <th>
 
             </th>
 
@@ -50,37 +57,42 @@
 
     @foreach (var item in Model)
     {
-        <tr>
+    <tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.firstName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.lastName)
-            </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.firstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.lastName)
+        </td>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.gender)
-            </td>
-            <td>
-                @item.dateOfBirth.ToShortDateString()
-            </td>
-            @if (item.licenceValid == true)
-            {
+        <td>
+            @Html.DisplayFor(modelItem => item.gender)
+        </td>
+        <td>
+            @item.dateOfBirth.ToShortDateString()
+        </td>
+        @if (item.licenceValid == true)
+    {
 
 
-                <td>
-                    važeća
-                </td>
-            }
-            else
-            {
-                <td>
-                    nevažeća
-                </td>
-            }
-           
-        </tr>
+        <td>
+            važeća
+        </td>
+}
+else
+{
+    <td>
+        nevažeća
+    </td>
+}
+        <td>
+
+            <a href="@Url.Action("Details", "Swimmer",new { @id=item.Id})" class="btn btn-info">Detalji <span class="glyphicon glyphicon-user"></span></a>
+
+        </td>
+
+    </tr>
 
     }
 
@@ -89,3 +101,10 @@
 
 </table>
 
+@section scripts{
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.min.css" rel="stylesheet">
+   
+
+}
