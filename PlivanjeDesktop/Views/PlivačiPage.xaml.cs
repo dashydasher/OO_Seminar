@@ -24,6 +24,7 @@ namespace PlivanjeDesktop
     {
         public List<Swimmer> swimmers = new List<Swimmer>();
         SwimmerViewModel svm = new SwimmerViewModel();
+        private string v;
 
         public PlivačiPage(string _value)
         {
@@ -41,5 +42,20 @@ namespace PlivanjeDesktop
             this.DataContext = svm;
         }
 
+        public PlivačiPage(int clubId, string role)
+        {
+            if (role.Equals("trener"))
+            {
+                InitializeComponent();
+                svm.LoadCoachesSwimmersByClub(clubId);
+                svm.LoadSwimmersWithoutClub();
+                trenerPanel.Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

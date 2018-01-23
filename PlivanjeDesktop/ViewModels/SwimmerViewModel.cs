@@ -12,6 +12,7 @@ namespace PlivanjeDesktop.ViewModels
     class SwimmerViewModel
     {
         public List<SwimmerModel> swimmers { get; set; }
+        public List<SwimmerModel> swimmersCoach { get; set; }
         SwimmerProcessor sp = new SwimmerProcessor();
 
         public void LoadSwimmersByClub(int clubId)
@@ -23,26 +24,7 @@ namespace PlivanjeDesktop.ViewModels
             Load(list);
         }
 
-        private void Load(List<Swimmer> list)
-        {
-
-            var cp = new ClubProcessor();
-            var season = cp.ValidSeason();
-            swimmers = new List<SwimmerModel>();
-            foreach (var swimmer in list)
-            {
-                swimmers.Add(new SwimmerModel
-                {
-                    Id = swimmer.Id,
-                    FirstName = swimmer.FirstName,
-                    LastName = swimmer.LastName,
-                    DateOfBirth = swimmer.DateOfBirth,
-                    Gender = swimmer.Gender,
-                    currentClub = sp.getMyClub(swimmer.Id, season.Id),
-                    currentCategory = sp.GetSwimmerCategory(swimmer)
-                });
-            }
-        }
+        
 
         public void LoadSwimmersByClub(string clubName)
         {
@@ -66,6 +48,67 @@ namespace PlivanjeDesktop.ViewModels
             var sp = new SwimmerProcessor();
             var list = sp.GetSwimmersFromCategory(category);
             Load(list);
+        }
+
+        internal void LoadSwimmersWithoutClub()
+        {
+            var sp = new SwimmerProcessor();
+            var list = sp.GetListOfSwimmers();
+            swimmers = new List<SwimmerModel>();
+            foreach (var swimmer in list)
+                if (sp.IsSwimmerFree(swimmer.Id))
+                    swimmers.Add(new SwimmerModel
+                    {
+                        Id = swimmer.Id,
+                        FirstName = swimmer.FirstName,
+                        LastName = swimmer.LastName,
+                        DateOfBirth = swimmer.DateOfBirth,
+                        Gender = swimmer.Gender,
+                        currentClub = null,
+                        currentCategory = sp.GetSwimmerCategory(swimmer)
+                    });
+        }
+
+        public void LoadCoachesSwimmersByClub(int clubId)
+        {
+            var cp = new ClubProcessor();
+            var season = cp.ValidSeason();
+            var list = sp.GetSwimmersInClubSeason(clubId, season.Id);
+            swimmersCoach = new List<SwimmerModel>();
+            foreach (var swimmer in list)
+            {
+                swimmersCoach.Add(new SwimmerModel
+                {
+                    Id = swimmer.Id,
+                    FirstName = swimmer.FirstName,
+                    LastName = swimmer.LastName,
+                    DateOfBirth = swimmer.DateOfBirth,
+                    Gender = swimmer.Gender,
+                    currentClub = sp.getMyClub(swimmer.Id, season.Id),
+                    currentCategory = sp.GetSwimmerCategory(swimmer)
+                });
+            }
+        }
+
+        private void Load(List<Swimmer> list)
+        {
+
+            var cp = new ClubProcessor();
+            var season = cp.ValidSeason();
+            swimmers = new List<SwimmerModel>();
+            foreach (var swimmer in list)
+            {
+                swimmers.Add(new SwimmerModel
+                {
+                    Id = swimmer.Id,
+                    FirstName = swimmer.FirstName,
+                    LastName = swimmer.LastName,
+                    DateOfBirth = swimmer.DateOfBirth,
+                    Gender = swimmer.Gender,
+                    currentClub = sp.getMyClub(swimmer.Id, season.Id),
+                    currentCategory = sp.GetSwimmerCategory(swimmer)
+                });
+            }
         }
     }
 

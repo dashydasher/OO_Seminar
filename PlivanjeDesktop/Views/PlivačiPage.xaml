@@ -9,6 +9,32 @@
       Title="PlivačiPage" >
 
     <Grid>
+
+        <StackPanel Visibility="Hidden" Name="trenerPanel" Width="1200">
+            <GroupBox Header="Plivači mog kluba" FontSize="20">
+                <DataGrid Name="datagridClubSwimmers" CanUserAddRows="false" 
+                          FontSize="20" ItemsSource="{Binding swimmersCoach}" AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding Path=FirstName}" />
+                        <DataGridTextColumn Header="Prezime" Width="200" Binding="{Binding Path=LastName}" />
+                        <DataGridTextColumn Header="Spol" Width="100" Binding="{Binding Path=Gender}" />
+                        <DataGridTextColumn Header="Datum rođenja" Width="180" Binding="{Binding Path=DateOfBirth, StringFormat=\{0:dd.MM.yy\}}" />
+                        <DataGridTextColumn Header="Klub" Width="230" Binding="{Binding Path=currentClub.Name}" />
+                        <DataGridTextColumn Header="Kategorija" Width="200" Binding="{Binding Path=currentCategory.Name}" />
+
+                        <DataGridTemplateColumn Header="">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Click="Button_Click">Iščlani</Button>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </GroupBox>
+        </StackPanel>
+
         <StackPanel Width="1200">
             <GroupBox Header="Plivači" FontSize="20">
                 <DataGrid Name="datagridSwimmer" CanUserAddRows="false"
