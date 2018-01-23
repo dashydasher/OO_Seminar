@@ -33,7 +33,7 @@ namespace PlivanjeDesktop
             
             clubViewModel.LoadClubs();
             this.DataContext = clubViewModel;
-            if (UserModel.role.Equals("trener"))
+            if (UserModel.role != null && UserModel.role.Equals("trener"))
             {
                 trenerKlub.Visibility = Visibility.Visible;
             }
