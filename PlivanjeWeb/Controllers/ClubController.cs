@@ -30,14 +30,11 @@ namespace PlivanjeWebApp.Controllers
                 pom.Address = c.Address;
                 pom.Name = c.Name;
 
-                pom.Place = cp.getPlace(c.Place.Id).Name;
+                pom.Place = c.Place.Name;
                 coach = cp.getCoachOfClub(pom.Id);
                 if (coach != null)
                     pom.coach = cp.getCoach(coach.Id);
 
-
-
-                //pom.swimmers = cp.getSwimmers(c.Id);
                 model.Add(pom);
              
                 
@@ -77,7 +74,7 @@ namespace PlivanjeWebApp.Controllers
                 c = cp.getClub(id);
                 club.Id = c.Id;
                 club.Name = c.Name;
-                club.Place = cp.getPlace(c.Place.Id).Name;
+                club.Place = c.Place.Name;
                 club.Address = c.Address;
                 swimmers = sp.SwimmersInClub(club.Id);
                 foreach (var s in swimmers)
@@ -91,7 +88,6 @@ namespace PlivanjeWebApp.Controllers
                     pom.dateOfBirth = s.DateOfBirth;
                     pom.category = sp.GetSwimmerCategory(s).Name;
                     pom.licenceValid = sp.getSwimmerLicence(s.Id);
-
                     swimmInClub.Add(pom);
 
 
@@ -126,7 +122,7 @@ namespace PlivanjeWebApp.Controllers
             c = cp.getClub((int)HttpContext.Session["clubId"]);
             club.Id = c.Id;
             club.Name = c.Name;
-            club.Place = cp.getPlace(c.Place.Id).Name;
+            club.Place = c.Place.Name;
             club.Address = c.Address;
             swimmers = sp.SwimmersInClub(club.Id);
             foreach(var s in swimmers)

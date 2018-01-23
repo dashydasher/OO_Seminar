@@ -37,7 +37,7 @@ namespace PlivanjeWebApp.Controllers
                 {
                     c.status = "Održano";
                 }
-                else if(c.TimeStart>DateTime.Now)
+                else if (c.TimeStart > DateTime.Now)
                 {
                     c.status = "To be..";
                 }
@@ -108,7 +108,7 @@ namespace PlivanjeWebApp.Controllers
 
             List<RaceViewModel> trke = new List<RaceViewModel>();
             List<SwimmerRace> pom = new List<SwimmerRace>();
-           
+
 
             result = cp.getRacesInCompetition(id);
             if (result != null)
@@ -133,7 +133,7 @@ namespace PlivanjeWebApp.Controllers
                     race.surnameReferee = r.Refereee.LastName;
                     race.sytleName = r.Style.Name;
                     pom = rp.SwimmersOnRace(item.Id);
-                    foreach(var p in pom)
+                    foreach (var p in pom)
                     {
                         SwimmerViewModel swimmer = new SwimmerViewModel();
                         swimmer.Id = p.Id;
@@ -154,7 +154,7 @@ namespace PlivanjeWebApp.Controllers
         }
 
         // GET: Competition/Create
-        
+
         public ActionResult Create()
         {
             HallProcessor hp = new HallProcessor();
@@ -193,7 +193,7 @@ namespace PlivanjeWebApp.Controllers
                 TempData["Error"] = "Morate navesti ime natjecanja";
                 return RedirectToAction("Create");
             }
-            if (c.TimeStart<=DateTime.Now.Date)
+            if (c.TimeStart <= DateTime.Now.Date)
             {
                 TempData["Error"] = "Datum početka natjecanja ne može biti u prošlosti";
                 return RedirectToAction("Create");
@@ -218,7 +218,7 @@ namespace PlivanjeWebApp.Controllers
 
         }
 
-      
+
         // GET: Competition/Edit/5
         public ActionResult Edit(int id)
         {
@@ -348,13 +348,13 @@ namespace PlivanjeWebApp.Controllers
             StyleProcessor sp = new StyleProcessor();
             HallProcessor hp = new HallProcessor();
             RaceProcessor racep = new RaceProcessor();
-            
+
             List<Category> categories = cp.getCategories();
             List<Referee> referees = rp.getReferees();
             List<Style> styles = sp.getStyles();
             List<Length> len = racep.GetLenghts();
             List<Pool> pools = hp.getPools(competition.Hall.Id);
-         
+
             ViewBag.pools = pools;
             ViewBag.len = len;
             ViewBag.categories = categories;
@@ -386,14 +386,15 @@ namespace PlivanjeWebApp.Controllers
             DateTime end = new DateTime(race.TimeStart.Year, race.TimeStart.Month, race.TimeStart.Day, race.finish.TimeOfDay.Hours, race.finish.TimeOfDay.Minutes, race.finish.TimeOfDay.Seconds);
             r.TimeStart = start;
             r.TimeEnd = end;
-            if(start.Date<r.Competition.TimeStart)
+            if (start.Date < r.Competition.TimeStart)
             {
-                
-                    TempData["Error"] = "Utrka mora biti u vremenu kada je natjecanje";
-                    return RedirectToAction("CreateRace", new { id = (int)Session["idCompetition"] });
-                
+
+                TempData["Error"] = "Utrka mora biti u vremenu kada je natjecanje";
+                return RedirectToAction("CreateRace", new { id = (int)Session["idCompetition"] });
+
             }
-            else if(r.Competition.TimeEnd<start.Date){
+            else if (r.Competition.TimeEnd < start.Date)
+            {
                 TempData["Error"] = "Utrka mora biti u vremenu kada je natjecanje";
                 return RedirectToAction("CreateRace", new { id = (int)Session["idCompetition"] });
 
@@ -425,7 +426,7 @@ namespace PlivanjeWebApp.Controllers
         {
             RaceProcessor rp = new RaceProcessor();
 
-            Race r = rp.getRace(id); 
+            Race r = rp.getRace(id);
 
 
             if (r.TimeStart.Date < DateTime.Now.Date)
@@ -449,7 +450,7 @@ namespace PlivanjeWebApp.Controllers
                     return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
                 }
             }
-            
+
         }
 
         public ActionResult AddSwimmersToRace(int id)
@@ -476,7 +477,7 @@ namespace PlivanjeWebApp.Controllers
                 Swimmer.dateOfBirth = s.DateOfBirth.Date;
                 Swimmer.gender = s.Gender;
                 if (sp.getSwimmerLicence(Swimmer.Id))
-                    pom.Add(Swimmer); 
+                    pom.Add(Swimmer);
 
 
 
@@ -492,7 +493,18 @@ namespace PlivanjeWebApp.Controllers
             Swimmer swimmer = sp.getSwimmer(idSwimmer);
             Category cat1 = sp.GetSwimmerCategory(swimmer);
             Category cat2 = cp.getCategory(race.Category.Id);
-            if (cat1.Id == cat2.Id && !rp.isSwimmerOnRace(swimmer.Id,race.Id) && race.Gender==swimmer.Gender)
+
+            if (cat1.Id != cat2.Id || race.Gender != swimmer.Gender)
+            {
+                TempData["ErrorAddSwimmer"] = "Plivača je nemoguće prijaviti na trku jer to nije njegova kategorija";
+                return RedirectToAction("AddSwimmersToRace", new { id = (int)Session["idRace"] });
+            }
+            else if (rp.isSwimmerOnRace(swimmer.Id, race.Id))
+            {
+                TempData["ErrorAddSwimmer"] = "Plivač je već prijavljen za tu utrku";
+                return RedirectToAction("AddSwimmersToRace", new { id = (int)Session["idRace"] });
+            }
+            else
             {
                 try
                 {
@@ -503,21 +515,16 @@ namespace PlivanjeWebApp.Controllers
                     rp.AddSwimmerToRace(swimmerRace);
                     return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
-                    TempData["ErrorAddSwimmer"] = "Plivača je nemoguće prijaviti na trku jer to nije njegova kategorija";
+                    TempData["ErrorAddSwimmer"] = "Plivača je nemoguće prijaviti na trku";
                     return RedirectToAction("AddSwimmersToRace", new { id = (int)Session["idRace"] });
                 }
+
+
+
+
             }
-            else
-            {
-                TempData["ErrorAddSwimmer"] = "Plivača je nemoguće prijaviti na trku jer to nije njegova kategorija";
-                return RedirectToAction("AddSwimmersToRace", new { id = (int)Session["idRace"] });
-            }
-
-
-
-
         }
     }
 }

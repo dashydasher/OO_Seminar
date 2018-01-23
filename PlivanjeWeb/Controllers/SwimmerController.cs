@@ -67,8 +67,8 @@ namespace WebApp.Controllers
                         Swimmer.firstName = item.FirstName;
                         Swimmer.dateOfBirth = item.DateOfBirth.Date;
                         Swimmer.gender = item.Gender;
-                    Swimmer.category = SwimmerProcessor.GetSwimmerCategory(item).Name;
-                    Swimmer.licenceValid = SwimmerProcessor.getSwimmerLicence(item.Id);
+                        Swimmer.category = SwimmerProcessor.GetSwimmerCategory(item).Name;
+                        Swimmer.licenceValid = SwimmerProcessor.getSwimmerLicence(item.Id);
                     
                        
                         Swimmers.Add(Swimmer);
