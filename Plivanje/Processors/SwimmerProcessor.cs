@@ -114,5 +114,7 @@ namespace Plivanje.Processors
         {
             return _swimmerRepository.GetSwimmersFromCategory(category);
         }
+
+     
     }
 }

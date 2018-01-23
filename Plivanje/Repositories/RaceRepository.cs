@@ -20,6 +20,8 @@ namespace Plivanje.Repositories
         void AddSwimmerToRace(SwimmerRace swimmerRace);
         bool isSwimmerOnRace(int idSwimmer, int idRace);
         List<SwimmerRace> SwimmersOnRace(int idRace);
+        void UpdateSwimmerRace(SwimmerRace swimmerRace);
+        SwimmerRace GetSwimmerRace(int idRace, int idSwimmer);
 
 
 
@@ -207,6 +209,38 @@ namespace Plivanje.Repositories
 
                     result = (List<SwimmerRace>)session.QueryOver<SwimmerRace>().Where(x => x.Race.Id == idRace).OrderBy(x=>x.Score).Asc.List<SwimmerRace>();
 
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public void UpdateSwimmerRace(SwimmerRace swimmerRace)
+        {
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+
+                    session.Update(swimmerRace);
+
+                    transaction.Commit();
+                }
+            }
+        }
+
+        public SwimmerRace GetSwimmerRace(int idRace, int idSwimmer)
+        {
+            var result = new SwimmerRace();
+            var klasa = new FluentNHibernateClass();
+
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<SwimmerRace>().Where(x => x.Swimmer.Id==idSwimmer && x.Race.Id==idRace).SingleOrDefault();
                     transaction.Commit();
                 }
             }

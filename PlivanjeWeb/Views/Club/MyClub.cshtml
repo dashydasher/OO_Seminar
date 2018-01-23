@@ -71,6 +71,9 @@
                     Datum rođenja
                 </th>
                 <th>
+                    Kategorija
+                </th>
+                <th>
                     Licenca
                 </th>
         </thead>
@@ -94,7 +97,10 @@
                     @item.gender
                 </td>
                 <td>
-                    @item.dateOfBirth.Date.Date
+                    @item.dateOfBirth.ToShortDateString()
+                </td>
+                <td>
+                    @item.category
                 </td>
                 @if (item.licenceValid == true)
                 {

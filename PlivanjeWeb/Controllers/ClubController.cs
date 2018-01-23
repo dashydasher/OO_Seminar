@@ -139,7 +139,7 @@ namespace PlivanjeWebApp.Controllers
                 pom.lastName = s.LastName;
                 pom.gender = s.Gender;
                 pom.dateOfBirth = s.DateOfBirth;
-
+                pom.category = sp.GetSwimmerCategory(s).Name;
                 pom.licenceValid = sp.getSwimmerLicence(s.Id);
 
                 swimmInClub.Add(pom);

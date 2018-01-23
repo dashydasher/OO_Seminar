@@ -18,7 +18,7 @@ namespace PlivanjeWeb.Models
         public Style Style { get; set; }
         public Category Category { get; set; }
         public Referee Refereee { get; set; }
-        public List<SwimmerRace> swimmers { get; set; }
+        public List<SwimmerRaceViewModel> swimmers { get; set; }
         
    
         public DateTime datum { get; set; }

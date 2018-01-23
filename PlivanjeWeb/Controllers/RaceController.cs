@@ -70,6 +70,20 @@ namespace PlivanjeWeb.Controllers
             RaceProcessor rp = new RaceProcessor();
             List<SwimmerRace> tmp1 = rp.SwimmersOnRace(id);
             Race tmp2 = rp.getRace(id);
+            List<SwimmerRaceViewModel> tmp3 = new List<SwimmerRaceViewModel>();
+            foreach(var item in tmp1)
+            {
+                tmp3.Add(
+                    new SwimmerRaceViewModel
+                    {
+                        Id=item.Swimmer.Id,
+                        firstName=item.Swimmer.FirstName,
+                        lastName=item.Swimmer.LastName,
+                        dateOfBirth=item.Swimmer.DateOfBirth,
+                        gender=item.Swimmer.Gender
+                    }
+                );
+            }
             model.Id = tmp2.Id;
             model.Category = tmp2.Category;
             model.Style = tmp2.Style;
@@ -78,24 +92,48 @@ namespace PlivanjeWeb.Controllers
             model.datum = tmp2.TimeStart.Date;
             model.start = tmp2.TimeStart;
             model.finish = tmp2.TimeEnd;
-            model.swimmers = tmp1;
+            model.swimmers = tmp3;
 
             return View(model);
         }
 
         // POST: Race/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(RaceEditViewModel model, FormCollection collection)
         {
+            var sp = new SwimmerProcessor();
+            var rp = new RaceProcessor();
             try
             {
-                // TODO: Add update logic here
+                foreach(var item in model.swimmers)
+                {
+                    DateTime d;
+                    if(DateTime.TryParse(item.RaceTime.ToString(),out d))
+                    {
+                        SwimmerRace save = new SwimmerRace();
+                        save = rp.GetSwimmerRace(model.Id, item.Id);
+                        save.Swimmer = sp.getSwimmer(item.Id);
+                        save.Race = rp.getRace(model.Id);
+                        save.RaceTime = d;
+                        save.Score = item.score;
+                        rp.UpdateSwimmerRace(save);
+
+                    }
+                    else
+                    {
+                        TempData["Error"] = "Vrijednost za vrijeme utrke treba biti u obliku HH:MM:SS";
+                        return RedirectToAction("Edit", new { @id = model.Id });
+                    }
+                }
+
+             
 
                 return RedirectToAction("Index");
             }
-            catch
+            catch(Exception ex)
             {
-                return View();
+                TempData["Error"] = "Vrijednost za vrijeme utrke treba biti u obliku HH:MM:SS";
+                return RedirectToAction("Edit", new { @id = model.Id });
             }
         }
 

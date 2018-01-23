@@ -2,21 +2,37 @@
 @{
     ViewBag.Title = "Edit";
 }
+@{
+    ViewBag.Title = "Details";
+    var gr = TempData["Error"];
+    var msgErr = "";
+    if (gr != null)
+    {
+        msgErr = gr.ToString();
+    }
+}
 
+@if (!string.IsNullOrWhiteSpace(msgErr))
+{
+    <div class="alert alert-danger alert alert-dismissible" role="alert" id="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        @msgErr
+    </div>
+}
 <h2>Unesi rezultate utrke</h2>
+<hr />
 <div class="row">
     <div class="col-sm-12">
         <div class="panel panel-default">
-            <h4>Detalji utrke</h4>
             <div class="panel-body">
                 <div class="col-md-12">
                     <table class="table table-borderless" style="border-top: none">
                         <tr>
-                            <td align="right" class="col-xs-2" style="border-top: none"><b>Ime natjecanja:</b></td>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Utrka:</b></td>
                             <td align="left" class="col-xs-2" style="border-top: none">
-                               @Model.Length.Len m @Model.Style.Name
+                                @Model.Length.Len m @Model.Style.Name
                             </td>
-                            <td align="right" class="col-xs-2" style="border-top: none"><b>Dvorana:</b></td>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Spol:</b></td>
                             <td align="left" class="col-xs-2" style="border-top: none">
                                 @Model.Gender
                             </td>
@@ -24,12 +40,13 @@
                         </tr>
 
                         <tr>
-                            <td align="right" class="col-xs-2" style="border-top: none"><b>Početak:</b></td>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Kategorija:</b></td>
                             <td align="left" class="col-xs-2" style="border-top: none">
-                                @Model.Category
+                                @Model.Category.Name
+
                             </td>
 
-                            <td align="right" class="col-xs-2" style="border-top: none"><b>Završetak:</b></td>
+                            <td align="right" class="col-xs-2" style="border-top: none"><b>Vrijeme:</b></td>
                             <td align="left" class="col-xs-2" style="border-top: none">
                                 @Model.start.TimeOfDay - @Model.finish.TimeOfDay
 
@@ -48,3 +65,86 @@
         </div>
     </div>
 </div>
+<hr />
+
+@using (Html.BeginForm("Edit", "Race", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <table class="table table-hover" id="swimmersTable">
+        <thead style="border-bottom:solid; border-bottom-color:darkgray">
+            <tr style="border-bottom: none">
+                <th class="col-xs-4" style="border-bottom: none">
+                    Id
+                </th>
+                <th class="col-xs-4" style="border-bottom: none">
+                    Ime
+                </th>
+                <th class="col-xs-4" style="border-bottom: none">
+                    Prezime
+                </th>
+                <th class="col-xs-4" style="border-bottom: none">
+                    Datum rođenja
+                </th>
+                <th class="col-xs-4" style="border-bottom: none">
+                    Spol
+                </th>
+                <th class="col-xs-4" style="border-bottom: none">
+                    Rezultat
+                </th>
+                <th class="col-xs-1" style="border-bottom: none">
+                    Vrijeme
+                </th>
+
+            </tr>
+        </thead>
+        @if (Model.swimmers != null)
+        {
+            for (var i = 0; i < Model.swimmers.Count(); i++)
+            {
+        <tr class="table-hover" id="item">
+            <td>
+                @Html.HiddenFor(model => Model.swimmers[i].Id)
+                @Html.DisplayFor(model => Model.swimmers[i].Id)
+            </td>
+            <td>
+                @Html.HiddenFor(model => Model.swimmers[i].firstName)
+                @Html.DisplayFor(model => Model.swimmers[i].firstName)
+            </td>
+            <td>
+                @Html.HiddenFor(model => Model.swimmers[i].lastName)
+                @Html.DisplayFor(model => Model.swimmers[i].lastName)
+            </td>
+            <td>
+                @Model.swimmers[i].dateOfBirth.ToShortDateString()
+            </td>
+            <td>
+                @Html.DisplayFor(model => Model.swimmers[i].gender)
+            </td>
+            <td align=>
+                @Html.TextBoxFor(model => Model.swimmers[i].score)
+            </td>
+            <td align="right">
+                @Html.TextBoxFor(model => Model.swimmers[i].RaceTime, new { id = "raceTime" })
+            </td>
+
+        </tr>
+            }
+        }
+    </table>
+
+    <br />
+    <p>
+        <div class="form-group">
+            <div class="col-xs-12" align="right">
+                <input type="submit" value="Spremi rezultate" class="btn btn-success" id="saveButton" />
+            </div>
+        </div>
+    </p>
+}
+
+@section scripts{
+    <script>
+        setTimeout(function () {
+            $("#alert").fadeOut().empty();
+        }, 5000);
+    </script>
+    }

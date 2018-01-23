@@ -45,7 +45,7 @@
                     @Html.DisplayFor(modelItem => item.lastName)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.dateOfBirth)
+                    @item.dateOfBirth.ToShortDateString()
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.gender)

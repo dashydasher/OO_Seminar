@@ -213,6 +213,7 @@
     <Compile Include="Models\RecordsViewModel.cs" />
     <Compile Include="Models\RecordViewModel.cs" />
     <Compile Include="Models\SwimmerDetailsViewModel.cs" />
+    <Compile Include="Models\SwimmerRaceViewModel.cs" />
     <Compile Include="Models\SwimmerViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
