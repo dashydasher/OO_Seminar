@@ -13,10 +13,12 @@ namespace PlivanjeDesktop.ViewModels
     {
         public List<SwimmerModel> swimmers { get; set; }
         public List<SwimmerModel> swimmersCoach { get; set; }
+        public int clubId = -1;
         SwimmerProcessor sp = new SwimmerProcessor();
 
         public void LoadSwimmersByClub(int clubId)
         {
+            this.clubId = clubId;
             var cp = new ClubProcessor();
             var season = cp.ValidSeason();
             var list = sp.GetSwimmersInClubSeason(clubId, season.Id);
@@ -65,27 +67,6 @@ namespace PlivanjeDesktop.ViewModels
                     });
         }
 
-        public void LoadCoachesSwimmersByClub(int clubId)
-        {
-            var cp = new ClubProcessor();
-            var season = cp.ValidSeason();
-            var list = sp.GetSwimmersInClubSeason(clubId, season.Id);
-            swimmersCoach = new List<SwimmerModel>();
-            foreach (var swimmer in list)
-            {
-                swimmersCoach.Add(new SwimmerModel
-                {
-                    Id = swimmer.Id,
-                    FirstName = swimmer.FirstName,
-                    LastName = swimmer.LastName,
-                    DateOfBirth = swimmer.DateOfBirth,
-                    Gender = swimmer.Gender,
-                    currentClub = sp.getMyClub(swimmer.Id, season.Id),
-                    currentCategory = sp.GetSwimmerCategory(swimmer)
-                });
-            }
-        }
-
         private void Load(List<Swimmer> list, bool regularSwimmers)
         {
 
@@ -125,6 +106,47 @@ namespace PlivanjeDesktop.ViewModels
                     });
                 }
             }
+        }
+        public bool AddSwimmerToClub(SwimmerModel swimmer)
+        {
+            bool success = true;
+            var cp = new ClubProcessor();
+            var sw = new Swimmer
+            {
+                DateOfBirth = swimmer.DateOfBirth
+            };
+            SwimmerSeason ss = new SwimmerSeason
+            {
+                Score = 0,
+                Category = sp.GetSwimmerCategory(sw),
+                Club = cp.getClub(clubId),
+                Swimmer = sp.getSwimmer(swimmer.Id),
+                Season = cp.ValidSeason()
+            };
+            try
+            {
+                sp.UpdateSwimmerSeason(ss);
+            }
+            catch (Exception e)
+            {
+                success = false;
+            }
+            return success;
+
+        }
+        public bool DeleteSwimmerFromClub(SwimmerModel selectedSwimmer)
+        {
+            bool success = true;
+            SwimmerSeason ss = sp.GetSwimmerSeason(selectedSwimmer.Id);
+            try
+            {
+                sp.deleteSwimmerFromClub(ss);
+            }
+            catch (Exception e)
+            {
+                success = false;
+            }
+            return success;
         }
     }
 

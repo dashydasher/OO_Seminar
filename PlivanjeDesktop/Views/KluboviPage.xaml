@@ -26,7 +26,7 @@
                         <DataGridTemplateColumn Header="">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Click="Dodaj_Plivače">Dodaj/ukloni plivače</Button>
+                                    <Button Click="Dodaj_Plivače">Učlani/iščlani plivače</Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

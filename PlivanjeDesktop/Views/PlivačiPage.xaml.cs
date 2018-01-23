@@ -40,7 +40,7 @@ namespace PlivanjeDesktop
             InitializeComponent();
             svm.LoadSwimmersByClub(clubId);
             this.DataContext = svm;
-            
+
             if (UserModel.role.Equals("trener"))
             {
                 trenerPanel.Visibility = Visibility.Visible;
@@ -49,9 +49,31 @@ namespace PlivanjeDesktop
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Uclani_Click(object sender, RoutedEventArgs e)
         {
+            SwimmerModel selectedSwimmer = (SwimmerModel)datagridSwimmer.SelectedItem;
+            var success = svm.AddSwimmerToClub(selectedSwimmer);
+            if (success)
+                MessageBox.Show("Plivač je uspješno dodan u klub");
+            else
+                MessageBox.Show("Plivač nije dodan u klub");
 
+            //Neki refresh stranice
+            //CommandManager.InvalidateRequerySuggested();
+            this.UpdateLayout();
+        }
+
+        private void Button_Isclani_Click(object sender, RoutedEventArgs e)
+        {
+            SwimmerModel selectedSwimmer = (SwimmerModel)datagridClubSwimmers.SelectedItem;
+            bool success = svm.DeleteSwimmerFromClub(selectedSwimmer);
+            if (success)
+                MessageBox.Show("Plivač je uspješno iščlanjen iz kluba");
+            else
+                MessageBox.Show("Plivač nije iščlanjen iz kluba");
+
+            //Neki refresh stranice
+            this.InvalidateVisual();
         }
     }
 }
