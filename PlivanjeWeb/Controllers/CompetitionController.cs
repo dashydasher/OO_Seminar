@@ -439,7 +439,7 @@ namespace PlivanjeWebApp.Controllers
             Race r = rp.getRace(id);
 
 
-            if (r.TimeStart.Date < DateTime.Now.Date)
+            if (r.TimeStart.Date <= DateTime.Now.Date)
             {
                 TempData["Error"] = "Nije moguće izbrisati utrku, utrka se odvija danas ili se već odvila";
                 return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
