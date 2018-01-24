@@ -55,9 +55,14 @@
         <td>
             @item.start - @item.finish
         </td>
-        @if (item.datum < DateTime.Now)
+        @if(item.datum > DateTime.Now)
+        {
+            <td></td>
+        }
+
+        else if (item.ResultIsInserted==false)
      {
-        
+
         <td style="width: 1%">
             <a class="btn btn-success btn-sm" href="@Url.Action("Edit", "Race",new { @id=item.Id})">
                 <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Upiši rezultate
@@ -67,7 +72,13 @@
         }
         else
         {
-            <td></td>
+        <td>
+            <label class="label-info">
+                <span class="glyphicon glyphicon-ban-circle" aria-hidden="true"></span> Rezultati su upisani
+
+            </label>
+
+        </td>
         }
 
 

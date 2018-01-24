@@ -14,11 +14,17 @@ namespace PlivanjeWeb.Controllers
         // GET: Race
         public ActionResult Index()
         {
+            bool inserted = false;
             var rp = new RefereeProcessor();
+            var raceProcessor = new RaceProcessor();
             List<RaceViewModel> model = new List<RaceViewModel>();
             List<Race> races = rp.GetMyRaces((int)Session["UserId"]);
             foreach(var r in races)
             {
+                if (raceProcessor.ResultIsInserted(r.Id) != null)
+                {
+                   inserted = true;
+                }
                 model.Add(new RaceViewModel
                 {
                     Id = r.Id,
@@ -28,7 +34,9 @@ namespace PlivanjeWeb.Controllers
                     finish = r.TimeEnd,
                     sytleName = r.Style.Name,
                     lenghtValue = r.Length.Len,
-                    Gender = r.Gender
+                    Gender = r.Gender,
+                    ResultIsInserted = inserted
+                
 
                 });
             }
@@ -107,6 +115,11 @@ namespace PlivanjeWeb.Controllers
             {
                 foreach(var item in model.swimmers)
                 {
+                    if (item.score == 0)
+                    {
+                        TempData["Error"] = "Rezultat za utrku treba biti različit od 0";
+                        return RedirectToAction("Edit", new { @id = model.Id });
+                    }
                     DateTime d;
                     if(DateTime.TryParse(item.RaceTime.ToString(),out d))
                     {
