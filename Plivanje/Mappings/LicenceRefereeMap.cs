@@ -13,9 +13,9 @@ namespace Plivanje.Mappings
         public LicenceRefereeMap()
         {
             Id(x => x.Id);
-            References(x => x.Referee).Not.LazyLoad();
-            References(x => x.Season).Not.LazyLoad();
-            References(x => x.Licence).Not.LazyLoad();
+            References(x => x.Referee).Column("idReferee").Not.LazyLoad();
+            References(x => x.Season).Column("idSeason").Not.LazyLoad();
+            References(x => x.Licence).Column("idLicence").Not.LazyLoad();
             Table("LicenceReferee");
         }
     }
