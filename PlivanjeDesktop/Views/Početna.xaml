@@ -32,7 +32,7 @@
                         <MenuItem Header="Žene" Click="Records_Click"/>
                     </MenuItem>
                     <MenuItem Header="PRIJAVA"  Name="Login" Visibility="Hidden" Click="PrijaviSe_Click"/>
-                    <MenuItem Header="ODJAVA"  Name="Logout" Visibility="Hidden" Click="OdjaviSe_Click"/>
+                    <MenuItem Header="ODJAVA"  x:Name="Logout" Visibility="Hidden" x:FieldModifier="public" Click="OdjaviSe_Click"/>
                 </Menu>
             </Border>
    

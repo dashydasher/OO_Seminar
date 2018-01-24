@@ -29,11 +29,6 @@ namespace PlivanjeDesktop
             {
                 Login.Visibility = Visibility.Visible;
             }
-            if (UserModel.role != null)
-            {
-                Logout.Visibility = Visibility.Visible;
-            }
-            
 
         }
 

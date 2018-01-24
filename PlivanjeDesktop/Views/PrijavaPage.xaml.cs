@@ -79,6 +79,11 @@ namespace PlivanjeDesktop
                 navService.Navigate(n);
                 return;
             }
+
+            if (UserModel.role != null)
+            {
+               // Početna.Logout.Visibility = Visibility.Visible;
+            }
         }
     }
 }

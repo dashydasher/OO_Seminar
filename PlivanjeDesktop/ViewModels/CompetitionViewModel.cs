@@ -44,16 +44,16 @@ namespace PlivanjeDesktop.ViewModels
             var ccp = new CoachProcessor();
             list = cp.GetFutureCompetitions();
             listMyCompetitions = ccp.getMyCompetitions(coachId);
-            competitions = new List<CompetitionModel>();
+            coachesCompetitions = new List<CompetitionModel>();
 
             if (coachId != 0)
             {
                 
-                foreach (var competition in listMyCompetitions)
+                foreach (var competition in list)
                 {
-                    if (list.Contains(competition))
+                    if (listMyCompetitions.Contains(competition))
                     {
-                        competitions.Add(new CompetitionModel
+                        coachesCompetitions.Add(new CompetitionModel
                         {
                             Id = competition.Id,
                             Name = competition.Name,
@@ -66,6 +66,28 @@ namespace PlivanjeDesktop.ViewModels
                     }
                 }
             }
+        }
+
+        public bool AddCompetition(string name, DateTime timeStart, DateTime timeEnd, string hall) //Hall hall
+        {
+            Competition competition = new Competition
+            {
+                Name = name,
+                TimeStart = timeStart,
+                TimeEnd = timeEnd//,
+                //MyHall.Name = hall
+                
+            };
+            var cp = new CompetitionProcessor();
+            try
+            {
+                cp.UpdateCompetition(competition);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
         }
 
 

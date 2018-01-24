@@ -24,17 +24,23 @@ namespace PlivanjeDesktop
     public partial class NatjecanjaPage : Page
     {
         private List<Competition> competitions = new List<Competition>();
+     
 
-        CompetitionViewModel competitionViewModel;
+        CompetitionViewModel cvm;
 
         public NatjecanjaPage()
         {
             InitializeComponent();
 
-            competitionViewModel = new CompetitionViewModel();
-            competitionViewModel.LoadCompetitions();
-            this.DataContext = competitionViewModel;
+            cvm = new CompetitionViewModel();
+            cvm.LoadCompetitions();
+            if (UserModel.role != null && UserModel.role.Equals("trener"))
+            {
+                cvm.LoadCoachesCompetitions(UserModel.Id);
+            }
 
+            this.DataContext = cvm;
+            
             if (UserModel.role != null && UserModel.role.Equals("trener"))
             {
                 trenerovaNatjecanja.Visibility = Visibility.Visible;
@@ -68,5 +74,50 @@ namespace PlivanjeDesktop
         {
 
         }
+
+        private void Dodaj_Natjecanje(object sender, RoutedEventArgs e)
+        {
+            if (String.IsNullOrEmpty(tbName.Text))
+            {
+                MessageBox.Show("Potrebno je unijeti naziv natjecanja.");
+                return;
+            }
+            if (String.IsNullOrEmpty(tbBegin.Text))
+            {
+                MessageBox.Show("Potrebno je unijeti vrijeme početka održavanja natjecanja.");
+                return;
+            }
+            if (String.IsNullOrEmpty(tbEnd.Text))
+            {
+                MessageBox.Show("Potrebno je unijeti vrijeme završetka natjecanja.");
+                return;
+            }
+            if (String.IsNullOrEmpty(tbHall.Text))
+            {
+                MessageBox.Show("Potrebno je unijeti dvoranu.");
+                return;
+            }
+         
+            string name = tbName.Text.Trim();
+            DateTime timeStart= tbBegin.DisplayDate.Date;
+            DateTime timeEnd = tbEnd.DisplayDate.Date;
+            string hall = tbHall.Text.Trim(); //??
+
+            bool uspjeh = cvm.AddCompetition(name, timeStart, timeEnd, hall); 
+            if (!uspjeh)
+                MessageBox.Show("Pogreška u spremanju natjecanja");
+            else
+            {
+                MessageBox.Show("Uspješno spremljeno natjecanje");
+                NatjecanjaPage np = new NatjecanjaPage();
+                NavigationService navService = NavigationService.GetNavigationService(this);
+                navService.Navigate(np);
+                
+            }
+        }
+
+
+
+
     }
 }
