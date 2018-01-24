@@ -73,17 +73,23 @@ namespace Plivanje.Repositories
 
         public List<Competition> getMyCompetitions(int id)
         {
-            var mjesto = new Place();
-            var dvorana = new Hall();
-            var klub = new Club();
-            var result = new List<Competition>();           
+            
+            Place place = null;
+            Hall hall = null;
+            Club club = null;
+
+            Club mojKlub = getMyClub(id);
+            var result = new List<Competition>();
+            
             var klasa = new FluentNHibernateClass();
 
             using (var session = klasa.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
-                {             
-                    result = (List<Competition>)session.QueryOver<Competition>().Where(x=>x.Hall == dvorana && dvorana.Place == mjesto && klub.Place == mjesto && getMyClub(id) == klub).List<Competition>();
+                {
+                    result = (List<Competition>)session.QueryOver<Competition>().JoinAlias(x => x.Hall, () => hall).JoinAlias(x => hall.Place, () => place).JoinAlias(x => place.Id, () => club).Where(x=>x.Hall == hall && hall.Place == place && club.Place == place && mojKlub.Place == club.Place).List<Competition>();
+                            
+               
                     transaction.Commit(); 
                 }
             }

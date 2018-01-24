@@ -12,6 +12,7 @@ namespace PlivanjeDesktop.ViewModels
     class CompetitionViewModel
     {
         public List<CompetitionModel> competitions { get; set; }
+        public List<CompetitionModel> coachesCompetitions { get; set; }
         CompetitionProcessor cp = new CompetitionProcessor();
 
 

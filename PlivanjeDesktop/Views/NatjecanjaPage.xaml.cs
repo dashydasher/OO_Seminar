@@ -35,6 +35,11 @@ namespace PlivanjeDesktop
             competitionViewModel.LoadCompetitions();
             this.DataContext = competitionViewModel;
 
+            if (UserModel.role != null && UserModel.role.Equals("trener"))
+            {
+                trenerovaNatjecanja.Visibility = Visibility.Visible;
+            }
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -49,6 +54,14 @@ namespace PlivanjeDesktop
             }
             catch (Exception exc) { }
         }
-        
+
+        private void Dodaj_Utrke(object sender, RoutedEventArgs e)
+        {
+            CompetitionModel selectedCompetition = (CompetitionModel)datagrid1.SelectedItem;
+            UtrkePage up = new UtrkePage(selectedCompetition.Id);
+            NavigationService navService = NavigationService.GetNavigationService(this);
+            navService.Navigate(up);
+        }
+
     }
 }
