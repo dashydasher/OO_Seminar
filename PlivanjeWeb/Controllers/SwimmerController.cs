@@ -129,6 +129,11 @@ namespace WebApp.Controllers
                 TempData["Error"] = "Rođendan plivača ne smije biti u budućnosti";
                 return RedirectToAction("Create");
             }
+            if(String.IsNullOrEmpty(swimmer.firstName) || String.IsNullOrEmpty(swimmer.lastName))
+            {
+                TempData["Error"] = "Ime i prezime su obavezna polja";
+                return RedirectToAction("Create");
+            }
             else
             {
                 s.FirstName = swimmer.firstName;
