@@ -15,6 +15,7 @@ namespace Plivanje.Repositories
         Club getMyClub(int id);
 
         List<Competition> getMyCompetitions(int id);
+        List<Competition> FindMyCompetitions(int coachId);
     }
     class CoachRepository : ICoachRepository
     {
@@ -89,6 +90,29 @@ namespace Plivanje.Repositories
 
 
                     transaction.Commit(); 
+                }
+            }
+            return result;
+        }
+
+
+        public List<Competition> FindMyCompetitions(int coachId)
+        {
+
+
+
+            Club club = getMyClub(coachId);
+            var result = new List<Competition>();
+
+            var klasa = new FluentNHibernateClass();
+
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (List<Competition>)session.QueryOver<Competition>().JoinQueryOver(x => x.Hall).Where(x => x.Place.Id == club.Place.Id).List<Competition>();
+
+                    transaction.Commit();
                 }
             }
             return result;

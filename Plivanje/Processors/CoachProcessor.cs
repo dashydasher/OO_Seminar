@@ -43,5 +43,10 @@ namespace Plivanje.Processors
         {
             return _CoachRepository.getCoach(id);
         }
+
+        public List<Competition> FindMyCompetitions(int coachId)
+        {
+            return _CoachRepository.FindMyCompetitions(coachId);
+        }
     }
 }

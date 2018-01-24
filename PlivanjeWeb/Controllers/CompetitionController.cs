@@ -65,6 +65,7 @@ namespace PlivanjeWebApp.Controllers
             List<RaceViewModel> racesInCOmpetition = new List<RaceViewModel>();
             List<Race> races = new List<Race>();
             CompetitionProcessor cp = new CompetitionProcessor();
+            var coachProcessor = new CoachProcessor();
             Session["idCompetition"] = id;
 
             racesInCOmpetition = getRaces(id);
@@ -97,6 +98,15 @@ namespace PlivanjeWebApp.Controllers
             }
 
             competition.races = racesInCOmpetition;
+            if(Session["role"]!=null && (int)Session["role"] == 1)
+            {
+               
+                List<Competition> comps = coachProcessor.FindMyCompetitions((int)Session["UserId"]);
+                if (comps.Find(x=>x.Id==c.Id) != null)
+                {
+                    return View("DetailsMyCompetition",competition);
+                }
+            }
             return View(competition);
         }
 

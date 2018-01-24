@@ -124,31 +124,40 @@ namespace WebApp.Controllers
             var SwimmerProcessor = new SwimmerProcessor();
             Swimmer s = new Swimmer();
             s.DateOfBirth = swimmer.dateOfBirth;
-            s.FirstName = swimmer.firstName;
-            s.LastName = swimmer.lastName;
-            
-                 if (swimmer.spol == "M")
-                        {
-                    s.Gender = Gender.M;
-                        }
-                    else
-                    {
-                    s.Gender = Gender.Ž;
-                         }
-        
-            try
+            if (s.DateOfBirth > DateTime.Now)
             {
+                TempData["Error"] = "Rođendan plivača ne smije biti u budućnosti";
+                return RedirectToAction("Create");
+            }
+            else
+            {
+                s.FirstName = swimmer.firstName;
+                s.LastName = swimmer.lastName;
 
-                SwimmerProcessor.UpdateSwimer(s);
+                if (swimmer.spol == "M")
+                {
+                    s.Gender = Gender.M;
+                }
+                else
+                {
+                    s.Gender = Gender.Ž;
+                }
+
+                try
+                {
+
+                    SwimmerProcessor.UpdateSwimer(s);
                     if (swimmer.licenceValid == true) //želimo novog licencirat
-            {
-                SwimmerProcessor.UpdateSwimmerLicence(s);
-            }
-                return RedirectToAction("AddSwimmerToClub","Club");
-            }
-            catch
-            {
-                return View();
+                    {
+                        SwimmerProcessor.UpdateSwimmerLicence(s);
+                    }
+                    return RedirectToAction("AddSwimmerToClub", "Club");
+                }
+                catch
+                {
+                    TempData["Error"] = "Došlo je do pogreške prilikom spremanja";
+                    return RedirectToAction("Create");
+                }
             }
         }
 

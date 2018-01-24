@@ -16,7 +16,7 @@
 
 @if (!string.IsNullOrWhiteSpace(msgErr))
 {
-    <div class="alert alert-danger alert alert-dismissible" role="alert">
+    <div class="alert alert-danger alert alert-dismissible" role="alert" id="alert">
         <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
         @msgErr
     </div>
@@ -86,6 +86,14 @@
 
 
 </table>
+@Html.ActionLink("Natrag na natjecanje", "Details", "Competition",new { @id = (int)Session["idCompetition"] }, new { @class = "btn btn-primary" })
 
+@section scripts {
 
+    <script>
+        setTimeout(function () {
+            $("#alert").fadeOut().empty();
+        }, 5000);
+    </script>
+}
 

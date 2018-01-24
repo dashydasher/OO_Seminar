@@ -1,6 +1,26 @@
 ﻿@model PlivanjeWeb.Models.SwimmerViewModel
+
+
+@{
+
+    var gr = TempData["ErrorAddSwimmer"];
+    var msgErr = "";
+    if (gr != null)
+    {
+        msgErr = gr.ToString();
+    }
+}
+
+@if (!string.IsNullOrWhiteSpace(msgErr))
+{
+    <div class="alert alert-danger alert alert-dismissible" role="alert" id="alert">
+        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+        @msgErr
+    </div>
+}
 @using (Html.BeginForm("Create", "Swimmer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
 {
+    <br />
     <div class="row">
         <div class="col-sm-12">
             <div class="panel panel-default">
@@ -36,7 +56,7 @@
                             </tr>
                             <tr>
 
-                                <td align="right" class="col-xs-2" style="border-top: none"><b>Licencirati ga:</b></td>
+                                <td align="right" class="col-xs-2" style="border-top: none"><b>Licencirati?:</b></td>
                                 <td align="left" class="col-xs-2" style="border-top: none">
                                     @Html.CheckBoxFor(m => m.licenceValid, true)
                                 </td>
@@ -65,20 +85,27 @@
 
 }
 
-<div>
-    @Html.ActionLink("Povratak na popis", "Index")
-</div>
+@Html.ActionLink("Natrag na moj klub", "MyClub", null, new { @class = "btn btn-primary" })
+
+
 @section scripts{
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="~/lib/jquery-ui/jquery-ui.js"></script>
 
     <script>
-        $( function() {
+        $(function () {
             $("#datepicker").datepicker({ dateFormat: 'dd-mm-yy' }).val('');
         });
         $(function () {
             $("#datepicker2").datepicker({ dateFormat: 'dd-mm-yy' }).val('');
         });
     </script>
+
+        <script>
+            setTimeout(function () {
+                $("#alert").fadeOut().empty();
+            }, 5000);
+        </script>
+    
 }

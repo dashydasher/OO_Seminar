@@ -62,11 +62,17 @@
         </div>
     </div>
 </div>
-
+@if (Session["role"] != null && (int)Session["role"] == 1 && Model.status == "To be..")
+{
+    @Html.ActionLink("Uredi osnovne podatke", "Edit", "Competition", new { id = Model.Id }, new { @class = "btn btn-primary" })
+}
 <hr />
 <br />
 <h3>Utrke:</h3>
-
+@if (Session["role"] != null && (int)Session["role"] == 1 && Model.status == "To be..")
+{
+    @Html.ActionLink("Dodaj novu utrku", "CreateRace", "Competition", new { id = Model.Id }, new { @class = "btn btn-primary" })
+}
 <hr />
 
 @if (Model.races != null)
@@ -138,10 +144,13 @@
                 @if (Session["role"] != null && (int)Session["role"] == 1)
                 {
                     <td style="width: 1%;white-space: nowrap;">
-                       
+                        <a class="btn btn-danger btn-sm" href="@Url.Action("DeleteRaceFromCompetition", "Competition", new { id = item.Id })" onclick="return confirm('Jeste li sigurni da želite obrisati ovu utrku?');">
+                            <span class="glyphicon glyphicon-minus-sign" aria-hidden="true"></span> Izbriši utrku
+
+                        </a>
                         <a class="btn btn-success btn-sm" href="@Url.Action("AddSwimmersToRace", "Competition", new { id = item.Id })">
                             <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Prijavi plivače
-                           
+
                         </a>
                     </td>
                 }
@@ -247,3 +256,5 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
 
 }
+
+
