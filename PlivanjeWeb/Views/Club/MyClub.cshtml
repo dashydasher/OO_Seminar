@@ -46,6 +46,17 @@
     </div>
 </div>
 <hr />
+@if (Model.competitions != null)
+{
+<div class="panel panel-default">
+    <h4>Sljedeća natjecanja:</h4>
+    @foreach(var item in Model.competitions)
+    {
+        <a class="alert-info" href="@Url.Action("Details","Competition",new { @id=item.Id})">@item.Name</a>
+        <br />
+    }
+</div>
+}
 <br />
 <h3>Plivači:</h3>
 <a href="@Url.Action("Create", "Swimmer")" class="btn btn-primary">  <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Dodaj novog plivača</a>

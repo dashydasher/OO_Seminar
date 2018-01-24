@@ -14,5 +14,6 @@ namespace PlivanjeWeb.Models
         public string Place { get; set; }
         public Person coach { get; set; }
         public List<SwimmerViewModel> swimmers { get; set; }
+        public List<Competition> competitions { get; set; }
     }
 }

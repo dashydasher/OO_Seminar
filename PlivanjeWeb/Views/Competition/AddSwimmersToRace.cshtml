@@ -70,10 +70,10 @@
 
 
             <td style="width: 1%;white-space: nowrap;">
-                <button class="btn btn-success btn-sm">
+                <a class="btn btn-success btn-sm" href="@Url.Action("AddSwimmerToRace", "Competition", new { idSwimmer = item.Id })">
                     <span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
-                    @Html.ActionLink("Prijavi za trku", "AddSwimmerToRace", "Competition", new { idSwimmer = item.Id }, null)
-                </button>
+                     Prijavi za trku
+                </a>
             </td>
 
 

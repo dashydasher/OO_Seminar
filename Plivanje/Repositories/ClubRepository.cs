@@ -23,6 +23,9 @@ namespace Plivanje.Repositories
         Season ValidSeason();
         CoachSeason getSeasonCoach(int idClub, int SeasonId);
         int getMyClubId(int CoachId);
+        List<Competition> GetClubCompetitions(int clubId);
+        void updateClubCompetition(ClubCompetition c);
+        ClubCompetition GetClubCompetition(int idClub, int idCompetition);
 
 
     }
@@ -275,6 +278,54 @@ namespace Plivanje.Repositories
 
             return result;
 
+        }
+
+        public List<Competition> GetClubCompetitions(int clubId)
+        {
+            Competition comp = null;
+            Club club = null;
+            var result= new List<Competition>();
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (List<Competition>)session.QueryOver<ClubCompetition>().JoinAlias(x => x.Club, () => club).JoinAlias(x => x.Competition, () => comp).Where( () => comp.TimeStart>DateTime.Now && club.Id == clubId).Select(x=>x.Competition).List<Competition>();
+
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public void updateClubCompetition(ClubCompetition c)
+        {
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    session.SaveOrUpdate(c);
+
+                    transaction.Commit();
+                }
+            }
+        }
+
+        public ClubCompetition GetClubCompetition(int idClub, int idCompetition)
+        {
+            var result = new ClubCompetition();
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<ClubCompetition>().Where(x => x.Club.Id == idClub && x.Competition.Id == idCompetition).SingleOrDefault();
+
+                    transaction.Commit();
+                }
+            }
+            return result;
         }
     }
 }

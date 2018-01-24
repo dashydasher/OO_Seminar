@@ -499,6 +499,8 @@ namespace PlivanjeWebApp.Controllers
             RaceProcessor rp = new RaceProcessor();
             SwimmerProcessor sp = new SwimmerProcessor();
             CategoryProcessor cp = new CategoryProcessor();
+            ClubProcessor club = new ClubProcessor();
+            CompetitionProcessor comp = new CompetitionProcessor();
             Race race = rp.getRace((int)Session["idRace"]);
             Swimmer swimmer = sp.getSwimmer(idSwimmer);
             Category cat1 = sp.GetSwimmerCategory(swimmer);
@@ -523,6 +525,21 @@ namespace PlivanjeWebApp.Controllers
                     swimmerRace.Race = race;
                     swimmerRace.RaceTime = DateTime.Now;
                     rp.AddSwimmerToRace(swimmerRace);
+                    ClubCompetition tmp = new ClubCompetition();
+
+            
+                    if (club.GetClubCompetition((int)HttpContext.Session["clubId"], (int)Session["idCompetition"]) != null)
+                    {
+                        tmp = club.GetClubCompetition((int)HttpContext.Session["clubId"], (int)Session["idCompetition"]);
+                        tmp.CountSwimmers += 1;
+                    }
+                    else
+                    {
+                        tmp.Club = club.getClub((int)HttpContext.Session["clubId"]);
+                        tmp.Competition = comp.GetCompetition((int)Session["idCompetition"]);
+                        tmp.CountSwimmers = 1;
+                    }
+                    club.updateClubCompetition(tmp);
                     return RedirectToAction("Details", new { id = (int)Session["idCompetition"] });
                 }
                 catch (Exception ex)

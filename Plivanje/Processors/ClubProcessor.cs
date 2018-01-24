@@ -86,6 +86,18 @@ namespace Plivanje.Processors
         {
             return _ClubRepository.ValidSeason();
         }
+        public List<Competition> GetClubCompetitions(int clubId)
+        {
+            return _ClubRepository.GetClubCompetitions(clubId);
+        }
+       public void updateClubCompetition(ClubCompetition c)
+        {
+            _ClubRepository.updateClubCompetition(c);
+        }
+        public ClubCompetition GetClubCompetition(int idClub, int idCompetition)
+        {
+            return _ClubRepository.GetClubCompetition(idClub, idCompetition);
+        }
 
     }
 }

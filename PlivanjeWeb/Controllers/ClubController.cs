@@ -116,16 +116,16 @@ namespace PlivanjeWebApp.Controllers
             var sp = new SwimmerProcessor();
             var cp = new ClubProcessor();
 
-            List<Swimmer> swimmers = new List<Swimmer>();
-
-         
+           
+           
             c = cp.getClub((int)HttpContext.Session["clubId"]);
             club.Id = c.Id;
             club.Name = c.Name;
             club.Place = c.Place.Name;
             club.Address = c.Address;
-            swimmers = sp.SwimmersInClub(club.Id);
-            foreach(var s in swimmers)
+            List<Swimmer> swimmers = sp.SwimmersInClub(club.Id);
+            List<Competition> competitions = cp.GetClubCompetitions(c.Id);
+            foreach (var s in swimmers)
             {
                 
                 SwimmerViewModel pom = new SwimmerViewModel();
@@ -143,6 +143,7 @@ namespace PlivanjeWebApp.Controllers
 
             }
             club.swimmers = swimmInClub;
+            club.competitions = competitions;
             return View(club);
         }
         public ActionResult AddSwimmerToClub()
