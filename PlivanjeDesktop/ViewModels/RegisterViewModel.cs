@@ -4,32 +4,66 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Plivanje.Models;
 
 namespace PlivanjeDesktop.ViewModels
 {
     class RegisterViewModel
     {
         
-        public bool RegisterPerson(string role, string firstName, string lastName, string email, string password, string idLicence)
+        public bool RegisterPerson(string role, string firstName, string lastName, string email, string password, DateTime dateOfBirth)
         {
+            bool success;
             var lp = new LicenceProcessor();
-            if (!lp.licenceExists(Int32.Parse(idLicence.Trim())))
-                return false;
             if (role.Equals("trener"))
-                registerCoach(firstName, lastName, email, password, idLicence);
+                success = registerCoach(firstName, lastName, email, password, dateOfBirth);
             else
-                registerReferee(firstName, lastName, email, password, idLicence);
+                success = registerReferee(firstName, lastName, email, password, dateOfBirth);
             return true;
         }
 
-        private void registerReferee(string firstName, string lastName, string email, string password, string idLicence)
+        private bool registerReferee(string firstName, string lastName, string email, string password, DateTime dateOfBirth)
         {
-            //dodat suca u bazu
+            Referee referee = new Referee
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                EMail = email,
+                Password = password,
+                DateOfBirth = dateOfBirth
+            };
+            var rp = new RefereeProcessor();
+            try
+            {
+                rp.UpdateReferee(referee);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
         }
 
-        private void registerCoach(string firstName, string lastName, string email, string password, string idLicence)
+        private bool registerCoach(string firstName, string lastName, string email, string password, DateTime dateOfBirth)
         {
-            //dodat trenera u bazu
+            Coach coach = new Coach
+            {
+                FirstName = firstName,
+                LastName = lastName,
+                EMail = email,
+                Password = password,
+                DateOfBirth = dateOfBirth
+            };
+            var cp = new CoachProcessor();
+            try
+            {
+                cp.UpdateCoach(coach);
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+            return true;
         }
     }
 }

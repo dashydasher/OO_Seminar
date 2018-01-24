@@ -48,5 +48,10 @@ namespace Plivanje.Processors
         {
             return _CoachRepository.FindMyCompetitions(coachId);
         }
+
+        public void UpdateCoach(Coach c)
+        {
+            _CoachRepository.UpdateCoach(c);
+        }
     }
 }

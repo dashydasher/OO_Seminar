@@ -14,20 +14,23 @@ namespace PlivanjeDesktop.ViewModels
         public bool CheckUser(string email, string password)
         {
             var cp = new CoachProcessor();
+            var lp = new LicenceProcessor();
             List<Coach> treneri = cp.getCoaches();
             foreach (var trener in treneri)
             {
                 if (email.Equals(trener.EMail.Trim()))
                     if (password.Equals(trener.Password.Trim()))
                     {
-                        UserModel.Id = trener.Id;
-                        UserModel.role = "trener";
-                        return true;
+                        if (lp.CoachHasLicence(trener.Id))
+                        {
+                            UserModel.Id = trener.Id;
+                            UserModel.role = "trener";
+                            return true;
+                        }
+                        else
+                            return false;
                     }
-                    else
-                    {
-                        return false;
-                    }
+                    else return false;
             }
 
 
@@ -38,14 +41,16 @@ namespace PlivanjeDesktop.ViewModels
                 if (email.Equals(sudac.EMail.Trim()))
                     if (password.Equals(sudac.Password.Trim()))
                     {
-                        UserModel.Id = sudac.Id;
-                        UserModel.role = "sudac";
-                        return true;
+                        if (lp.RefereeHasLicence(sudac.Id))
+                        {
+                            UserModel.Id = sudac.Id;
+                            UserModel.role = "sudac";
+                            return true;
+                        }
+                        else
+                            return false;
                     }
-                    else
-                    {
-                        return false;
-                    }
+                    else return false;
             }
             return false;
         }

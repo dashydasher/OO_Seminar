@@ -21,10 +21,15 @@ namespace Plivanje.Processors
         {
             _LicenceRepository = new LicenceRepository();
         }
-
-        public bool licenceExists(int licenceNumber)
+        
+        public bool CoachHasLicence(int coachId)
         {
-            return _LicenceRepository.licenceExists(licenceNumber);
+            return _LicenceRepository.CoachHasLicence(coachId);
+        }
+
+        public bool RefereeHasLicence(int refereeId)
+        {
+            return _LicenceRepository.RefereeHasLicence(refereeId);
         }
     }
 }

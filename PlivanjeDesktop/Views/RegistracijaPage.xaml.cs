@@ -51,24 +51,25 @@ namespace PlivanjeDesktop
                 MessageBox.Show("Potrebno je unijeti lozinku.");
                 return;
             }
-            if (String.IsNullOrEmpty(textBoxIdLicence.Text))
-            {
-                MessageBox.Show("Potrebno je unijeti ID licence.");
-                return;
-            }
+            
             string role = (trenerRadio.IsChecked==true)?"trener":"sudac";
             string firstName = textBoxName.Text.Trim();
             string lastName = textBoxSurname.Text.Trim();
             string email = textBoxEmail.Text.Trim();
             string password = textBoxPassword.Password.Trim();
-            string idLicence = textBoxIdLicence.Text.Trim();
+            DateTime dateOfBirth = tbDate.DisplayDate.Date;
 
-            bool uspjeh = rvm.RegisterPerson(role, firstName, lastName, email, password, idLicence);
-            if (!uspjeh)
-                MessageBox.Show("Licenca je nevažeća");
+            bool uspjeh = rvm.RegisterPerson(role, firstName, lastName, email, password, dateOfBirth);
+            if (uspjeh)
+            {
+                MessageBox.Show("Registracija je uspješna. Moći ćete se prijaviti nakon što Vam se dodjeli licenca.");
+                NatjecanjaPage np = new NatjecanjaPage();
+                NavigationService navService = NavigationService.GetNavigationService(this);
+                navService.Navigate(np);
+            }
             else
             {
-                //preusmjeravanje na stranicu kao nakon prijave
+                MessageBox.Show("Registracija neuspješna.");
             }
         }
     }

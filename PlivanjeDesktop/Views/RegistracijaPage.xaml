@@ -24,11 +24,10 @@
             <TextBox Height="30" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxEmail" VerticalAlignment="Top" FontSize="20" Width="450" />
             <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="password" Text="Lozinka" VerticalAlignment="Top" FontSize="25" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
             <PasswordBox Height="30" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxPassword" VerticalAlignment="Top" FontSize="20" Width="450" />
-            <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="idLicence" Text="ID licence" VerticalAlignment="Top" FontSize="25" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
-            <TextBox Height="30" HorizontalAlignment="Center" Margin="0,0,0,0" Name="textBoxIdLicence" VerticalAlignment="Top" FontSize="20" Width="450" />
+            <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="datum" Text="Datum rođenja" VerticalAlignment="Top" FontSize="25" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+            <DatePicker HorizontalAlignment="Center" Margin="0,5,0,0" Name="tbDate" VerticalAlignment="Top" FontSize="20" Width="450"></DatePicker>
             <Button Height="45" HorizontalAlignment="Center" Margin="0,15,0,0" x:Name="register" FontSize="25" Content="Registriraj se" RenderTransformOrigin="6.226,0.65" Click="Register_Click"/>
-            <TextBlock Height="50" HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="textBlockHeading" VerticalAlignment="Top" FontSize="10" FontStyle="Italic" Padding="5"><InlineUIContainer>
-            </InlineUIContainer></TextBlock>
+            
         </StackPanel>
 
     </Grid>
