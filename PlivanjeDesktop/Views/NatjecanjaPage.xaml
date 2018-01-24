@@ -16,41 +16,51 @@
 
 
     <Grid>
-        <StackPanel Width="1200">
-            <GroupBox FontSize="20" Header="Moja natjecanja" Name="trenerovaNatjecanja" Visibility="Hidden" >
-            <DataGrid Name="datagrid1" CanUserAddRows="false" FontSize="20"  ItemsSource="{Binding coachesCompetitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" >
-                <DataGrid.Columns>
+        <StackPanel Width="1200" >
+            <GroupBox FontSize="20" Header="Organiziraj natjecanje" x:Name="orgNatjecanje" Visibility="Hidden" >
+                <DataGrid x:Name="datagrid2" CanUserAddRows="false" FontSize="20" RowStyle="{StaticResource datagridC}" ItemsSource="{Binding coachesCompetitions}" AutoGenerateColumns="False" >
+                    <Label x:Name="Name" Content="Naziv"/><TextBox Name="tbName"/>
+                    <Label x:Name="Beginning" Content="Početak"/><Calendar Name="cBegin"/>
+                    <Label x:Name="Ending" Content="Kraj"/><Calendar Name="cEnd"/>
+                    <Label x:Name="Hall" Content="Dvorana"/><TextBox Name="tbHall"/>
 
-                    <DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding Path=Name}" />
-                        <DataGridTextColumn Header="Početak" Width="180" Binding="{Binding Path=TimeStart, StringFormat=\{0:dd.MM.yy\}}" />
-                        <DataGridTextColumn Header="Kraj" Width="180" Binding="{Binding Path=TimeEnd, StringFormat=\{0:dd.MM.yy\}}" />
-                        <DataGridTextColumn Header="Dvorana" Width="300" Binding="{Binding Path=MyHall.Name}" />
+                </DataGrid>
+            </GroupBox>
+
+
+            <GroupBox FontSize="20" Header="Moja natjecanja" x:Name="trenerovaNatjecanja" Visibility="Hidden" >
+                <DataGrid x:Name="datagrid1" CanUserAddRows="false" FontSize="20"  ItemsSource="{Binding coachesCompetitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" >
+                    <DataGrid.Columns>
+
+                        <DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding Name}" />
+                        <DataGridTextColumn Header="Početak" Width="180" Binding="{Binding TimeStart, StringFormat=\{0:dd.MM.yy\}}" />
+                        <DataGridTextColumn Header="Kraj" Width="180" Binding="{Binding TimeEnd, StringFormat=\{0:dd.MM.yy\}}" />
+                        <DataGridTextColumn Header="Dvorana" Width="300" Binding="{Binding MyHall.Name}" />
 
                         <DataGridTemplateColumn Header="">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Click="Dodaj_Utrke">Dodaj utrke</Button>
+                                    <Button Click="Dodaj_Utrke" Content="Dodaj utrke"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
 
                     </DataGrid.Columns>
-            </DataGrid>
-        </GroupBox>
-
+                </DataGrid>
+            </GroupBox>
             <GroupBox FontSize="20" Header="Natjecanja">
-                <DataGrid Name="datagridC" CanUserAddRows="false" FontSize="20"  ItemsSource="{Binding competitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" >
+                <DataGrid x:Name="datagridC" CanUserAddRows="false" FontSize="20"  ItemsSource="{Binding competitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" SelectionChanged="datagridC_SelectionChanged" >
                     <DataGrid.Columns>
 
-                        <DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding Path=Name}" />
-                        <DataGridTextColumn Header="Početak" Width="180" Binding="{Binding Path=TimeStart, StringFormat=\{0:dd.MM.yy\}}" />
-                        <DataGridTextColumn Header="Kraj" Width="180" Binding="{Binding Path=TimeEnd, StringFormat=\{0:dd.MM.yy\}}" />
-                        <DataGridTextColumn Header="Dvorana" Width="300" Binding="{Binding Path=MyHall.Name}" />
+                        <DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding Name}" />
+                        <DataGridTextColumn Header="Početak" Width="180" Binding="{Binding TimeStart, StringFormat=\{0:dd.MM.yy\}}" />
+                        <DataGridTextColumn Header="Kraj" Width="180" Binding="{Binding TimeEnd, StringFormat=\{0:dd.MM.yy\}}" />
+                        <DataGridTextColumn Header="Dvorana" Width="300" Binding="{Binding MyHall.Name}" />
 
                         <DataGridTemplateColumn Header="">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <Button Click="Button_Click">Popis utrka</Button>
+                                    <Button Click="Button_Click" Content="Popis utrka"/>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>

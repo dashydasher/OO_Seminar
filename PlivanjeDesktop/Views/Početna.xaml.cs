@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PlivanjeDesktop.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,16 +20,37 @@ namespace PlivanjeDesktop
     /// </summary>
     public partial class Početna : Window
     {
+        public Početna()
+        {
+            InitializeComponent();
+
+           // treba to nekak s triggerima, u svakom slučaju ne ovak u konstruktoru - sutra
+            if (UserModel.role == null)
+            {
+                Login.Visibility = Visibility.Visible;
+            }
+            if (UserModel.role != null)
+            {
+                Logout.Visibility = Visibility.Visible;
+            }
+            
+
+        }
+
+
+
         private void MenuItem_MouseEnter(object sender, MouseEventArgs e)
         {
             MenuItem mi = sender as MenuItem;
             mi.IsSubmenuOpen = true;
-        }
+
+         }
 
         private void MenuItem_MouseLeave(object sender, MouseEventArgs e)
         {
             MenuItem mi = sender as MenuItem;
             mi.IsSubmenuOpen = false;
+
         }
 
         private void Competition_Click(object sender, RoutedEventArgs e)
@@ -70,6 +92,26 @@ namespace PlivanjeDesktop
             // r.Show();
 
 
+        }
+
+
+
+        private void PrijaviSe_Click(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            MenuItem mi = sender as MenuItem;
+            PrijavaPage p = new PrijavaPage();
+            Main.Content = p;
+
+        }
+
+        private void OdjaviSe_Click(object sender, RoutedEventArgs e)
+        {
+            e.Handled = true;
+            MenuItem mi = sender as MenuItem;
+            UserModel.role = null;
+            PrijavaPage p = new PrijavaPage();
+            Main.Content = p;
         }
     }
 }

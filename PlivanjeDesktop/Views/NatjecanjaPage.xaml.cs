@@ -38,6 +38,7 @@ namespace PlivanjeDesktop
             if (UserModel.role != null && UserModel.role.Equals("trener"))
             {
                 trenerovaNatjecanja.Visibility = Visibility.Visible;
+                orgNatjecanje.Visibility = Visibility.Visible;
             }
 
         }
@@ -63,5 +64,9 @@ namespace PlivanjeDesktop
             navService.Navigate(up);
         }
 
+        private void datagridC_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

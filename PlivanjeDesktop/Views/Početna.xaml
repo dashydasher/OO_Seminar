@@ -14,7 +14,7 @@
             </Grid.RowDefinitions>
 
             <Border Grid.Row="0" >
-                <Menu DockPanel.Dock="Top" FontSize="15">
+                <Menu DockPanel.Dock="Top" FontSize="15" >
                     <MenuItem Header="NATJECANJA" Name="Competition" Click="Competition_Click"/>
                     <MenuItem Header="KLUBOVI"  Name="Clubs" Click="Clubs_Click"/>
                     <MenuItem Header="PLIVAČI" Name="Swimmers" MouseEnter="MenuItem_MouseEnter" MouseLeave="MenuItem_MouseLeave">
@@ -31,6 +31,8 @@
                         <MenuItem Header="Muškarci" Click="Records_Click"/>
                         <MenuItem Header="Žene" Click="Records_Click"/>
                     </MenuItem>
+                    <MenuItem Header="PRIJAVA"  Name="Login" Visibility="Hidden" Click="PrijaviSe_Click"/>
+                    <MenuItem Header="ODJAVA"  Name="Logout" Visibility="Hidden" Click="OdjaviSe_Click"/>
                 </Menu>
             </Border>
    

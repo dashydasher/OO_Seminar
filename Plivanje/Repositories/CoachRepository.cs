@@ -87,7 +87,7 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    result = (List<Competition>)session.QueryOver<Competition>().JoinAlias(x => x.Hall, () => hall).JoinAlias(x => hall.Place, () => place).JoinAlias(x => place.Id, () => club).Where(x=>x.Hall == hall && hall.Place == place && club.Place == place && mojKlub.Place == club.Place).List<Competition>();
+                //    result = (List<Competition>)session.QueryOver<Competition>().JoinAlias(x => x.Hall, () => hall).JoinAlias(x => hall.Place, () => place).JoinAlias(x => place.Id, () => club).Where(x=>x.Hall == hall && hall.Place == place && club.Place == place && mojKlub.Place == club.Place).List<Competition>();
                             
                
                     transaction.Commit(); 
