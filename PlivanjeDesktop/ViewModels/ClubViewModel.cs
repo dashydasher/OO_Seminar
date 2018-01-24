@@ -39,8 +39,7 @@ namespace PlivanjeDesktop.ViewModels
             
             if (coachId!=0)
             {
-                var cr = new Plivanje.Repositories.ClubRepository();
-                var coachesClubId = cr.getMyClubId(coachId, season.Id);
+                var coachesClubId = cp.getMyClubId(coachId, season.Id);
                 coachesClub = new List<ClubModel>();
                 foreach (var club in list)
                 {

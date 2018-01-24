@@ -1,4 +1,5 @@
 ﻿using Plivanje.Models;
+using PlivanjeDesktop.Models;
 using PlivanjeDesktop.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,16 @@ namespace PlivanjeDesktop
             InitializeComponent();
             rvm.LoadRacesByCompetition(competitionId);
             this.DataContext = rvm;
+            if (UserModel.role!=null && UserModel.role.Equals("trener"))
+            {
+                datagridRace.ColumnFromDisplayIndex(9).Visibility = Visibility.Visible;
+            }
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            RaceModel selectedRace = (RaceModel)datagridRace.SelectedItem;
+            PlivačiUtrka pu = new PlivačiUtrka(selectedRace.Id);
         }
     }
 }

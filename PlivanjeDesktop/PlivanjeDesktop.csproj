@@ -66,6 +66,9 @@
     </Compile>
     <Compile Include="Models\ClubModel.cs" />
     <Compile Include="Models\SwimmerModel.cs" />
+    <Compile Include="Views\PlivačiUtrka.xaml.cs">
+      <DependentUpon>PlivačiUtrka.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PrijavaPage.xaml.cs">
       <DependentUpon>PrijavaPage.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="Views\PlivačiUtrka.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PrijavaPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
