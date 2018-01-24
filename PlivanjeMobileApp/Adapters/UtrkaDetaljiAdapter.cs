@@ -43,22 +43,13 @@ namespace PlivanjeMobileApp.Adapters
             {
                 var inflater = activity.LayoutInflater;
                 row = inflater.Inflate(layoutResourceId, parent, false);
-                RaceTime = row.FindViewById<TextView>(Resource.Id.textArea1);
-                Swimmer = row.FindViewById<TextView>(Resource.Id.textArea2);
-                Score = row.FindViewById<TextView>(Resource.Id.textArea3);
-                Length = row.FindViewById<TextView>(Resource.Id.textArea4);
-                Style = row.FindViewById<TextView>(Resource.Id.textArea5);
-                RaceTime2 = row.FindViewById<TextView>(Resource.Id.textArea6);
             }
-            else
-            {
-                RaceTime = row.FindViewById<TextView>(Resource.Id.textArea1);
-                Swimmer = row.FindViewById<TextView>(Resource.Id.textArea2);
-                Score = row.FindViewById<TextView>(Resource.Id.textArea3);
-                Length = row.FindViewById<TextView>(Resource.Id.textArea4);
-                Style = row.FindViewById<TextView>(Resource.Id.textArea5);
-                RaceTime2 = row.FindViewById<TextView>(Resource.Id.textArea6);
-            }
+            RaceTime = row.FindViewById<TextView>(Resource.Id.textArea1);
+            Swimmer = row.FindViewById<TextView>(Resource.Id.textArea2);
+            Score = row.FindViewById<TextView>(Resource.Id.textArea3);
+            Length = row.FindViewById<TextView>(Resource.Id.textArea4);
+            Style = row.FindViewById<TextView>(Resource.Id.textArea5);
+            RaceTime2 = row.FindViewById<TextView>(Resource.Id.textArea6);
 
             if (isUtrkaLayout)
             {
@@ -86,7 +77,6 @@ namespace PlivanjeMobileApp.Adapters
                 Style.Touch += delegate (object sender, View.TouchEventArgs e) { SendCompetitionData(sender, e, currentItem); };
                 RaceTime2.Touch += delegate (object sender, View.TouchEventArgs e) { SendCompetitionData(sender, e, currentItem); };
             }
-
             return row;
         }
 

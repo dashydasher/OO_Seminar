@@ -27,9 +27,7 @@ namespace PlivanjeMobileApp.Activities
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
             client = new MobileServiceClient(applicationURL);
-
             SetContentView(Resource.Layout.SearchResultsLayout);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);

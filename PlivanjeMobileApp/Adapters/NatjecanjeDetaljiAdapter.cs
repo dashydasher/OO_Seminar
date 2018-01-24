@@ -16,7 +16,6 @@ namespace PlivanjeMobileApp.Adapters
 {
     class NatjecanjeDetaljiAdapter : BaseAdapter<RaceView>
     {
-
         Activity activity;
         int layoutResourceId;
         List<RaceView> items = new List<RaceView>();
@@ -41,20 +40,13 @@ namespace PlivanjeMobileApp.Adapters
             {
                 var inflater = activity.LayoutInflater;
                 row = inflater.Inflate(layoutResourceId, parent, false);
-                category = row.FindViewById<TextView>(Resource.Id.textArea1);
-                gender = row.FindViewById<TextView>(Resource.Id.textArea2);
-                style = row.FindViewById<TextView>(Resource.Id.textArea3);
-                raceLength = row.FindViewById<TextView>(Resource.Id.textArea4);
-                timeStart = row.FindViewById<TextView>(Resource.Id.textArea5);
             }
-            else
-            {
-                category = row.FindViewById<TextView>(Resource.Id.textArea1);
-                gender = row.FindViewById<TextView>(Resource.Id.textArea2);
-                style = row.FindViewById<TextView>(Resource.Id.textArea3);
-                raceLength = row.FindViewById<TextView>(Resource.Id.textArea4);
-                timeStart = row.FindViewById<TextView>(Resource.Id.textArea5);
-            }
+            category = row.FindViewById<TextView>(Resource.Id.textArea1);
+            gender = row.FindViewById<TextView>(Resource.Id.textArea2);
+            style = row.FindViewById<TextView>(Resource.Id.textArea3);
+            raceLength = row.FindViewById<TextView>(Resource.Id.textArea4);
+            timeStart = row.FindViewById<TextView>(Resource.Id.textArea5);
+
             category.Text = currentItem.Category;
             gender.Text = currentItem.Gender;
             style.Text = currentItem.Style;
@@ -79,7 +71,6 @@ namespace PlivanjeMobileApp.Adapters
                 activity2.PutExtra("Category", currentItem.Category.Trim());
                 activity2.PutExtra("Referee", currentItem.FirstName.Trim() + " " + currentItem.LastName.Trim());
                 activity2.PutExtra("Gender", currentItem.Gender.Trim());
-                activity2.PutExtra("PoolLength", currentItem.PoolLength.ToString());
                 activity2.PutExtra("RaceLength", currentItem.RaceLength.ToString());
                 activity2.PutExtra("Style", currentItem.Style.Trim());
                 activity2.PutExtra("Weekday", currentItem.TimeStart.ToUniversalTime().ToString("dddd"));

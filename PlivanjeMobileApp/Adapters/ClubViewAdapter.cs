@@ -37,16 +37,9 @@ namespace PlivanjeMobileApp.Adapters
             {
                 var inflater = activity.LayoutInflater;
                 row = inflater.Inflate(layoutResourceId, parent, false);
-
-                largeText1 = row.FindViewById<TextView>(Resource.Id.largeText1);
-                mediumText1 = row.FindViewById<TextView>(Resource.Id.mediumText1);
-
             }
-            else
-            {
-                largeText1 = row.FindViewById<TextView>(Resource.Id.largeText1);
-                mediumText1 = row.FindViewById<TextView>(Resource.Id.mediumText1);
-            }
+            largeText1 = row.FindViewById<TextView>(Resource.Id.largeText1);
+            mediumText1 = row.FindViewById<TextView>(Resource.Id.mediumText1);
 
             largeText1.Text = currentItem.Name;
             mediumText1.Text = currentItem.Place;
@@ -59,7 +52,6 @@ namespace PlivanjeMobileApp.Adapters
 
         private void SendClubData(object sender, View.TouchEventArgs e, ClubView club)
         {
-            //System.Diagnostics.Debug.WriteLine("Touched " + e.Event.Action);
             if (e.Event.Action == MotionEventActions.Up)
             {
                 var activity2 = new Intent(activity, typeof(ClubDetailsActivity));

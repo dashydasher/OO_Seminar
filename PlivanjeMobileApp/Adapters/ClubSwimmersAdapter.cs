@@ -16,7 +16,6 @@ namespace PlivanjeMobileApp.Adapters
 {
     class ClubSwimmersAdapter : BaseAdapter<SwimmersView>
     {
-
         Activity activity;
         int layoutResourceId;
         List<SwimmersView> items = new List<SwimmersView>();
@@ -39,17 +38,10 @@ namespace PlivanjeMobileApp.Adapters
             {
                 var inflater = activity.LayoutInflater;
                 row = inflater.Inflate(layoutResourceId, parent, false);
-
-                spol = row.FindViewById<TextView>(Resource.Id.spol);
-                ime = row.FindViewById<TextView>(Resource.Id.naziv);
-                godina = row.FindViewById<TextView>(Resource.Id.godina);
             }
-            else
-            {
-                spol = row.FindViewById<TextView>(Resource.Id.spol);
-                ime = row.FindViewById<TextView>(Resource.Id.naziv);
-                godina = row.FindViewById<TextView>(Resource.Id.godina);
-            }
+            spol = row.FindViewById<TextView>(Resource.Id.spol);
+            ime = row.FindViewById<TextView>(Resource.Id.naziv);
+            godina = row.FindViewById<TextView>(Resource.Id.godina);
 
             spol.Text = currentItem.Gender;
             ime.Text = currentItem.FirstName.Trim() + " " + currentItem.LastName;

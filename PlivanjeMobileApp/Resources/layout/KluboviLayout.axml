@@ -5,14 +5,14 @@
     android:layout_height="match_parent"
     android:id="@+id/linearlayout1">
     <TextView
-        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textAppearance="?android:attr/textAppearanceLarge"
         android:layout_width="wrap_content"
-        android:layout_height="23dp"
+        android:layout_height="wrap_content"
         android:id="@+id/largeText1" />
     <TextView
         android:id="@+id/mediumText1"
         android:layout_width="wrap_content"
-        android:layout_height="18dp"
+        android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearanceSmall"
-        android:layout_marginLeft="5dp" />
+        android:layout_marginLeft="10dp" />
 </LinearLayout>

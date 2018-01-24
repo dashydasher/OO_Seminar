@@ -16,7 +16,6 @@ namespace PlivanjeMobileApp.Adapters
 {
     class NatjecanjaAdapter : BaseAdapter<CompetitionView>
     {
-
         Activity activity;
         int layoutResourceId;
         List<CompetitionView> items = new List<CompetitionView>();
@@ -39,16 +38,10 @@ namespace PlivanjeMobileApp.Adapters
             {
                 var inflater = activity.LayoutInflater;
                 row = inflater.Inflate(layoutResourceId, parent, false);
-                textArea1 = row.FindViewById<TextView>(Resource.Id.textArea1);
-                textArea2 = row.FindViewById<TextView>(Resource.Id.textArea2);
-                textArea3 = row.FindViewById<TextView>(Resource.Id.textArea3);
             }
-            else
-            {
-                textArea1 = row.FindViewById<TextView>(Resource.Id.textArea1);
-                textArea2 = row.FindViewById<TextView>(Resource.Id.textArea2);
-                textArea3 = row.FindViewById<TextView>(Resource.Id.textArea3);
-            }
+            textArea1 = row.FindViewById<TextView>(Resource.Id.textArea1);
+            textArea2 = row.FindViewById<TextView>(Resource.Id.textArea2);
+            textArea3 = row.FindViewById<TextView>(Resource.Id.textArea3);
 
             textArea1.Text = currentItem.Name.Trim();
             textArea2.Text = currentItem.TimeStart.ToString("dd/MM/yyyy");

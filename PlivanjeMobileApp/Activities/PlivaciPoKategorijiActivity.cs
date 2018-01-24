@@ -23,75 +23,61 @@ namespace PlivanjeMobileApp.Activities
         private IMobileServiceTable<SwimmersView> swimmersTable;
         private IMobileServiceTable<Season> seasonsTable;
         const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
-        private ClubSwimmersAdapter adapter;
-        private ArrayAdapter<string> adapter2;
-        private List<KeyValuePair<string, string>> seasonToDisplay;
+        private ClubSwimmersAdapter swimmersAdapter;
+        private ArrayAdapter<string> spinnerAdapter;
+        private List<KeyValuePair<string, string>> seasonsToDisplay;
+        private ProgressBar progressBar;
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Create your application here
-
             client = new MobileServiceClient(applicationURL);
-
             SetContentView(Resource.Layout.PregledPlivaca);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);
             SetActionBar(toolbar);
 
-            string catId = Intent.GetStringExtra("kategorija") ?? "Data not available";
+            string categoryId = Intent.GetStringExtra("kategorija") ?? "Data not available";
             string label = Intent.GetStringExtra("label") ?? "Data not available";
             this.Title = label;
 
             swimmersTable = client.GetTable<SwimmersView>();
 
-            adapter = new ClubSwimmersAdapter(this, Resource.Layout.ClubSwimmerLayout);
+            swimmersAdapter = new ClubSwimmersAdapter(this, Resource.Layout.ClubSwimmerLayout);
             var listViewClubSwimmers = FindViewById<ListView>(Resource.Id.plivaci);
-            listViewClubSwimmers.Adapter = adapter;
-
+            listViewClubSwimmers.Adapter = swimmersAdapter;
 
             seasonsTable = client.GetTable<Season>();
-
             var seasons = await seasonsTable.OrderByDescending(e => e.TimeStart).ToListAsync();
 
             List<string> seasonNames = new List<string>();
-            seasonToDisplay = new List<KeyValuePair<string, string>>();
+            seasonsToDisplay = new List<KeyValuePair<string, string>>();
             foreach (Season current in seasons)
             {
-                seasonToDisplay.Add(new KeyValuePair<string, string>(current.TimeStart.ToString("yyyy") + "-" + current.TimeEnd.ToString("yyyy"), current.Id.ToString()));
+                seasonsToDisplay.Add(new KeyValuePair<string, string>(current.TimeStart.ToString("yyyy") + "-" + current.TimeEnd.ToString("yyyy"), current.Id.ToString()));
                 seasonNames.Add(current.TimeStart.ToString("yyyy") + "-" + current.TimeEnd.ToString("yyyy"));
             }
 
-
             Spinner spinner = FindViewById<Spinner>(Resource.Id.spinner);
-
             spinner.ItemSelected += delegate (object sender, AdapterView.ItemSelectedEventArgs e)
             {
-                FillAdapterWithData(adapter, swimmersTable, catId, seasonToDisplay[e.Position].Value);
+                FillAdapterWithData(swimmersAdapter, swimmersTable, categoryId, seasonsToDisplay[e.Position].Value);
             };
 
-            adapter2 = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, seasonNames);
-            adapter2.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
-            spinner.Adapter = adapter2;
+            spinnerAdapter = new ArrayAdapter<string>(this, Android.Resource.Layout.SimpleSpinnerItem, seasonNames);
+            spinnerAdapter.SetDropDownViewResource(Android.Resource.Layout.SimpleSpinnerDropDownItem);
+            spinner.Adapter = spinnerAdapter;
+
+            progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar1);
+            progressBar.Visibility = ViewStates.Gone;
         }
 
         private async void FillAdapterWithData(ClubSwimmersAdapter adapter, IMobileServiceTable<SwimmersView> swimmersTable, string catId, string seasonId)
         {
-            List<SwimmersView> list;
-            if (seasonId != null)
-            {
-                list = await swimmersTable
+            List<SwimmersView> list = await swimmersTable
                     .Where(e => e.IdCategory == catId)
                     .Where(e => e.IdSeason == seasonId)
                     .ToListAsync();
-            }
-            else
-            {
-                list = await swimmersTable
-                    .Where(e => e.IdCategory == catId)
-                    .ToListAsync();
-            }
             adapter.Clear();
             foreach (SwimmersView current in list)
                 adapter.Add(current);

@@ -103,7 +103,6 @@
     <Compile Include="Adapters\ClubViewAdapter.cs" />
     <Compile Include="Adapters\NatjecanjaAdapter.cs" />
     <Compile Include="Adapters\NatjecanjeDetaljiAdapter.cs" />
-    <Compile Include="Adapters\OneStringAdapter.cs" />
     <Compile Include="Adapters\PrikazRekordiAdapter.cs" />
     <Compile Include="Adapters\SwimmerAdapter.cs" />
     <Compile Include="Adapters\UtrkaDetaljiAdapter.cs" />
@@ -129,9 +128,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Assets\AboutAssets.txt" />
-    <AndroidResource Include="Resources\layout\MediumTextLayout.axml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
     <AndroidResource Include="Resources\layout\ListViewLayout.axml">
       <SubType>Designer</SubType>
     </AndroidResource>
@@ -212,7 +208,7 @@
     <AndroidResource Include="Resources\menu\top_menus.xml" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable\ic_menu_search_holo_dark.png" />
+    <AndroidResource Include="Resources\drawable\main_image.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

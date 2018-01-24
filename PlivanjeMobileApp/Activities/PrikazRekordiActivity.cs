@@ -16,7 +16,7 @@ using PlivanjeMobileApp.Models;
 
 namespace PlivanjeMobileApp.Activities
 {
-    [Activity(Label = "PrikazRekordiActivity")]
+    [Activity(Label = "Rekordi")]
     public class PrikazRekordiActivity : Activity
     {
         ProgressBar progressBar;
@@ -28,18 +28,13 @@ namespace PlivanjeMobileApp.Activities
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
             client = new MobileServiceClient(applicationURL);
-
             SetContentView(Resource.Layout.ListViewLayout);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);
             SetActionBar(toolbar);
 
-            progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar1);
-
             string gender = Intent.GetStringExtra("gender") ?? "Data not available";
-
             if (gender == "m")
             {
                 this.Title = "Muški rekordi";
@@ -48,8 +43,6 @@ namespace PlivanjeMobileApp.Activities
             {
                 this.Title = "Ženski rekordi";
             }
-
-            recordTable = client.GetTable<Record>();
 
             adapter = new PrikazRekordiAdapter(this, Resource.Layout.PrikazRekordiLayout);
             var listRecord = FindViewById<ListView>(Resource.Id.listViewLayout);
@@ -68,6 +61,7 @@ namespace PlivanjeMobileApp.Activities
             foreach (Record current in records)
                 adapter.Add(current);
 
+            progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar1);
             progressBar.Visibility = ViewStates.Gone;
         }
 

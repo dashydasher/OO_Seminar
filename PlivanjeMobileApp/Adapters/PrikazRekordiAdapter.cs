@@ -16,7 +16,6 @@ namespace PlivanjeMobileApp.Adapters
 {
     class PrikazRekordiAdapter : BaseAdapter<Record>
     {
-
         Activity activity;
         int layoutResourceId;
         List<Record> items = new List<Record>();
@@ -43,24 +42,14 @@ namespace PlivanjeMobileApp.Adapters
             {
                 var inflater = activity.LayoutInflater;
                 row = inflater.Inflate(layoutResourceId, parent, false);
-                textArea1 = row.FindViewById<TextView>(Resource.Id.textArea1);
-                textArea2 = row.FindViewById<TextView>(Resource.Id.textArea2);
-                textArea3 = row.FindViewById<TextView>(Resource.Id.textArea3);
-                textArea4 = row.FindViewById<TextView>(Resource.Id.textArea4);
-                textArea5 = row.FindViewById<TextView>(Resource.Id.textArea5);
-                textArea6 = row.FindViewById<TextView>(Resource.Id.textArea6);
-                textArea7 = row.FindViewById<TextView>(Resource.Id.textArea7);
             }
-            else
-            {
-                textArea1 = row.FindViewById<TextView>(Resource.Id.textArea1);
-                textArea2 = row.FindViewById<TextView>(Resource.Id.textArea2);
-                textArea3 = row.FindViewById<TextView>(Resource.Id.textArea3);
-                textArea4 = row.FindViewById<TextView>(Resource.Id.textArea4);
-                textArea5 = row.FindViewById<TextView>(Resource.Id.textArea5);
-                textArea6 = row.FindViewById<TextView>(Resource.Id.textArea6);
-                textArea7 = row.FindViewById<TextView>(Resource.Id.textArea7);
-            }
+            textArea1 = row.FindViewById<TextView>(Resource.Id.textArea1);
+            textArea2 = row.FindViewById<TextView>(Resource.Id.textArea2);
+            textArea3 = row.FindViewById<TextView>(Resource.Id.textArea3);
+            textArea4 = row.FindViewById<TextView>(Resource.Id.textArea4);
+            textArea5 = row.FindViewById<TextView>(Resource.Id.textArea5);
+            textArea6 = row.FindViewById<TextView>(Resource.Id.textArea6);
+            textArea7 = row.FindViewById<TextView>(Resource.Id.textArea7);
 
             textArea1.Text = currentItem.FirstName.Trim() + " " + currentItem.LastName.Trim();
             textArea2.Text = currentItem.DateOfBirth.ToString() + ", " + currentItem.Category.Trim().TrimEnd('i');

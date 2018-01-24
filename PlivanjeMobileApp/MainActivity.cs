@@ -5,6 +5,7 @@ using Android.Widget;
 using Android.OS;
 using Android.Views;
 using PlivanjeMobileApp.Activities;
+using PlivanjeMobileApp.Helpers;
 
 namespace PlivanjeMobileApp
 {
@@ -14,16 +15,16 @@ namespace PlivanjeMobileApp
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            // Set our view from the "main" layout resource
             SetContentView(Resource.Layout.Main);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);
             SetActionBar(toolbar);
 
             TextView mainText = FindViewById<TextView>(Resource.Id.mainText);
+            TextView secondText = FindViewById<TextView>(Resource.Id.secondText);
 
             mainText.Text = "Dobrodošli u mobilnu aplikaciju sustava za natjecateljsko plivanje.";
+            secondText.Text = "Koristite izbornik kako bi navigirali po sadržaju aplikacije.";
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
@@ -34,25 +35,7 @@ namespace PlivanjeMobileApp
 
         public override bool OnOptionsItemSelected(IMenuItem item)
         {
-            switch (item.TitleFormatted.ToString())
-            {
-                case "Natjecanja":
-                    StartActivity(typeof(NatjecanjaActivity));
-                    break;
-                case "Klubovi":
-                    StartActivity(typeof(KluboviActivity));
-                    break;
-                case "Plivači":
-                    StartActivity(typeof(PlivaciActivity));
-                    break;
-                case "Rekordi":
-                    StartActivity(typeof(RekordiActivity));
-                    break;
-                case "Početna":
-                    StartActivity(typeof(MainActivity));
-                    break;
-            }
-            return base.OnOptionsItemSelected(item);
+            return HelperMethods.HandleToolbarClick(this, item.ItemId);
         }
 
         [Java.Interop.Export()]

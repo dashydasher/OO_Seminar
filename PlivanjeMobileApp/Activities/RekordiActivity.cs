@@ -15,20 +15,16 @@ using PlivanjeMobileApp.Models;
 
 namespace PlivanjeMobileApp.Activities
 {
-    [Activity(Label = "RekordiActivity")]
+    [Activity(Label = "Rekordi")]
     public class RekordiActivity : Activity
     {
-
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
             SetContentView(Resource.Layout.Rekordi);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);
             SetActionBar(toolbar);
-
-            this.Title = "Rekordi";
 
             Button muskiButton = FindViewById<Button>(Resource.Id.rekordimbut);
             Button zenskiButton = FindViewById<Button>(Resource.Id.rekordizbut);

@@ -22,20 +22,15 @@ namespace PlivanjeMobileApp.Activities
         private MobileServiceClient client;
         private IMobileServiceTable<SwimmersView> swimmersTable;
         private IMobileServiceTable<SwimmerRaceView> swimmerRacesTable;
-        private SwimmerAdapter adapter;
-        private UtrkaDetaljiAdapter adapter2;
+        private SwimmerAdapter swimmerAdapter;
+        private UtrkaDetaljiAdapter utrkaAdapter;
         const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
-            client = new MobileServiceClient(applicationURL);
-
             SetContentView(Resource.Layout.Plivac);
-
-            var sezonebutton = FindViewById<Button>(Resource.Id.sezonebutton);
-            var utrkebutton = FindViewById<Button>(Resource.Id.utrkebutton);
+            client = new MobileServiceClient(applicationURL);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);
             SetActionBar(toolbar);
@@ -52,39 +47,40 @@ namespace PlivanjeMobileApp.Activities
             swimmersTable = client.GetTable<SwimmersView>();
             swimmerRacesTable = client.GetTable<SwimmerRaceView>();
 
-            List<SwimmersView> list = await swimmersTable.Where(e => e.Id == idPlivaca).ToListAsync();
-            List<SwimmerRaceView> list2 = await swimmerRacesTable.Where(e => e.IdSwimmer == idPlivaca).ToListAsync();
+            List<SwimmersView> swimmers = await swimmersTable.Where(e => e.Id == idPlivaca).ToListAsync();
+            List<SwimmerRaceView> swimmerRaces = await swimmerRacesTable.Where(e => e.IdSwimmer == idPlivaca).ToListAsync();
 
-            adapter = new SwimmerAdapter(this, Resource.Layout.SezonaPlivaca);
+            swimmerAdapter = new SwimmerAdapter(this, Resource.Layout.SezonaPlivaca);
             var listView = FindViewById<ListView>(Resource.Id.sezone);
-            listView.Adapter = adapter;
+            listView.Adapter = swimmerAdapter;
 
-            adapter2 = new UtrkaDetaljiAdapter(this, Resource.Layout.PlivaciUtrkaOsnovnoLayout, isUtrkaLayout:false);
+            utrkaAdapter = new UtrkaDetaljiAdapter(this, Resource.Layout.PlivaciUtrkaOsnovnoLayout, isUtrkaLayout:false);
 
-            adapter.Clear();
-            foreach (SwimmersView current in list)
-                adapter.Add(current);
+            swimmerAdapter.Clear();
+            foreach (SwimmersView current in swimmers)
+                swimmerAdapter.Add(current);
 
             TextView rezultati = FindViewById<TextView>(Resource.Id.rezultati);
+            Button sezonebutton = FindViewById<Button>(Resource.Id.sezonebutton);
+            Button utrkebutton = FindViewById<Button>(Resource.Id.utrkebutton);
+
             sezonebutton.Click += delegate {
                 rezultati.Text = "Rezultati po sezonama";
 
-                adapter2.Clear();
-                listView.Adapter = adapter;
-                adapter.Clear();
-
-                foreach (SwimmersView current in list)
-                    adapter.Add(current);
+                utrkaAdapter.Clear();
+                listView.Adapter = swimmerAdapter;
+                swimmerAdapter.Clear();
+                foreach (SwimmersView current in swimmers)
+                    swimmerAdapter.Add(current);
             };
             utrkebutton.Click += delegate {
                 rezultati.Text = "Rezultati po utrkama";
 
-                adapter.Clear();
-                listView.Adapter = adapter2;
-                adapter2.Clear();
-
-                foreach (SwimmerRaceView current in list2)
-                    adapter2.Add(current);
+                swimmerAdapter.Clear();
+                listView.Adapter = utrkaAdapter;
+                utrkaAdapter.Clear();
+                foreach (SwimmerRaceView current in swimmerRaces)
+                    utrkaAdapter.Add(current);
             };
         }
 

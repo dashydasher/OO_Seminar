@@ -17,6 +17,21 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mainText" />
+            android:id="@+id/mainText"
+            android:gravity="center"
+            android:padding="5dp" />
+        <TextView
+            android:text="Dobrodošli"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/secondText"
+            android:gravity="center"
+            android:paddingTop="10dp" />
+        <ImageView
+            android:src="@drawable/main_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView1" />
     </LinearLayout>
 </RelativeLayout>

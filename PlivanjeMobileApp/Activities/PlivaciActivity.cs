@@ -26,27 +26,24 @@ namespace PlivanjeMobileApp.Activities
         protected override async void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
-
+            client = new MobileServiceClient(applicationURL);
             SetContentView(Resource.Layout.Plivaci);
 
             var toolbar = FindViewById<Toolbar>(Resource.Id.toolbarIncluded);
             SetActionBar(toolbar);
 
-            client = new MobileServiceClient(applicationURL);
-
             categoriesTable = client.GetTable<Category>();
 
             var list = await categoriesTable.ToListAsync();
-            Dictionary<string, string> categories;
+            Dictionary<string, string> categoriesDict;
 
-            categories = new Dictionary<string, string>();
+            categoriesDict = new Dictionary<string, string>();
             foreach (Category cat in list)
             {
-                categories.Add(cat.Name.Trim(), cat.Id.Trim());
+                categoriesDict.Add(cat.Name.Trim(), cat.Id.Trim());
             }
 
             swimmersTable = client.GetTable<SwimmersView>();
-
             var swimmers = await swimmersTable
                 .Where(e => e.TimeStart.Year == DateTime.Today.Year)
                 .ToListAsync();
@@ -79,46 +76,36 @@ namespace PlivanjeMobileApp.Activities
             var activity = new Intent(this, typeof(PlivaciPoKategorijiActivity));
 
             plivaciVeterani.Click += delegate {
-                activity.PutExtra("label", "Veterani");
-                activity.PutExtra("kategorija", categories["veterani"]);
-                StartActivity(activity);
+                StartActvityAndAddData("Veterani", categoriesDict["veterani"], activity);
             };
             plivaciSeniori.Click += delegate {
-                activity.PutExtra("label", "Seniori");
-                activity.PutExtra("kategorija", categories["seniori"]);
-                StartActivity(activity);
+                StartActvityAndAddData("Seniori", categoriesDict["seniori"], activity);
             };
             plivaciMladiSeniori.Click += delegate {
-                activity.PutExtra("label", "Mlađi seniori");
-                activity.PutExtra("kategorija", categories["mlađi seniori"]);
-                StartActivity(activity);
+                StartActvityAndAddData("Mlađi seniori", categoriesDict["mlađi seniori"], activity);
             };
             plivaciJuniori.Click += delegate {
-                activity.PutExtra("label", "Juniori");
-                activity.PutExtra("kategorija", categories["juniori"]);
-                StartActivity(activity);
+                StartActvityAndAddData("Juniori", categoriesDict["juniori"], activity);
             };
             plivaciMladiJuniori.Click += delegate {
-                activity.PutExtra("label", "Mlađi juniori");
-                activity.PutExtra("kategorija", categories["mlađi juniori"]);
-                StartActivity(activity);
+                StartActvityAndAddData("Mlađi juniori", categoriesDict["mlađi juniori"], activity);
             };
             plivaciKadeti.Click += delegate {
-                activity.PutExtra("label", "Kadeti");
-                activity.PutExtra("kategorija", categories["kadeti"]);
-                StartActivity(activity);
+                StartActvityAndAddData("Kadeti", categoriesDict["kadeti"], activity);
             };
             plivaciMladiKadeti.Click += delegate {
-                activity.PutExtra("label", "Mlađi kadeti");
-                activity.PutExtra("kategorija", categories["mlađi kadeti"]);
-                StartActivity(activity);
+                StartActvityAndAddData("Mlađi kadeti", categoriesDict["mlađi kadeti"], activity);
             };
             plivaciPocetnici.Click += delegate {
-                activity.PutExtra("label", "Početnici");
-                activity.PutExtra("kategorija", categories["početnici"]);
-                StartActivity(activity);
+                StartActvityAndAddData("Početnici", categoriesDict["početnici"], activity);
             };
+        }
 
+        private void StartActvityAndAddData(string title, string categoryId, Intent activity)
+        {
+            activity.PutExtra("label", title);
+            activity.PutExtra("kategorija", categoryId);
+            StartActivity(activity);
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

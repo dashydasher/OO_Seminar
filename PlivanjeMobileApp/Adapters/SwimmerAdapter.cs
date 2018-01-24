@@ -16,7 +16,6 @@ namespace PlivanjeMobileApp.Adapters
 {
     class SwimmerAdapter : BaseAdapter<SwimmersView>
     {
-
         Activity activity;
         int layoutResourceId;
         List<SwimmersView> items = new List<SwimmersView>();
@@ -40,18 +39,12 @@ namespace PlivanjeMobileApp.Adapters
             {
                 var inflater = activity.LayoutInflater;
                 row = inflater.Inflate(layoutResourceId, parent, false);
-                textArea1 = row.FindViewById<TextView>(Resource.Id.textArea1);
-                textArea2 = row.FindViewById<TextView>(Resource.Id.textArea2);
-                textArea3 = row.FindViewById<TextView>(Resource.Id.textArea3);
-                textArea4 = row.FindViewById<TextView>(Resource.Id.textArea4);
             }
-            else
-            {
-                textArea1 = row.FindViewById<TextView>(Resource.Id.textArea1);
-                textArea2 = row.FindViewById<TextView>(Resource.Id.textArea2);
-                textArea3 = row.FindViewById<TextView>(Resource.Id.textArea3);
-                textArea4 = row.FindViewById<TextView>(Resource.Id.textArea4);
-            }
+            textArea1 = row.FindViewById<TextView>(Resource.Id.textArea1);
+            textArea2 = row.FindViewById<TextView>(Resource.Id.textArea2);
+            textArea3 = row.FindViewById<TextView>(Resource.Id.textArea3);
+            textArea4 = row.FindViewById<TextView>(Resource.Id.textArea4);
+
             textArea1.Text = currentItem.TimeStart.ToString("yyyy") + "-" + currentItem.TimeEnd.ToString("yyyy");
             textArea2.Text = currentItem.Category;
             textArea3.Text = currentItem.Club;

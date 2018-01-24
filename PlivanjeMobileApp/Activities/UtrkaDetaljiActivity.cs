@@ -37,14 +37,12 @@ namespace PlivanjeMobileApp.Activities
             string Category = Intent.GetStringExtra("Category") ?? "Data not available";
             string Referee = Intent.GetStringExtra("Referee") ?? "Data not available";
             string Gender = Intent.GetStringExtra("Gender") ?? "Data not available";
-            string PoolLength = Intent.GetStringExtra("PoolLength") ?? "Data not available";
             string RaceLength = Intent.GetStringExtra("RaceLength") ?? "Data not available";
             string Style = Intent.GetStringExtra("Style") ?? "Data not available";
             string Weekday = Intent.GetStringExtra("Weekday") ?? "Data not available";
             string Date = Intent.GetStringExtra("Date") ?? "Data not available";
             string TimeSpan = Intent.GetStringExtra("TimeSpan") ?? "Data not available";
             this.Title = Weekday + ", " + TimeSpan;
-
 
             TextView textArea1 = FindViewById<TextView>(Resource.Id.textArea1);
             TextView textArea2 = FindViewById<TextView>(Resource.Id.textArea2);
@@ -53,7 +51,6 @@ namespace PlivanjeMobileApp.Activities
             textArea1.Text = Gender + " " + Category;
             textArea2.Text = RaceLength + "m " + Style;
             textArea3.Text = "Sudi: " + Referee;
-
 
             swimmersTable = client.GetTable<SwimmerRaceView>();
             List<SwimmerRaceView> list = await swimmersTable
