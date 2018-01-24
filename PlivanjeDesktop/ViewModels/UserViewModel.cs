@@ -15,10 +15,6 @@ namespace PlivanjeDesktop.ViewModels
         {
             var cp = new CoachProcessor();
             List<Coach> treneri = cp.getCoaches();
-            var rf = new RefereeProcessor();
-            List<Referee> suci = rf.getReferees();
-
-
             foreach (var trener in treneri)
             {
                 if (email.Equals(trener.EMail.Trim()))
@@ -33,10 +29,14 @@ namespace PlivanjeDesktop.ViewModels
                         return false;
                     }
             }
+
+
+            var rf = new RefereeProcessor();
+            List<Referee> suci = rf.getReferees();
             foreach (var sudac in suci)
             {
-                if (email.Equals(sudac.EMail))
-                    if (password.Equals(sudac.Password))
+                if (email.Equals(sudac.EMail.Trim()))
+                    if (password.Equals(sudac.Password.Trim()))
                     {
                         UserModel.Id = sudac.Id;
                         UserModel.role = "sudac";

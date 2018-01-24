@@ -73,9 +73,6 @@ namespace Plivanje.Repositories
 
         public List<Competition> getMyCompetitions(int id)
         {
-            
-            Place place = null;
-            Hall hall = null;
             Club club = null;
 
             Club mojKlub = getMyClub(id);
@@ -87,9 +84,10 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                //    result = (List<Competition>)session.QueryOver<Competition>().JoinAlias(x => x.Hall, () => hall).JoinAlias(x => hall.Place, () => place).JoinAlias(x => place.Id, () => club).Where(x=>x.Hall == hall && hall.Place == place && club.Place == place && mojKlub.Place == club.Place).List<Competition>();
-                            
-               
+                    //result = (List<Competition>)session.QueryOver<ClubCompetition>().JoinAlias(x => x.Club, () => club).JoinAlias(x => x.Competition, () => competition).Where(x=>x.Hall == hall && hall.Place == place && club.Place == place && mojKlub.Place == club.Place).List<Competition>();
+                    result = (List<Competition>)session.QueryOver<ClubCompetition>().JoinAlias(x => x.Club, () => club).Where(() => club.Id == mojKlub.Id).Select(x=>x.Competition).List<Competition>();
+
+
                     transaction.Commit(); 
                 }
             }

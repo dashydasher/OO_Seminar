@@ -13,8 +13,8 @@ namespace Plivanje.Mappings
         public ClubCompetitionMap()
         {
             Id(x => x.Id);
-            References(x => x.Club).Not.LazyLoad();
-            References(x => x.Competition).Not.LazyLoad();
+            References(x => x.Club).Column("idClub").Not.LazyLoad();
+            References(x => x.Competition).Column("idCompetition").Not.LazyLoad();
             Map(x => x.CountSwimmers);
             Table("ClubCompetition");
         }
