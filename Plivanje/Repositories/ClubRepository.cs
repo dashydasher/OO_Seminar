@@ -26,8 +26,8 @@ namespace Plivanje.Repositories
         List<Competition> GetClubCompetitions(int clubId);
         void updateClubCompetition(ClubCompetition c);
         ClubCompetition GetClubCompetition(int idClub, int idCompetition);
-
-
+        List<ClubView> GetListOfClubView();
+        ClubView GetClubView(int id);
     }
 
     public class ClubRepository : IClubRepository
@@ -322,6 +322,38 @@ namespace Plivanje.Repositories
                 {
                     result = session.QueryOver<ClubCompetition>().Where(x => x.Club.Id == idClub && x.Competition.Id == idCompetition).SingleOrDefault();
 
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public List<ClubView> GetListOfClubView()
+        {
+            List<ClubView> result = null;
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+                    result = (List<ClubView>)session.QueryOver<ClubView>().List<ClubView>();
+
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public ClubView GetClubView(int id)
+        {
+            var result = new ClubView();
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (ClubView)session.QueryOver<ClubView>().Where(x => x.Id == id).List().FirstOrDefault();
                     transaction.Commit();
                 }
             }

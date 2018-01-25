@@ -11,7 +11,7 @@ namespace WebAPI.Controllers
 {
     public class SwimmersViewController : ApiController
     {
-        // GET: value/SwimmerView
+        // GET: tables/SwimmerView
         public IEnumerable<SwimmerView> Get()
         {
             var repo = new SwimmerRepository();
@@ -24,7 +24,7 @@ namespace WebAPI.Controllers
             return myList;
         }
 
-        // GET: value/SwimmerView/5
+        // GET: tables/SwimmerView/5
         public SwimmerView Get(int id)
         {
             var repo = new SwimmerRepository();

@@ -71,6 +71,7 @@
     <Compile Include="Mappings\CategoryMap.cs" />
     <Compile Include="Mappings\ClubCompetitionMap.cs" />
     <Compile Include="Mappings\ClubMap.cs" />
+    <Compile Include="Mappings\ClubViewMap.cs" />
     <Compile Include="Mappings\CoachMap.cs" />
     <Compile Include="Mappings\CoachSeasonMap.cs" />
     <Compile Include="Mappings\CompetitionMap.cs" />
@@ -89,6 +90,7 @@
     <Compile Include="Mappings\SwimmerRaceMap.cs" />
     <Compile Include="Mappings\SwimmerSeasonMap.cs" />
     <Compile Include="Mappings\SwimmerViewMap.cs" />
+    <Compile Include="Models\ClubView.cs" />
     <Compile Include="Models\Coach.cs" />
     <Compile Include="Mappings\HallMap.cs" />
     <Compile Include="Mappings\PlaceMap.cs" />
