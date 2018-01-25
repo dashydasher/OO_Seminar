@@ -99,8 +99,6 @@ namespace Plivanje.Repositories
         public List<Competition> FindMyCompetitions(int coachId)
         {
 
-
-
             Club club = getMyClub(coachId);
             var result = new List<Competition>();
 

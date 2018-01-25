@@ -24,8 +24,10 @@ namespace PlivanjeDesktop
     public partial class NatjecanjaPage : Page
     {
         private List<Competition> competitions = new List<Competition>();
-     
-
+        public List<Hall> halls = new List<Hall>();
+        
+        SwimmerViewModel svm = new SwimmerViewModel();
+        
         CompetitionViewModel cvm;
 
         public NatjecanjaPage()
@@ -37,13 +39,14 @@ namespace PlivanjeDesktop
             if (UserModel.role != null && UserModel.role.Equals("trener"))
             {
                 cvm.LoadCoachesCompetitions(UserModel.Id);
+                cvm.LoadPossibleHalls(UserModel.Id);
             }
 
             this.DataContext = cvm;
             
             if (UserModel.role != null && UserModel.role.Equals("trener"))
             {
-                trenerovaNatjecanja.Visibility = Visibility.Visible;
+                coachesCompetitions.Visibility = Visibility.Visible;
                 orgNatjecanje.Visibility = Visibility.Visible;
             }
 

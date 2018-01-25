@@ -13,13 +13,18 @@ namespace PlivanjeDesktop.ViewModels
     {
         public List<CompetitionModel> competitions { get; set; }
         public List<CompetitionModel> coachesCompetitions { get; set; }
+        public List<HallModel> halls { get; set; }
         CompetitionProcessor cp = new CompetitionProcessor();
+        CoachProcessor ccp = new CoachProcessor();
+        ClubProcessor clp = new ClubProcessor();
+        HallProcessor hp = new HallProcessor();
 
+       
 
         public void LoadCompetitions()
         {
             competitions = new List<CompetitionModel>();
-            var hp = new HallProcessor();
+            
             var list = cp.GetCompetitions();
  
             foreach (var competition in list)
@@ -38,21 +43,20 @@ namespace PlivanjeDesktop.ViewModels
 
         public void LoadCoachesCompetitions(int coachId)
         {
-            List<Competition> list = new List<Competition>();
-            List<Competition> listMyCompetitions = new List<Competition>();
-            var cp = new CompetitionProcessor();
-            var ccp = new CoachProcessor();
-            list = cp.GetFutureCompetitions();
-            listMyCompetitions = ccp.getMyCompetitions(coachId);
+            //List<Competition> list = new List<Competition>();
+            List<Competition> listMyCompetitions = new List<Competition>();       
+            //list = cp.GetFutureCompetitions();
+          
             coachesCompetitions = new List<CompetitionModel>();
 
             if (coachId != 0)
             {
-                
-                foreach (var competition in list)
+                //listMyCompetitions = ccp.getMyCompetitions(coachId); --moja
+                listMyCompetitions = ccp.FindMyCompetitions(coachId); //--druga natjecanja nalazi?? dodaj jos natjecanja u bazu da provjeris dal je tvoje dobro ili samo ovo
+                foreach (var competition in listMyCompetitions)
                 {
-                    if (listMyCompetitions.Contains(competition))
-                    {
+                   // if (listMyCompetitions.Contains(competition))
+                    //{
                         coachesCompetitions.Add(new CompetitionModel
                         {
                             Id = competition.Id,
@@ -63,9 +67,10 @@ namespace PlivanjeDesktop.ViewModels
                              
                         });
                         break;
-                    }
+                    //}
                 }
             }
+
         }
 
         public bool AddCompetition(string name, DateTime timeStart, DateTime timeEnd, string hall) //Hall hall
@@ -89,6 +94,29 @@ namespace PlivanjeDesktop.ViewModels
             }
             return true;
         }
+
+        public void LoadPossibleHalls(int coachId)
+        {
+
+            int clubId = clp.getMyClubId(UserModel.Id);
+            Place place = clp.getPlace(clubId);
+            int placeId = place.Id;
+
+            halls = new List<HallModel>();           
+            var list = hp.getHallsInPlace(placeId);
+            
+            foreach (var hall in list)
+                halls.Add(new HallModel
+                {
+                    Id = hall.Id,
+                    Name = hall.Name,
+                    Address = hall.Address,
+                    Place = hall.Place,
+                    
+                });
+
+        }
+
 
 
 
