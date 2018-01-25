@@ -10,38 +10,38 @@ using System.Web.Http;
 
 namespace WebAPI.Controllers
 {
-    public class RecordController : ApiController
+    public class SeasonController : ApiController
     {
-        // GET: tables/Record
-        public IEnumerable<Record> Get()
+        // GET: tables/Season
+        public IEnumerable<Season> Get()
         {
-            var clas = new RecordsRepository();
-            var records = clas.getAllRecords();
-            var recordsList = new List<Record>();
-            foreach (var d in records)
+            var clas = new SeasonRepository();
+            var seasons = clas.getAllSeasons();
+            var seasonsList = new List<Season>();
+            foreach (var d in seasons)
             {
-                recordsList.Add(d);
+                seasonsList.Add(d);
             }
-            return recordsList;
+            return seasonsList;
         }
 
-        // GET: tables/Record/5
+        // GET: tables/Season/5
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST: tables/Record
+        // POST: tables/Season
         public void Post([FromBody]string value)
         {
         }
 
-        // PUT: tables/Record/5
+        // PUT: tables/Season/5
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE: tables/Record/5
+        // DELETE: tables/Season/5
         public void Delete(int id)
         {
         }

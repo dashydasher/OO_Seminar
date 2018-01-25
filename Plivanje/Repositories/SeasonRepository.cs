@@ -9,12 +9,28 @@ namespace Plivanje.Repositories
 { 
     public interface ISeasonRepository
         {
-
-             Season getNowSeason();
+            List<Season> getAllSeasons();
+            Season getNowSeason();
         }
 
     public class SeasonRepository : ISeasonRepository
     {
+        public List<Season> getAllSeasons()
+        {
+            List<Season> result = new List<Season>();
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (List<Season>)session.QueryOver<Season>().List();
+
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
         public Season getNowSeason()
         {
             var result = new Season();
