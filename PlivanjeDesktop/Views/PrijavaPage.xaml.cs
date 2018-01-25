@@ -63,6 +63,12 @@ namespace PlivanjeDesktop
                 return;
             }
 
+            if (UserModel.role != null)
+            {
+                PlivanjeDesktop.Početna.referenca.Logout.Visibility = Visibility.Visible;
+                PlivanjeDesktop.Početna.referenca.Login.Visibility = Visibility.Hidden;
+            }
+
             if (UserModel.role.Equals("trener"))
             {
                 e.Handled = true;
@@ -80,10 +86,7 @@ namespace PlivanjeDesktop
                 return;
             }
 
-            if (UserModel.role != null)
-            {
-               // Početna.Logout.Visibility = Visibility.Visible;
-            }
+         
         }
     }
 }

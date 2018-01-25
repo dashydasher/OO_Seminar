@@ -20,6 +20,8 @@ namespace PlivanjeDesktop
     /// </summary>
     public partial class Početna : Window
     {
+
+        public static Početna referenca;
         public Početna()
         {
             InitializeComponent();
@@ -29,6 +31,8 @@ namespace PlivanjeDesktop
             {
                 Login.Visibility = Visibility.Visible;
             }
+
+            referenca = this;
 
         }
 
@@ -105,6 +109,8 @@ namespace PlivanjeDesktop
             e.Handled = true;
             MenuItem mi = sender as MenuItem;
             UserModel.role = null;
+            Logout.Visibility = Visibility.Hidden;
+            Login.Visibility = Visibility.Visible;
             PrijavaPage p = new PrijavaPage();
             Main.Content = p;
         }
