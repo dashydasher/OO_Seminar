@@ -29,7 +29,6 @@ namespace PlivanjeDesktop
         SwimmerViewModel svm = new SwimmerViewModel();
         HallViewModel hvm = new HallViewModel();
         CompetitionViewModel cvm;
-        Hall myHall = new Hall();
         public NatjecanjaPage()
         {
             InitializeComponent();
@@ -105,10 +104,9 @@ namespace PlivanjeDesktop
             string name = tbName.Text.Trim();
             DateTime timeStart= tbBegin.DisplayDate.Date;
             DateTime timeEnd = tbEnd.DisplayDate.Date;
-            string hallS = tbHall.Text.Trim();
-            myHall = hvm.GetHallByName(hallS);
+            HallModel hallS = (HallModel)tbHall.SelectedValue;
 
-            bool uspjeh = cvm.AddCompetition(name, timeStart, timeEnd, myHall); 
+            bool uspjeh = cvm.AddCompetition(name, timeStart, timeEnd, hallS); 
             if (uspjeh)
             {
                 MessageBox.Show("Uspješno spremljeno natjecanje");
