@@ -75,6 +75,7 @@
     <Compile Include="Mappings\CoachMap.cs" />
     <Compile Include="Mappings\CoachSeasonMap.cs" />
     <Compile Include="Mappings\CompetitionMap.cs" />
+    <Compile Include="Mappings\CompetitionViewMap.cs" />
     <Compile Include="Mappings\LengthMap.cs" />
     <Compile Include="Mappings\LicenceCoachMap.cs" />
     <Compile Include="Mappings\LicenceMap.cs" />
@@ -101,6 +102,7 @@
     <Compile Include="Models\ClubCompetition.cs" />
     <Compile Include="Models\CoachSeason.cs" />
     <Compile Include="Models\Competition.cs" />
+    <Compile Include="Models\CompetitionView.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\Hall.cs" />
     <Compile Include="Models\Length.cs" />

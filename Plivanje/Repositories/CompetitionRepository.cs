@@ -16,11 +16,12 @@ namespace Plivanje.Repositories
         Competition getCompetition(int idCompetition);
         List<Race> getRacesInCompetition(int idCompetition);
         List<Competition> GetFutureCompetition();
-
+        List<CompetitionView> GetListOfCompetitionView();
+        CompetitionView GetCompetitionView(int id);
 
 
     }
-    class CompetitionRepository : ICompetitionRepository
+    public class CompetitionRepository : ICompetitionRepository
     {
         public void UpdateCompetition(Competition c)
         {
@@ -109,6 +110,38 @@ namespace Plivanje.Repositories
                 using (var transaction = session.BeginTransaction())
                 {
                     result = (List<Competition>)session.QueryOver<Competition>().Where(x=>x.TimeStart>DateTime.Now || (x.TimeEnd>DateTime.Now)).OrderBy(x => x.TimeStart.Date).Asc.List<Competition>();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public List<CompetitionView> GetListOfCompetitionView()
+        {
+            List<CompetitionView> result = null;
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+
+                    result = (List<CompetitionView>)session.QueryOver<CompetitionView>().List<CompetitionView>();
+
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public CompetitionView GetCompetitionView(int id)
+        {
+            var result = new CompetitionView();
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (CompetitionView)session.QueryOver<CompetitionView>().Where(x => x.Id == id).List().FirstOrDefault();
                     transaction.Commit();
                 }
             }
