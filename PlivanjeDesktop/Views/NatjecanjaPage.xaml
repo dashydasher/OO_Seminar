@@ -20,7 +20,7 @@
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel Width="1200" >
 
-                <GroupBox FontSize="20" Header="Organiziraj natjecanje" x:Name="orgNatjecanje" Visibility="Hidden" >
+                <GroupBox FontSize="20" Header="Organiziraj natjecanje" x:Name="orgNatjecanje" Visibility="Collapsed" >
 
                     <StackPanel x:Name="stackPanel">
 
@@ -47,7 +47,7 @@
                 </GroupBox>
 
 
-                <GroupBox FontSize="20" Header="Moja natjecanja" x:Name="coachesCompetitions" Visibility="Hidden" >
+                <GroupBox FontSize="20" Header="Moja natjecanja" x:Name="coachesCompetitions" Visibility="Collapsed" >
                     <DataGrid x:Name="datagrid1" CanUserAddRows="false" FontSize="20"  ItemsSource="{Binding coachesCompetitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" >
                         <DataGrid.Columns>
 

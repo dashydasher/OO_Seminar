@@ -11,7 +11,7 @@
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel Width="1200">
-                <StackPanel Visibility="Hidden" Name="trenerPanel">
+                <StackPanel Visibility="Collapsed" Name="trenerPanel">
                     <GroupBox Header="Plivači mog kluba" FontSize="20">
                         <DataGrid Name="datagridClubSwimmers" CanUserAddRows="false" 
                           FontSize="20" ItemsSource="{Binding swimmersCoach}" AutoGenerateColumns="False" >

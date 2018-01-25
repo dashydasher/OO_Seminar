@@ -16,7 +16,7 @@
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel Width="1000">
-                <GroupBox Header="MojKlub" Visibility="Hidden" Name="trenerKlub" FontSize="20">
+                <GroupBox Header="MojKlub" Visibility="Collapsed" Name="trenerKlub" FontSize="20">
                     <DataGrid Name="datagrid1" CanUserAddRows="false" FontSize="20" ItemsSource="{Binding coachesClub}" RowStyle="{StaticResource datagrid}" AutoGenerateColumns="False" >
                         <DataGrid.Columns>
 

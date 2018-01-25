@@ -66,7 +66,7 @@ namespace PlivanjeDesktop
             if (UserModel.role != null)
             {
                 PlivanjeDesktop.Početna.referenca.Logout.Visibility = Visibility.Visible;
-                PlivanjeDesktop.Početna.referenca.Login.Visibility = Visibility.Hidden;
+                PlivanjeDesktop.Početna.referenca.Login.Visibility = Visibility.Collapsed;
             }
 
             if (UserModel.role.Equals("trener"))

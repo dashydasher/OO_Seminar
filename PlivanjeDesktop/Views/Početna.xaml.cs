@@ -109,7 +109,7 @@ namespace PlivanjeDesktop
             e.Handled = true;
             MenuItem mi = sender as MenuItem;
             UserModel.role = null;
-            Logout.Visibility = Visibility.Hidden;
+            Logout.Visibility = Visibility.Collapsed;
             Login.Visibility = Visibility.Visible;
             PrijavaPage p = new PrijavaPage();
             Main.Content = p;

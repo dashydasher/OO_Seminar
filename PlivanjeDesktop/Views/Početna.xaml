@@ -31,8 +31,8 @@
                             <MenuItem Header="Muškarci" Click="Records_Click"/>
                             <MenuItem Header="Žene" Click="Records_Click"/>
                         </MenuItem>
-                        <MenuItem Header="PRIJAVA"  x:Name="Login" Visibility="Hidden"  x:FieldModifier="public" Click="PrijaviSe_Click"/>
-                        <MenuItem Header="ODJAVA"  x:Name="Logout" Visibility="Hidden" x:FieldModifier="public" Click="OdjaviSe_Click"/>
+                        <MenuItem Header="PRIJAVA"  x:Name="Login" Visibility="Collapsed"  x:FieldModifier="public" Click="PrijaviSe_Click"/>
+                        <MenuItem Header="ODJAVA"  x:Name="Logout" Visibility="Collapsed" x:FieldModifier="public" Click="OdjaviSe_Click"/>
                     </Menu>
                 </Border>
 
