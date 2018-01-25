@@ -73,14 +73,14 @@ namespace PlivanjeDesktop.ViewModels
 
         }
 
-        public bool AddCompetition(string name, DateTime timeStart, DateTime timeEnd, string hall) //Hall hall
+        public bool AddCompetition(string name, DateTime timeStart, DateTime timeEnd, Hall hall) 
         {
             Competition competition = new Competition
             {
                 Name = name,
                 TimeStart = timeStart,
-                TimeEnd = timeEnd//,
-                //MyHall.Name = hall
+                TimeEnd = timeEnd,
+                Hall = hall
                 
             };
             var cp = new CompetitionProcessor();

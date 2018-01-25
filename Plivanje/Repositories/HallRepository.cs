@@ -12,6 +12,8 @@ namespace Plivanje.Repositories
     {
         List<Hall> getHalls();
         Hall getHall(int id);
+
+        Hall getHallByName(string name);
         List<Pool> getPools(int id,int len);
         Place getPlace(int id);
         void UpdateHall(Hall h);
@@ -65,6 +67,21 @@ namespace Plivanje.Repositories
                 using (var transaction = session.BeginTransaction())
                 {
                     result = session.QueryOver<Hall>().Where(x => x.Id == id).List().FirstOrDefault();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public Hall getHallByName(string name)
+        {
+            var result = new Hall();
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<Hall>().Where(x => x.Name == name).List().FirstOrDefault();
                     transaction.Commit();
                 }
             }

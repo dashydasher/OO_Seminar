@@ -32,6 +32,11 @@ namespace Plivanje.Processors
         {
             return _hallRepository.getHall(id);
         }
+
+        public Hall getHallByName(string name)
+        {
+            return _hallRepository.getHallByName(name);
+        }
         public List<Pool> getPools(int id,int len)
         {
             return _hallRepository.getPools(id,len);

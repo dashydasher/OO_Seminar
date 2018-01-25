@@ -24,18 +24,19 @@ namespace PlivanjeDesktop
     public partial class NatjecanjaPage : Page
     {
         private List<Competition> competitions = new List<Competition>();
-        public List<Hall> halls = new List<Hall>();
+        public List<Hall> halls;
         
         SwimmerViewModel svm = new SwimmerViewModel();
-        
+        HallViewModel hvm = new HallViewModel();
         CompetitionViewModel cvm;
-
+        Hall myHall = new Hall();
         public NatjecanjaPage()
         {
             InitializeComponent();
 
             cvm = new CompetitionViewModel();
             cvm.LoadCompetitions();
+            hvm.LoadHalls();
             if (UserModel.role != null && UserModel.role.Equals("trener"))
             {
                 cvm.LoadCoachesCompetitions(UserModel.Id);
@@ -104,18 +105,20 @@ namespace PlivanjeDesktop
             string name = tbName.Text.Trim();
             DateTime timeStart= tbBegin.DisplayDate.Date;
             DateTime timeEnd = tbEnd.DisplayDate.Date;
-            string hall = tbHall.Text.Trim(); //??
+            string hallS = tbHall.Text.Trim();
+            myHall = hvm.GetHallByName(hallS);
 
-            bool uspjeh = cvm.AddCompetition(name, timeStart, timeEnd, hall); 
-            if (!uspjeh)
-                MessageBox.Show("Pogreška u spremanju natjecanja");
-            else
+            bool uspjeh = cvm.AddCompetition(name, timeStart, timeEnd, myHall); 
+            if (uspjeh)
             {
                 MessageBox.Show("Uspješno spremljeno natjecanje");
                 NatjecanjaPage np = new NatjecanjaPage();
                 NavigationService navService = NavigationService.GetNavigationService(this);
                 navService.Navigate(np);
-                
+            }             
+            else
+            {              
+                MessageBox.Show("Pogreška u spremanju natjecanja");
             }
         }
 
