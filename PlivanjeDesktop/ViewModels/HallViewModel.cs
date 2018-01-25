@@ -12,8 +12,7 @@ namespace PlivanjeDesktop.ViewModels
     class HallViewModel
     {
 
-        public List<HallModel> allHalls { get; set; }
-        Hall myHall;
+        public List<HallModel> allHalls { get; set; }        
         HallProcessor hp = new HallProcessor();
 
         public void LoadHalls()
@@ -33,11 +32,5 @@ namespace PlivanjeDesktop.ViewModels
 
         }
 
-
-        public Hall GetHallByName(string name)
-        {
-            myHall = hp.getHallByName(name);
-            return myHall;
-        }
     }
 }
