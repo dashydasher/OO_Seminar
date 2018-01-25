@@ -32,7 +32,7 @@ namespace WebApp.Controllers
                 pom.Date = r.Date;
                 pom.DateOfBirth = r.DateOfBirth;
                 pom.FirstName = r.FirstName;
-                pom.Gender = (char)r.Gender;
+                pom.Gender= r.Gender;
                 pom.LastName = r.LastName;
                 pom.Length = r.Length;
                 pom.Place = r.Place;
@@ -53,7 +53,7 @@ namespace WebApp.Controllers
                 pom.Date = r.Date;
                 pom.DateOfBirth = r.DateOfBirth;
                 pom.FirstName = r.FirstName;
-                pom.Gender =(char) r.Gender;
+                pom.Gender =r.Gender;
                 pom.LastName = r.LastName;
                 pom.Length = r.Length;
                 pom.Place = r.Place;
@@ -65,7 +65,7 @@ namespace WebApp.Controllers
             }
             model.women = z;
             return View(model);
-            return View();
+            
         }
 
         // GET: Records/Details/5

@@ -34,13 +34,14 @@ namespace Plivanje.Repositories
 
         public List<Record> getMenRecords()
         {
+
             List<Record> result = new List<Record>();
             var klasa = new FluentNHibernateClass();
             using (var session = klasa.OpenSession())
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    result = (List<Record>)session.QueryOver<Record>().OrderBy(x=>x.Gender).Asc.Take(18).List();
+                    result = (List<Record>)session.QueryOver<Record>().Where(x=>x.Gender=="M").OrderBy(x=>x.Style).Desc.List();
 
                     transaction.Commit();
                 }
@@ -56,7 +57,7 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    result = (List<Record>)session.QueryOver<Record>().OrderBy(x=>x.Gender).Desc.Take(17).List();
+                    result = (List<Record>)session.QueryOver<Record>().Where(x=>x.Gender=="Ž").OrderBy(x=>x.Style).Desc.List();
 
                     transaction.Commit();
                 }

@@ -12,7 +12,7 @@ namespace PlivanjeWeb.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int DateOfBirth { get; set; }
-        public char Gender { get; set; }
+        public string Gender { get; set; }
         public string Category { get; set; }
         public string Style { get; set; }
         public int Length { get; set; }
