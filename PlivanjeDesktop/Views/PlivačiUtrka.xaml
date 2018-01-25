@@ -5,29 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlivanjeDesktop.Views"
         mc:Ignorable="d"
-        Title="PlivačiUtrka" Height="297.021" Width="450.541">
+        Title="PlivačiUtrka" Height="650" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <StackPanel Width="400">
+            <StackPanel Width="700">
+                <GroupBox Header="Plivači" FontSize="14">
                 <DataGrid Name="datagridSwimmers" CanUserAddRows="false" 
-                          FontSize="12" ItemsSource="{Binding swimmersCoach}" AutoGenerateColumns="False" >
+                          FontSize="14" ItemsSource="{Binding swimmers}" AutoGenerateColumns="False" >
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding Path=FirstName}" />
-                        <DataGridTextColumn Header="Prezime" Width="100" Binding="{Binding Path=LastName}" />
+                        <DataGridTextColumn Header="Prezime" Width="150" Binding="{Binding Path=LastName}" />
                         <DataGridTextColumn Header="Spol" Width="50" Binding="{Binding Path=Gender}" />
-                        <DataGridTextColumn Header="Kategorija" Width="120" Binding="{Binding Path=currentCategory.Name}" />
+                        <DataGridTextColumn Header="Kategorija" Width="150" Binding="{Binding Path=currentCategory.Name}" />
 
                         <DataGridTemplateColumn Header="">
                             <DataGridTemplateColumn.CellTemplate>
                                 <DataTemplate>
-                                    <!--               <CheckBox IsChecked="{Binding Path=checkedSwimmers}"  Checked="OnChecked" Margin="2,0,2,0" HorizontalAlignment="Center" VerticalAlignment="Stretch" />-->
+                                    <Button Click="Button_Prijavi_Click">Prijavi</Button>
                                 </DataTemplate>
                             </DataGridTemplateColumn.CellTemplate>
                         </DataGridTemplateColumn>
                     </DataGrid.Columns>
                 </DataGrid>
-                <Button Width="70" Margin="10" Click="Button_Prijavi_Click" HorizontalAlignment="Right">Prijavi</Button>
+                </GroupBox>
+                <GroupBox Header="Prijavljeni plivači" FontSize="14">
+                    <DataGrid Name="datagridSwimmersOnRace" CanUserAddRows="false" 
+                          FontSize="14" ItemsSource="{Binding swimmersOnRace}" AutoGenerateColumns="False" >
+                        <DataGrid.Columns>
+
+                            <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding Path=FirstName}" />
+                            <DataGridTextColumn Header="Prezime" Width="170" Binding="{Binding Path=LastName}" />
+                            <DataGridTextColumn Header="Spol" Width="50" Binding="{Binding Path=Gender}" />
+                            <DataGridTextColumn Header="Kategorija" Width="170" Binding="{Binding Path=currentCategory.Name}" />
+
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+                <Button Width="70" Margin="10" Click="Button_Click" HorizontalAlignment="Right">Gotovo</Button>
             </StackPanel>
         </ScrollViewer>
     </Grid>

@@ -23,7 +23,6 @@ namespace PlivanjeDesktop
     /// </summary>
     public partial class PlivačiPage : Page
     {
-        public List<Swimmer> swimmers = new List<Swimmer>();
         SwimmerViewModel svm = new SwimmerViewModel();
 
         public PlivačiPage(string _value)
@@ -58,9 +57,9 @@ namespace PlivanjeDesktop
             else
                 MessageBox.Show("Plivač nije dodan u klub");
 
-            //Neki refresh stranice
-            //CommandManager.InvalidateRequerySuggested();
-            this.UpdateLayout();
+            //Ovo je grozno, popravit ak se može
+            PlivačiPage pl = new PlivačiPage(svm.clubId);
+            this.NavigationService.Navigate(pl);
         }
 
         private void Button_Isclani_Click(object sender, RoutedEventArgs e)
@@ -71,9 +70,10 @@ namespace PlivanjeDesktop
                 MessageBox.Show("Plivač je uspješno iščlanjen iz kluba");
             else
                 MessageBox.Show("Plivač nije iščlanjen iz kluba");
-
-            //Neki refresh stranice
-            this.InvalidateVisual();
+            
+            //Ovo je grozno, popravit ak se može
+            PlivačiPage pl = new PlivačiPage(svm.clubId);
+            this.NavigationService.Navigate(pl);
         }
     }
 }

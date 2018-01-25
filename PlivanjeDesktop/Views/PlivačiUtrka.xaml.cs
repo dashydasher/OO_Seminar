@@ -22,18 +22,32 @@ namespace PlivanjeDesktop.Views
     /// </summary>
     public partial class PlivačiUtrka : Window
     {
+        SwimmerRaceViewModel svm = new SwimmerRaceViewModel();
         public PlivačiUtrka(int raceId)
         {
             InitializeComponent();
-            var svm = new SwimmerViewModel();
-            var cp = new ClubProcessor();
-            svm.LoadSwimmersByClub(cp.getMyClubId(UserModel.Id));
+            svm.LoadSwimmers(raceId);
             this.DataContext = svm;
         }
 
         private void Button_Prijavi_Click(object sender, RoutedEventArgs e)
         {
-            //foreach ()
+            SwimmerModel selectedSwimmer = (SwimmerModel)datagridSwimmers.SelectedItem;
+            var success = svm.addSwimmerToRace(selectedSwimmer.Id);
+            if (!success)
+            {
+                MessageBox.Show("Nije moguće prijaviti plivača. Provjerite poklapa li se spol i kategorija plivača sa spolom i kategorijom utrke.");
+                return;
+            }
+
+            //Ovo je grozno, popravit ak se može
+            PlivačiUtrka pu = new PlivačiUtrka(svm.raceId);
+            pu.Show();
+            this.Close();
+        }
+        
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }

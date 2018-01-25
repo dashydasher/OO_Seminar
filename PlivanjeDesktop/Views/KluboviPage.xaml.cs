@@ -23,8 +23,6 @@ namespace PlivanjeDesktop
     /// </summary>
     public partial class KluboviPage : Page
     {
-        private List<Club> clubs = new List<Club>();
-
         ClubViewModel clubViewModel = new ClubViewModel();
 
         public KluboviPage()
@@ -37,8 +35,6 @@ namespace PlivanjeDesktop
             {
                 trenerKlub.Visibility = Visibility.Visible;
             }
-
-
         }
 
 

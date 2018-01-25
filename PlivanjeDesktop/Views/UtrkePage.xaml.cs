@@ -1,6 +1,7 @@
 ﻿using Plivanje.Models;
 using PlivanjeDesktop.Models;
 using PlivanjeDesktop.ViewModels;
+using PlivanjeDesktop.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -41,7 +42,8 @@ namespace PlivanjeDesktop
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             RaceModel selectedRace = (RaceModel)datagridRace.SelectedItem;
-        //    PlivačiUtrka pu = new PlivačiUtrka(selectedRace.Id);
+            PlivačiUtrka pu = new PlivačiUtrka(selectedRace.Id);
+            pu.Show();
         }
     }
 }
