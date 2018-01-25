@@ -7,15 +7,16 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 
+
 namespace WebAPI.Controllers
 {
     public class SwimmerRaceViewController : ApiController
     {
-        // GET: tables/SwimmerRaceView
+        // GET: tables/SwimmerView
         public IEnumerable<SwimmerRaceView> Get()
         {
-            var repo = new SwimmerRepository();
-            var items = repo.GetListOfSwimmerRaceViews();
+            var repo = new RaceRepository();
+            var items = repo.GetListOfSwimmerRaceView();
             var myList = new List<SwimmerRaceView>();
             foreach (var item in items)
             {
@@ -24,10 +25,10 @@ namespace WebAPI.Controllers
             return myList;
         }
 
-        // GET: tables/SwimmerRaceView/5
+        // GET: tables/SwimmerView/5
         public SwimmerRaceView Get(int id)
         {
-            var repo = new SwimmerRepository();
+            var repo = new RaceRepository();
             return repo.GetSwimmerRaceView(id);
         }
     }
