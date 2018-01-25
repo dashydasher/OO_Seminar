@@ -88,6 +88,7 @@
     <Compile Include="Mappings\StyleMap.cs" />
     <Compile Include="Mappings\SwimmerMap.cs" />
     <Compile Include="Mappings\SwimmerRaceMap.cs" />
+    <Compile Include="Mappings\SwimmerRaceViewMap.cs" />
     <Compile Include="Mappings\SwimmerSeasonMap.cs" />
     <Compile Include="Mappings\SwimmerViewMap.cs" />
     <Compile Include="Models\ClubView.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="Models\Style.cs" />
     <Compile Include="Models\Swimmer.cs" />
     <Compile Include="Models\SwimmerRace.cs" />
+    <Compile Include="Models\SwimmerRaceView.cs" />
     <Compile Include="Models\SwimmerSeason.cs" />
     <Compile Include="Processors\CategoryProcessor.cs" />
     <Compile Include="Processors\ClubProcessor.cs" />
