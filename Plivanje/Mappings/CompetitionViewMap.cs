@@ -13,6 +13,7 @@ namespace Plivanje.Mappings
         public CompetitionViewMap()
         {
             Id(x => x.Id);
+            Map(x => x.Name);
             Map(x => x.TimeStart);
             Map(x => x.TimeEnd);
             Map(x => x.HallName);
