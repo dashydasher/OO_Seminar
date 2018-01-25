@@ -55,11 +55,10 @@ namespace Plivanje.Repositories
                         race.Refereee = result.Refereee;
                         race.Refereee.FirstName = result.Refereee.FirstName;
                         race.Refereee.LastName = result.Refereee.LastName;
-
                         race.Style = result.Style;
                         race.Style.Name = result.Style.Name;
                         race.TimeEnd = result.TimeEnd;
-                        race.TimeStart = result.TimeEnd;
+                        race.TimeStart = result.TimeStart;
 
 
                     }

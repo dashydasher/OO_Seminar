@@ -139,9 +139,12 @@
                                         <td>
                                             @item.Race.TimeStart.ToShortDateString()
                                         </td>
+                                        @if (item.Score != 0)
+                                        {
                                         <td>
                                             @item.RaceTime.TimeOfDay
-
+                                        </td>
+                                        }
                                     </tr>
                                 }
                             }
