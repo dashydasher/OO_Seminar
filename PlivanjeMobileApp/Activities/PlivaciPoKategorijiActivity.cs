@@ -22,7 +22,7 @@ namespace PlivanjeMobileApp.Activities
         private MobileServiceClient client;
         private IMobileServiceTable<SwimmersView> swimmersTable;
         private IMobileServiceTable<Season> seasonsTable;
-        const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
+        const string applicationURL = @"https://oosemmobapp2.azurewebsites.net";
         private ClubSwimmersAdapter swimmersAdapter;
         private ArrayAdapter<string> spinnerAdapter;
         private List<KeyValuePair<string, string>> seasonsToDisplay;

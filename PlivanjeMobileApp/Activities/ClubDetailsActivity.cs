@@ -24,7 +24,7 @@ namespace PlivanjeMobileApp.Activities
         private IMobileServiceTable<Season> seasonsTable;
         private ClubSwimmersAdapter plivaciAdapter;
         private ArrayAdapter<string> spinnerAdapter;
-        const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
+        const string applicationURL = @"https://oosemmobapp2.azurewebsites.net";
         private List<KeyValuePair<string, string>> seasonToDisplay;
 
         protected override async void OnCreate(Bundle savedInstanceState)

@@ -19,7 +19,7 @@ namespace PlivanjeMobileApp.Activities
         private MobileServiceClient client;
         private IMobileServiceTable<ClubView> clubTable;
         private ClubViewAdapter kluboviAdapter;
-        const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
+        const string applicationURL = @"https://oosemmobapp2.azurewebsites.net";
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {

@@ -21,7 +21,7 @@ namespace PlivanjeMobileApp.Activities
     {
         ProgressBar progressBar;
         private MobileServiceClient client;
-        const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
+        const string applicationURL = @"https://oosemmobapp2.azurewebsites.net";
         private IMobileServiceTable<CompetitionView> competitionTable;
         private NatjecanjaAdapter adapter;
 

@@ -24,7 +24,7 @@ namespace PlivanjeMobileApp.Activities
         private IMobileServiceTable<SwimmerRaceView> swimmerRacesTable;
         private SwimmerAdapter swimmerAdapter;
         private UtrkaDetaljiAdapter utrkaAdapter;
-        const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
+        const string applicationURL = @"https://oosemmobapp2.azurewebsites.net";
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {

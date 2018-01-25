@@ -20,7 +20,7 @@ namespace PlivanjeMobileApp.Activities
     public class SearchActivity : Activity
     {
         private MobileServiceClient client;
-        const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
+        const string applicationURL = @"https://oosemmobapp2.azurewebsites.net";
         private IMobileServiceTable<SwimmersView> swimmersTable;
         private ClubSwimmersAdapter adapter;
 

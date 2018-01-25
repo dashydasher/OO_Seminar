@@ -23,7 +23,7 @@ namespace PlivanjeMobileApp.Activities
         private IMobileServiceTable<RaceView> racesTable;
         private IMobileServiceTable<CompetitionView> competitionsTable;
         private NatjecanjeDetaljiAdapter adapter;
-        const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
+        const string applicationURL = @"https://oosemmobapp2.azurewebsites.net";
 
         protected override async void OnCreate(Bundle savedInstanceState)
         {
