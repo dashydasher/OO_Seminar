@@ -16,7 +16,7 @@ namespace WebAPI.Controllers
         public IEnumerable<Record> Get()
         {
             var clas = new RecordsRepository();
-            var drzave = clas.getMenRecords();
+            var drzave = clas.getAllRecords();
             var listaImena = new List<Record>();
             foreach (var d in drzave)
             {

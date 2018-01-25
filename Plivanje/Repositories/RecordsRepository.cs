@@ -11,12 +11,26 @@ namespace Plivanje.Repositories
     {
         List<Record> getMenRecords();
         List<Record> getWomanRecords();
+        List<Record> getAllRecords();
     }
 
     public class RecordsRepository : IRecordsRepository
     {
+        public List<Record> getAllRecords()
+        {
+            List<Record> result = new List<Record>();
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (List<Record>)session.QueryOver<Record>().List();
 
-
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
 
         public List<Record> getMenRecords()
         {
@@ -32,12 +46,10 @@ namespace Plivanje.Repositories
                 }
             }
             return result;
-          
         }
 
         public List<Record> getWomanRecords()
         {
-
             List<Record> result = new List<Record>();
             var klasa = new FluentNHibernateClass();
             using (var session = klasa.OpenSession())
