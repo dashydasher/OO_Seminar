@@ -12,11 +12,18 @@ namespace Plivanje.Processors
     {
 
         private IRaceRepository _RaceRepository;
+        private IUserRepository _UserRepository;
 
         public IRaceRepository Repository
         {
             get { return _RaceRepository; }
             set { _RaceRepository = value; }
+        }
+
+        public IUserRepository userRepository
+        {
+            get { return _UserRepository; }
+            set { _UserRepository = value; }
         }
         public RaceProcessor()
         {
@@ -74,6 +81,16 @@ namespace Plivanje.Processors
         public SwimmerRace ResultIsInserted(int idRace)
         {
             return _RaceRepository.ResultIsInserted(idRace);
+        }
+        public void SetRaceReferee(int idReferee,int idRace)
+        {
+            Referee referee = new Referee();
+            referee = (Referee)_UserRepository.GetRegisteredPersonFromUserId(idReferee);
+            Race race = _RaceRepository.getRace(idRace);
+            race.Refereee = referee;
+            _RaceRepository.UpdateRace(race);
+
+
         }
     }
 }

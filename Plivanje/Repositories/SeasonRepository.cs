@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace Plivanje.Repositories
 { 
+    
     public interface ISeasonRepository
         {
             List<Season> getAllSeasons();
@@ -40,7 +41,7 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    result = session.QueryOver<Season>().Where(x => x.TimeEnd > DateTime.Now).List().FirstOrDefault();
+                    result = session.QueryOver<Season>().Where(x => x.TimeEnd>DateTime.Now).List().FirstOrDefault();
                   
                     transaction.Commit();
                 }

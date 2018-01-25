@@ -9,13 +9,12 @@ namespace Plivanje.Repositories
 {
     public interface IUserRepository
     {
-        RegisteredPerson GetUserByUsernameAndPassword(string email, string password, int roleId);
-        //IList<ClubPlayers> GetListOfClubPlayers(int id);
-        //RegisteredPerson GetRegisteredPerson(int id);
-        //void SaveUpdateRegisteredPerson(RegisteredPerson RegisteredPerson);
-        //List<User> GetUsers();
+        RegisteredPerson GetUserByUsernameAndPassword(string email, string password, int roleId);  
         int GetType(string email,string pass);
         RegisteredPerson GetRegisteredPersonFromUserId(int id);
+        void SaveUpdateRegisteredPerson(RegisteredPerson RegisteredPerson);
+
+
     }
 
     public class UserRepository : IUserRepository
@@ -113,7 +112,11 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    message = session.QueryOver<RegisteredPerson>().Where(u => u.Id == id).List().First();
+                    message = session.QueryOver<Coach>().Where(u => u.Id == id).List().First();
+                    if (message == null)
+                    {
+                        message = session.QueryOver<Referee>().Where(u => u.Id == id).List().First();
+                    }
                     transaction.Commit();
 
                 }

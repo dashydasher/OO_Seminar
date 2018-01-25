@@ -11,6 +11,8 @@ namespace Plivanje.Processors
     public class SwimmerProcessor
     {
         private ISwimmerRepository _swimmerRepository;
+        private ISeasonRepository _seasonRepository;
+        private IClubRepository _clubRepository;
 
         public ISwimmerRepository Repository
         {
@@ -18,9 +20,22 @@ namespace Plivanje.Processors
             set { _swimmerRepository = value; }
         }
 
+        public ISeasonRepository SeasonRepository
+        {
+            get { return _seasonRepository; }
+            set { _seasonRepository = value; }
+        }
+
+        public IClubRepository ClubRepository
+        {
+            get { return _clubRepository; }
+            set { _clubRepository = value; }
+        }
+
         public SwimmerProcessor()
         {
             _swimmerRepository = new SwimmerRepository();
+            _seasonRepository = new SeasonRepository();
         }
 
         public List<Swimmer> GetListOfSwimmers()
@@ -40,7 +55,7 @@ namespace Plivanje.Processors
         {
             _swimmerRepository.StoreSwimmerChanges(swimmer);
         }
-       public bool getSwimmerLicence(int idSwimmer)
+        public bool getSwimmerLicence(int idSwimmer)
         {
             return _swimmerRepository.getSwimmerLicence(idSwimmer);
         }
@@ -72,7 +87,7 @@ namespace Plivanje.Processors
             return _swimmerRepository.GetSwimmerCategory(swimmer);
         }
 
-      
+
 
         public SwimmerSeason GetSwimmerSeason(int swimmerId)
         {
@@ -87,16 +102,16 @@ namespace Plivanje.Processors
         {
             return _swimmerRepository.GetMyClub(swimmerId, seasonId);
         }
-       public List<Swimmer> GetSwimmersInClubSeason(int clubId, int seasonId)
+        public List<Swimmer> GetSwimmersInClubSeason(int clubId, int seasonId)
         {
             return _swimmerRepository.GetSwimmersInClubSeason(clubId, seasonId);
         }
 
-       public List<Swimmer> GetSwimmersByCategory(string category)
+        public List<Swimmer> GetSwimmersByCategory(string category)
         {
             return _swimmerRepository.GetSwimmersByCategory(category);
         }
-       public List<Swimmer> GetSwimmersByCategoryAndClub(string category, string club)
+        public List<Swimmer> GetSwimmersByCategoryAndClub(string category, string club)
         {
             return _swimmerRepository.GetSwimmersByCategoryAndClub(category, club);
         }
@@ -114,6 +129,18 @@ namespace Plivanje.Processors
         {
             return _swimmerRepository.GetSwimmersFromCategory(category);
         }
+
+        public void AddSwimmerToClub(int idSwimmer,int idClub) {
+            Swimmer s = getSwimmer(idSwimmer);
+            SwimmerSeason swimmerSeason = new SwimmerSeason();
+            swimmerSeason.Season = _seasonRepository.getNowSeason();
+            swimmerSeason.Swimmer = s;
+            swimmerSeason.Club = _clubRepository.getClub(idClub);
+            swimmerSeason.Category = GetSwimmerCategory(s);
+
+            UpdateSwimmerSeason(swimmerSeason);
+
+            }
 
      
     }

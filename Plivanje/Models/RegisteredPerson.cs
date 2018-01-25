@@ -10,5 +10,7 @@ namespace Plivanje.Models
     {
         public virtual string EMail { get; set; }
         public virtual string Password { get; set; }
+
+
     }
 }
