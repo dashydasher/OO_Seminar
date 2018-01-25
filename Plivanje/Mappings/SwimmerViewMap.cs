@@ -13,6 +13,7 @@ namespace Plivanje.Mappings
         public SwimmerViewMap()
         {
             Id(x => x.Id);
+            Map(x => x.IdSwimmer);
             Map(x => x.FirstName);
             Map(x => x.LastName);
             Map(x => x.DateOfBirth);

@@ -42,16 +42,18 @@ namespace PlivanjeMobileApp.Activities
             listViewClubSwimmers.Adapter = adapter;
 
             var swimmers = await swimmersTable
-                .Where(e => e.TimeStart.Year == DateTime.Today.Year)
                 .ToListAsync();
 
             adapter.Clear();
             foreach (SwimmersView current in swimmers)
             {
                 if (
+                    (
                     Regex.IsMatch((current.LastName.Trim().ToLower() + " " + current.FirstName.Trim()).ToLower(), ".*" + pretrazujem.Trim().ToLower() + ".*")
                     ||
                     Regex.IsMatch((current.FirstName.Trim().ToLower() + " " + current.LastName.Trim()).ToLower(), ".*" + pretrazujem.Trim().ToLower() + ".*")
+                    ) 
+                    && current.TimeStart.Year == DateTime.Today.Year
                     )
                 {
                     adapter.Add(current);

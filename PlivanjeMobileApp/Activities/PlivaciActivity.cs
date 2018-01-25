@@ -44,13 +44,16 @@ namespace PlivanjeMobileApp.Activities
             }
 
             swimmersTable = client.GetTable<SwimmersView>();
-            var swimmers = await swimmersTable
-                .Where(e => e.TimeStart.Year == DateTime.Today.Year)
-                .ToListAsync();
+            var swimmers = await swimmersTable.ToListAsync();
 
             List<string> swimmerNames = new List<string>();
             foreach (SwimmersView current in swimmers)
-                swimmerNames.Add(current.FirstName.Trim() + " " + current.LastName.Trim());
+            {
+                if (current.TimeStart.Year == DateTime.Today.Year)
+                {
+                    swimmerNames.Add(current.FirstName.Trim() + " " + current.LastName.Trim());
+                }
+            }
 
             AutoCompleteTextView textView = FindViewById<AutoCompleteTextView>(Resource.Id.autocomplete_plivac);
             var adapter = new ArrayAdapter<String>(this, Resource.Layout.searchListItem, swimmerNames);

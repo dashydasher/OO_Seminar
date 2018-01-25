@@ -12,6 +12,7 @@ namespace Plivanje.Models
         public virtual string Gender { get; set; }
         public virtual string IdClub { get; set; }
         public virtual string IdSeason { get; set; }
+        public virtual int IdSwimmer { get; set; }
         public virtual string IdCategory { get; set; }
         public virtual int Score { get; set; }
         public virtual DateTime TimeStart { get; set; }

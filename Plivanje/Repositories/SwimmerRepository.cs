@@ -447,7 +447,7 @@ namespace Plivanje.Repositories
             {
                 using (var transaction = session.BeginTransaction())
                 {
-                    result = (SwimmerView)session.QueryOver<SwimmerView>().Where(x => x.Id == id).List().FirstOrDefault();
+                    result = (SwimmerView)session.QueryOver<SwimmerView>().Where(x => x.IdSwimmer == id).List().FirstOrDefault();
                     transaction.Commit();
                 }
             }

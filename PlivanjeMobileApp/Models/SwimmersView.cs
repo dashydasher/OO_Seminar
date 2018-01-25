@@ -39,6 +39,9 @@ namespace PlivanjeMobileApp.Models
         [JsonProperty(PropertyName = "idCategory")]
         public string IdCategory { get; set; }
 
+        [JsonProperty(PropertyName = "idSwimmer")]
+        public string IdSwimmer { get; set; }
+
         [JsonProperty(PropertyName = "score")]
         public int Score { get; set; }
 

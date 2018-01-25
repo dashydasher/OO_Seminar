@@ -47,7 +47,7 @@ namespace PlivanjeMobileApp.Activities
             swimmersTable = client.GetTable<SwimmersView>();
             swimmerRacesTable = client.GetTable<SwimmerRaceView>();
 
-            List<SwimmersView> swimmers = await swimmersTable.Where(e => e.Id == idPlivaca).ToListAsync();
+            List<SwimmersView> swimmers = await swimmersTable.Where(e => e.IdSwimmer == idPlivaca).ToListAsync();
             List<SwimmerRaceView> swimmerRaces = await swimmerRacesTable.Where(e => e.IdSwimmer == idPlivaca).ToListAsync();
 
             swimmerAdapter = new SwimmerAdapter(this, Resource.Layout.SezonaPlivaca);
