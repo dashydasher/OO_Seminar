@@ -53,18 +53,20 @@ namespace PlivanjeMobileApp.Activities
             textArea3.Text = "Sudi: " + Referee;
 
             swimmersTable = client.GetTable<SwimmerRaceView>();
-            List<SwimmerRaceView> list = await swimmersTable
-                .Where(e => e.IdRace == idRace)
-                .OrderByDescending(e => e.Score)
-                .ToListAsync();
+            List<SwimmerRaceView> list = await swimmersTable.ToListAsync();
 
             adapter = new UtrkaDetaljiAdapter(this, Resource.Layout.PlivaciUtrkaOsnovnoLayout, isUtrkaLayout:true);
             var listView = FindViewById<ListView>(Resource.Id.listView1);
             listView.Adapter = adapter;
 
             adapter.Clear();
-            foreach (SwimmerRaceView current in list)
-                adapter.Add(current);
+            foreach (SwimmerRaceView current in list.OrderByDescending(e => e.Score))
+            {
+                if (current.IdRace == idRace)
+                {
+                    adapter.Add(current);
+                }
+            }
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

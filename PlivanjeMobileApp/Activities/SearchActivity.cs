@@ -41,8 +41,7 @@ namespace PlivanjeMobileApp.Activities
             var listViewClubSwimmers = FindViewById<ListView>(Resource.Id.plivaci);
             listViewClubSwimmers.Adapter = adapter;
 
-            var swimmers = await swimmersTable
-                .ToListAsync();
+            var swimmers = await swimmersTable.ToListAsync();
 
             adapter.Clear();
             foreach (SwimmersView current in swimmers)

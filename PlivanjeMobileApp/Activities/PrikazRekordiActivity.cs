@@ -50,14 +50,10 @@ namespace PlivanjeMobileApp.Activities
 
             recordTable = client.GetTable<Record>();
 
-            var records = await recordTable
-                .OrderBy(e => e.Style)
-                .ThenBy(e => e.Length)
-                .ThenBy(e => e.Category)
-                .ToListAsync();
+            var records = await recordTable.ToListAsync();
 
             adapter.Clear();
-            foreach (Record current in records)
+            foreach (Record current in records.OrderBy(e => e.Style).ThenBy(e => e.Length).ThenBy(e => e.Category))
                 if (current.Gender.ToLower().Equals(gender.ToLower()))
                 {
                     adapter.Add(current);

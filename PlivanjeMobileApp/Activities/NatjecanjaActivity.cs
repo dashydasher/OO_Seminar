@@ -39,13 +39,10 @@ namespace PlivanjeMobileApp.Activities
             listCompetition.Adapter = adapter;
 
             competitionTable = client.GetTable<CompetitionView>();
-            var competitions = await competitionTable
-                .OrderByDescending(e => e.TimeStart)
-                .Take(50)
-                .ToListAsync();
+            var competitions = await competitionTable.ToListAsync();
 
             adapter.Clear();
-            foreach (CompetitionView current in competitions)
+            foreach (CompetitionView current in competitions.OrderByDescending(e => e.TimeStart).Take(50))
                 adapter.Add(current);
 
             progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar1);

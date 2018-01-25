@@ -48,11 +48,11 @@ namespace PlivanjeMobileApp.Activities
             listViewClubSwimmers.Adapter = swimmersAdapter;
 
             seasonsTable = client.GetTable<Season>();
-            var seasons = await seasonsTable.OrderByDescending(e => e.TimeStart).ToListAsync();
+            var seasons = await seasonsTable.ToListAsync();
 
             List<string> seasonNames = new List<string>();
             seasonsToDisplay = new List<KeyValuePair<string, string>>();
-            foreach (Season current in seasons)
+            foreach (Season current in seasons.OrderByDescending(e => e.TimeStart))
             {
                 seasonsToDisplay.Add(new KeyValuePair<string, string>(current.TimeStart.ToString("yyyy") + "-" + current.TimeEnd.ToString("yyyy"), current.Id.ToString()));
                 seasonNames.Add(current.TimeStart.ToString("yyyy") + "-" + current.TimeEnd.ToString("yyyy"));
@@ -74,13 +74,15 @@ namespace PlivanjeMobileApp.Activities
 
         private async void FillAdapterWithData(ClubSwimmersAdapter adapter, IMobileServiceTable<SwimmersView> swimmersTable, string catId, string seasonId)
         {
-            List<SwimmersView> list = await swimmersTable
-                    .Where(e => e.IdCategory == catId)
-                    .Where(e => e.IdSeason == seasonId)
-                    .ToListAsync();
+            List<SwimmersView> list = await swimmersTable.ToListAsync();
             adapter.Clear();
             foreach (SwimmersView current in list)
-                adapter.Add(current);
+            {
+                if (current.IdCategory == catId && current.IdSeason == seasonId)
+                {
+                    adapter.Add(current);
+                }
+            }
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)

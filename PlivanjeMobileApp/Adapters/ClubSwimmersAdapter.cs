@@ -59,7 +59,7 @@ namespace PlivanjeMobileApp.Adapters
             if (e.Event.Action == MotionEventActions.Up)
             {
                 var activity2 = new Intent(activity, typeof(PlivacActivity));
-                activity2.PutExtra("id", currentItem.Id);
+                activity2.PutExtra("id", currentItem.IdSwimmer);
                 activity2.PutExtra("label", currentItem.FirstName.Trim() + " " + currentItem.LastName.Trim());
                 activity2.PutExtra("gender", currentItem.Gender);
                 activity2.PutExtra("dateOfBirth", currentItem.DateOfBirth.ToString("dd.MM.yyyy"));

@@ -47,8 +47,8 @@ namespace PlivanjeMobileApp.Activities
             swimmersTable = client.GetTable<SwimmersView>();
             swimmerRacesTable = client.GetTable<SwimmerRaceView>();
 
-            List<SwimmersView> swimmers = await swimmersTable.Where(e => e.IdSwimmer == idPlivaca).ToListAsync();
-            List<SwimmerRaceView> swimmerRaces = await swimmerRacesTable.Where(e => e.IdSwimmer == idPlivaca).ToListAsync();
+            List<SwimmersView> swimmers = await swimmersTable.ToListAsync();
+            List<SwimmerRaceView> swimmerRaces = await swimmerRacesTable.ToListAsync();
 
             swimmerAdapter = new SwimmerAdapter(this, Resource.Layout.SezonaPlivaca);
             var listView = FindViewById<ListView>(Resource.Id.sezone);
@@ -58,7 +58,12 @@ namespace PlivanjeMobileApp.Activities
 
             swimmerAdapter.Clear();
             foreach (SwimmersView current in swimmers)
-                swimmerAdapter.Add(current);
+            {
+                if (current.IdSwimmer == idPlivaca)
+                {
+                    swimmerAdapter.Add(current);
+                }
+            }
 
             TextView rezultati = FindViewById<TextView>(Resource.Id.rezultati);
             Button sezonebutton = FindViewById<Button>(Resource.Id.sezonebutton);
@@ -71,7 +76,12 @@ namespace PlivanjeMobileApp.Activities
                 listView.Adapter = swimmerAdapter;
                 swimmerAdapter.Clear();
                 foreach (SwimmersView current in swimmers)
-                    swimmerAdapter.Add(current);
+                {
+                    if (current.IdSwimmer == idPlivaca)
+                    {
+                        swimmerAdapter.Add(current);
+                    }
+                }
             };
             utrkebutton.Click += delegate {
                 rezultati.Text = "Rezultati po utrkama";
@@ -80,7 +90,12 @@ namespace PlivanjeMobileApp.Activities
                 listView.Adapter = utrkaAdapter;
                 utrkaAdapter.Clear();
                 foreach (SwimmerRaceView current in swimmerRaces)
-                    utrkaAdapter.Add(current);
+                {
+                    if (current.IdSwimmer == idPlivaca)
+                    {
+                        utrkaAdapter.Add(current);
+                    }
+                }
             };
         }
 

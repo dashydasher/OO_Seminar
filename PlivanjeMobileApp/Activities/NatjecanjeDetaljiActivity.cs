@@ -37,8 +37,16 @@ namespace PlivanjeMobileApp.Activities
 
             string idCompetition = Intent.GetStringExtra("id") ?? "Data not available";
             competitionsTable = client.GetTable<CompetitionView>();
-            List<CompetitionView> natjecanjaList = await competitionsTable.Where(e => e.Id == idCompetition).ToListAsync();
-            CompetitionView competition = natjecanjaList.FirstOrDefault();
+            List<CompetitionView> natjecanjaList = await competitionsTable.ToListAsync();
+            CompetitionView competition;
+            foreach (CompetitionView current in natjecanjaList)
+            {
+                if (current.Id == idCompetition)
+                {
+                    competition = current;
+                }
+            }
+            competition = natjecanjaList.FirstOrDefault();
 
             string name = competition.Name.Trim();
             string timeStart = competition.TimeStart.ToString("dddd dd.MM.yyyy");
@@ -59,18 +67,20 @@ namespace PlivanjeMobileApp.Activities
             textArea4.Text = address + ", " + placeName;
 
             racesTable = client.GetTable<RaceView>();
-            List<RaceView> list = await racesTable
-                .Where(e => e.IdCompetition == idCompetition)
-                .OrderByDescending(e => e.TimeStart)
-                .ToListAsync();
+            List<RaceView> list = await racesTable.ToListAsync();
 
             adapter = new NatjecanjeDetaljiAdapter(this, Resource.Layout.UtrkaOsnovnoLayout);
             var listView = FindViewById<ListView>(Resource.Id.listView1);
             listView.Adapter = adapter;
 
             adapter.Clear();
-            foreach (RaceView current in list)
-                adapter.Add(current);
+            foreach (RaceView current in list.OrderByDescending(e => e.TimeStart))
+            {
+                if (current.IdCompetition == idCompetition)
+                {
+                    adapter.Add(current);
+                }
+            }
         }
 
         public override bool OnCreateOptionsMenu(IMenu menu)
