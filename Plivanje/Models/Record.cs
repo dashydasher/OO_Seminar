@@ -11,7 +11,7 @@ namespace Plivanje.Models
         public virtual string FirstName { get; set; }
         public virtual string LastName { get; set; }
         public virtual int DateOfBirth { get; set; }
-        public virtual Gender Gender { get; set; }
+        public virtual string Gender { get; set; }
         public virtual string Category { get; set; }
         public virtual string Style { get; set; }
         public virtual int Length { get; set; }

@@ -21,7 +21,7 @@ namespace PlivanjeMobileApp.Activities
     {
         ProgressBar progressBar;
         private MobileServiceClient client;
-        const string applicationURL = @"https://oosemmobapp.azurewebsites.net";
+        const string applicationURL = @"https://oosemmobapp2.azurewebsites.net";
         private IMobileServiceTable<Record> recordTable;
         private PrikazRekordiAdapter adapter;
 
@@ -51,7 +51,6 @@ namespace PlivanjeMobileApp.Activities
             recordTable = client.GetTable<Record>();
 
             var records = await recordTable
-                .Where(e => e.Gender == gender)
                 .OrderBy(e => e.Style)
                 .ThenBy(e => e.Length)
                 .ThenBy(e => e.Category)
@@ -59,7 +58,11 @@ namespace PlivanjeMobileApp.Activities
 
             adapter.Clear();
             foreach (Record current in records)
-                adapter.Add(current);
+                if (current.Gender.ToLower().Equals(gender.ToLower()))
+                {
+                    adapter.Add(current);
+                }
+                
 
             progressBar = FindViewById<ProgressBar>(Resource.Id.progressBar1);
             progressBar.Visibility = ViewStates.Gone;
