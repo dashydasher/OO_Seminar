@@ -88,6 +88,7 @@
     <Compile Include="Mappings\SwimmerMap.cs" />
     <Compile Include="Mappings\SwimmerRaceMap.cs" />
     <Compile Include="Mappings\SwimmerSeasonMap.cs" />
+    <Compile Include="Mappings\SwimmerViewMap.cs" />
     <Compile Include="Models\Coach.cs" />
     <Compile Include="Mappings\HallMap.cs" />
     <Compile Include="Mappings\PlaceMap.cs" />
@@ -143,6 +144,7 @@
     <Compile Include="Repositories\StyleRepository.cs" />
     <Compile Include="Repositories\SwimmerRepository.cs" />
     <Compile Include="Repositories\UserRepositorycs.cs" />
+    <Compile Include="Models\SwimmerView.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">

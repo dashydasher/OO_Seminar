@@ -31,12 +31,28 @@ namespace Plivanje.Repositories
         List<SwimmerSeason> GetSwimmerSeasons(int swimmerId);
         List<SwimmerRace> GetSwimmerRaces(int swimmerId);
         List<Swimmer> GetSwimmersFromCategory(Category category);
+        List<SwimmerView> GetListOfSwimmerViews();
+        SwimmerView GetSwimmerView(int id);
     }
 
     public class SwimmerRepository : ISwimmerRepository
     {
+        public List<SwimmerView> GetListOfSwimmerViews()
+        {
+            List<SwimmerView> result = null;
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
 
+                    result = (List<SwimmerView>)session.QueryOver<SwimmerView>().List<SwimmerView>();
 
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
 
         public Swimmer GetSwimmer(int swimmerId)
         {
@@ -422,8 +438,23 @@ namespace Plivanje.Repositories
             }
             return result;
         }
+
+        public SwimmerView GetSwimmerView(int id)
+        {
+            var result = new SwimmerView();
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (SwimmerView)session.QueryOver<SwimmerView>().Where(x => x.Id == id).List().FirstOrDefault();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
     }
-    }
+}
 
     
 
