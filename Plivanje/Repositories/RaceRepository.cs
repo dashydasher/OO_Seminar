@@ -23,10 +23,10 @@ namespace Plivanje.Repositories
         void UpdateSwimmerRace(SwimmerRace swimmerRace);
         SwimmerRace GetSwimmerRace(int idRace, int idSwimmer);
         SwimmerRace ResultIsInserted(int idRace);
-
-
-
+        List<RaceView> getRaceViews();
+        RaceView getRaceView(int id);
     }
+
     public class RaceRepository : IRaceRepository
     {
         public Race getRace(int id)
@@ -258,6 +258,39 @@ namespace Plivanje.Repositories
                 using (var transaction = session.BeginTransaction())
                 {
                     result = session.QueryOver<SwimmerRace>().Where(x => x.Race.Id == idRace && x.Score!=0).List().FirstOrDefault();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public List<RaceView> getRaceViews()
+        {
+            var result = new List<RaceView>();
+            var klasa = new FluentNHibernateClass();
+
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = (List<RaceView>)session.QueryOver<RaceView>().List<RaceView>();
+
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public RaceView getRaceView(int id)
+        {
+            RaceView result = new RaceView();
+            var klasa = new FluentNHibernateClass();
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<RaceView>().Where(x => x.Id == id).SingleOrDefault();
+
                     transaction.Commit();
                 }
             }

@@ -83,6 +83,7 @@
     <Compile Include="Mappings\LicenceSwimmerMap.cs" />
     <Compile Include="Mappings\PoolMap.cs" />
     <Compile Include="Mappings\RaceMap.cs" />
+    <Compile Include="Mappings\RaceViewMap.cs" />
     <Compile Include="Mappings\RecordMap.cs" />
     <Compile Include="Mappings\RefereeMap.cs" />
     <Compile Include="Mappings\SeasonMap.cs" />
@@ -114,6 +115,7 @@
     <Compile Include="Models\Place.cs" />
     <Compile Include="Models\Pool.cs" />
     <Compile Include="Models\Race.cs" />
+    <Compile Include="Models\RaceView.cs" />
     <Compile Include="Models\Record.cs" />
     <Compile Include="Models\RegisteredPerson.cs" />
     <Compile Include="Models\Season.cs" />
