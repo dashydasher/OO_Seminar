@@ -9,24 +9,25 @@
       Title="RekordiPage" >
 
     <Grid>
-        <StackPanel>
-        <GroupBox Header="Rekordi" FontSize="20">
-            <DataGrid Name="datagridRecord" CanUserAddRows="false"
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <StackPanel>
+                <GroupBox Header="Rekordi" FontSize="20">
+                    <DataGrid Name="datagridRecord" CanUserAddRows="false"
                           FontSize="20" ItemsSource="{Binding records}" AutoGenerateColumns="False" >
-                <DataGrid.Columns>
+                        <DataGrid.Columns>
 
-                    <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding Path=FirstName}" />
-                    <DataGridTextColumn Header="Prezime" Width="200" Binding="{Binding Path=LastName}" />
-                        <DataGridTextColumn Header="Kategorija" Width="150" Binding="{Binding Path=Category}" />
-                        <DataGridTextColumn Header="Stil" Width="150" Binding="{Binding Path=Style}" />
-                        <DataGridTextColumn Header="Duljina" Width="150" Binding="{Binding Path=Length}" />
-                        <DataGridTextColumn Header="Mjesto" Width="150" Binding="{Binding Path=Place}" />
-                        <DataGridTextColumn Header="Datum" Width="180" Binding="{Binding Path=Date, StringFormat=\{0:dd.MM.yy\}}" />
-                        <DataGridTextColumn Header="Rezultat" Width="230" Binding="{Binding Path=RaceTime}" />
-                    </DataGrid.Columns>
-            </DataGrid>
-        </GroupBox>
-        </StackPanel>
-
+                            <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding Path=FirstName}" />
+                            <DataGridTextColumn Header="Prezime" Width="200" Binding="{Binding Path=LastName}" />
+                            <DataGridTextColumn Header="Kategorija" Width="150" Binding="{Binding Path=Category}" />
+                            <DataGridTextColumn Header="Stil" Width="150" Binding="{Binding Path=Style}" />
+                            <DataGridTextColumn Header="Duljina" Width="150" Binding="{Binding Path=Length}" />
+                            <DataGridTextColumn Header="Mjesto" Width="150" Binding="{Binding Path=Place}" />
+                            <DataGridTextColumn Header="Datum" Width="180" Binding="{Binding Path=Date, StringFormat=\{0:dd.MM.yy\}}" />
+                            <DataGridTextColumn Header="Rezultat" Width="230" Binding="{Binding Path=RaceTime}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>

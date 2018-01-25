@@ -33,7 +33,7 @@ namespace PlivanjeDesktop.Views
 
         private void Button_Prijavi_Click(object sender, RoutedEventArgs e)
         {
-            foreach ()
+            //foreach ()
             this.Close();
         }
     }

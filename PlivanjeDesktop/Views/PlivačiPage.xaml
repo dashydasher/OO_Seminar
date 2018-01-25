@@ -9,54 +9,56 @@
       Title="PlivačiPage" >
 
     <Grid>
-        <StackPanel Width="1200">
-        <StackPanel Visibility="Hidden" Name="trenerPanel">
-            <GroupBox Header="Plivači mog kluba" FontSize="20">
-                <DataGrid Name="datagridClubSwimmers" CanUserAddRows="false" 
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <StackPanel Width="1200">
+                <StackPanel Visibility="Hidden" Name="trenerPanel">
+                    <GroupBox Header="Plivači mog kluba" FontSize="20">
+                        <DataGrid Name="datagridClubSwimmers" CanUserAddRows="false" 
                           FontSize="20" ItemsSource="{Binding swimmersCoach}" AutoGenerateColumns="False" >
-                    <DataGrid.Columns>
+                            <DataGrid.Columns>
 
-                        <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding Path=FirstName}" />
-                        <DataGridTextColumn Header="Prezime" Width="200" Binding="{Binding Path=LastName}" />
-                        <DataGridTextColumn Header="Spol" Width="100" Binding="{Binding Path=Gender}" />
-                        <DataGridTextColumn Header="Datum rođenja" Width="180" Binding="{Binding Path=DateOfBirth, StringFormat=\{0:dd.MM.yy\}}" />
-                        <DataGridTextColumn Header="Klub" Width="230" Binding="{Binding Path=currentClub.Name}" />
-                        <DataGridTextColumn Header="Kategorija" Width="200" Binding="{Binding Path=currentCategory.Name}" />
+                                <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding Path=FirstName}" />
+                                <DataGridTextColumn Header="Prezime" Width="200" Binding="{Binding Path=LastName}" />
+                                <DataGridTextColumn Header="Spol" Width="100" Binding="{Binding Path=Gender}" />
+                                <DataGridTextColumn Header="Datum rođenja" Width="180" Binding="{Binding Path=DateOfBirth, StringFormat=\{0:dd.MM.yy\}}" />
+                                <DataGridTextColumn Header="Klub" Width="230" Binding="{Binding Path=currentClub.Name}" />
+                                <DataGridTextColumn Header="Kategorija" Width="200" Binding="{Binding Path=currentCategory.Name}" />
 
-                        <DataGridTemplateColumn Header="">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Click="Button_Isclani_Click">Iščlani</Button>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </GroupBox>
+                                <DataGridTemplateColumn Header="">
+                                    <DataGridTemplateColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Button Click="Button_Isclani_Click">Iščlani</Button>
+                                        </DataTemplate>
+                                    </DataGridTemplateColumn.CellTemplate>
+                                </DataGridTemplateColumn>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </GroupBox>
 
-            </StackPanel>
+                </StackPanel>
 
-            <GroupBox Header="Plivači" FontSize="20">
-                <DataGrid Name="datagridSwimmer" CanUserAddRows="false"
+                <GroupBox Header="Plivači" FontSize="20">
+                    <DataGrid Name="datagridSwimmer" CanUserAddRows="false"
                           FontSize="20" ItemsSource="{Binding swimmers}" AutoGenerateColumns="False" >
-                    <DataGrid.Columns>
+                        <DataGrid.Columns>
 
-                        <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding Path=FirstName}" />
-                        <DataGridTextColumn Header="Prezime" Width="200" Binding="{Binding Path=LastName}" />
-                        <DataGridTextColumn Header="Spol" Width="100" Binding="{Binding Path=Gender}" />
-                        <DataGridTextColumn Header="Datum rođenja" Width="180" Binding="{Binding Path=DateOfBirth, StringFormat=\{0:dd.MM.yy\}}" />
-                        <DataGridTextColumn Header="Klub" Width="230" Binding="{Binding Path=currentClub.Name}" />
-                        <DataGridTextColumn Header="Kategorija" Width="200" Binding="{Binding Path=currentCategory.Name}" />
-                        <DataGridTemplateColumn Visibility="Hidden" Header="">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Click="Button_Uclani_Click">Učlani u klub</Button>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
-                </DataGrid>
-            </GroupBox>
-        </StackPanel>
+                            <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding Path=FirstName}" />
+                            <DataGridTextColumn Header="Prezime" Width="200" Binding="{Binding Path=LastName}" />
+                            <DataGridTextColumn Header="Spol" Width="100" Binding="{Binding Path=Gender}" />
+                            <DataGridTextColumn Header="Datum rođenja" Width="180" Binding="{Binding Path=DateOfBirth, StringFormat=\{0:dd.MM.yy\}}" />
+                            <DataGridTextColumn Header="Klub" Width="230" Binding="{Binding Path=currentClub.Name}" />
+                            <DataGridTextColumn Header="Kategorija" Width="200" Binding="{Binding Path=currentCategory.Name}" />
+                            <DataGridTemplateColumn Visibility="Hidden" Header="">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="Button_Uclani_Click">Učlani u klub</Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                </GroupBox>
+            </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
