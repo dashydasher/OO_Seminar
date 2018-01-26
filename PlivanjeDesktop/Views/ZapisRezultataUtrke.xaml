@@ -1,0 +1,31 @@
+﻿<Window x:Class="PlivanjeDesktop.Views.ZapisRezultataUtrke"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:PlivanjeDesktop.Views"
+        mc:Ignorable="d"
+        Title="Zapis rezultata utrke" Height="300" Width="300" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <StackPanel Margin="8">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+            <TextBlock Margin="3" Grid.Column="0" Grid.Row="0" Text="{Binding sr.Swimmer.FirstName}"></TextBlock>
+            <TextBlock Margin="3" Grid.Column="1" Grid.Row="0" Text="{Binding sr.Swimmer.LastName}"></TextBlock>
+            <TextBlock Margin="3" Grid.Column="0" Grid.Row="1" Text="Rezultat utrke (hh:mm:ss)"></TextBlock>
+            <TextBox Margin="3" Grid.Column="1" Grid.Row="1" Name="tbResult"></TextBox>
+            <TextBlock Margin="3" Grid.Column="0" Grid.Row="2" Text="Bodovi"></TextBlock>
+            <TextBox Margin="3" Grid.Column="1" Grid.Row="2" Name="tbScore"></TextBox>
+            </Grid>
+            <Button Margin="10" Width="80" HorizontalAlignment="Right" Click="Button_Unesi">Unesi</Button>
+        </StackPanel>
+    </Grid>
+</Window>

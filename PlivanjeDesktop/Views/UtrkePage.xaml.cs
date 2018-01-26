@@ -35,13 +35,27 @@ namespace PlivanjeDesktop
             this.DataContext = rvm;
             if (UserModel.role!=null && UserModel.role.Equals("trener"))
             {
+                datagridRace.ColumnFromDisplayIndex(10).Visibility = Visibility.Collapsed;
                 datagridRace.ColumnFromDisplayIndex(9).Visibility = Visibility.Visible;
             }
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             RaceModel selectedRace = (RaceModel)datagridRace.SelectedItem;
+            PlivačiUtrka pu = new PlivačiUtrka(selectedRace.Id);
+            pu.Show();
+        }
+
+        private void Button_Race_Click(object sender, RoutedEventArgs e)
+        {
+            RaceModel selectedRace = (RaceModel)datagridRace.SelectedItem;
+            if (UserModel.role!=null && selectedRace.Referee.Id!=UserModel.Id)
+            {
+                MessageBox.Show("Možete mjenjati samo utrke na kojima ste sudili.");
+                return;
+            }
             PlivačiUtrka pu = new PlivačiUtrka(selectedRace.Id);
             pu.Show();
         }

@@ -17,17 +17,25 @@
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Stil" Width="*" Binding="{Binding Path=Style.Name}" />
                             <DataGridTextColumn Header="Kategorija" Width="180" Binding="{Binding Path=Category.Name}" />
-                            <DataGridTextColumn Header="Početak" Width="250" Binding="{Binding Path=TimeStart, StringFormat=\{0:dd.MM.yy hh:mm tt\}}" />
-                            <DataGridTextColumn Header="Kraj" Width="250" Binding="{Binding Path=TimeEnd, StringFormat=\{0:dd.MM.yy hh:mm tt\}}" />
+                            <DataGridTextColumn Header="Početak" Width="220" Binding="{Binding Path=TimeStart, StringFormat=\{0:dd.MM.yy hh:mm tt\}}" />
+                            <DataGridTextColumn Header="Kraj" Width="220" Binding="{Binding Path=TimeEnd, StringFormat=\{0:dd.MM.yy hh:mm tt\}}" />
                             <DataGridTextColumn Header="Spol" Width="80" Binding="{Binding Path=Gender}" />
                             <DataGridTextColumn Header="Bazen" Width="80" Binding="{Binding Path=Pool.Length}" />
                             <DataGridTextColumn Header="Natjecanje" Width="200" Binding="{Binding Path=Competition.Name}" />
                             <DataGridTextColumn Header="Duljina" Width="80" Binding="{Binding Path=Length.Len}" />
-                            <DataGridTextColumn Header="Sudac" Width="180" Binding="{Binding Path=Referee.LastName}" />
-                            <DataGridTemplateColumn Header="" Visibility="Hidden">
+                            <DataGridTextColumn Header="Sudac" Width="160" Binding="{Binding Path=Referee.LastName}" />
+                            <DataGridTemplateColumn Header="" Visibility="Collapsed">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
                                         <Button Click="Button_Click">Prijavi plivače</Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                            
+                            <DataGridTemplateColumn Header="">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="Button_Race_Click">Plivači</Button>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

@@ -12,40 +12,70 @@ namespace PlivanjeDesktop.ViewModels
     class SwimmerRaceViewModel
     {
 
-        public List<SwimmerModel> swimmersOnRace { get; set; }
+        public List<SwimmerRaceModel> swimmersOnRace { get; set; }
         public List<SwimmerModel> swimmers { get; set; }
         public int clubId = -1;
         public int raceId = -1;
 
         SwimmerProcessor sp = new SwimmerProcessor();
         RaceProcessor rp = new RaceProcessor();
+        ClubProcessor cp = new ClubProcessor();
 
         public void LoadSwimmers(int raceId)
         {
             this.raceId = raceId;
-            var cp = new ClubProcessor();
+
+            if (UserModel.role!=null && UserModel.role.Equals("trener"))
+                LoadCoachesSwimmers();
+            else
+                LoadSwimmersRace();
+
+        }
+
+        private void LoadSwimmersRace()
+        {
+            var list = rp.SwimmersOnRace(raceId);
+            swimmersOnRace = new List<SwimmerRaceModel>();
+            foreach (var svmr in list)
+                swimmersOnRace.Add(new SwimmerRaceModel
+                {
+                    Id = svmr.Swimmer.Id,
+                    FirstName = svmr.Swimmer.FirstName,
+                    LastName = svmr.Swimmer.LastName,
+                    Gender = svmr.Swimmer.Gender,
+                    currentCategory = sp.GetSwimmerCategory(svmr.Swimmer),
+                    currentClub = sp.getMyClub(svmr.Swimmer.Id, cp.ValidSeason().Id),
+                    RaceId = raceId,
+                    Score = svmr.Score
+                });
+        }
+
+        private void LoadCoachesSwimmers()
+        {
+            
             clubId = cp.getMyClubId(UserModel.Id);
 
             swimmers = new List<SwimmerModel>();
-            swimmersOnRace = new List<SwimmerModel>();
+            swimmersOnRace = new List<SwimmerRaceModel>();
             var swimmersRace = rp.SwimmersOnRace(raceId);
             List<int> swimmerRaceIds = new List<int>();
             foreach (var swimmer in swimmersRace)
                 swimmerRaceIds.Add(swimmer.Swimmer.Id);
 
-            var swimmersClub = sp.GetSwimmersInClubSeason(clubId,cp.ValidSeason().Id);
-            foreach(var swimmer in swimmersClub)
+            var swimmersClub = sp.GetSwimmersInClubSeason(clubId, cp.ValidSeason().Id);
+            foreach (var swimmer in swimmersClub)
             {
                 if (swimmerRaceIds.Contains(swimmer.Id))
-                    swimmersOnRace.Add(new SwimmerModel
+                    swimmersOnRace.Add(new SwimmerRaceModel
                     {
                         FirstName = swimmer.FirstName,
                         LastName = swimmer.LastName,
                         Id = swimmer.Id,
                         currentCategory = sp.GetSwimmerCategory(swimmer),
                         currentClub = cp.getClub(clubId),
-                        DateOfBirth = swimmer.DateOfBirth,
-                        Gender = swimmer.Gender
+                        Gender = swimmer.Gender,
+                        Score = rp.GetSwimmerRace(raceId,swimmer.Id).Score,
+                        RaceId = raceId
                     });
                 else
                     swimmers.Add(new SwimmerModel
@@ -59,7 +89,6 @@ namespace PlivanjeDesktop.ViewModels
                         Gender = swimmer.Gender
                     });
             }
-
         }
 
         public bool addSwimmerToRace(int swimmerId)

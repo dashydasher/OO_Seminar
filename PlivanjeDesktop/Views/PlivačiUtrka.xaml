@@ -5,31 +5,31 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:PlivanjeDesktop.Views"
         mc:Ignorable="d"
-        Title="PlivačiUtrka" Height="650" Width="800" WindowStartupLocation="CenterScreen">
+        Title="Plivači na utrci" Height="650" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel Width="700">
-                <GroupBox Header="Plivači" FontSize="14">
+                <GroupBox Header="Plivači" FontSize="14" Name="trenerGB" Visibility="Collapsed">
                 <DataGrid Name="datagridSwimmers" CanUserAddRows="false" 
                           FontSize="14" ItemsSource="{Binding swimmers}" AutoGenerateColumns="False" >
                     <DataGrid.Columns>
 
                         <DataGridTextColumn Header="Ime" Width="*" Binding="{Binding Path=FirstName}" />
-                        <DataGridTextColumn Header="Prezime" Width="150" Binding="{Binding Path=LastName}" />
+                        <DataGridTextColumn Header="Prezime" Width="140" Binding="{Binding Path=LastName}" />
                         <DataGridTextColumn Header="Spol" Width="50" Binding="{Binding Path=Gender}" />
-                        <DataGridTextColumn Header="Kategorija" Width="150" Binding="{Binding Path=currentCategory.Name}" />
+                        <DataGridTextColumn Header="Kategorija" Width="140" Binding="{Binding Path=currentCategory.Name}" />
 
-                        <DataGridTemplateColumn Header="">
-                            <DataGridTemplateColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Button Click="Button_Prijavi_Click">Prijavi</Button>
-                                </DataTemplate>
-                            </DataGridTemplateColumn.CellTemplate>
-                        </DataGridTemplateColumn>
-                    </DataGrid.Columns>
+                            <DataGridTemplateColumn Header="" Visibility="Collapsed">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="Button_Prijavi_Click">Prijavi</Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
                 </DataGrid>
                 </GroupBox>
-                <GroupBox Header="Prijavljeni plivači" FontSize="14">
+                <GroupBox Header="Plivači na utrci" FontSize="14">
                     <DataGrid Name="datagridSwimmersOnRace" CanUserAddRows="false" 
                           FontSize="14" ItemsSource="{Binding swimmersOnRace}" AutoGenerateColumns="False" >
                         <DataGrid.Columns>
@@ -38,7 +38,14 @@
                             <DataGridTextColumn Header="Prezime" Width="170" Binding="{Binding Path=LastName}" />
                             <DataGridTextColumn Header="Spol" Width="50" Binding="{Binding Path=Gender}" />
                             <DataGridTextColumn Header="Kategorija" Width="170" Binding="{Binding Path=currentCategory.Name}" />
-
+                            <DataGridTextColumn Header="Bodovi" Width="80" Binding="{Binding Path=Score}" />
+                            <DataGridTemplateColumn Header="" Visibility="Collapsed">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <Button Click="Button_Zapisi">Zapiši rezultat</Button>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
                         </DataGrid.Columns>
                     </DataGrid>
                 </GroupBox>

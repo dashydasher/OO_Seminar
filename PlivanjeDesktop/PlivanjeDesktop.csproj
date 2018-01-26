@@ -58,10 +58,12 @@
     <Compile Include="Models\CompetitionModel.cs" />
     <Compile Include="Models\HallModel.cs" />
     <Compile Include="Models\RaceModel.cs" />
+    <Compile Include="Models\SwimmerRaceModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="ViewModels\HallViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\SwimmerRaceViewModel.cs" />
+    <Compile Include="ViewModels\SwimmerResultViewModel.cs" />
     <Compile Include="ViewModels\UserViewModel.cs" />
     <Compile Include="Views\App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
@@ -100,6 +102,9 @@
     <Compile Include="ViewModels\SwimmerViewModel.cs" />
     <Compile Include="Views\UtrkePage.xaml.cs">
       <DependentUpon>UtrkePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ZapisRezultataUtrke.xaml.cs">
+      <DependentUpon>ZapisRezultataUtrke.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +169,10 @@
     <Page Include="Views\Početna.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ZapisRezultataUtrke.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

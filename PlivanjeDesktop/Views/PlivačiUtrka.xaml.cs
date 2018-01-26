@@ -26,6 +26,16 @@ namespace PlivanjeDesktop.Views
         public PlivačiUtrka(int raceId)
         {
             InitializeComponent();
+            if (UserModel.role != null && UserModel.role.Equals("trener"))
+            {
+                trenerGB.Visibility = Visibility.Visible;
+                datagridSwimmers.ColumnFromDisplayIndex(4).Visibility = Visibility.Visible;
+                datagridSwimmersOnRace.ColumnFromDisplayIndex(4).Visibility = Visibility.Collapsed;
+            }
+            if (UserModel.role!=null && UserModel.role.Equals("sudac"))
+            {
+                datagridSwimmersOnRace.ColumnFromDisplayIndex(5).Visibility = Visibility.Visible;
+            }
             svm.LoadSwimmers(raceId);
             this.DataContext = svm;
         }
@@ -49,6 +59,18 @@ namespace PlivanjeDesktop.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void Button_Zapisi(object sender, RoutedEventArgs e)
+        {
+            SwimmerRaceModel selectedSwimmerRace = (SwimmerRaceModel)datagridSwimmersOnRace.SelectedItem;
+            if (selectedSwimmerRace.Score!=0)
+            {
+                MessageBox.Show("Odabrani plivač već ima zapisan rezultat");
+                return;
+            }
+            ZapisRezultataUtrke z = new ZapisRezultataUtrke(selectedSwimmerRace.Id, selectedSwimmerRace.RaceId);
+            z.Show();
         }
     }
 }

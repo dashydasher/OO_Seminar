@@ -43,7 +43,7 @@ namespace PlivanjeDesktop
             if (UserModel.role.Equals("trener"))
             {
                 trenerPanel.Visibility = Visibility.Visible;
-                datagridSwimmer.ColumnFromDisplayIndex(4).Visibility = Visibility.Hidden;
+                datagridSwimmer.ColumnFromDisplayIndex(4).Visibility = Visibility.Collapsed;
                 datagridSwimmer.ColumnFromDisplayIndex(6).Visibility = Visibility.Visible;
             }
         }
