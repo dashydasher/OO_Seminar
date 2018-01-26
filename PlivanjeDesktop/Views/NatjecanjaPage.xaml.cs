@@ -27,7 +27,6 @@ namespace PlivanjeDesktop
         public List<Hall> halls;
         
         SwimmerViewModel svm = new SwimmerViewModel();
-        HallViewModel hvm = new HallViewModel();
         CompetitionViewModel cvm;
         public NatjecanjaPage()
         {
@@ -35,7 +34,6 @@ namespace PlivanjeDesktop
 
             cvm = new CompetitionViewModel();
             cvm.LoadCompetitions();
-            hvm.LoadHalls();
             if (UserModel.role != null && UserModel.role.Equals("trener"))
             {
                 cvm.LoadCoachesCompetitions(UserModel.Id);

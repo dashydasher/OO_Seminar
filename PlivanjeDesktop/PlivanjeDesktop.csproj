@@ -61,7 +61,6 @@
     <Compile Include="Models\SwimmerRaceModel.cs" />
     <Compile Include="Models\SwimmerResultModel.cs" />
     <Compile Include="Models\UserModel.cs" />
-    <Compile Include="ViewModels\HallViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />
     <Compile Include="ViewModels\SwimmerRaceViewModel.cs" />
     <Compile Include="ViewModels\SwimmerResultViewModel.cs" />
@@ -78,7 +77,7 @@
     <Compile Include="Views\PrijavaPage.xaml.cs">
       <DependentUpon>PrijavaPage.xaml</DependentUpon>
     </Compile>
-	<Compile Include="Views\PočetnaPage.xaml.cs">
+    <Compile Include="Views\PočetnaPage.xaml.cs">
       <DependentUpon>PočetnaPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\KluboviPage.xaml.cs">
