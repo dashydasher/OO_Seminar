@@ -4,6 +4,10 @@ using Plivanje.Models;
 using Plivanje.Repositories;
 using Plivanje.Processors;
 using System.Collections.Generic;
+using System.Net;
+using System.IO;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Unit_Test
 {
@@ -210,7 +214,51 @@ namespace Unit_Test
         }
 
 
+        [TestMethod]
+        public void PostRequestOnRaceAPI()
+        {
+            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://oosemmobapp2.azurewebsites.net/tables/race");
+            httpWebRequest.ContentType = "application/json";
+            httpWebRequest.Method = "POST";
 
+            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            {
+                StringBuilder sb = new StringBuilder();
+                JsonWriter jw = new JsonTextWriter(new StringWriter(sb));
+                jw.WriteStartObject();
+                jw.WritePropertyName("timeStart");
+                jw.WriteValue("2018-02-18 18:30:00.000");
+                jw.WritePropertyName("timeEnd");
+                jw.WriteValue("2018-02-25 18:30:00.000");
+                jw.WritePropertyName("gender");
+                jw.WriteValue("M");
+                jw.WritePropertyName("idPool");
+                jw.WriteValue("1");
+                jw.WritePropertyName("idCompetition");
+                jw.WriteValue("1");
+                jw.WritePropertyName("idLength");
+                jw.WriteValue("1");
+                jw.WritePropertyName("idStyle");
+                jw.WriteValue("1");
+                jw.WritePropertyName("idReferee");
+                jw.WriteValue("1");
+                jw.WritePropertyName("idCategory");
+                jw.WriteValue("2");
+                jw.WriteEndObject();
+
+                Assert.AreEqual("testing", sb.ToString());
+
+                streamWriter.Write(sb.ToString());
+                streamWriter.Flush();
+            };
+
+            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            {
+                var result = streamReader.ReadToEnd();
+                Assert.AreEqual("testing", result);
+            }
+        }
 
 
     }
