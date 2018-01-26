@@ -38,7 +38,7 @@
             </Border>
 
         </Grid>
-        <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden"  x:FieldModifier="public"/>
+        <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden" Source="/Views/PočetnaPage.xaml" x:FieldModifier="public"/>
 
         
     </Grid>

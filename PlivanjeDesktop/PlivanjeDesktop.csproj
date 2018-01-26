@@ -78,6 +78,9 @@
     <Compile Include="Views\PrijavaPage.xaml.cs">
       <DependentUpon>PrijavaPage.xaml</DependentUpon>
     </Compile>
+	<Compile Include="Views\PočetnaPage.xaml.cs">
+      <DependentUpon>PočetnaPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\KluboviPage.xaml.cs">
       <DependentUpon>KluboviPage.xaml</DependentUpon>
     </Compile>
@@ -140,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PrijavaPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PočetnaPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
