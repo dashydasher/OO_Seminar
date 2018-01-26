@@ -6,38 +6,40 @@
         xmlns:local="clr-namespace:PlivanjeDesktop"
         mc:Ignorable="d"
         Title="Hrvatski plivački savez" Height="300" Width="300" WindowState="Maximized">
+   
     <Grid>
+
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Border Grid.Row="0" >
+                <Menu DockPanel.Dock="Top" FontSize="20" Foreground="White"  Background="DarkCyan" Margin="0,1,-0.4,-5.8">
+                    <MenuItem Header="NATJECANJA" Name="Competition" Foreground="White"  Background="DarkCyan" Click="Competition_Click"/>
+                    <MenuItem Header="KLUBOVI"  Name="Clubs" Foreground="White"  Background="DarkCyan" Click="Clubs_Click"/>
+                    <MenuItem Header="PLIVAČI" Name="Swimmers" Foreground="White"  Background="DarkCyan" MouseEnter="MenuItem_MouseEnter" MouseLeave="MenuItem_MouseLeave">
+                        <MenuItem Header="Veterani" Foreground="White"  Background="Gray" Click="Swimmers_Click"/>
+                        <MenuItem Header="Seniori" Foreground="White"  Background="Gray" Click="Swimmers_Click"/>
+                        <MenuItem Header="Mlađi seniori" Foreground="White"  Background="Gray"  Click="Swimmers_Click"/>
+                        <MenuItem Header="Juniori" Foreground="White"  Background="Gray" Click="Swimmers_Click"/>
+                        <MenuItem Header="Mlađi juniori" Foreground="White"  Background="Gray" Click="Swimmers_Click"/>
+                        <MenuItem Header="Kadeti" Foreground="White"  Background="Gray" Click="Swimmers_Click"/>
+                        <MenuItem Header="Mlađi kadeti" Foreground="White"  Background="Gray" Click="Swimmers_Click"/>
+                        <MenuItem Header="Početnici" Foreground="White"  Background="Gray" Click="Swimmers_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="REKORDI" Name="Records" Background="DarkCyan" MouseEnter="MenuItem_MouseEnter" MouseLeave="MenuItem_MouseLeave">
+                        <MenuItem Header="Muškarci" Foreground="White"  Background="Gray" Click="Records_Click"/>
+                        <MenuItem Header="Žene" Foreground="White"  Background="Gray" Click="Records_Click"/>
+                    </MenuItem>
+                    <MenuItem Header="PRIJAVA"  x:Name="Login" Visibility="Collapsed"  x:FieldModifier="public" Click="PrijaviSe_Click"/>
+                    <MenuItem Header="ODJAVA"  x:Name="Logout" Visibility="Collapsed" x:FieldModifier="public" Click="OdjaviSe_Click"/>
+                </Menu>
+            </Border>
+
+        </Grid>
+        <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden"  Source="/Views/PočetnaPage.xaml"  x:FieldModifier="public"/>
+
         
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
-
-                <Border Grid.Row="0" >
-                    <Menu DockPanel.Dock="Top" FontSize="15" >
-                        <MenuItem Header="NATJECANJA" Name="Competition" Click="Competition_Click"/>
-                        <MenuItem Header="KLUBOVI"  Name="Clubs" Click="Clubs_Click"/>
-                        <MenuItem Header="PLIVAČI" Name="Swimmers" MouseEnter="MenuItem_MouseEnter" MouseLeave="MenuItem_MouseLeave">
-                            <MenuItem Header="Veterani" Click="Swimmers_Click"/>
-                            <MenuItem Header="Seniori" Click="Swimmers_Click"/>
-                            <MenuItem Header="Mlađi seniori" Click="Swimmers_Click"/>
-                            <MenuItem Header="Juniori" Click="Swimmers_Click"/>
-                            <MenuItem Header="Mlađi juniori" Click="Swimmers_Click"/>
-                            <MenuItem Header="Kadeti" Click="Swimmers_Click"/>
-                            <MenuItem Header="Mlađi kadeti" Click="Swimmers_Click"/>
-                            <MenuItem Header="Početnici" Click="Swimmers_Click"/>
-                        </MenuItem>
-                        <MenuItem Header="REKORDI" Name="Records"  MouseEnter="MenuItem_MouseEnter" MouseLeave="MenuItem_MouseLeave">
-                            <MenuItem Header="Muškarci" Click="Records_Click"/>
-                            <MenuItem Header="Žene" Click="Records_Click"/>
-                        </MenuItem>
-                        <MenuItem Header="PRIJAVA"  x:Name="Login" Visibility="Collapsed"  x:FieldModifier="public" Click="PrijaviSe_Click"/>
-                        <MenuItem Header="ODJAVA"  x:Name="Logout" Visibility="Collapsed" x:FieldModifier="public" Click="OdjaviSe_Click"/>
-                    </Menu>
-                </Border>
-
-            </Grid>
-            <Frame x:Name="Main" Margin="0,35,0,0" NavigationUIVisibility="Hidden" Source="/Views/PrijavaPage.xaml"  x:FieldModifier="public"/>
-       
     </Grid>
 </Window>

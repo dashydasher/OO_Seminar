@@ -31,7 +31,7 @@
                         <TextBlock HorizontalAlignment="Left" Margin="0,5,0,0" x:Name="Ending" Text="Kraj" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
                         <DatePicker  Height="30" HorizontalAlignment="Left" Margin="0,0,0,0" Name="tbEnd" VerticalAlignment="Top" FontSize="20" Width="450"/>
                         <TextBlock HorizontalAlignment="Left" Margin="0,5,0,0" x:Name="Hall" Text="Dvorana" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
-                        <ComboBox Name="tbHall" ItemsSource="{Binding Path=halls}">
+                        <ComboBox Name="tbHall" Width="450" HorizontalAlignment="Left" ItemsSource="{Binding Path=halls}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" Width="450">
@@ -47,8 +47,8 @@
                 </GroupBox>
 
 
-                <GroupBox FontSize="20" Header="Moja natjecanja" x:Name="coachesCompetitions" Visibility="Collapsed" >
-                    <DataGrid x:Name="datagrid1" CanUserAddRows="false" FontSize="20"  ItemsSource="{Binding coachesCompetitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" >
+                <GroupBox FontSize="20" Header="Moja natjecanja" x:Name="trenerovaNatjecanja" Visibility="Collapsed">
+                    <DataGrid Name="datagrid1" CanUserAddRows="false" FontSize="20"   ItemsSource="{Binding coachesCompetitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" >
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding Name}" />
@@ -74,7 +74,7 @@
                     </DataGrid>
                 </GroupBox>
                 <GroupBox FontSize="20" Header="Natjecanja">
-                    <DataGrid x:Name="datagridC" CanUserAddRows="false" FontSize="20"  ItemsSource="{Binding competitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" SelectionChanged="datagridC_SelectionChanged" >
+                    <DataGrid Name="datagridC" CanUserAddRows="false" FontSize="20"  ItemsSource="{Binding competitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" SelectionChanged="datagridC_SelectionChanged" >
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding Name}" />

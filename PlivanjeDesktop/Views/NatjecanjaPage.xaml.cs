@@ -46,7 +46,7 @@ namespace PlivanjeDesktop
             
             if (UserModel.role != null && UserModel.role.Equals("trener"))
             {
-                coachesCompetitions.Visibility = Visibility.Visible;
+                trenerovaNatjecanja.Visibility = Visibility.Visible;
                 orgNatjecanje.Visibility = Visibility.Visible;
             }
 
@@ -109,15 +109,33 @@ namespace PlivanjeDesktop
             bool uspjeh = cvm.AddCompetition(name, timeStart, timeEnd, hallS); 
             if (uspjeh)
             {
+                datagrid1.Items.Refresh();
+                datagridC.Items.Refresh();
                 MessageBox.Show("Uspješno spremljeno natjecanje");
-                NatjecanjaPage np = new NatjecanjaPage();
-                NavigationService navService = NavigationService.GetNavigationService(this);
-                navService.Navigate(np);
-            }             
+                //NatjecanjaPage np = new NatjecanjaPage();
+                // NavigationService navService = NavigationService.GetNavigationService(this);
+                //navService.Navigate(np);
+
+                //BindingExpression binding = datagrid1.GetBindingExpression(DataGrid.ItemsSourceProperty);
+                //binding.UpdateSource();
+                //BindingExpression binding2 = datagridC.GetBindingExpression(DataGrid.ItemsSourceProperty);        
+                //binding2.UpdateSource();
+
+
+                //datagrid1.ItemsSource = null;
+                // datagrid1.ItemsSource = coachesCompetitions;
+                //datagridC.ItemsSource = null;
+                //datagridC.ItemsSource = competitions;
+               
+
+
+            }
             else
             {              
                 MessageBox.Show("Pogreška u spremanju natjecanja");
             }
+
+          
         }
 
 

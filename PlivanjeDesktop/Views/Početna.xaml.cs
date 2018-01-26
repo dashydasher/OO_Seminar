@@ -26,7 +26,6 @@ namespace PlivanjeDesktop
         {
             InitializeComponent();
 
-           // treba to nekak s triggerima, u svakom slučaju ne ovak u konstruktoru - sutra
             if (UserModel.role == null)
             {
                 Login.Visibility = Visibility.Visible;
@@ -35,8 +34,6 @@ namespace PlivanjeDesktop
             referenca = this;
 
         }
-
-
 
         private void MenuItem_MouseEnter(object sender, MouseEventArgs e)
         {
