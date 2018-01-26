@@ -215,19 +215,39 @@ namespace Unit_Test
 
 
         [TestMethod]
-        public void PostRequestOnRaceAPI()
+        public void PostGetDeleteOnRaceAPI()
         {
-            var httpWebRequest = (HttpWebRequest)WebRequest.Create("http://oosemmobapp2.azurewebsites.net/tables/race");
-            httpWebRequest.ContentType = "application/json";
-            httpWebRequest.Method = "POST";
+            // DOHVACANJE SVIH 1
+            var httpWebRequest1 = (HttpWebRequest)WebRequest.Create("http://oosemmobapp2.azurewebsites.net/tables/race");
+            httpWebRequest1.ContentType = "application/json";
+            httpWebRequest1.Method = "GET";
 
-            using (var streamWriter = new StreamWriter(httpWebRequest.GetRequestStream()))
+            var httpResponse1 = (HttpWebResponse)httpWebRequest1.GetResponse();
+
+
+            Assert.AreEqual("OK", httpResponse1.StatusDescription);
+
+            Stream receiveStream1 = httpResponse1.GetResponseStream();
+
+            StreamReader readStream1 = new StreamReader(receiveStream1, Encoding.UTF8);
+            var objTxt1 = readStream1.ReadToEnd();
+
+            var races1 = JsonConvert.DeserializeObject<List<Race>>(objTxt1);
+
+            Assert.AreEqual("OK", httpResponse1.StatusDescription);
+
+            // DODAVANJE NOVOG
+            var httpWebRequest2 = (HttpWebRequest)WebRequest.Create("http://oosemmobapp2.azurewebsites.net/tables/race");
+            httpWebRequest2.ContentType = "application/json";
+            httpWebRequest2.Method = "POST";
+
+            using (var streamWriter = new StreamWriter(httpWebRequest2.GetRequestStream()))
             {
                 StringBuilder sb = new StringBuilder();
                 JsonWriter jw = new JsonTextWriter(new StringWriter(sb));
                 jw.WriteStartObject();
                 jw.WritePropertyName("timeStart");
-                jw.WriteValue("2018-02-18 18:30:00.000");
+                jw.WriteValue("2018-02-18 18:15:00.000");
                 jw.WritePropertyName("timeEnd");
                 jw.WriteValue("2018-02-25 18:30:00.000");
                 jw.WritePropertyName("gender");
@@ -246,20 +266,65 @@ namespace Unit_Test
                 jw.WriteValue("2");
                 jw.WriteEndObject();
 
-                Assert.AreEqual("testing", sb.ToString());
-
                 streamWriter.Write(sb.ToString());
                 streamWriter.Flush();
             };
 
-            var httpResponse = (HttpWebResponse)httpWebRequest.GetResponse();
-            using (var streamReader = new StreamReader(httpResponse.GetResponseStream()))
+            var httpResponse2 = (HttpWebResponse)httpWebRequest2.GetResponse();
+            using (var streamReader = new StreamReader(httpResponse2.GetResponseStream()))
             {
                 var result = streamReader.ReadToEnd();
-                Assert.AreEqual("testing", result);
+                Assert.AreEqual("OK", httpResponse2.StatusDescription);
             }
+
+            // DOHVACANJE SVIH 2
+            var httpWebRequest3 = (HttpWebRequest)WebRequest.Create("http://oosemmobapp2.azurewebsites.net/tables/race");
+            httpWebRequest3.ContentType = "application/json";
+            httpWebRequest3.Method = "GET";
+
+            var httpResponse3 = (HttpWebResponse)httpWebRequest3.GetResponse();
+            
+            Assert.AreEqual("OK", httpResponse3.StatusDescription);
+
+            Stream receiveStream3 = httpResponse3.GetResponseStream();
+            
+            StreamReader readStream3 = new StreamReader(receiveStream3, Encoding.UTF8);
+            var objTxt3 = readStream3.ReadToEnd();
+            
+            var races3 = JsonConvert.DeserializeObject<List<Race>>(objTxt3);
+
+            Assert.AreEqual("OK", httpResponse3.StatusDescription);
+            Assert.AreEqual(races1.Count + 1, races3.Count);
+
+            // BRISANJE ZADNJEG
+            string delRaceId = races3[races3.Count-1].Id.ToString();
+
+            var httpWebRequest4 = (HttpWebRequest)WebRequest.Create("http://oosemmobapp2.azurewebsites.net/tables/race/" + delRaceId);
+            httpWebRequest4.ContentType = "application/json";
+            httpWebRequest4.Method = "DELETE";
+
+            var httpResponse4 = (HttpWebResponse)httpWebRequest4.GetResponse();
+
+            Assert.AreEqual("OK", httpResponse4.StatusDescription);
+
+            // DOHVACANJE SVIH 3
+            var httpWebRequest5 = (HttpWebRequest)WebRequest.Create("http://oosemmobapp2.azurewebsites.net/tables/race");
+            httpWebRequest5.ContentType = "application/json";
+            httpWebRequest5.Method = "GET";
+
+            var httpResponse5 = (HttpWebResponse)httpWebRequest5.GetResponse();
+
+            Assert.AreEqual("OK", httpResponse5.StatusDescription);
+
+            Stream receiveStream5 = httpResponse5.GetResponseStream();
+
+            StreamReader readStream5 = new StreamReader(receiveStream5, Encoding.UTF8);
+            var objTxt5 = readStream5.ReadToEnd();
+
+            var races5 = JsonConvert.DeserializeObject<List<Race>>(objTxt5);
+
+            Assert.AreEqual("OK", httpResponse3.StatusDescription);
+            Assert.AreEqual(races1.Count, races5.Count);
         }
-
-
     }
 }
