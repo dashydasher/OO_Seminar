@@ -39,6 +39,10 @@ namespace Plivanje.Processors
             return _ClubRepository.getSwimmers(id);
         }
 
+        public void deleteClub(int raceId)
+        {
+            _ClubRepository.DeleteClub(raceId);
+        }
 
         public void UpdateClub(Club h)
         {

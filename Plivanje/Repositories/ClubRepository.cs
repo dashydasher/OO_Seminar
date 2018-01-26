@@ -28,6 +28,7 @@ namespace Plivanje.Repositories
         ClubCompetition GetClubCompetition(int idClub, int idCompetition);
         List<ClubView> GetListOfClubView();
         ClubView GetClubView(int id);
+        void DeleteClub(int id);
     }
 
     public class ClubRepository : IClubRepository
@@ -358,6 +359,22 @@ namespace Plivanje.Repositories
                 }
             }
             return result;
+        }
+
+        public void DeleteClub(int id)
+        {
+            var clas = new FluentNHibernateClass();
+            using (var session = clas.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    Club r = session.QueryOver<Club>().Where(x => x.Id == id).SingleOrDefault();
+                    session.Delete(r);
+
+                    transaction.Commit();
+                }
+
+            }
         }
     }
 }

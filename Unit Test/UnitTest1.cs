@@ -217,7 +217,7 @@ namespace Unit_Test
         [TestMethod]
         public void PostGetDeleteOnRaceAPI()
         {
-            // DOHVACANJE SVIH 1
+            #region DOHVACANJE SVIH 1
             var httpWebRequest1 = (HttpWebRequest)WebRequest.Create("http://oosemmobapp2.azurewebsites.net/tables/race");
             httpWebRequest1.ContentType = "application/json";
             httpWebRequest1.Method = "GET";
@@ -235,8 +235,8 @@ namespace Unit_Test
             var races1 = JsonConvert.DeserializeObject<List<Race>>(objTxt1);
 
             Assert.AreEqual("OK", httpResponse1.StatusDescription);
-
-            // DODAVANJE NOVOG
+            #endregion
+            #region DODAVANJE NOVOG
             var httpWebRequest2 = (HttpWebRequest)WebRequest.Create("http://oosemmobapp2.azurewebsites.net/tables/race");
             httpWebRequest2.ContentType = "application/json";
             httpWebRequest2.Method = "POST";
@@ -276,8 +276,8 @@ namespace Unit_Test
                 var result = streamReader.ReadToEnd();
                 Assert.AreEqual("OK", httpResponse2.StatusDescription);
             }
-
-            // DOHVACANJE SVIH 2
+            #endregion
+            #region DOHVACANJE SVIH 2
             var httpWebRequest3 = (HttpWebRequest)WebRequest.Create("http://oosemmobapp2.azurewebsites.net/tables/race");
             httpWebRequest3.ContentType = "application/json";
             httpWebRequest3.Method = "GET";
@@ -295,8 +295,8 @@ namespace Unit_Test
 
             Assert.AreEqual("OK", httpResponse3.StatusDescription);
             Assert.AreEqual(races1.Count + 1, races3.Count);
-
-            // BRISANJE ZADNJEG
+            #endregion
+            #region BRISANJE ZADNJEG
             string delRaceId = races3[races3.Count-1].Id.ToString();
 
             var httpWebRequest4 = (HttpWebRequest)WebRequest.Create("http://oosemmobapp2.azurewebsites.net/tables/race/" + delRaceId);
@@ -306,8 +306,8 @@ namespace Unit_Test
             var httpResponse4 = (HttpWebResponse)httpWebRequest4.GetResponse();
 
             Assert.AreEqual("OK", httpResponse4.StatusDescription);
-
-            // DOHVACANJE SVIH 3
+            #endregion
+            #region DOHVACANJE SVIH 3
             var httpWebRequest5 = (HttpWebRequest)WebRequest.Create("http://oosemmobapp2.azurewebsites.net/tables/race");
             httpWebRequest5.ContentType = "application/json";
             httpWebRequest5.Method = "GET";
@@ -325,6 +325,7 @@ namespace Unit_Test
 
             Assert.AreEqual("OK", httpResponse3.StatusDescription);
             Assert.AreEqual(races1.Count, races5.Count);
+            #endregion
         }
     }
 }
