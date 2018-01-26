@@ -20,10 +20,10 @@
   <Class Name="Plivanje.Models.Competition">
     <Position X="5" Y="2.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAIAAAAAAAAAAAAAAAAAQAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <HashCode>AAAAIAAAIAAAAAAAAAAAAAQAAAAAAAAAAAQAAAAAAAA=</HashCode>
       <FileName>Models\Competition.cs</FileName>
     </TypeIdentifier>
-  <ShowAsAssociation>
+    <ShowAsAssociation>
       <Property Name="Hall" />
     </ShowAsAssociation>
   </Class>
@@ -33,13 +33,12 @@
       <HashCode>AAAAIAAEAAAAAACAAAAAAABAAACACAAABAQAAAAACAA=</HashCode>
       <FileName>Models\Race.cs</FileName>
     </TypeIdentifier>
-  <ShowAsAssociation>
+    <ShowAsAssociation>
       <Property Name="Pool" />
-  <Property Name="Competition" />
-  <Property Name="Length" />
-  <Property Name="Style" />
-  <Property Name="Category" />
-  <Property Name="Referee" />
+      <Property Name="Competition" />
+      <Property Name="Length" />
+      <Property Name="Style" />
+      <Property Name="Category" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Plivanje.Models.Style">
@@ -62,7 +61,7 @@
       <HashCode>QAAAAAAAAAAAAAgAAAAAAAAAABAAAAAAAAEAAAAAAAA=</HashCode>
       <FileName>Models\SwimmerRace.cs</FileName>
     </TypeIdentifier>
-  <ShowAsAssociation>
+    <ShowAsAssociation>
       <Property Name="Swimmer" />
       <Property Name="Race" />
     </ShowAsAssociation>
@@ -89,7 +88,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Plivanje.Models.Swimmer">
-    <Position X="14.5" Y="4.75" Width="1.5" />
+    <Position X="13.75" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Swimmer.cs</FileName>
@@ -102,9 +101,9 @@
       <FileName>Models\SwimmerSeason.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
-      <Property Name="Swimmer" />
       <Property Name="Category" />
       <Property Name="Club" />
+      <Property Name="Swimmer" />
       <Property Name="Season" />
     </ShowAsAssociation>
   </Class>
@@ -114,7 +113,7 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAEAAAAAAAAA=</HashCode>
       <FileName>Models\Club.cs</FileName>
     </TypeIdentifier>
-  <ShowAsAssociation>
+    <ShowAsAssociation>
       <Property Name="Place" />
     </ShowAsAssociation>
   </Class>
@@ -124,9 +123,9 @@
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAiAAAAAAAAAAACAAAA=</HashCode>
       <FileName>Models\ClubCompetition.cs</FileName>
     </TypeIdentifier>
-  <ShowAsAssociation>
-      <Property Name="Competition" />
+    <ShowAsAssociation>
       <Property Name="Club" />
+      <Property Name="Competition" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Plivanje.Models.CoachSeason">
@@ -135,9 +134,9 @@
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAgAAAAAAAAAAAACAAAA=</HashCode>
       <FileName>Models\CoachSeason.cs</FileName>
     </TypeIdentifier>
-  <ShowAsAssociation>
-      <Property Name="Coach" />
+    <ShowAsAssociation>
       <Property Name="Club" />
+      <Property Name="Coach" />
       <Property Name="Season" />
     </ShowAsAssociation>
   </Class>
@@ -149,7 +148,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Plivanje.Models.Licence">
-    <Position X="2" Y="7.5" Width="1.5" />
+    <Position X="2.25" Y="7.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAgAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Licence.cs</FileName>
@@ -161,10 +160,10 @@
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAAAAgAAAAAAAAAAAAAACAA=</HashCode>
       <FileName>Models\LicenceCoach.cs</FileName>
     </TypeIdentifier>
-  <ShowAsAssociation>
+    <ShowAsAssociation>
       <Property Name="Coach" />
-      <Property Name="Licence" />
       <Property Name="Season" />
+      <Property Name="Licence" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Plivanje.Models.LicenceSwimmer">
@@ -175,8 +174,8 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Swimmer" />
-      <Property Name="Licence" />
       <Property Name="Season" />
+      <Property Name="Licence" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Plivanje.Models.LicenceReferee">
@@ -187,12 +186,12 @@
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Referee" />
-      <Property Name="Licence" />
       <Property Name="Season" />
+      <Property Name="Licence" />
     </ShowAsAssociation>
   </Class>
   <Class Name="Plivanje.Models.Record">
-    <Position X="12.25" Y="8.75" Width="1.5" />
+    <Position X="15.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAACAAAAAAABAAAAQAAABBEEAAAAACAg=</HashCode>
       <FileName>Models\Record.cs</FileName>
@@ -216,7 +215,7 @@
     </TypeIdentifier>
   </Class>
   <Class Name="Plivanje.Models.Referee">
-    <Position X="12.75" Y="6.75" Width="1.5" />
+    <Position X="12.5" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Models\Referee.cs</FileName>
@@ -226,13 +225,13 @@
     <Position X="10.75" Y="7" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Coach.cs</FileName>
+      <FileName>Models\Coach.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Enum Name="Plivanje.Models.Gender">
-    <Position X="14.5" Y="6.25" Width="1.5" />
+    <Position X="0.5" Y="7.25" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAIAAAA=</HashCode>
       <FileName>Models\Gender.cs</FileName>
     </TypeIdentifier>
   </Enum>
