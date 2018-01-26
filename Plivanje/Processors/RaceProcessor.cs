@@ -92,5 +92,10 @@ namespace Plivanje.Processors
 
 
         }
+
+        public SwimmerRace GetSwimmerRace(int idSwimmerRace)
+        {
+            return _RaceRepository.GetSwimmerRace(idSwimmerRace);
+        }
     }
 }

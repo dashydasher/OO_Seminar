@@ -69,7 +69,7 @@ namespace PlivanjeDesktop.Views
                 MessageBox.Show("Odabrani plivač već ima zapisan rezultat");
                 return;
             }
-            ZapisRezultataUtrke z = new ZapisRezultataUtrke(selectedSwimmerRace.Id, selectedSwimmerRace.RaceId);
+            ZapisRezultataUtrke z = new ZapisRezultataUtrke(selectedSwimmerRace.SwimmerId, selectedSwimmerRace.RaceId, selectedSwimmerRace.Id);
             z.Show();
         }
     }

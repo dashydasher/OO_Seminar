@@ -109,8 +109,8 @@ namespace PlivanjeDesktop
             bool uspjeh = cvm.AddCompetition(name, timeStart, timeEnd, hallS); 
             if (uspjeh)
             {
-                datagrid1.Items.Refresh();
-                datagridC.Items.Refresh();
+                //datagrid1.Items.Refresh();
+                //datagridC.Items.Refresh();
                 MessageBox.Show("Uspješno spremljeno natjecanje");
                 //NatjecanjaPage np = new NatjecanjaPage();
                 // NavigationService navService = NavigationService.GetNavigationService(this);

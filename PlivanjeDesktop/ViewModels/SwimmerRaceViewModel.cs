@@ -39,7 +39,8 @@ namespace PlivanjeDesktop.ViewModels
             foreach (var svmr in list)
                 swimmersOnRace.Add(new SwimmerRaceModel
                 {
-                    Id = svmr.Swimmer.Id,
+                    Id = svmr.Id,
+                    SwimmerId = svmr.Swimmer.Id,
                     FirstName = svmr.Swimmer.FirstName,
                     LastName = svmr.Swimmer.LastName,
                     Gender = svmr.Swimmer.Gender,
@@ -70,7 +71,7 @@ namespace PlivanjeDesktop.ViewModels
                     {
                         FirstName = swimmer.FirstName,
                         LastName = swimmer.LastName,
-                        Id = swimmer.Id,
+                        SwimmerId = swimmer.Id,
                         currentCategory = sp.GetSwimmerCategory(swimmer),
                         currentClub = cp.getClub(clubId),
                         Gender = swimmer.Gender,

@@ -59,6 +59,7 @@
     <Compile Include="Models\HallModel.cs" />
     <Compile Include="Models\RaceModel.cs" />
     <Compile Include="Models\SwimmerRaceModel.cs" />
+    <Compile Include="Models\SwimmerResultModel.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="ViewModels\HallViewModel.cs" />
     <Compile Include="ViewModels\RegisterViewModel.cs" />

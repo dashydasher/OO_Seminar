@@ -24,10 +24,10 @@ namespace PlivanjeDesktop.Views
     {
         SwimmerResultViewModel srvm = new SwimmerResultViewModel();
 
-        public ZapisRezultataUtrke(int idSwimmer, int idRace)
+        public ZapisRezultataUtrke(int idSwimmer, int idRace, int idSwimmerRace)
         {
             InitializeComponent();
-            srvm.LoadRace(idSwimmer, idRace);
+            srvm.LoadRace(idSwimmer, idRace, idSwimmerRace);
             this.DataContext = srvm;
             
         }
@@ -46,6 +46,8 @@ namespace PlivanjeDesktop.Views
             }
             string result = srvm.UpdateSwimmerRace(tbResult.Text, tbScore.Text);
             MessageBox.Show(result);
+            PlivačiUtrka pu = new PlivačiUtrka(srvm.srm.IdRace);
+            pu.Show();
             this.Close();
         }
     }
