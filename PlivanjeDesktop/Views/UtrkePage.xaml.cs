@@ -32,8 +32,7 @@ namespace PlivanjeDesktop
         {
             InitializeComponent();
             rvm.LoadRacesByCompetition(competitionId);
-            rvm.LoadLengths();
-            rvm.LoadStyles();
+           
             //rvm = LoadReferees();
             this.DataContext = rvm;
             if (UserModel.role!=null && UserModel.role.Equals("trener"))
@@ -41,6 +40,8 @@ namespace PlivanjeDesktop
                 datagridRace.ColumnFromDisplayIndex(10).Visibility = Visibility.Collapsed;
                 datagridRace.ColumnFromDisplayIndex(9).Visibility = Visibility.Visible;
                 dodajUtrku.Visibility = Visibility.Visible;
+                rvm.LoadLengths();
+                rvm.LoadStyles();
             }
 
         }
@@ -115,10 +116,10 @@ namespace PlivanjeDesktop
              
                 MessageBox.Show("Uspješno spremljena utrka");
 
-                //CompetitionModel selectedCompetition = (CompetitionModel)NatjecanjaPage.datagrid1.SelectedItem;
-                //UtrkePage up = new UtrkePage(selectedCompetition.Id);
+                CompetitionModel selectedCompetition = (CompetitionModel)datagridRace.SelectedItem;//datagrid koji i kak do njega?
+                UtrkePage up = new UtrkePage(selectedCompetition.Id);
                 NavigationService navService = NavigationService.GetNavigationService(this);
-                //navService.Navigate(up);
+                navService.Navigate(up);
 
             }
             else

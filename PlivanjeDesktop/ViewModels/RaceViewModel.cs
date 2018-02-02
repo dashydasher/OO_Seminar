@@ -69,8 +69,7 @@ namespace PlivanjeDesktop.ViewModels
             foreach (var len in list)
                 lengths.Add(new LengthModel
                 {
-                    Len = len.Len,
-                  
+                    Len = len.Len                  
                 });
 
         }
@@ -84,7 +83,7 @@ namespace PlivanjeDesktop.ViewModels
             foreach (var len in list)
                 styles.Add(new StyleModel
                 {
-                    Name = len.Name,
+                    Name = len.Name
 
                 });
 

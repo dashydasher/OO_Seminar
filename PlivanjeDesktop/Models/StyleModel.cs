@@ -8,6 +8,6 @@ namespace PlivanjeDesktop.Models
 {
     class StyleModel
     {
-        public virtual string Name { get; set; }
+        public string Name { get; set; }
     }
 }
