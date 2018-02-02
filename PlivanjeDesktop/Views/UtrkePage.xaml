@@ -11,6 +11,67 @@
     <Grid>
         <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
             <StackPanel Width="1500">
+
+
+
+                <GroupBox FontSize="20" Header="Dodaj utrku" x:Name="dodajUtrku" Visibility="Collapsed" >
+                    <StackPanel>
+
+                        <TextBlock HorizontalAlignment="Left" Margin="0,10,0,0" x:Name="Gender" Text="Spol" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+                        <StackPanel HorizontalAlignment="Center" Margin="0,25,0,0" Orientation="Horizontal">
+                            <RadioButton GroupName="rbGender" Margin="0,0,10,0" FontSize="15" Name="muskiRadio"  Content="M" IsChecked="True"/>
+                            <RadioButton GroupName="rbGender" Margin="10,0,0,0" FontSize="15" Name="zeneRadio" Content="Ž" />
+                        </StackPanel>
+
+                        <TextBlock HorizontalAlignment="Left" Margin="0,10,0,0" x:Name="Length" Text="Duljina" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+                        <ComboBox Name="tbLength" Width="450" HorizontalAlignment="Left" ItemsSource="{Binding Path=lengths}" >
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Width="450">
+                                        <TextBlock Text="{Binding Len}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+
+                        <TextBlock HorizontalAlignment="Left" Margin="0,10,0,0" x:Name="Style" Text="Stil" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+                        <ComboBox Name="tbStyle" Width="450" HorizontalAlignment="Left" ItemsSource="{Binding Path=styles}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Width="450">
+                                        <TextBlock Text="{Binding Name}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock HorizontalAlignment="Left" Margin="0,5,0,0" x:Name="Beginning" Text="Početak" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+                        <DatePicker Height="30" HorizontalAlignment="Left" Margin="0,0,0,0" Name="tbBegin" VerticalAlignment="Top" FontSize="20" Width="450"/>
+                        <TextBlock HorizontalAlignment="Left" Margin="0,5,0,0" x:Name="Ending" Text="Kraj" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+                        <DatePicker  Height="30" HorizontalAlignment="Left" Margin="0,0,0,0" Name="tbEnd" VerticalAlignment="Top" FontSize="20" Width="450"/>
+                      
+                        <TextBlock HorizontalAlignment="Left" Margin="0,5,0,0" x:Name="Referee" Text="Sudac" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+                        <ComboBox Name="tbReferee" Width="450" HorizontalAlignment="Left" ItemsSource="{Binding Path=referees}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Width="450">
+                                        <MultiBinding StringFormat="{}{0} {1}">
+                                            <Binding Path="FirstName"/>
+                                            <Binding Path="LastName"/>
+                                        </MultiBinding>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <Button Click="Dodaj_Utrku" Content="Dodaj" Margin="0,5,0,0" x:Name="addRace" Width="100" HorizontalAlignment="Left" RenderTransformOrigin="6.226,0.65"/>
+
+                    </StackPanel>
+                </GroupBox>
+
+            
+
                 <GroupBox Header="Utrke" FontSize="20">
                     <DataGrid Name="datagridRace" CanUserAddRows="false"
                           FontSize="20" ItemsSource="{Binding races}" AutoGenerateColumns="False" >

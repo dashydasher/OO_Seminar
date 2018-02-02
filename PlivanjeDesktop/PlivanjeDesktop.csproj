@@ -57,7 +57,10 @@
     </ApplicationDefinition>
     <Compile Include="Models\CompetitionModel.cs" />
     <Compile Include="Models\HallModel.cs" />
+    <Compile Include="Models\LengthModel.cs" />
+    <Compile Include="Models\PersonModel.cs" />
     <Compile Include="Models\RaceModel.cs" />
+    <Compile Include="Models\StyleModel.cs" />
     <Compile Include="Models\SwimmerRaceModel.cs" />
     <Compile Include="Models\SwimmerResultModel.cs" />
     <Compile Include="Models\UserModel.cs" />

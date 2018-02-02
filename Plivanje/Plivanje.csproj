@@ -123,6 +123,7 @@
     <Compile Include="Models\Swimmer.cs" />
     <Compile Include="Models\SwimmerRace.cs" />
     <Compile Include="Models\SwimmerRaceView.cs" />
+    <Compile Include="Models\SwimmerResultModel.cs" />
     <Compile Include="Models\SwimmerSeason.cs" />
     <Compile Include="Processors\CategoryProcessor.cs" />
     <Compile Include="Processors\ClubProcessor.cs" />

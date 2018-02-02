@@ -19,8 +19,6 @@ namespace PlivanjeDesktop.ViewModels
         ClubProcessor clp = new ClubProcessor();
         HallProcessor hp = new HallProcessor();
 
-       
-
         public void LoadCompetitions()
         {
             competitions = new List<CompetitionModel>();
@@ -51,7 +49,7 @@ namespace PlivanjeDesktop.ViewModels
 
             if (coachId != 0)
             {
-                //listMyCompetitions = ccp.getMyCompetitions(coachId); --moja
+               // listMyCompetitions = ccp.getMyCompetitions(coachId); //--moja
                 listMyCompetitions = ccp.FindMyCompetitions(coachId); //--druga natjecanja nalazi?? dodaj jos natjecanja u bazu da provjeris dal je tvoje dobro ili samo ovo
                 foreach (var competition in listMyCompetitions)
                 {
@@ -98,7 +96,7 @@ namespace PlivanjeDesktop.ViewModels
         public void LoadPossibleHalls(int coachId)
         {
 
-            int clubId = clp.getMyClubId(UserModel.Id);
+            int clubId = clp.getMyClubId(coachId);
             Place place = clp.getPlace(clubId);
             int placeId = place.Id;
 

@@ -110,9 +110,11 @@ namespace PlivanjeDesktop
                 //datagrid1.Items.Refresh();
                 //datagridC.Items.Refresh();
                 MessageBox.Show("Uspješno spremljeno natjecanje");
-                //NatjecanjaPage np = new NatjecanjaPage();
-                // NavigationService navService = NavigationService.GetNavigationService(this);
-                //navService.Navigate(np);
+
+
+                NatjecanjaPage np = new NatjecanjaPage();
+                NavigationService navService = NavigationService.GetNavigationService(this);
+                navService.Navigate(np);
 
                 //BindingExpression binding = datagrid1.GetBindingExpression(DataGrid.ItemsSourceProperty);
                 //binding.UpdateSource();
