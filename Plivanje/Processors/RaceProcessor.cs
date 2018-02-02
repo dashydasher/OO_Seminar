@@ -97,5 +97,37 @@ namespace Plivanje.Processors
         {
             return _RaceRepository.GetSwimmerRace(idSwimmerRace);
         }
+
+
+        public Length getLength(int idLength)
+        {
+            return _RaceRepository.getLength(idLength);
+        }
+
+        public Style getStyle(int idStyle)
+        {
+            return _RaceRepository.getStyle(idStyle);
+        }
+
+        public Referee getReferee(int idReferee)
+        {
+            return _RaceRepository.getReferee(idReferee);
+        }
+
+        public Category getCategory(int idCategory)
+        {
+            return _RaceRepository.getCategory(idCategory);
+        }
+
+        public Pool getPool(int idPool)
+        {
+            return _RaceRepository.getPool(idPool);
+        }
+
+        public Competition getCompetition(int idCompetition)
+        {
+            return _RaceRepository.getCompetition(idCompetition);
+        }
+
     }
 }

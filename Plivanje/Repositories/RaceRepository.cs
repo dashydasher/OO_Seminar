@@ -26,6 +26,12 @@ namespace Plivanje.Repositories
         SwimmerRace ResultIsInserted(int idRace);
         List<RaceView> getRaceViews();
         RaceView getRaceView(int id);
+        Length getLength(int idLength);
+        Style getStyle(int idStyle);
+        Referee getReferee(int idReferee);
+        Competition getCompetition(int idCompetition);
+        Pool getPool(int idPool);
+        Category getCategory(int idCategory);
 
         List<SwimmerRaceView> GetListOfSwimmerRaceView();
         SwimmerRaceView GetSwimmerRaceView(int id);
@@ -342,6 +348,102 @@ namespace Plivanje.Repositories
                 using (var transaction = session.BeginTransaction())
                 {
                     result = session.QueryOver<SwimmerRace>().Where(x => x.Id == idSwimmerRace).SingleOrDefault();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public Length getLength(int idLength)
+        {
+            var result = new Length();
+            var klasa = new FluentNHibernateClass();
+
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<Length>().Where(x => x.Id == idLength).SingleOrDefault();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public Style getStyle(int idStyle)
+        {
+            var result = new Style();
+            var klasa = new FluentNHibernateClass();
+
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<Style>().Where(x => x.Id == idStyle).SingleOrDefault();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public Referee getReferee(int idReferee)
+        {
+            var result = new Referee();
+            var klasa = new FluentNHibernateClass();
+
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<Referee>().Where(x => x.Id == idReferee).SingleOrDefault();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public Competition getCompetition(int idCompetition)
+        {
+            var result = new Competition();
+            var klasa = new FluentNHibernateClass();
+
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<Competition>().Where(x => x.Id == idCompetition).SingleOrDefault();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public Pool getPool(int idPool)
+        {
+            var result = new Pool();
+            var klasa = new FluentNHibernateClass();
+
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<Pool>().Where(x => x.Id == idPool).SingleOrDefault();
+                    transaction.Commit();
+                }
+            }
+            return result;
+        }
+
+        public Category getCategory(int idCategory)
+        {
+            var result = new Category();
+            var klasa = new FluentNHibernateClass();
+
+            using (var session = klasa.OpenSession())
+            {
+                using (var transaction = session.BeginTransaction())
+                {
+                    result = session.QueryOver<Category>().Where(x => x.Id == idCategory).SingleOrDefault();
                     transaction.Commit();
                 }
             }
