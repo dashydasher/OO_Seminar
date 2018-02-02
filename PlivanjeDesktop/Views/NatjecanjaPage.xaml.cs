@@ -36,11 +36,14 @@ namespace PlivanjeDesktop
             cvm.LoadCompetitions();
             
             this.DataContext = cvm;
+
             
             if (UserModel.role != null && UserModel.role.Equals("trener"))
             {
                 trenerovaNatjecanja.Visibility = Visibility.Visible;
                 orgNatjecanje.Visibility = Visibility.Visible;
+                tbBegin.DisplayDateStart = DateTime.Today;
+                tbEnd.DisplayDateStart = DateTime.Today;
             }
 
         }
@@ -88,12 +91,20 @@ namespace PlivanjeDesktop
                 MessageBox.Show("Potrebno je unijeti vrijeme završetka natjecanja.");
                 return;
             }
+            if (DateTime.Parse(tbEnd.Text) < DateTime.Parse(tbBegin.Text))
+            {
+                MessageBox.Show("Datum završetka natjecanja mora biti nakon datuma početka natjecanja ili jednak datumu početka natjecanja!");
+                return;
+            }
+        
             if (String.IsNullOrEmpty(tbHall.Text))
             {
                 MessageBox.Show("Potrebno je unijeti dvoranu.");
                 return;
             }
-         
+
+           
+
             string name = tbName.Text.Trim();
             DateTime timeStart= tbBegin.DisplayDate.Date;
             DateTime timeEnd = tbEnd.DisplayDate.Date;

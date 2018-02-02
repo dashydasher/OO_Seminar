@@ -53,8 +53,8 @@ namespace PlivanjeDesktop.ViewModels
 
             if (coachId != 0)
             {
-               // listMyCompetitions = ccp.getMyCompetitions(coachId); //--moja
-                listMyCompetitions = ccp.FindMyCompetitions(coachId); //--druga natjecanja nalazi?? dodaj jos natjecanja u bazu da provjeris dal je tvoje dobro ili samo ovo
+               // listMyCompetitions = ccp.getMyCompetitions(coachId); 
+                listMyCompetitions = ccp.FindMyCompetitions(coachId); 
                 foreach (var competition in listMyCompetitions)
                 {
                    // if (listMyCompetitions.Contains(competition))
@@ -68,8 +68,8 @@ namespace PlivanjeDesktop.ViewModels
                             MyHall = competition.Hall
                              
                         });
-                        //break;
-                    //}
+                      //}  
+                    
                 }
             }
 
