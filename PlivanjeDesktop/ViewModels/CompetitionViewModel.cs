@@ -14,6 +14,7 @@ namespace PlivanjeDesktop.ViewModels
         public List<CompetitionModel> competitions { get; set; }
         public List<CompetitionModel> coachesCompetitions { get; set; }
         public List<HallModel> halls { get; set; }
+
         CompetitionProcessor cp = new CompetitionProcessor();
         CoachProcessor ccp = new CoachProcessor();
         ClubProcessor clp = new ClubProcessor();
@@ -36,7 +37,10 @@ namespace PlivanjeDesktop.ViewModels
                 });
 
             if (UserModel.role != null && UserModel.role.Equals("trener"))
+            {
                 LoadCoachesCompetitions(UserModel.Id);
+                LoadPossibleHalls(UserModel.Id);
+            }
         }
 
         public void LoadCoachesCompetitions(int coachId)
@@ -64,7 +68,7 @@ namespace PlivanjeDesktop.ViewModels
                             MyHall = competition.Hall
                              
                         });
-                        break;
+                        //break;
                     //}
                 }
             }
@@ -97,11 +101,10 @@ namespace PlivanjeDesktop.ViewModels
         {
 
             int clubId = clp.getMyClubId(coachId);
-            Place place = clp.getPlace(clubId);
-            int placeId = place.Id;
+            var club = clp.getClub(clubId);
 
             halls = new List<HallModel>();           
-            var list = hp.getHallsInPlace(placeId);
+            var list = hp.getHallsInPlace(club.Place.Id);
             
             foreach (var hall in list)
                 halls.Add(new HallModel

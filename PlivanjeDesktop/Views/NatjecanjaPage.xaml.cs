@@ -34,12 +34,7 @@ namespace PlivanjeDesktop
 
             cvm = new CompetitionViewModel();
             cvm.LoadCompetitions();
-            if (UserModel.role != null && UserModel.role.Equals("trener"))
-            {
-                cvm.LoadCoachesCompetitions(UserModel.Id);
-                cvm.LoadPossibleHalls(UserModel.Id);
-            }
-
+            
             this.DataContext = cvm;
             
             if (UserModel.role != null && UserModel.role.Equals("trener"))
