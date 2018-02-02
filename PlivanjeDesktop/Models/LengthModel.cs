@@ -8,6 +8,7 @@ namespace PlivanjeDesktop.Models
 {
     class LengthModel
     {
+        public int Id { get; set; }
         public int Len { get; set; }
     }
 }

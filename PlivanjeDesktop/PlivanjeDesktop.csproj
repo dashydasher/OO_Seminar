@@ -55,10 +55,12 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\CategoryModel.cs" />
     <Compile Include="Models\CompetitionModel.cs" />
     <Compile Include="Models\HallModel.cs" />
     <Compile Include="Models\LengthModel.cs" />
     <Compile Include="Models\PersonModel.cs" />
+    <Compile Include="Models\PoolModel.cs" />
     <Compile Include="Models\RaceModel.cs" />
     <Compile Include="Models\StyleModel.cs" />
     <Compile Include="Models\SwimmerRaceModel.cs" />

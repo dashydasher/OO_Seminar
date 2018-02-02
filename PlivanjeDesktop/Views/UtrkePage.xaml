@@ -45,20 +45,39 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
 
+                        <TextBlock HorizontalAlignment="Left" Margin="0,10,0,10" x:Name="Category" Text="Kategorija" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+                        <ComboBox Name="tbCategory" Width="450" HorizontalAlignment="Left" ItemsSource="{Binding Path=categories}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Width="450">
+                                        <TextBlock Text="{Binding Name}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
+                        <TextBlock HorizontalAlignment="Left" Margin="0,10,0,10" x:Name="Pool" Text="Bazen" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+                        <ComboBox Name="tbPool" Width="450" HorizontalAlignment="Left" ItemsSource="{Binding Path=pools}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Width="450">
+                                        <TextBlock Text="{Binding Name}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
+
                         <TextBlock HorizontalAlignment="Left" Margin="0,5,0,10" x:Name="Beginning" Text="Početak" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
                         <DatePicker Height="30" HorizontalAlignment="Left" Margin="0,0,0,0" Name="tbBegin" VerticalAlignment="Top" FontSize="20" Width="450"/>
                         <TextBlock HorizontalAlignment="Left" Margin="0,5,0,10" x:Name="Ending" Text="Kraj" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
                         <DatePicker  Height="30" HorizontalAlignment="Left" Margin="0,0,0,0" Name="tbEnd" VerticalAlignment="Top" FontSize="20" Width="450"/>
-                      
-                        <TextBlock HorizontalAlignment="Left" Margin="0,5,0,10" x:Name="Referee" Text="Sudac" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
+
+                        <TextBlock HorizontalAlignment="Left" Margin="0,10,0,10" x:Name="Referee" Text="Sudac" VerticalAlignment="Top" FontSize="20" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
                         <ComboBox Name="tbReferee" Width="450" HorizontalAlignment="Left" ItemsSource="{Binding Path=referees}">
                             <ComboBox.ItemTemplate>
                                 <DataTemplate>
                                     <StackPanel Orientation="Horizontal" Width="450">
-                                        <MultiBinding StringFormat="{}{0} {1}">
-                                            <Binding Path="FirstName"/>
-                                            <Binding Path="LastName"/>
-                                        </MultiBinding>
+                                        <TextBlock Text="{Binding Name}" />
                                     </StackPanel>
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
@@ -76,14 +95,14 @@
                           FontSize="20" ItemsSource="{Binding races}" AutoGenerateColumns="False" >
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="Stil" Width="*" Binding="{Binding Path=Style.Name}" />
-                            <DataGridTextColumn Header="Kategorija" Width="180" Binding="{Binding Path=Category.Name}" />
-                            <DataGridTextColumn Header="Početak" Width="220" Binding="{Binding Path=TimeStart, StringFormat=\{0:dd.MM.yy hh:mm tt\}}" />
-                            <DataGridTextColumn Header="Kraj" Width="220" Binding="{Binding Path=TimeEnd, StringFormat=\{0:dd.MM.yy hh:mm tt\}}" />
-                            <DataGridTextColumn Header="Spol" Width="80" Binding="{Binding Path=Gender}" />
-                            <DataGridTextColumn Header="Bazen" Width="80" Binding="{Binding Path=Pool.Length}" />
-                            <DataGridTextColumn Header="Natjecanje" Width="200" Binding="{Binding Path=Competition.Name}" />
-                            <DataGridTextColumn Header="Duljina" Width="80" Binding="{Binding Path=Length.Len}" />
-                            <DataGridTextColumn Header="Sudac" Width="160" Binding="{Binding Path=Referee.LastName}" />
+                            <DataGridTextColumn Header="Kategorija" Width="160" Binding="{Binding Path=Category.Name}" />
+                            <DataGridTextColumn Header="Početak" Width="200" Binding="{Binding Path=TimeStart, StringFormat=\{0:dd.MM.yy hh:mm tt\}}" />
+                            <DataGridTextColumn Header="Kraj" Width="200" Binding="{Binding Path=TimeEnd, StringFormat=\{0:dd.MM.yy hh:mm tt\}}" />
+                            <DataGridTextColumn Header="Spol" Width="70" Binding="{Binding Path=Gender}" />
+                            <DataGridTextColumn Header="Bazen" Width="70" Binding="{Binding Path=Pool.Length}" />
+                            <DataGridTextColumn Header="Natjecanje" Width="280" Binding="{Binding Path=Competition.Name}" />
+                            <DataGridTextColumn Header="Duljina" Width="70" Binding="{Binding Path=Length.Len}" />
+                            <DataGridTextColumn Header="Sudac" Width="140" Binding="{Binding Path=Referee.LastName}" />
                             <DataGridTemplateColumn Header="" Visibility="Collapsed">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>

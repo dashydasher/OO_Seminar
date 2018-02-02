@@ -14,9 +14,17 @@ namespace PlivanjeDesktop.ViewModels
     {
 
         public List<RaceModel> races { get; set; }
+        public List<StyleModel> styles { get; set; }
+        public List<LengthModel> lengths { get; set; }
+        public List<PersonModel> referees { get; set; }
+        public List<CategoryModel> categories { get; set; }
+        public List<PoolModel> pools { get; set; }
+        public bool isMyCompetition = false;
+
         RaceProcessor rp = new RaceProcessor();
         StyleProcessor sp = new StyleProcessor();
         RefereeProcessor rfp = new RefereeProcessor();
+        CategoryProcessor cp = new CategoryProcessor();
 
         public void LoadRacesByCompetition(int competitionId)
         {
@@ -36,19 +44,28 @@ namespace PlivanjeDesktop.ViewModels
                     TimeEnd = race.TimeEnd,
                     TimeStart = race.TimeStart
                 });
+
+            if (UserModel.role != null && UserModel.role.Equals("trener"))
+            {
+                LoadRest(competitionId);
+            }
         }
 
-        internal bool AddRace(HallModel len, StyleModel style, DateTime timeStart, DateTime timeEnd, PersonModel referee)
+
+        internal bool AddRace(string gender, int idLen, int idStyle, DateTime timeStart, DateTime timeEnd, int idReferee, int idCompetition, int idPool, int idCategory)
         {
             Race race = new Race
             {
-             //   Style = sp.getStyle(style),
+                Gender = gender.Equals("M")?Gender.M:Gender.Ž,
+                Length = rp.getLength(idLen),
+                Style = rp.getStyle(idStyle),
                 TimeStart = timeStart,
                 TimeEnd = timeEnd,
-               // Hall = hp.getHall(hm.Id)
-
+                Refereee = rp.getReferee(idReferee),
+                Competition = rp.getCompetition(idCompetition),
+                Pool = rp.getPool(idPool),
+                Category = rp.getCategory(idCategory)
             };
-            var rp = new RaceProcessor();
             try
             {
                 rp.UpdateRace(race);
@@ -60,50 +77,100 @@ namespace PlivanjeDesktop.ViewModels
             return true;
         }
 
-        public void LoadLengths()
+
+        private void LoadRest(int competitionId)
         {
-            var lengths = new List<LengthModel>();
+            LoadLengths();
+            LoadStyles();
+            LoadReferees();
+            LoadCategories();
+            LoadPools(competitionId);
+
+            var cp = new CoachProcessor();
+            var competitions = cp.FindMyCompetitions(UserModel.Id);
+            foreach (var comp in competitions)
+                if (comp.Id == competitionId)
+                {
+                    isMyCompetition = true;
+                    break;
+                }
+        }
+
+        private void LoadLengths()
+        {
+            lengths = new List<LengthModel>();
 
             var list = rp.GetLenghts();
 
             foreach (var len in list)
                 lengths.Add(new LengthModel
                 {
+                    Id = len.Id,
                     Len = len.Len                  
                 });
 
         }
 
-        public void LoadStyles()
+        private void LoadStyles()
         {
-            var styles = new List<StyleModel>();
+            styles = new List<StyleModel>();
 
             var list = sp.getStyles();
 
-            foreach (var len in list)
+            foreach (var style in list)
                 styles.Add(new StyleModel
                 {
-                    Name = len.Name
+                    Id = style.Id,
+                    Name = style.Name
 
                 });
 
         }
 
-        /*public void LoadReferees()
+        private void LoadCategories()
         {
-            var referees = new List<PersonModel>();
+            categories = new List<CategoryModel>();
+
+            var list = cp.getCategories();
+
+            foreach (var category in list)
+                categories.Add(new CategoryModel
+                {
+                    Id = category.Id,
+                    Name = category.Name
+
+                });
+        }
+
+        private void LoadPools(int idCompetition)
+        {
+            pools = new List<PoolModel>();
+            var hp = new HallProcessor();
+            var hall = hp.getHallCompetition(idCompetition);
+            var list = hp.getPools(hall.Id);
+
+            foreach (var pool in list)
+                pools.Add(new PoolModel
+                {
+                    Id = pool.Id,
+                    Name = pool.Length + "m " + hall.Name
+                });
+        }
+
+        private void LoadReferees()
+        {
+            referees = new List<PersonModel>();
 
             var list =  rfp.getReferees();
 
-            foreach (var ref in list)
+            foreach (var referee in list)
                 referees.Add(new PersonModel
                 {
-                    FirstName = ref.FirstName,
-                    LastName = ref.LastName
-
+                    Id = referee.Id,
+                    Name = referee.FirstName.Trim() + " " + referee.LastName.Trim()
                 });
 
-        }*/
+        }
 
 
 

@@ -26,22 +26,21 @@ namespace PlivanjeDesktop
     {
         public List<Race> races = new List<Race>();
         RaceViewModel rvm = new RaceViewModel();
-        
+        int competitionId = -1;
 
         public UtrkePage(int competitionId)
         {
             InitializeComponent();
             rvm.LoadRacesByCompetition(competitionId);
-           
-            //rvm = LoadReferees();
             this.DataContext = rvm;
+            this.competitionId = competitionId;
+
             if (UserModel.role!=null && UserModel.role.Equals("trener"))
             {
                 datagridRace.ColumnFromDisplayIndex(10).Visibility = Visibility.Collapsed;
                 datagridRace.ColumnFromDisplayIndex(9).Visibility = Visibility.Visible;
-                dodajUtrku.Visibility = Visibility.Visible;
-                rvm.LoadLengths();
-                rvm.LoadStyles();
+                if (rvm.isMyCompetition)
+                    dodajUtrku.Visibility = Visibility.Visible;
             }
 
         }
@@ -97,6 +96,18 @@ namespace PlivanjeDesktop
                 return;
             }
 
+            if (String.IsNullOrEmpty(tbCategory.Text))
+            {
+                MessageBox.Show("Potrebno je unijeti kategoriju utrke.");
+                return;
+            }
+
+            if (String.IsNullOrEmpty(tbPool.Text))
+            {
+                MessageBox.Show("Potrebno je unijeti bazen.");
+                return;
+            }
+
             if (String.IsNullOrEmpty(tbReferee.Text))
             {
                 MessageBox.Show("Potrebno je unijeti suca utrke.");
@@ -104,20 +115,21 @@ namespace PlivanjeDesktop
             }
 
             string gender = (zeneRadio.IsChecked == true) ? "Ž" : "M";           
-            HallModel len = (HallModel)tbLength.SelectedValue;
+            LengthModel len = (LengthModel)tbLength.SelectedValue;
             StyleModel style = (StyleModel)tbStyle.SelectedValue;
             DateTime timeStart = tbBegin.DisplayDate.Date;
             DateTime timeEnd = tbEnd.DisplayDate.Date;
             PersonModel referee = (PersonModel)tbReferee.SelectedValue;
+            PoolModel pool = (PoolModel)tbPool.SelectedValue;
+            CategoryModel category = (CategoryModel)tbCategory.SelectedValue;
 
-            bool uspjeh = rvm.AddRace(len, style, timeStart, timeEnd, referee);
+            bool uspjeh = rvm.AddRace(gender, len.Id, style.Id, timeStart, timeEnd, referee.Id, competitionId, pool.Id, category.Id);
             if (uspjeh)
             {
              
                 MessageBox.Show("Uspješno spremljena utrka");
-
-                CompetitionModel selectedCompetition = (CompetitionModel)datagridRace.SelectedItem;//datagrid koji i kak do njega?
-                UtrkePage up = new UtrkePage(selectedCompetition.Id);
+                
+                UtrkePage up = new UtrkePage(competitionId);
                 NavigationService navService = NavigationService.GetNavigationService(this);
                 navService.Navigate(up);
 

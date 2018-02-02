@@ -36,8 +36,6 @@ namespace PlivanjeDesktop.ViewModels
             DateTime d;
             if (DateTime.TryParse(resultText, out d))
             {
-                //srm.RaceTime = d;
-                //srm.Score = score;
                 sr = rp.GetSwimmerRace(srm.Id);
                 sr.RaceTime = d;
                 sr.Score = score;
