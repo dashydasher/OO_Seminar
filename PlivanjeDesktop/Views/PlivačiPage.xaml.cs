@@ -56,8 +56,7 @@ namespace PlivanjeDesktop
                 MessageBox.Show("Plivač je uspješno dodan u klub");
             else
                 MessageBox.Show("Plivač nije dodan u klub");
-
-            //Ovo je grozno, popravit ak se može
+            
             PlivačiPage pl = new PlivačiPage(svm.clubId);
             this.NavigationService.Navigate(pl);
         }
@@ -71,7 +70,6 @@ namespace PlivanjeDesktop
             else
                 MessageBox.Show("Plivač nije iščlanjen iz kluba");
             
-            //Ovo je grozno, popravit ak se može
             PlivačiPage pl = new PlivačiPage(svm.clubId);
             this.NavigationService.Navigate(pl);
         }

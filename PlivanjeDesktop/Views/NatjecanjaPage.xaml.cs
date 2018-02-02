@@ -96,7 +96,7 @@ namespace PlivanjeDesktop
                 MessageBox.Show("Datum završetka natjecanja mora biti nakon datuma početka natjecanja ili jednak datumu početka natjecanja!");
                 return;
             }
-        
+
             if (String.IsNullOrEmpty(tbHall.Text))
             {
                 MessageBox.Show("Potrebno je unijeti dvoranu.");
@@ -106,8 +106,8 @@ namespace PlivanjeDesktop
            
 
             string name = tbName.Text.Trim();
-            DateTime timeStart= tbBegin.DisplayDate.Date;
-            DateTime timeEnd = tbEnd.DisplayDate.Date;
+            DateTime timeStart= tbBegin.SelectedDate.Value;
+            DateTime timeEnd = tbEnd.SelectedDate.Value;
             HallModel hallS = (HallModel)tbHall.SelectedValue;
 
             bool uspjeh = cvm.AddCompetition(name, timeStart, timeEnd, hallS); 

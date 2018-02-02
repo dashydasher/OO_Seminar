@@ -101,7 +101,7 @@
                             <DataGridTextColumn Header="Spol" Width="70" Binding="{Binding Path=Gender}" />
                             <DataGridTextColumn Header="Bazen" Width="70" Binding="{Binding Path=Pool.Length}" />
                             <DataGridTextColumn Header="Natjecanje" Width="280" Binding="{Binding Path=Competition.Name}" />
-                            <DataGridTextColumn Header="Duljina" Width="70" Binding="{Binding Path=Length.Len}" />
+                            <DataGridTextColumn Header="Duljina" Width="80" Binding="{Binding Path=Length.Len}" />
                             <DataGridTextColumn Header="Sudac" Width="140" Binding="{Binding Path=Referee.LastName}" />
                             <DataGridTemplateColumn Header="" Visibility="Collapsed">
                                 <DataGridTemplateColumn.CellTemplate>

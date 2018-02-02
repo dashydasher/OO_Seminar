@@ -53,9 +53,7 @@ namespace PlivanjeDesktop
         {
             e.Handled = true;
             NatjecanjaPage n = new NatjecanjaPage();
-            Main.Content = n;
-
-            //n.Show();
+            Main.Content = n;            
         }
 
         private void Clubs_Click(object sender, RoutedEventArgs e)
@@ -63,9 +61,6 @@ namespace PlivanjeDesktop
             e.Handled = true;
             KluboviPage k = new KluboviPage();
             Main.Content = k;
-            // k.Show();
-
-
         }
 
         private void Swimmers_Click(object sender, RoutedEventArgs e)
@@ -74,9 +69,6 @@ namespace PlivanjeDesktop
             MenuItem mi = sender as MenuItem;
             PlivačiPage p = new PlivačiPage(mi.Header.ToString());
             Main.Content = p;
-            //  p.Show();
-
-
         }
 
         private void Records_Click(object sender, RoutedEventArgs e)
@@ -85,9 +77,6 @@ namespace PlivanjeDesktop
             MenuItem mi = sender as MenuItem;
             RekordiPage r = new RekordiPage(mi.Header.ToString());
             Main.Content = r;
-            // r.Show();
-
-
         }
 
 

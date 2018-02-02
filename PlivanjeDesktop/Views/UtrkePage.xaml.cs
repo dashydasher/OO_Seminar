@@ -117,8 +117,8 @@ namespace PlivanjeDesktop
             string gender = (zeneRadio.IsChecked == true) ? "Ž" : "M";           
             LengthModel len = (LengthModel)tbLength.SelectedValue;
             StyleModel style = (StyleModel)tbStyle.SelectedValue;
-            DateTime timeStart = tbBegin.DisplayDate.Date;
-            DateTime timeEnd = tbEnd.DisplayDate.Date;
+            DateTime timeStart = tbBegin.SelectedDate.Value;
+            DateTime timeEnd = tbEnd.SelectedDate.Value;
             PersonModel referee = (PersonModel)tbReferee.SelectedValue;
             PoolModel pool = (PoolModel)tbPool.SelectedValue;
             CategoryModel category = (CategoryModel)tbCategory.SelectedValue;
@@ -138,8 +138,7 @@ namespace PlivanjeDesktop
             {
                 MessageBox.Show("Pogreška u spremanju utrke");
             }
-
-
+            
         }
     }
 }

@@ -50,7 +50,6 @@ namespace PlivanjeDesktop.Views
                 return;
             }
 
-            //Ovo je grozno, popravit ak se može
             PlivačiUtrka pu = new PlivačiUtrka(svm.raceId);
             pu.Show();
             this.Close();
