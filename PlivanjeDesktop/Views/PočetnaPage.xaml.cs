@@ -23,10 +23,7 @@ namespace PlivanjeDesktop.Views
         public PočetnaPage()
         {
             InitializeComponent();
-            //ImageBrush myBrush = new ImageBrush();
-          //  myBrush.ImageSource =
-           //     new BitmapImage(new Uri("", UriKind.Absolute));
-            //this.Background = myBrush;
+        
         }
     }
 }
