@@ -40,7 +40,7 @@ namespace PlivanjeDesktop
             svm.LoadSwimmersByClub(clubId);
             this.DataContext = svm;
 
-            if (UserModel.role.Equals("trener"))
+            if (UserModel.role!=null && UserModel.role.Equals("trener"))
             {
                 trenerPanel.Visibility = Visibility.Visible;
                 datagridSwimmer.ColumnFromDisplayIndex(4).Visibility = Visibility.Collapsed;

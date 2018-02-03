@@ -22,7 +22,7 @@ namespace PlivanjeDesktop.ViewModels
             var cp = new ClubProcessor();
             var season = cp.ValidSeason();
             var list = sp.GetSwimmersInClubSeason(clubId, season.Id);
-            if (UserModel.role.Equals("trener"))
+            if (UserModel.role!=null && UserModel.role.Equals("trener"))
             {
                 Load(list, false);
                 LoadSwimmersWithoutClub();
