@@ -40,7 +40,6 @@ namespace PlivanjeDesktop
             this.DataContext = rvm;
             this.competitionId = competitionId;
 
-            // cvm.LoadCompetitionBeginEnd(competitionId);
             competition = cp.GetCompetition(competitionId);
             if (UserModel.role!=null && UserModel.role.Equals("trener"))
             {

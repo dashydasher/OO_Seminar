@@ -56,10 +56,10 @@
                             <DataGridTextColumn Header="Kraj" Width="180" Binding="{Binding TimeEnd, StringFormat=\{0:dd.MM.yy\}}" />
                             <DataGridTextColumn Header="Dvorana" Width="300" Binding="{Binding MyHall.Name}" />
                             <DataGridTemplateColumn Header="" >
-                                <!-- Visibility="Collapsed"-->
+                                
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Button Click="Dodaj_Utrke" Content="Uredi utrke"/>
+                                        <Button Click="Dodaj_Utrke" Content="Uredi utrke" Name="dodajUtrke"/>
                                     </DataTemplate>
                                 </DataGridTemplateColumn.CellTemplate>
                             </DataGridTemplateColumn>

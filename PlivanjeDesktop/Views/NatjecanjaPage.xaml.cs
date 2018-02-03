@@ -29,6 +29,7 @@ namespace PlivanjeDesktop
         SwimmerViewModel svm = new SwimmerViewModel();
 
         CompetitionViewModel cvm;
+
         public NatjecanjaPage()
         {
             InitializeComponent();
@@ -46,11 +47,16 @@ namespace PlivanjeDesktop
                 tbBegin.DisplayDateStart = DateTime.Today;
                 tbEnd.DisplayDateStart = DateTime.Today;
 
-               
-               //     if (datagrid1.ColumnFromDisplayIndex(1) )
-                 //   {
-                        //Disable here
-                   // }
+                
+              /*  foreach (var comp in competitions)
+                {
+                    if (comp.TimeStart <= DateTime.Today)
+                    {
+                        
+                      trebalo bi disableati gumb s imenom dodajUtrke
+                    }
+                 
+                }*/
                 
             }
 
@@ -73,6 +79,16 @@ namespace PlivanjeDesktop
         {
             CompetitionModel selectedCompetition = (CompetitionModel)datagrid1.SelectedItem;
             
+            if (selectedCompetition.TimeStart < DateTime.Today && selectedCompetition.TimeEnd < DateTime.Today)
+            {
+                MessageBox.Show("Ovo natjecanje je završilo!");
+                return;
+            } else if (selectedCompetition.TimeStart <= DateTime.Today && selectedCompetition.TimeEnd >= DateTime.Today)
+            {
+                MessageBox.Show("Ovo natjecanje je u tijeku, prijave utrka su završile!");
+                return;
+            }
+
             UtrkePage up = new UtrkePage(selectedCompetition.Id);
             NavigationService navService = NavigationService.GetNavigationService(this);
             navService.Navigate(up);
@@ -112,8 +128,6 @@ namespace PlivanjeDesktop
                 return;
             }
 
-           
-
             string name = tbName.Text.Trim();
             DateTime timeStart= tbBegin.SelectedDate.Value;
             DateTime timeEnd = tbEnd.SelectedDate.Value;
@@ -122,27 +136,11 @@ namespace PlivanjeDesktop
             bool uspjeh = cvm.AddCompetition(name, timeStart, timeEnd, hallS); 
             if (uspjeh)
             {
-                //datagrid1.Items.Refresh();
-                //datagridC.Items.Refresh();
+
                 MessageBox.Show("Uspješno spremljeno natjecanje");
-
-
                 NatjecanjaPage np = new NatjecanjaPage();
                 NavigationService navService = NavigationService.GetNavigationService(this);
                 navService.Navigate(np);
-
-                //BindingExpression binding = datagrid1.GetBindingExpression(DataGrid.ItemsSourceProperty);
-                //binding.UpdateSource();
-                //BindingExpression binding2 = datagridC.GetBindingExpression(DataGrid.ItemsSourceProperty);        
-                //binding2.UpdateSource();
-
-
-                //datagrid1.ItemsSource = null;
-                // datagrid1.ItemsSource = coachesCompetitions;
-                //datagridC.ItemsSource = null;
-                //datagridC.ItemsSource = competitions;
-               
-
 
             }
             else
