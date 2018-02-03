@@ -10,7 +10,7 @@
 
     <Grid>
 
-        <StackPanel>
+        <StackPanel Margin="0,100,0,0">
             <TextBlock HorizontalAlignment="Center" Margin="0,5,0,0" x:Name="RegisterHeading" Text="Registracija" VerticalAlignment="Top" FontSize="40" FontStretch="ExtraCondensed" RenderTransformOrigin="5.247,0.666"/>
             <StackPanel HorizontalAlignment="Center" Margin="0,25,0,0" Orientation="Horizontal">
                 <RadioButton GroupName="role" Margin="0,0,10,0" FontSize="15" Name="trenerRadio"  Content="Trener" IsChecked="True"/>
