@@ -9,7 +9,7 @@
       Title="PočetnaPage">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Foreground="DarkCyan" VerticalAlignment="Center" Margin="180,-300,0,0" FontSize="60" FontFamily="Roman">Sustav za natjecateljsko plivanje</TextBlock>
-        <TextBlock HorizontalAlignment="Left" Foreground="DarkCyan" VerticalAlignment="Center" Margin="180,-120,0,0" FontSize="60" FontFamily="Roman">Objektno oblikovanje, 2017/18</TextBlock>
+        <TextBlock HorizontalAlignment="Left" Foreground="Black" VerticalAlignment="Center" Margin="180,-300,0,0" FontSize="60" FontFamily="Roman">Sustav za natjecateljsko plivanje</TextBlock>
+        <TextBlock HorizontalAlignment="Left" Foreground="Black" VerticalAlignment="Center" Margin="180,-120,0,0" FontSize="60" FontFamily="Roman">Objektno oblikovanje, 2017/18</TextBlock>
     </Grid>
 </Page>
