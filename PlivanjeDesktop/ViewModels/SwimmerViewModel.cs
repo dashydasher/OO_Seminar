@@ -34,7 +34,6 @@ namespace PlivanjeDesktop.ViewModels
 
         public void LoadSwimmers()
         {
-            var sp = new SwimmerProcessor();
             var list = sp.GetListOfSwimmers();
             Load(list, true);
         }
