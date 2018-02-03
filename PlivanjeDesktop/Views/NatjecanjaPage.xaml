@@ -47,8 +47,8 @@
                 </GroupBox>
 
 
-                <GroupBox FontSize="20" Header="Moja natjecanja" Name="trenerovaNatjecanja" Visibility="Collapsed">
-                    <DataGrid Name="datagrid1" CanUserAddRows="false" FontSize="20"   ItemsSource="{Binding coachesCompetitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" >
+                <GroupBox FontSize="20" Header="Moja natjecanja" x:Name="trenerovaNatjecanja" Visibility="Collapsed">
+                    <DataGrid x:Name="datagrid1" CanUserAddRows="false" FontSize="20"   ItemsSource="{Binding coachesCompetitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" >
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding Name}" />

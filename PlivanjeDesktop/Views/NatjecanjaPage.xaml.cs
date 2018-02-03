@@ -23,9 +23,7 @@ namespace PlivanjeDesktop
     /// </summary>
     public partial class NatjecanjaPage : Page
     {
-        private List<Competition> competitions = new List<Competition>();
-        public List<Hall> halls;
-        
+
         SwimmerViewModel svm = new SwimmerViewModel();
 
         CompetitionViewModel cvm;
@@ -46,17 +44,6 @@ namespace PlivanjeDesktop
                 orgNatjecanje.Visibility = Visibility.Visible;
                 tbBegin.DisplayDateStart = DateTime.Today;
                 tbEnd.DisplayDateStart = DateTime.Today;
-
-                
-              /*  foreach (var comp in competitions)
-                {
-                    if (comp.TimeStart <= DateTime.Today)
-                    {
-                        
-                      trebalo bi disableati gumb s imenom dodajUtrke
-                    }
-                 
-                }*/
                 
             }
 
