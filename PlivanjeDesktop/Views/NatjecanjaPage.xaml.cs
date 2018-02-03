@@ -81,11 +81,6 @@ namespace PlivanjeDesktop
             navService.Navigate(up);
         }
 
-        private void datagridC_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
-
         private void Dodaj_Natjecanje(object sender, RoutedEventArgs e)
         {
             if (String.IsNullOrEmpty(tbName.Text))

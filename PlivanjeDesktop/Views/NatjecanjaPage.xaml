@@ -68,7 +68,7 @@
                     </DataGrid>
                 </GroupBox>
                 <GroupBox FontSize="20" Header="Natjecanja">
-                    <DataGrid Name="datagridC" CanUserAddRows="false" FontSize="20"  ItemsSource="{Binding competitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" SelectionChanged="datagridC_SelectionChanged" >
+                    <DataGrid Name="datagridC" CanUserAddRows="false" FontSize="20"  ItemsSource="{Binding competitions}" RowStyle="{StaticResource datagridC}" AutoGenerateColumns="False" >
                         <DataGrid.Columns>
 
                             <DataGridTextColumn Header="Naziv" Width="*" Binding="{Binding Name}" />
