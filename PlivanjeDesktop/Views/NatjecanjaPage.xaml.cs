@@ -27,6 +27,7 @@ namespace PlivanjeDesktop
         public List<Hall> halls;
         
         SwimmerViewModel svm = new SwimmerViewModel();
+
         CompetitionViewModel cvm;
         public NatjecanjaPage()
         {
@@ -34,7 +35,7 @@ namespace PlivanjeDesktop
 
             cvm = new CompetitionViewModel();
             cvm.LoadCompetitions();
-            
+                    
             this.DataContext = cvm;
 
             
@@ -44,6 +45,13 @@ namespace PlivanjeDesktop
                 orgNatjecanje.Visibility = Visibility.Visible;
                 tbBegin.DisplayDateStart = DateTime.Today;
                 tbEnd.DisplayDateStart = DateTime.Today;
+
+               
+               //     if (datagrid1.ColumnFromDisplayIndex(1) )
+                 //   {
+                        //Disable here
+                   // }
+                
             }
 
         }
@@ -64,6 +72,7 @@ namespace PlivanjeDesktop
         private void Dodaj_Utrke(object sender, RoutedEventArgs e)
         {
             CompetitionModel selectedCompetition = (CompetitionModel)datagrid1.SelectedItem;
+            
             UtrkePage up = new UtrkePage(selectedCompetition.Id);
             NavigationService navService = NavigationService.GetNavigationService(this);
             navService.Navigate(up);

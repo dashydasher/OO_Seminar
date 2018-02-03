@@ -15,6 +15,8 @@ namespace PlivanjeDesktop.ViewModels
         public List<CompetitionModel> coachesCompetitions { get; set; }
         public List<HallModel> halls { get; set; }
 
+        public CompetitionModel competition { get; set; }
+
         CompetitionProcessor cp = new CompetitionProcessor();
         CoachProcessor ccp = new CoachProcessor();
         ClubProcessor clp = new ClubProcessor();
@@ -23,9 +25,9 @@ namespace PlivanjeDesktop.ViewModels
         public void LoadCompetitions()
         {
             competitions = new List<CompetitionModel>();
-            
+
             var list = cp.GetCompetitions();
- 
+
             foreach (var competition in list)
                 competitions.Add(new CompetitionModel
                 {
@@ -46,34 +48,47 @@ namespace PlivanjeDesktop.ViewModels
         public void LoadCoachesCompetitions(int coachId)
         {
             //List<Competition> list = new List<Competition>();
-            List<Competition> listMyCompetitions = new List<Competition>();       
+            List<Competition> listMyCompetitions = new List<Competition>();
             //list = cp.GetFutureCompetitions();
-          
+
             coachesCompetitions = new List<CompetitionModel>();
 
             if (coachId != 0)
             {
-               // listMyCompetitions = ccp.getMyCompetitions(coachId); 
-                listMyCompetitions = ccp.FindMyCompetitions(coachId); 
+                // listMyCompetitions = ccp.getMyCompetitions(coachId); 
+                listMyCompetitions = ccp.FindMyCompetitions(coachId);
                 foreach (var competition in listMyCompetitions)
                 {
-                   // if (listMyCompetitions.Contains(competition))
+                    // if (listMyCompetitions.Contains(competition))
                     //{
-                        coachesCompetitions.Add(new CompetitionModel
-                        {
-                            Id = competition.Id,
-                            Name = competition.Name,
-                            TimeStart = competition.TimeStart,
-                            TimeEnd = competition.TimeEnd,
-                            MyHall = competition.Hall
-                             
-                        });
-                      //}  
-                    
+                    coachesCompetitions.Add(new CompetitionModel
+                    {
+                        Id = competition.Id,
+                        Name = competition.Name,
+                        TimeStart = competition.TimeStart,
+                        TimeEnd = competition.TimeEnd,
+                        MyHall = competition.Hall
+
+                    });
+                    //}  
+
                 }
             }
 
         }
+
+       /* public void LoadCompetitionBeginEnd(int competitionID)
+        {
+            var competition = cp.GetCompetition(competitionID);
+            CompetitionModel comp =  new CompetitionModel
+            {
+                Id = competition.Id,
+                Name = competition.Name,
+                TimeStart = competition.TimeStart,
+                TimeEnd = competition.TimeEnd,
+                MyHall = competition.Hall
+            };
+         }*/
 
         public bool AddCompetition(string name, DateTime timeStart, DateTime timeEnd, HallModel hm) 
         {

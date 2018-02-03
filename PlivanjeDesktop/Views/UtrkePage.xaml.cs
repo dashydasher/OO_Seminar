@@ -1,4 +1,5 @@
 ﻿using Plivanje.Models;
+using Plivanje.Processors;
 using PlivanjeDesktop.Models;
 using PlivanjeDesktop.ViewModels;
 using PlivanjeDesktop.Views;
@@ -26,21 +27,34 @@ namespace PlivanjeDesktop
     {
         public List<Race> races = new List<Race>();
         RaceViewModel rvm = new RaceViewModel();
+        CompetitionViewModel cvm = new CompetitionViewModel();
         int competitionId = -1;
+        CompetitionProcessor cp = new CompetitionProcessor();
+        Competition competition;
 
         public UtrkePage(int competitionId)
         {
             InitializeComponent();
             rvm.LoadRacesByCompetition(competitionId);
+            
             this.DataContext = rvm;
             this.competitionId = competitionId;
 
+            // cvm.LoadCompetitionBeginEnd(competitionId);
+            competition = cp.GetCompetition(competitionId);
             if (UserModel.role!=null && UserModel.role.Equals("trener"))
             {
                 datagridRace.ColumnFromDisplayIndex(10).Visibility = Visibility.Collapsed;
                 datagridRace.ColumnFromDisplayIndex(9).Visibility = Visibility.Visible;
+
                 if (rvm.isMyCompetition)
                     dodajUtrku.Visibility = Visibility.Visible;
+                 
+                tbBegin.DisplayDateStart = competition.TimeStart;
+                tbBegin.DisplayDateEnd = competition.TimeEnd;
+                tbEnd.DisplayDateStart = competition.TimeStart;
+                tbEnd.DisplayDateEnd =competition.TimeEnd;
+                
             }
 
         }
@@ -84,7 +98,13 @@ namespace PlivanjeDesktop
                 return;
             }
 
-           
+            if (DateTime.Parse(tbEnd.Text) < DateTime.Parse(tbBegin.Text))
+            {
+                MessageBox.Show("Datum završetka održavanje utrke mora biti nakon datuma početka održavanja utrke ili jednak datumu početka održavanja utrke!");
+                return;
+            }
+
+
             if (String.IsNullOrEmpty(tbBegin.Text))
             {
                 MessageBox.Show("Potrebno je unijeti vrijeme početka održavanja utrke.");
