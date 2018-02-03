@@ -5,53 +5,5 @@
              StartupUri="Views/Početna.xaml">
     <Application.Resources>
 
-
-       <!-- <Style x:Key="HeaderStyle" TargetType="Window">
-            <Setter Property="Template">
-                <Setter.Value>
-                    <ControlTemplate TargetType="{x:Type Window}">
-                        <Grid Background="{TemplateBinding Background}">
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="Auto"/>
-                                <RowDefinition Height="*"/>
-                                <RowDefinition Height="Auto"/>
-                            </Grid.RowDefinitions>
-
-                            
-                            <Border Grid.Row="0" >
-                                <Menu DockPanel.Dock="Top" FontSize="15">
-                                    <MenuItem Header="NATJECANJA" Name="Competition" Click="Competition_Click"/>
-                                    <MenuItem Header="KLUBOVI"  Name="Clubs" Click="Clubs_Click"/>
-                                    <MenuItem Header="PLIVAČI" Name="Swimmers" MouseEnter="MenuItem_MouseEnter" MouseLeave="MenuItem_MouseLeave">
-                                        <MenuItem Header="Veterani" Click="Swimmers_Click"/>
-                                        <MenuItem Header="Seniori" Click="Swimmers_Click"/>
-                                        <MenuItem Header="Mlađi seniori" Click="Swimmers_Click"/>
-                                        <MenuItem Header="Juniori" Click="Swimmers_Click"/>
-                                        <MenuItem Header="Mlađi juniori" Click="Swimmers_Click"/>
-                                        <MenuItem Header="Kadeti" Click="Swimmers_Click"/>
-                                        <MenuItem Header="Mlađi kadeti" Click="Swimmers_Click"/>
-                                        <MenuItem Header="Početnici" Click="Swimmers_Click"/>
-                                    </MenuItem>
-                                    <MenuItem Header="REKORDI" Name="Records"  MouseEnter="MenuItem_MouseEnter" MouseLeave="MenuItem_MouseLeave">
-                                        <MenuItem Header="Muškarci" Click="Records_Click"/>
-                                        <MenuItem Header="Žene" Click="Records_Click"/>
-                                    </MenuItem>
-                                </Menu>
-
-
-
-                            </Border>
-
-                            
-                            <ContentPresenter Grid.Row="1"/>
-
-                        </Grid>
-                    </ControlTemplate>
-                </Setter.Value>
-            </Setter>
-        </Style>
--->
-
-
     </Application.Resources>
 </Application>
