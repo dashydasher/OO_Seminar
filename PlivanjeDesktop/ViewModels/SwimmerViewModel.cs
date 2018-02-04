@@ -15,6 +15,7 @@ namespace PlivanjeDesktop.ViewModels
         public List<SwimmerModel> swimmersCoach { get; set; }
         public int clubId = -1;
         SwimmerProcessor sp = new SwimmerProcessor();
+        public bool coachesClubSelected = false;
 
         public void LoadSwimmersByClub(int clubId)
         {
@@ -22,10 +23,11 @@ namespace PlivanjeDesktop.ViewModels
             var cp = new ClubProcessor();
             var season = cp.ValidSeason();
             var list = sp.GetSwimmersInClubSeason(clubId, season.Id);
-            if (UserModel.role!=null && UserModel.role.Equals("trener"))
+            if (UserModel.role!=null && UserModel.role.Equals("trener") && cp.getMyClubId(UserModel.Id, cp.ValidSeason().Id)==clubId)
             {
                 Load(list, false);
                 LoadSwimmersWithoutClub();
+                coachesClubSelected = true;
             }
             else
                 Load(list, true);
