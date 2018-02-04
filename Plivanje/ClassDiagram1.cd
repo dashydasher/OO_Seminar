@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Plivanje.Processors.CoachProcessor">
+    <Position X="10.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAgCIAAAAAAACAAAACAAAAAACAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Processors\CoachProcessor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Repository" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Plivanje.Processors.LicenceProcessor">
+    <Position X="6.75" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAQwAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Processors\LicenceProcessor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Repository" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Plivanje.Processors.RefereeProcessor">
+    <Position X="5" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAABIAAAAAAAAACAAQAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Processors\RefereeProcessor.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Repository" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Plivanje.Repositories.CoachRepository">
+    <Position X="9" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgCAAAAAAAACAAAACAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\CoachRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Plivanje.Repositories.LicenceRepository">
+    <Position X="7" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQQAAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\LicenceRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Plivanje.Repositories.RefereeRepository">
+    <Position X="3" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAABAAAAAAAAAACAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\RefereeRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Plivanje.FluentNHibernateClass">
+    <Position X="2.75" Y="4.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAAAAgQAAAAA=</HashCode>
+      <FileName>FluentNHibernateClass.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Plivanje.Repositories.ICoachRepository">
+    <Position X="9" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgCAAAAAAAACAAAACAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\CoachRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Plivanje.Repositories.IRefereeRepository">
+    <Position X="4.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAABAAAAAAAAAACAAAAAAAAAAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\RefereeRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="Plivanje.Repositories.ILicenceRepository">
+    <Position X="7" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repositories\LicenceRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="8.92" />
+</ClassDiagram>

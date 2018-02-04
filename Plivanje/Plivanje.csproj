@@ -159,6 +159,7 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="ClassDiagram1.cd" />
     <None Include="cstrings.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
